@@ -1,0 +1,13 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+
+parts:
+  - caption: Part 1
+    numbered: True  # Only applies to chapters in Part 1.
+    chapters: 
+#- file: markdown
+    - file: decision-tree
+#- file: markdown-notebooks
