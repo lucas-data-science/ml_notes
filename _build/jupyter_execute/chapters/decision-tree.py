@@ -1,12 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
-
-
-from IPython.display import Latex
-
-
 # #  Decision tree
 # 
 # 
@@ -31,13 +25,12 @@ from IPython.display import Latex
 # 
 #  
 
-# ```{contents}
-# :local:
+# ```{contents} 
 # ```
 
 # ## Plot Test
 
-# In[2]:
+# In[1]:
 
 
 from matplotlib import rcParams, cycler
