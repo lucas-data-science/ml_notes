@@ -8,12 +8,12 @@ parts:
 - caption: Part 1
   numbered: true
   chapters:
-  - file: regression 
+  - file: chapters/regression 
   
 - caption: Part 2 
   numbered: true
   chapters:
-  - file: decision-tree 
+  - file: chapters/decision-tree 
   
 - caption: Final Part 
   chapters: 
