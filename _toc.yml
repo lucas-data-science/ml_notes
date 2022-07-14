@@ -11,6 +11,7 @@ parts:
   - file: regression 
   
 - caption: Part 2 
+  numbered: true
   chapters:
   - file: decision-tree 
   
