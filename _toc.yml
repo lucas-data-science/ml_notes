@@ -3,11 +3,21 @@
 
 format: jb-book
 root: intro
-
+ 
 parts:
-  - caption: Part 1
-    numbered: True  # Only applies to chapters in Part 1.
-    chapters: 
-#- file: markdown
-    - file: decision-tree
-#- file: markdown-notebooks
+- caption: Part 1
+  numbered: true
+  chapters:
+  - file: regression 
+  
+- caption: Part 2 
+  chapters:
+  - file: decision-tree 
+  
+- caption: Final Part 
+  chapters: 
+  - file: bib  
+  
+  
+ # - caption: Bibliography  
+ #   - file: bib

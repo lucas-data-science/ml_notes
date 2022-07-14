@@ -29,13 +29,13 @@ from IPython.display import Latex
 # \end{align}
 #  
 # 
-# ## Contents
-#  
-# * Classification
-# * Regression 
 #  
 
-# # Plot Test
+# ```{contents}
+# :local:
+# ```
+
+# ## Plot Test
 
 # In[2]:
 
@@ -47,6 +47,8 @@ x = [x for x in range (10)]
 y= x
 plt.plot(x,y)
 
+
+# test citation {cite}`ref5`. {cite}`ref4`
 
 # In[ ]:
 
