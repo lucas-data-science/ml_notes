@@ -8,12 +8,23 @@ parts:
 - caption: Part 1
   numbered: true
   chapters:
+  - file: chapters/statistical-analysis
   - file: chapters/regression 
+  - file: chapters/classification 
+  - file: chapters/clustering
+  - file: chapters/decision-tree  
   
 - caption: Part 2 
   numbered: true
   chapters:
-  - file: chapters/decision-tree 
+  - file: chapters/neural networks
+
+
+- caption: Part 2 
+  numbered: true
+  chapters:
+  - file: chapters/dimensional reduction
+  - file: chapters/reinforcement learning
   
 - caption: Final Part 
   chapters: 
