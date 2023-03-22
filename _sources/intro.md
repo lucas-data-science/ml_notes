@@ -1,9 +1,13 @@
-# Abstract
+# Caixa de Ferrramentas de Python para Ciências de Dados
 
-This is a short content of my studies about machine learning and other data science tools.
-You can find me [by my github page](https://github.com/lucas-alves-souza/lucas-alves-souza.github.io) for more information.
+**Por [Lucas A. Souza](https://lucas-alves-souza.github.io/)**
 
-Here is my test citation {cite}`ref1, ref2`.
+Importantes ferramentas utilizadas por cientistas de dados são apresentadas nestas notas curtas afim de auxiliar no dia-a-dia de quem as usa.
+Também pretendo imputar conteúdos de meus estudos mais avançados sobre aprendizado de máquina.
+Você pode me encontrar [na minha página pessoal do github](https://lucas-alves-souza.github.io/) para mais informações.
+
+
+# Contents
 
 ```{tableofcontents}
 ```
