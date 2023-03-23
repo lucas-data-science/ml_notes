@@ -2,9 +2,9 @@
 
 **Por [Lucas A. Souza](https://lucas-alves-souza.github.io/)**
 
-Importantes ferramentas utilizadas por cientistas de dados são apresentadas nestas notas curtas a fim de auxiliar no dia-a-dia de quem as usa.
-Também pretendo imputar conteúdos de meus estudos mais avançados sobre aprendizado de máquina.
-Você pode me encontrar [na minha página pessoal do github](https://lucas-alves-souza.github.io/) para mais informações.
+Importantes ferramentas utilizadas por cientistas de dados são apresentadas nestas notas curtas a fim de auxiliar no dia-a-dia de quem as usa, principalmente eu.
+Escrevo as linhas a seguir no intuito de consultá-las frequentemente devido aos lapsos de memória infieis que carrego. Espero que ajude não só a eu.
+caso haja interesse, poderá me encontrar [na minha página pessoal do github](https://lucas-alves-souza.github.io/).
 
 
 # Índice
