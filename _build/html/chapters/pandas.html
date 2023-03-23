@@ -340,8 +340,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ferramentas-de-analise-descritiva">
-   1.3. Ferramentas de análise descritiva
+  <a class="reference internal nav-link" href="#ferramentas-para-exploratorias-de-dados">
+   1.3. Ferramentas para exploratórias de dados
   </a>
  </li>
 </ul>
@@ -374,8 +374,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ferramentas-de-analise-descritiva">
-   1.3. Ferramentas de análise descritiva
+  <a class="reference internal nav-link" href="#ferramentas-para-exploratorias-de-dados">
+   1.3. Ferramentas para exploratórias de dados
   </a>
  </li>
 </ul>
@@ -417,7 +417,7 @@ a_{21}& =b_{21}&
 <ul>
 <li><p><a class="reference internal" href="#criacao-de-dois-dataframes-para-aplicacao-das-ferramentas-do-pandas" id="id2">Criação de dois dataframes para aplicação das ferramentas do Pandas</a></p></li>
 <li><p><a class="reference internal" href="#ferramentas-basicas-de-manipulacao-de-dataframes" id="id3">Ferramentas básicas de manipulação de dataframes</a></p></li>
-<li><p><a class="reference internal" href="#ferramentas-de-analise-descritiva" id="id4">Ferramentas de análise descritiva</a></p></li>
+<li><p><a class="reference internal" href="#ferramentas-para-exploratorias-de-dados" id="id4">Ferramentas para exploratórias de dados</a></p></li>
 </ul>
 </li>
 </ul>
@@ -952,8 +952,134 @@ quantidade máxima de colunas exibidas por padrão: 20
 </div>
 </div>
 </section>
-<section id="ferramentas-de-analise-descritiva">
-<h2><a class="toc-backref" href="#id4"><span class="section-number">1.3. </span>Ferramentas de análise descritiva</a><a class="headerlink" href="#ferramentas-de-analise-descritiva" title="Permalink to this headline">#</a></h2>
+<section id="ferramentas-para-exploratorias-de-dados">
+<h2><a class="toc-backref" href="#id4"><span class="section-number">1.3. </span>Ferramentas para exploratórias de dados</a><a class="headerlink" href="#ferramentas-para-exploratorias-de-dados" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>aluno</th>
+      <th>identificacao</th>
+      <th>mes</th>
+      <th>nota matematica</th>
+      <th>nota fisica</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Hopeful Sanderson</td>
+      <td>1408</td>
+      <td>2023-02</td>
+      <td>1.8</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Competent Mayer</td>
+      <td>1388</td>
+      <td>2023-02</td>
+      <td>NaN</td>
+      <td>9.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Beautiful Bohr</td>
+      <td>1212</td>
+      <td>2023-02</td>
+      <td>5.9</td>
+      <td>3.2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Elegant Mendel</td>
+      <td>1421</td>
+      <td>2023-02</td>
+      <td>NaN</td>
+      <td>1.9</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Elegant Gagarin</td>
+      <td>1439</td>
+      <td>2023-02</td>
+      <td>0.3</td>
+      <td>2.1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>Nostalgic Goldstine</td>
+      <td>1350</td>
+      <td>2023-10</td>
+      <td>8.4</td>
+      <td>4.5</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>Gifted Bassi</td>
+      <td>1376</td>
+      <td>2023-10</td>
+      <td>7.0</td>
+      <td>9.4</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>Silly Merkle</td>
+      <td>1382</td>
+      <td>2023-10</td>
+      <td>1.5</td>
+      <td>0.7</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>Relaxed Hypatia</td>
+      <td>1499</td>
+      <td>2023-10</td>
+      <td>2.7</td>
+      <td>9.7</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>Eager Elion</td>
+      <td>1205</td>
+      <td>2023-10</td>
+      <td>2.5</td>
+      <td>4.6</td>
+    </tr>
+  </tbody>
+</table>
+<p>360 rows × 5 columns</p>
+</div></div></div>
+</div>
 </section>
 </section>
 

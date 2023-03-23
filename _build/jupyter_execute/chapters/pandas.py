@@ -202,10 +202,10 @@ pd.set_option('display.max_rows', 900)
 pd.set_option('display.max_rows', qtd_rows_padrao)
 
 
-# ## Ferramentas de análise descritiva
+# ## Ferramentas para exploratórias de dados
 
-# In[ ]:
+# In[16]:
 
 
-
+df1
 

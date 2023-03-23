@@ -14,10 +14,11 @@ parts:
 #  - file: chapters/clustering
 #  - file: chapters/decision-tree  
   
-#- caption: Ferramentas de Análise Prescritiva
-#  numbered: true
-#  chapters:
-#  - file: chapters/neural networks
+- caption: Ferramentas de Análise Preditiva 
+  numbered: true
+  chapters:
+  - file: chapters/estatistica 
+  - file: chapters/ml_models
 
 
 #- caption: Part 2 

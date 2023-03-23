@@ -7,7 +7,7 @@ Também pretendo imputar conteúdos de meus estudos mais avançados sobre aprend
 Você pode me encontrar [na minha página pessoal do github](https://lucas-alves-souza.github.io/) para mais informações.
 
 
-# Contents
+# Índice
 
 ```{tableofcontents}
 ```
