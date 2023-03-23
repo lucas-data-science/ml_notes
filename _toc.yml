@@ -8,8 +8,8 @@ parts:
 - caption: Ferramentas de Análise Descritiva
   numbered: true
   chapters:
-  - file: chapters/plotly
   - file: chapters/pandas 
+  - file: chapters/plotly
 #  - file: chapters/classification 
 #  - file: chapters/clustering
 #  - file: chapters/decision-tree  
