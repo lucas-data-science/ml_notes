@@ -5,16 +5,16 @@ format: jb-book
 root: intro
  
 parts:
-- caption: Part 1
+- caption: Ferramentas de Análise Descritiva
   numbered: true
   chapters:
 #  - file: chapters/statistical-analysis
-  - file: chapters/regression 
+  - file: chapters/pandas 
 #  - file: chapters/classification 
 #  - file: chapters/clustering
 #  - file: chapters/decision-tree  
   
-#- caption: Part 2 
+#- caption: Ferramentas de Análise Prescritiva
 #  numbered: true
 #  chapters:
 #  - file: chapters/neural networks
