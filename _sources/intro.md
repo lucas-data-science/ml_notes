@@ -1,4 +1,4 @@
-# Caixa de Ferrramentas de Python para Ciências de Dados
+# Caixa de Ferrramentas de Python para Ciência de Dados
 
 **Por [Lucas A. Souza](https://lucas-alves-souza.github.io/)**
 
