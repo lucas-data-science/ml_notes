@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>1. Pandas &#8212; Caixa de Ferrramentas de Python para Ciências de Dados</title>
+    <title>2. Pandas &#8212; Caixa de Ferrramentas de Python para Ciências de Dados</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,7 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Caixa de Ferrramentas de Python para Ciências de Dados" href="../intro.html" />
+    <link rel="next" title="3. Ferramentas de Estatística" href="estatistica.html" />
+    <link rel="prev" title="1. Visualização com Potly" href="plotly.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -118,9 +119,31 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="plotly.html">
+   1. Visualização com Potly
+  </a>
+ </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   1. Pandas
+   2. Pandas
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Ferramentas de Análise Preditiva
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="estatistica.html">
+   3. Ferramentas de Estatística
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ml_models.html">
+   4. Elementos de Machine Learning
   </a>
  </li>
 </ul>
@@ -331,17 +354,17 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#criacao-de-dois-dataframes-para-aplicacao-das-ferramentas-do-pandas">
-   1.1. Criação de dois dataframes para aplicação das ferramentas do Pandas
+   2.1. Criação de dois dataframes para aplicação das ferramentas do Pandas
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#ferramentas-basicas-de-manipulacao-de-dataframes">
-   1.2. Ferramentas básicas de manipulação de dataframes
+   2.2. Ferramentas básicas de manipulação de dataframes
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#ferramentas-para-exploratorias-de-dados">
-   1.3. Ferramentas para exploratórias de dados
+   2.3. Ferramentas para exploratórias de dados
   </a>
  </li>
 </ul>
@@ -365,17 +388,17 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#criacao-de-dois-dataframes-para-aplicacao-das-ferramentas-do-pandas">
-   1.1. Criação de dois dataframes para aplicação das ferramentas do Pandas
+   2.1. Criação de dois dataframes para aplicação das ferramentas do Pandas
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#ferramentas-basicas-de-manipulacao-de-dataframes">
-   1.2. Ferramentas básicas de manipulação de dataframes
+   2.2. Ferramentas básicas de manipulação de dataframes
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#ferramentas-para-exploratorias-de-dados">
-   1.3. Ferramentas para exploratórias de dados
+   2.3. Ferramentas para exploratórias de dados
   </a>
  </li>
 </ul>
@@ -389,7 +412,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="pandas">
-<h1><a class="toc-backref" href="#id1"><span class="section-number">1. </span>Pandas</a><a class="headerlink" href="#pandas" title="Permalink to this headline">#</a></h1>
+<h1><a class="toc-backref" href="#id1"><span class="section-number">2. </span>Pandas</a><a class="headerlink" href="#pandas" title="Permalink to this headline">#</a></h1>
 <img src="https://pandas.pydata.org/docs/_static/pandas.svg" alt=" " class="bg-primary mb-1" width="200px">
 <p>A documentação do pacote Pandas se encontra disponível em: <a class="reference external" href="https://pandas.pydata.org/docs/">https://pandas.pydata.org/docs/</a> .</p>
 <!-- 
@@ -423,7 +446,7 @@ a_{21}& =b_{21}&
 </ul>
 </div>
 <section id="criacao-de-dois-dataframes-para-aplicacao-das-ferramentas-do-pandas">
-<h2><a class="toc-backref" href="#id2"><span class="section-number">1.1. </span>Criação de dois dataframes para aplicação das ferramentas do Pandas</a><a class="headerlink" href="#criacao-de-dois-dataframes-para-aplicacao-das-ferramentas-do-pandas" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id2"><span class="section-number">2.1. </span>Criação de dois dataframes para aplicação das ferramentas do Pandas</a><a class="headerlink" href="#criacao-de-dois-dataframes-para-aplicacao-das-ferramentas-do-pandas" title="Permalink to this headline">#</a></h2>
 <p>Serão criados dois dataframes com notas de alunos em algumas disciplinas em meses do ano de 2023. Os nomes dos alunos são gerados aleatoriamente, bem como suas as notas. Se você não tiver disposto a seguir o processo de geração das bases de dados, pule para a próxima seção, onde os dataframes serão lidos de arquivos e usados para treinar o uso das ferramentas do Pandas.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -892,7 +915,7 @@ Name: turma, dtype: object
 </div>
 </section>
 <section id="ferramentas-basicas-de-manipulacao-de-dataframes">
-<h2><a class="toc-backref" href="#id3"><span class="section-number">1.2. </span>Ferramentas básicas de manipulação de dataframes</a><a class="headerlink" href="#ferramentas-basicas-de-manipulacao-de-dataframes" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id3"><span class="section-number">2.2. </span>Ferramentas básicas de manipulação de dataframes</a><a class="headerlink" href="#ferramentas-basicas-de-manipulacao-de-dataframes" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># mostrar nome de todas as colunas de df1</span>
@@ -953,7 +976,7 @@ quantidade máxima de colunas exibidas por padrão: 20
 </div>
 </section>
 <section id="ferramentas-para-exploratorias-de-dados">
-<h2><a class="toc-backref" href="#id4"><span class="section-number">1.3. </span>Ferramentas para exploratórias de dados</a><a class="headerlink" href="#ferramentas-para-exploratorias-de-dados" title="Permalink to this headline">#</a></h2>
+<h2><a class="toc-backref" href="#id4"><span class="section-number">2.3. </span>Ferramentas para exploratórias de dados</a><a class="headerlink" href="#ferramentas-para-exploratorias-de-dados" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span>
@@ -1110,12 +1133,19 @@ quantidade máxima de colunas exibidas por padrão: 20
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../intro.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="plotly.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Caixa de Ferrramentas de Python para Ciências de Dados</p>
+            <p class="prev-next-title"><span class="section-number">1. </span>Visualização com Potly</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="estatistica.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Ferramentas de Estatística</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>
