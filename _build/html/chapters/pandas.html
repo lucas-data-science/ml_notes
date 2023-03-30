@@ -361,11 +361,28 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#ferramentas-basicas-de-manipulacao-de-dataframes">
    1.2. Ferramentas básicas de manipulação de dataframes
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ferramentas-para-exploratorias-de-dados">
-   1.3. Ferramentas para exploratórias de dados
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#operacoes-em-linhas-e-colunas">
+     1.2.1. Operações em linhas e colunas
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#analisando-listas">
+     1.2.2. Analisando Listas
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#join-de-dataframes">
+     1.2.3. Join de dataframes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#salva-le-em-excel">
+     1.2.4. Salva/Lê em excel
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -395,11 +412,28 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#ferramentas-basicas-de-manipulacao-de-dataframes">
    1.2. Ferramentas básicas de manipulação de dataframes
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ferramentas-para-exploratorias-de-dados">
-   1.3. Ferramentas para exploratórias de dados
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#operacoes-em-linhas-e-colunas">
+     1.2.1. Operações em linhas e colunas
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#analisando-listas">
+     1.2.2. Analisando Listas
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#join-de-dataframes">
+     1.2.3. Join de dataframes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#salva-le-em-excel">
+     1.2.4. Salva/Lê em excel
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -439,8 +473,14 @@ a_{21}& =b_{21}&
 <li><p><a class="reference internal" href="#pandas" id="id1">Pandas</a></p>
 <ul>
 <li><p><a class="reference internal" href="#criacao-de-dois-dataframes-para-aplicacao-das-ferramentas-do-pandas" id="id2">Criação de dois dataframes para aplicação das ferramentas do Pandas</a></p></li>
-<li><p><a class="reference internal" href="#ferramentas-basicas-de-manipulacao-de-dataframes" id="id3">Ferramentas básicas de manipulação de dataframes</a></p></li>
-<li><p><a class="reference internal" href="#ferramentas-para-exploratorias-de-dados" id="id4">Ferramentas para exploratórias de dados</a></p></li>
+<li><p><a class="reference internal" href="#ferramentas-basicas-de-manipulacao-de-dataframes" id="id3">Ferramentas básicas de manipulação de dataframes</a></p>
+<ul>
+<li><p><a class="reference internal" href="#operacoes-em-linhas-e-colunas" id="id4">Operações em linhas e colunas</a></p></li>
+<li><p><a class="reference internal" href="#analisando-listas" id="id5">Analisando Listas</a></p></li>
+<li><p><a class="reference internal" href="#join-de-dataframes" id="id6">Join de dataframes</a></p></li>
+<li><p><a class="reference internal" href="#salva-le-em-excel" id="id7">Salva/Lê em excel</a></p></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -916,6 +956,8 @@ Name: turma, dtype: object
 </section>
 <section id="ferramentas-basicas-de-manipulacao-de-dataframes">
 <h2><a class="toc-backref" href="#id3"><span class="section-number">1.2. </span>Ferramentas básicas de manipulação de dataframes</a><a class="headerlink" href="#ferramentas-basicas-de-manipulacao-de-dataframes" title="Permalink to this headline">#</a></h2>
+<section id="operacoes-em-linhas-e-colunas">
+<h3><a class="toc-backref" href="#id4"><span class="section-number">1.2.1. </span>Operações em linhas e colunas</a><a class="headerlink" href="#operacoes-em-linhas-e-colunas" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># mostrar nome de todas as colunas de df1</span>
@@ -974,12 +1016,161 @@ quantidade máxima de colunas exibidas por padrão: 20
 </div>
 </div>
 </div>
-</section>
-<section id="ferramentas-para-exploratorias-de-dados">
-<h2><a class="toc-backref" href="#id4"><span class="section-number">1.3. </span>Ferramentas para exploratórias de dados</a><a class="headerlink" href="#ferramentas-para-exploratorias-de-dados" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ordena o dataframe por valores  decrescentes da coluna &#39;nota matematica&#39; a começar pelos nulos</span>
+<span class="n">df1</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;nota matematica&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">na_position</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>aluno</th>
+      <th>identificacao</th>
+      <th>mes</th>
+      <th>nota matematica</th>
+      <th>nota fisica</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>Competent Mayer</td>
+      <td>1388</td>
+      <td>2023-02</td>
+      <td>NaN</td>
+      <td>9.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Elegant Mendel</td>
+      <td>1421</td>
+      <td>2023-02</td>
+      <td>NaN</td>
+      <td>1.9</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Keen Visvesvaraya</td>
+      <td>1215</td>
+      <td>2023-02</td>
+      <td>NaN</td>
+      <td>1.5</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>Heuristic Shamir</td>
+      <td>1316</td>
+      <td>2023-02</td>
+      <td>NaN</td>
+      <td>0.3</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>Bold Dewdney</td>
+      <td>1208</td>
+      <td>2023-02</td>
+      <td>NaN</td>
+      <td>8.1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Charming Mirzakhani</td>
+      <td>1222</td>
+      <td>2023-06</td>
+      <td>0.1</td>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Charming Mirzakhani</td>
+      <td>1222</td>
+      <td>2023-08</td>
+      <td>0.1</td>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Charming Mirzakhani</td>
+      <td>1222</td>
+      <td>2023-02</td>
+      <td>0.1</td>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Charming Mirzakhani</td>
+      <td>1222</td>
+      <td>2023-05</td>
+      <td>0.1</td>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Charming Mirzakhani</td>
+      <td>1222</td>
+      <td>2023-09</td>
+      <td>0.1</td>
+      <td>0.5</td>
+    </tr>
+  </tbody>
+</table>
+<p>360 rows × 5 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># detectar todos valores nao nulos da coluna &#39;nota matematica&#39; e tornar inteiros (truncados, para arredondar use primeiro round)</span>
+<span class="n">df1</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df1</span><span class="p">[</span><span class="s1">&#39;nota matematica&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">notnull</span><span class="p">(),</span> <span class="s1">&#39;nota matematica&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     1
+2     5
+4     0
+5     1
+6     4
+     ..
+35    8
+36    7
+37    1
+38    2
+39    2
+Name: nota matematica, Length: 315, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># substitui zero por nulo (NAN) em todo dataframe (com inplace = False para manter df1 original)</span>
+<span class="n">df1</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1103,6 +1294,1974 @@ quantidade máxima de colunas exibidas por padrão: 20
 <p>360 rows × 5 columns</p>
 </div></div></div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># para fazer o contrário, substituir nulo (NAN) por zero em todo dataframe (com inplace = False)</span>
+<span class="n">df1</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>aluno</th>
+      <th>identificacao</th>
+      <th>mes</th>
+      <th>nota matematica</th>
+      <th>nota fisica</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Hopeful Sanderson</td>
+      <td>1408</td>
+      <td>2023-02</td>
+      <td>1.8</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Competent Mayer</td>
+      <td>1388</td>
+      <td>2023-02</td>
+      <td>0.0</td>
+      <td>9.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Beautiful Bohr</td>
+      <td>1212</td>
+      <td>2023-02</td>
+      <td>5.9</td>
+      <td>3.2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Elegant Mendel</td>
+      <td>1421</td>
+      <td>2023-02</td>
+      <td>0.0</td>
+      <td>1.9</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Elegant Gagarin</td>
+      <td>1439</td>
+      <td>2023-02</td>
+      <td>0.3</td>
+      <td>2.1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>Nostalgic Goldstine</td>
+      <td>1350</td>
+      <td>2023-10</td>
+      <td>8.4</td>
+      <td>4.5</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>Gifted Bassi</td>
+      <td>1376</td>
+      <td>2023-10</td>
+      <td>7.0</td>
+      <td>9.4</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>Silly Merkle</td>
+      <td>1382</td>
+      <td>2023-10</td>
+      <td>1.5</td>
+      <td>0.7</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>Relaxed Hypatia</td>
+      <td>1499</td>
+      <td>2023-10</td>
+      <td>2.7</td>
+      <td>9.7</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>Eager Elion</td>
+      <td>1205</td>
+      <td>2023-10</td>
+      <td>2.5</td>
+      <td>4.6</td>
+    </tr>
+  </tbody>
+</table>
+<p>360 rows × 5 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># renomear coluna (com inplace = False)</span>
+<span class="n">df1</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;nota matematica&#39;</span><span class="p">:</span><span class="s1">&#39;Nota Matemática&#39;</span><span class="p">,</span> <span class="s1">&#39;nota fisica&#39;</span><span class="p">:</span><span class="s1">&#39;Nota Física&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>aluno</th>
+      <th>identificacao</th>
+      <th>mes</th>
+      <th>Nota Matemática</th>
+      <th>Nota Física</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Hopeful Sanderson</td>
+      <td>1408</td>
+      <td>2023-02</td>
+      <td>1.8</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Competent Mayer</td>
+      <td>1388</td>
+      <td>2023-02</td>
+      <td>NaN</td>
+      <td>9.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Beautiful Bohr</td>
+      <td>1212</td>
+      <td>2023-02</td>
+      <td>5.9</td>
+      <td>3.2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Elegant Mendel</td>
+      <td>1421</td>
+      <td>2023-02</td>
+      <td>NaN</td>
+      <td>1.9</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Elegant Gagarin</td>
+      <td>1439</td>
+      <td>2023-02</td>
+      <td>0.3</td>
+      <td>2.1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>Nostalgic Goldstine</td>
+      <td>1350</td>
+      <td>2023-10</td>
+      <td>8.4</td>
+      <td>4.5</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>Gifted Bassi</td>
+      <td>1376</td>
+      <td>2023-10</td>
+      <td>7.0</td>
+      <td>9.4</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>Silly Merkle</td>
+      <td>1382</td>
+      <td>2023-10</td>
+      <td>1.5</td>
+      <td>0.7</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>Relaxed Hypatia</td>
+      <td>1499</td>
+      <td>2023-10</td>
+      <td>2.7</td>
+      <td>9.7</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>Eager Elion</td>
+      <td>1205</td>
+      <td>2023-10</td>
+      <td>2.5</td>
+      <td>4.6</td>
+    </tr>
+  </tbody>
+</table>
+<p>360 rows × 5 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Apagar coluna</span>
+<span class="n">df1</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;identificacao&#39;</span><span class="p">,</span> <span class="s1">&#39;mes&#39;</span><span class="p">]</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>aluno</th>
+      <th>nota matematica</th>
+      <th>nota fisica</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Hopeful Sanderson</td>
+      <td>1.8</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Competent Mayer</td>
+      <td>NaN</td>
+      <td>9.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Beautiful Bohr</td>
+      <td>5.9</td>
+      <td>3.2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Elegant Mendel</td>
+      <td>NaN</td>
+      <td>1.9</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Elegant Gagarin</td>
+      <td>0.3</td>
+      <td>2.1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>Nostalgic Goldstine</td>
+      <td>8.4</td>
+      <td>4.5</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>Gifted Bassi</td>
+      <td>7.0</td>
+      <td>9.4</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>Silly Merkle</td>
+      <td>1.5</td>
+      <td>0.7</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>Relaxed Hypatia</td>
+      <td>2.7</td>
+      <td>9.7</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>Eager Elion</td>
+      <td>2.5</td>
+      <td>4.6</td>
+    </tr>
+  </tbody>
+</table>
+<p>360 rows × 3 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Comando loc com duas condiçoes</span>
+<span class="n">df1</span><span class="o">.</span><span class="n">loc</span><span class="p">[((</span><span class="n">df1</span><span class="o">.</span><span class="n">aluno</span> <span class="o">==</span> <span class="s1">&#39;Hopeful Sanderson&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df1</span><span class="o">.</span><span class="n">mes</span> <span class="o">==</span> <span class="s1">&#39;2023-02	&#39;</span><span class="p">)),</span><span class="s1">&#39;nota matematica&#39;</span><span class="p">]</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    1.8
+Name: nota matematica, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Apagar o index o deixando como coluna</span>
+<span class="n">df1</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>index</th>
+      <th>aluno</th>
+      <th>identificacao</th>
+      <th>mes</th>
+      <th>nota matematica</th>
+      <th>nota fisica</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>Hopeful Sanderson</td>
+      <td>1408</td>
+      <td>2023-02</td>
+      <td>1.8</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>Competent Mayer</td>
+      <td>1388</td>
+      <td>2023-02</td>
+      <td>NaN</td>
+      <td>9.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>Beautiful Bohr</td>
+      <td>1212</td>
+      <td>2023-02</td>
+      <td>5.9</td>
+      <td>3.2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>Elegant Mendel</td>
+      <td>1421</td>
+      <td>2023-02</td>
+      <td>NaN</td>
+      <td>1.9</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>Elegant Gagarin</td>
+      <td>1439</td>
+      <td>2023-02</td>
+      <td>0.3</td>
+      <td>2.1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>355</th>
+      <td>35</td>
+      <td>Nostalgic Goldstine</td>
+      <td>1350</td>
+      <td>2023-10</td>
+      <td>8.4</td>
+      <td>4.5</td>
+    </tr>
+    <tr>
+      <th>356</th>
+      <td>36</td>
+      <td>Gifted Bassi</td>
+      <td>1376</td>
+      <td>2023-10</td>
+      <td>7.0</td>
+      <td>9.4</td>
+    </tr>
+    <tr>
+      <th>357</th>
+      <td>37</td>
+      <td>Silly Merkle</td>
+      <td>1382</td>
+      <td>2023-10</td>
+      <td>1.5</td>
+      <td>0.7</td>
+    </tr>
+    <tr>
+      <th>358</th>
+      <td>38</td>
+      <td>Relaxed Hypatia</td>
+      <td>1499</td>
+      <td>2023-10</td>
+      <td>2.7</td>
+      <td>9.7</td>
+    </tr>
+    <tr>
+      <th>359</th>
+      <td>39</td>
+      <td>Eager Elion</td>
+      <td>1205</td>
+      <td>2023-10</td>
+      <td>2.5</td>
+      <td>4.6</td>
+    </tr>
+  </tbody>
+</table>
+<p>360 rows × 6 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Apagar o index sem o deixar como coluna</span>
+<span class="n">df1</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>aluno</th>
+      <th>identificacao</th>
+      <th>mes</th>
+      <th>nota matematica</th>
+      <th>nota fisica</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Hopeful Sanderson</td>
+      <td>1408</td>
+      <td>2023-02</td>
+      <td>1.8</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Competent Mayer</td>
+      <td>1388</td>
+      <td>2023-02</td>
+      <td>NaN</td>
+      <td>9.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Beautiful Bohr</td>
+      <td>1212</td>
+      <td>2023-02</td>
+      <td>5.9</td>
+      <td>3.2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Elegant Mendel</td>
+      <td>1421</td>
+      <td>2023-02</td>
+      <td>NaN</td>
+      <td>1.9</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Elegant Gagarin</td>
+      <td>1439</td>
+      <td>2023-02</td>
+      <td>0.3</td>
+      <td>2.1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>355</th>
+      <td>Nostalgic Goldstine</td>
+      <td>1350</td>
+      <td>2023-10</td>
+      <td>8.4</td>
+      <td>4.5</td>
+    </tr>
+    <tr>
+      <th>356</th>
+      <td>Gifted Bassi</td>
+      <td>1376</td>
+      <td>2023-10</td>
+      <td>7.0</td>
+      <td>9.4</td>
+    </tr>
+    <tr>
+      <th>357</th>
+      <td>Silly Merkle</td>
+      <td>1382</td>
+      <td>2023-10</td>
+      <td>1.5</td>
+      <td>0.7</td>
+    </tr>
+    <tr>
+      <th>358</th>
+      <td>Relaxed Hypatia</td>
+      <td>1499</td>
+      <td>2023-10</td>
+      <td>2.7</td>
+      <td>9.7</td>
+    </tr>
+    <tr>
+      <th>359</th>
+      <td>Eager Elion</td>
+      <td>1205</td>
+      <td>2023-10</td>
+      <td>2.5</td>
+      <td>4.6</td>
+    </tr>
+  </tbody>
+</table>
+<p>360 rows × 5 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># apagar colunas nas quais todos os elementos sejam nulos (não se aplica ao caso de df1):</span>
+<span class="n">df1</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>aluno</th>
+      <th>identificacao</th>
+      <th>mes</th>
+      <th>nota matematica</th>
+      <th>nota fisica</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Hopeful Sanderson</td>
+      <td>1408</td>
+      <td>2023-02</td>
+      <td>1.8</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Competent Mayer</td>
+      <td>1388</td>
+      <td>2023-02</td>
+      <td>NaN</td>
+      <td>9.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Beautiful Bohr</td>
+      <td>1212</td>
+      <td>2023-02</td>
+      <td>5.9</td>
+      <td>3.2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Elegant Mendel</td>
+      <td>1421</td>
+      <td>2023-02</td>
+      <td>NaN</td>
+      <td>1.9</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Elegant Gagarin</td>
+      <td>1439</td>
+      <td>2023-02</td>
+      <td>0.3</td>
+      <td>2.1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>Nostalgic Goldstine</td>
+      <td>1350</td>
+      <td>2023-10</td>
+      <td>8.4</td>
+      <td>4.5</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>Gifted Bassi</td>
+      <td>1376</td>
+      <td>2023-10</td>
+      <td>7.0</td>
+      <td>9.4</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>Silly Merkle</td>
+      <td>1382</td>
+      <td>2023-10</td>
+      <td>1.5</td>
+      <td>0.7</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>Relaxed Hypatia</td>
+      <td>1499</td>
+      <td>2023-10</td>
+      <td>2.7</td>
+      <td>9.7</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>Eager Elion</td>
+      <td>1205</td>
+      <td>2023-10</td>
+      <td>2.5</td>
+      <td>4.6</td>
+    </tr>
+  </tbody>
+</table>
+<p>360 rows × 5 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># apagar linhas nas quais todos os elementos sejam nulos (não se aplica ao caso de df1):</span>
+<span class="c1"># lembrando </span>
+<span class="c1"># linhas  (axis=0)</span>
+<span class="c1"># columns (axis=1)</span>
+
+<span class="n">df1</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>  
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>aluno</th>
+      <th>identificacao</th>
+      <th>mes</th>
+      <th>nota matematica</th>
+      <th>nota fisica</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Hopeful Sanderson</td>
+      <td>1408</td>
+      <td>2023-02</td>
+      <td>1.8</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Competent Mayer</td>
+      <td>1388</td>
+      <td>2023-02</td>
+      <td>NaN</td>
+      <td>9.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Beautiful Bohr</td>
+      <td>1212</td>
+      <td>2023-02</td>
+      <td>5.9</td>
+      <td>3.2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Elegant Mendel</td>
+      <td>1421</td>
+      <td>2023-02</td>
+      <td>NaN</td>
+      <td>1.9</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Elegant Gagarin</td>
+      <td>1439</td>
+      <td>2023-02</td>
+      <td>0.3</td>
+      <td>2.1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>Nostalgic Goldstine</td>
+      <td>1350</td>
+      <td>2023-10</td>
+      <td>8.4</td>
+      <td>4.5</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>Gifted Bassi</td>
+      <td>1376</td>
+      <td>2023-10</td>
+      <td>7.0</td>
+      <td>9.4</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>Silly Merkle</td>
+      <td>1382</td>
+      <td>2023-10</td>
+      <td>1.5</td>
+      <td>0.7</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>Relaxed Hypatia</td>
+      <td>1499</td>
+      <td>2023-10</td>
+      <td>2.7</td>
+      <td>9.7</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>Eager Elion</td>
+      <td>1205</td>
+      <td>2023-10</td>
+      <td>2.5</td>
+      <td>4.6</td>
+    </tr>
+  </tbody>
+</table>
+<p>360 rows × 5 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># converte varias colunas para inteiro (trunca!) desde que não haja nulos:</span>
+<span class="n">df1</span><span class="p">[[</span><span class="s1">&#39;nota matematica&#39;</span><span class="p">,</span><span class="s1">&#39;nota fisica&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>nota matematica</th>
+      <th>nota fisica</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>5</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>4</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>8</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>7</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>2</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>2</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+<p>297 rows × 2 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="analisando-listas">
+<h3><a class="toc-backref" href="#id5"><span class="section-number">1.2.2. </span>Analisando Listas</a><a class="headerlink" href="#analisando-listas" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># correr linhas de um data frame</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df1</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span> 
+      <span class="n">lista</span> <span class="o">=</span> <span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;nota matematica&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;nota fisica&#39;</span><span class="p">]]</span>
+      <span class="n">maior</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">numero</span> <span class="k">for</span> <span class="n">numero</span> <span class="ow">in</span> <span class="n">lista</span> <span class="k">if</span> <span class="n">numero</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>  
+      <span class="nb">print</span><span class="p">(</span><span class="n">maior</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.0
+nan
+5.9
+nan
+2.1
+5.9
+4.9
+5.8
+6.7
+9.8
+8.7
+nan
+8.2
+7.7
+0.5
+5.6
+4.6
+7.9
+2.7
+9.6
+6.8
+4.6
+6.4
+5.9
+8.2
+nan
+9.5
+4.3
+6.2
+4.9
+2.5
+7.1
+nan
+1.1
+7.3
+8.4
+9.4
+1.5
+9.7
+4.6
+7.0
+nan
+5.9
+nan
+2.1
+5.9
+4.9
+5.8
+6.7
+9.8
+8.7
+nan
+8.2
+7.7
+0.5
+5.6
+4.6
+7.9
+2.7
+9.6
+6.8
+4.6
+6.4
+5.9
+8.2
+nan
+9.5
+4.3
+6.2
+4.9
+2.5
+7.1
+nan
+1.1
+7.3
+8.4
+9.4
+1.5
+9.7
+4.6
+7.0
+nan
+5.9
+nan
+2.1
+5.9
+4.9
+5.8
+6.7
+9.8
+8.7
+nan
+8.2
+7.7
+0.5
+5.6
+4.6
+7.9
+2.7
+9.6
+6.8
+4.6
+6.4
+5.9
+8.2
+nan
+9.5
+4.3
+6.2
+4.9
+2.5
+7.1
+nan
+1.1
+7.3
+8.4
+9.4
+1.5
+9.7
+4.6
+7.0
+nan
+5.9
+nan
+2.1
+5.9
+4.9
+5.8
+6.7
+9.8
+8.7
+nan
+8.2
+7.7
+0.5
+5.6
+4.6
+7.9
+2.7
+9.6
+6.8
+4.6
+6.4
+5.9
+8.2
+nan
+9.5
+4.3
+6.2
+4.9
+2.5
+7.1
+nan
+1.1
+7.3
+8.4
+9.4
+1.5
+9.7
+4.6
+7.0
+nan
+5.9
+nan
+2.1
+5.9
+4.9
+5.8
+6.7
+9.8
+8.7
+nan
+8.2
+7.7
+0.5
+5.6
+4.6
+7.9
+2.7
+9.6
+6.8
+4.6
+6.4
+5.9
+8.2
+nan
+9.5
+4.3
+6.2
+4.9
+2.5
+7.1
+nan
+1.1
+7.3
+8.4
+9.4
+1.5
+9.7
+4.6
+7.0
+nan
+5.9
+nan
+2.1
+5.9
+4.9
+5.8
+6.7
+9.8
+8.7
+nan
+8.2
+7.7
+0.5
+5.6
+4.6
+7.9
+2.7
+9.6
+6.8
+4.6
+6.4
+5.9
+8.2
+nan
+9.5
+4.3
+6.2
+4.9
+2.5
+7.1
+nan
+1.1
+7.3
+8.4
+9.4
+1.5
+9.7
+4.6
+7.0
+nan
+5.9
+nan
+2.1
+5.9
+4.9
+5.8
+6.7
+9.8
+8.7
+nan
+8.2
+7.7
+0.5
+5.6
+4.6
+7.9
+2.7
+9.6
+6.8
+4.6
+6.4
+5.9
+8.2
+nan
+9.5
+4.3
+6.2
+4.9
+2.5
+7.1
+nan
+1.1
+7.3
+8.4
+9.4
+1.5
+9.7
+4.6
+7.0
+nan
+5.9
+nan
+2.1
+5.9
+4.9
+5.8
+6.7
+9.8
+8.7
+nan
+8.2
+7.7
+0.5
+5.6
+4.6
+7.9
+2.7
+9.6
+6.8
+4.6
+6.4
+5.9
+8.2
+nan
+9.5
+4.3
+6.2
+4.9
+2.5
+7.1
+nan
+1.1
+7.3
+8.4
+9.4
+1.5
+9.7
+4.6
+7.0
+nan
+5.9
+nan
+2.1
+5.9
+4.9
+5.8
+6.7
+9.8
+8.7
+nan
+8.2
+7.7
+0.5
+5.6
+4.6
+7.9
+2.7
+9.6
+6.8
+4.6
+6.4
+5.9
+8.2
+nan
+9.5
+4.3
+6.2
+4.9
+2.5
+7.1
+nan
+1.1
+7.3
+8.4
+9.4
+1.5
+9.7
+4.6
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Identificar quais valores estão na tabela B (lista fictícia criada abaixo) e não estão na tabela A (df1.identificacao)</span>
+<span class="n">tabela_b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1418</span><span class="p">,</span> <span class="mi">1388</span><span class="p">,</span> <span class="mi">1612</span><span class="p">,</span> <span class="mi">1421</span><span class="p">,</span> <span class="mi">1439</span><span class="p">,</span> <span class="mi">1336</span><span class="p">,</span> <span class="mi">1430</span><span class="p">,</span> <span class="mi">1406</span><span class="p">,</span> <span class="mi">1222</span><span class="p">,</span> <span class="mi">1308</span><span class="p">,</span> <span class="mi">1490</span><span class="p">,</span> <span class="mi">1215</span><span class="p">]</span>
+
+<span class="n">key_diff</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">tabela_b</span><span class="p">)</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">df2</span><span class="o">.</span><span class="n">identificacao</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">key_diff</span><span class="p">)</span>
+
+<span class="c1">#ou</span>
+
+<span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">tabela_b</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">df2</span><span class="o">.</span><span class="n">identificacao</span><span class="o">.</span><span class="n">to_list</span><span class="p">()]</span> <span class="c1"># to_list() faz diferença aqui!</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{1418, 1612}
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1418, 1612]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># encontrar dígitos dentro de strings</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;word1anotherword23nextone456lastone333&quot;</span>
+<span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">text</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;, &#39;5&#39;, &#39;6&#39;, &#39;3&#39;, &#39;3&#39;, &#39;3&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># checar se algum item de uma lista contem &#39;pedaço&#39; de palavra</span>
+<span class="n">lista_testa</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;aledj&#39;</span><span class="p">,</span><span class="s1">&#39;abcd&#39;</span><span class="p">,</span><span class="s1">&#39;defikhg&#39;</span><span class="p">]</span>
+<span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lista_testa</span> <span class="k">if</span> <span class="s1">&#39;a&#39;</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;aledj&#39;, &#39;abcd&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># testa se ítems começam com &#39;a&#39;:</span>
+<span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lista_testa</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)]</span>  
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;aledj&#39;, &#39;abcd&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># testa se string contém determinada palavra</span>
+<span class="n">string</span> <span class="o">=</span> <span class="s2">&quot;This contains a word&quot;</span>
+<span class="k">if</span> <span class="s2">&quot;word&quot;</span> <span class="ow">in</span> <span class="n">string</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Found&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Not Found&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Found
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="join-de-dataframes">
+<h3><a class="toc-backref" href="#id6"><span class="section-number">1.2.3. </span>Join de dataframes</a><a class="headerlink" href="#join-de-dataframes" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># join de dataframes em left:</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">left_on</span> <span class="o">=</span> <span class="s1">&#39;identificacao&#39;</span><span class="p">,</span> <span class="n">right_on</span> <span class="o">=</span> <span class="s1">&#39;identificacao&#39;</span><span class="p">)</span> 
+ 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>aluno</th>
+      <th>identificacao</th>
+      <th>mes_x</th>
+      <th>nota matematica</th>
+      <th>nota fisica</th>
+      <th>turma</th>
+      <th>mes_y</th>
+      <th>nota geografia</th>
+      <th>nota historia</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Hopeful Sanderson</td>
+      <td>1408</td>
+      <td>2023-02</td>
+      <td>1.8</td>
+      <td>7.0</td>
+      <td>A</td>
+      <td>2023-02</td>
+      <td>0.7</td>
+      <td>4.5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Hopeful Sanderson</td>
+      <td>1408</td>
+      <td>2023-02</td>
+      <td>1.8</td>
+      <td>7.0</td>
+      <td>A</td>
+      <td>2023-03</td>
+      <td>0.7</td>
+      <td>4.5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Hopeful Sanderson</td>
+      <td>1408</td>
+      <td>2023-02</td>
+      <td>1.8</td>
+      <td>7.0</td>
+      <td>A</td>
+      <td>2023-04</td>
+      <td>0.7</td>
+      <td>4.5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Hopeful Sanderson</td>
+      <td>1408</td>
+      <td>2023-02</td>
+      <td>1.8</td>
+      <td>7.0</td>
+      <td>A</td>
+      <td>2023-05</td>
+      <td>0.7</td>
+      <td>4.5</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Hopeful Sanderson</td>
+      <td>1408</td>
+      <td>2023-02</td>
+      <td>1.8</td>
+      <td>7.0</td>
+      <td>A</td>
+      <td>2023-06</td>
+      <td>0.7</td>
+      <td>4.5</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>3235</th>
+      <td>Eager Elion</td>
+      <td>1205</td>
+      <td>2023-10</td>
+      <td>2.5</td>
+      <td>4.6</td>
+      <td>B</td>
+      <td>2023-06</td>
+      <td>3.1</td>
+      <td>5.2</td>
+    </tr>
+    <tr>
+      <th>3236</th>
+      <td>Eager Elion</td>
+      <td>1205</td>
+      <td>2023-10</td>
+      <td>2.5</td>
+      <td>4.6</td>
+      <td>B</td>
+      <td>2023-07</td>
+      <td>3.1</td>
+      <td>5.2</td>
+    </tr>
+    <tr>
+      <th>3237</th>
+      <td>Eager Elion</td>
+      <td>1205</td>
+      <td>2023-10</td>
+      <td>2.5</td>
+      <td>4.6</td>
+      <td>B</td>
+      <td>2023-08</td>
+      <td>3.1</td>
+      <td>5.2</td>
+    </tr>
+    <tr>
+      <th>3238</th>
+      <td>Eager Elion</td>
+      <td>1205</td>
+      <td>2023-10</td>
+      <td>2.5</td>
+      <td>4.6</td>
+      <td>B</td>
+      <td>2023-09</td>
+      <td>3.1</td>
+      <td>5.2</td>
+    </tr>
+    <tr>
+      <th>3239</th>
+      <td>Eager Elion</td>
+      <td>1205</td>
+      <td>2023-10</td>
+      <td>2.5</td>
+      <td>4.6</td>
+      <td>B</td>
+      <td>2023-10</td>
+      <td>3.1</td>
+      <td>5.2</td>
+    </tr>
+  </tbody>
+</table>
+<p>3240 rows × 9 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Como há a coluna mes em df1 e df2 ficamos com mes_x e mes_y. Podemos apagar a coluna mes de algum dos dois antes de do join ou incluir mes na chave:</span>
+<span class="c1"># join de dataframes em left:</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">left_on</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;identificacao&#39;</span><span class="p">,</span><span class="s1">&#39;mes&#39;</span><span class="p">],</span> <span class="n">right_on</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;identificacao&#39;</span><span class="p">,</span><span class="s1">&#39;mes&#39;</span><span class="p">])</span> 
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>aluno</th>
+      <th>identificacao</th>
+      <th>mes</th>
+      <th>nota matematica</th>
+      <th>nota fisica</th>
+      <th>turma</th>
+      <th>nota geografia</th>
+      <th>nota historia</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Hopeful Sanderson</td>
+      <td>1408</td>
+      <td>2023-02</td>
+      <td>1.8</td>
+      <td>7.0</td>
+      <td>A</td>
+      <td>0.7</td>
+      <td>4.5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Competent Mayer</td>
+      <td>1388</td>
+      <td>2023-02</td>
+      <td>NaN</td>
+      <td>9.0</td>
+      <td>A</td>
+      <td>6.6</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Beautiful Bohr</td>
+      <td>1212</td>
+      <td>2023-02</td>
+      <td>5.9</td>
+      <td>3.2</td>
+      <td>A</td>
+      <td>6.3</td>
+      <td>2.7</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Elegant Mendel</td>
+      <td>1421</td>
+      <td>2023-02</td>
+      <td>NaN</td>
+      <td>1.9</td>
+      <td>A</td>
+      <td>2.2</td>
+      <td>7.3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Elegant Gagarin</td>
+      <td>1439</td>
+      <td>2023-02</td>
+      <td>0.3</td>
+      <td>2.1</td>
+      <td>A</td>
+      <td>4.2</td>
+      <td>4.6</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>355</th>
+      <td>Nostalgic Goldstine</td>
+      <td>1350</td>
+      <td>2023-10</td>
+      <td>8.4</td>
+      <td>4.5</td>
+      <td>B</td>
+      <td>5.0</td>
+      <td>6.3</td>
+    </tr>
+    <tr>
+      <th>356</th>
+      <td>Gifted Bassi</td>
+      <td>1376</td>
+      <td>2023-10</td>
+      <td>7.0</td>
+      <td>9.4</td>
+      <td>B</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>357</th>
+      <td>Silly Merkle</td>
+      <td>1382</td>
+      <td>2023-10</td>
+      <td>1.5</td>
+      <td>0.7</td>
+      <td>B</td>
+      <td>1.3</td>
+      <td>3.8</td>
+    </tr>
+    <tr>
+      <th>358</th>
+      <td>Relaxed Hypatia</td>
+      <td>1499</td>
+      <td>2023-10</td>
+      <td>2.7</td>
+      <td>9.7</td>
+      <td>B</td>
+      <td>9.0</td>
+      <td>5.5</td>
+    </tr>
+    <tr>
+      <th>359</th>
+      <td>Eager Elion</td>
+      <td>1205</td>
+      <td>2023-10</td>
+      <td>2.5</td>
+      <td>4.6</td>
+      <td>B</td>
+      <td>3.1</td>
+      <td>5.2</td>
+    </tr>
+  </tbody>
+</table>
+<p>360 rows × 8 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="salva-le-em-excel">
+<h3><a class="toc-backref" href="#id7"><span class="section-number">1.2.4. </span>Salva/Lê em excel</a><a class="headerlink" href="#salva-le-em-excel" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># salvar dataframe em excel (xlsx) sem index </span>
+<span class="n">nome_arquivo</span> <span class="o">=</span> <span class="s1">&#39;tabela_de_notas&#39;</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">nome_arquivo</span><span class="o">+</span><span class="s1">&#39;.xlsx&#39;</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># lê o dataframe a partir do arquivo excel (salvo anteriormente)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">nome_arquivo</span><span class="o">+</span><span class="s1">&#39;.xlsx&#39;</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>aluno</th>
+      <th>identificacao</th>
+      <th>mes</th>
+      <th>nota matematica</th>
+      <th>nota fisica</th>
+      <th>turma</th>
+      <th>nota geografia</th>
+      <th>nota historia</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Hopeful Sanderson</td>
+      <td>1408</td>
+      <td>2023-02</td>
+      <td>1.8</td>
+      <td>7.0</td>
+      <td>A</td>
+      <td>0.7</td>
+      <td>4.5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Competent Mayer</td>
+      <td>1388</td>
+      <td>2023-02</td>
+      <td>NaN</td>
+      <td>9.0</td>
+      <td>A</td>
+      <td>6.6</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Beautiful Bohr</td>
+      <td>1212</td>
+      <td>2023-02</td>
+      <td>5.9</td>
+      <td>3.2</td>
+      <td>A</td>
+      <td>6.3</td>
+      <td>2.7</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Elegant Mendel</td>
+      <td>1421</td>
+      <td>2023-02</td>
+      <td>NaN</td>
+      <td>1.9</td>
+      <td>A</td>
+      <td>2.2</td>
+      <td>7.3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Elegant Gagarin</td>
+      <td>1439</td>
+      <td>2023-02</td>
+      <td>0.3</td>
+      <td>2.1</td>
+      <td>A</td>
+      <td>4.2</td>
+      <td>4.6</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>355</th>
+      <td>Nostalgic Goldstine</td>
+      <td>1350</td>
+      <td>2023-10</td>
+      <td>8.4</td>
+      <td>4.5</td>
+      <td>B</td>
+      <td>5.0</td>
+      <td>6.3</td>
+    </tr>
+    <tr>
+      <th>356</th>
+      <td>Gifted Bassi</td>
+      <td>1376</td>
+      <td>2023-10</td>
+      <td>7.0</td>
+      <td>9.4</td>
+      <td>B</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>357</th>
+      <td>Silly Merkle</td>
+      <td>1382</td>
+      <td>2023-10</td>
+      <td>1.5</td>
+      <td>0.7</td>
+      <td>B</td>
+      <td>1.3</td>
+      <td>3.8</td>
+    </tr>
+    <tr>
+      <th>358</th>
+      <td>Relaxed Hypatia</td>
+      <td>1499</td>
+      <td>2023-10</td>
+      <td>2.7</td>
+      <td>9.7</td>
+      <td>B</td>
+      <td>9.0</td>
+      <td>5.5</td>
+    </tr>
+    <tr>
+      <th>359</th>
+      <td>Eager Elion</td>
+      <td>1205</td>
+      <td>2023-10</td>
+      <td>2.5</td>
+      <td>4.6</td>
+      <td>B</td>
+      <td>3.1</td>
+      <td>5.2</td>
+    </tr>
+  </tbody>
+</table>
+<p>360 rows × 8 columns</p>
+</div></div></div>
+</div>
+</section>
 </section>
 </section>
 

@@ -161,6 +161,8 @@ display(df2)
 
 # ## Ferramentas básicas de manipulação de dataframes
 
+# ### Operações em linhas e colunas
+
 # In[13]:
 
 
@@ -202,10 +204,189 @@ pd.set_option('display.max_rows', 900)
 pd.set_option('display.max_rows', qtd_rows_padrao)
 
 
-# ## Ferramentas para exploratórias de dados
-
 # In[16]:
 
 
-df1
+# ordena o dataframe por valores  decrescentes da coluna 'nota matematica' a começar pelos nulos
+df1.sort_values(by='nota matematica', ascending=False, na_position='first')
+
+
+# In[17]:
+
+
+# detectar todos valores nao nulos da coluna 'nota matematica' e tornar inteiros (truncados, para arredondar use primeiro round)
+df1.loc[df1['nota matematica'].notnull(), 'nota matematica'].apply(int)
+
+
+# In[18]:
+
+
+# substitui zero por nulo (NAN) em todo dataframe (com inplace = False para manter df1 original)
+df1.replace(0, np.nan)
+
+
+# In[19]:
+
+
+# para fazer o contrário, substituir nulo (NAN) por zero em todo dataframe (com inplace = False)
+df1.fillna(0)
+
+
+# In[20]:
+
+
+# renomear coluna (com inplace = False)
+df1.rename(columns = {'nota matematica':'Nota Matemática', 'nota fisica':'Nota Física'})
+
+
+# In[21]:
+
+
+# Apagar coluna
+df1.drop(columns=['identificacao', 'mes'] )
+
+
+# In[22]:
+
+
+# Comando loc com duas condiçoes
+df1.loc[((df1.aluno == 'Hopeful Sanderson') & (df1.mes == '2023-02	')),'nota matematica'] 
+
+
+# In[23]:
+
+
+# Apagar o index o deixando como coluna
+df1.reset_index()
+
+
+# In[24]:
+
+
+# Apagar o index sem o deixar como coluna
+df1.reset_index(drop=True)
+
+
+# In[25]:
+
+
+# apagar colunas nas quais todos os elementos sejam nulos (não se aplica ao caso de df1):
+df1.dropna(axis=1, how='all') 
+
+
+# In[26]:
+
+
+# apagar linhas nas quais todos os elementos sejam nulos (não se aplica ao caso de df1):
+# lembrando 
+# linhas  (axis=0)
+# columns (axis=1)
+
+df1.dropna(axis=0, how='all')  
+
+
+# In[27]:
+
+
+# converte varias colunas para inteiro (trunca!) desde que não haja nulos:
+df1[['nota matematica','nota fisica']].dropna().astype(int)
+
+
+# ### Analisando Listas
+
+# In[28]:
+
+
+# correr linhas de um data frame
+for index, row in df1.iterrows(): 
+      lista = [row['nota matematica'], row['nota fisica']]
+      maior = max(numero for numero in lista if numero != 0)  
+      print(maior)
+
+
+# In[29]:
+
+
+# Identificar quais valores estão na tabela B (lista fictícia criada abaixo) e não estão na tabela A (df1.identificacao)
+tabela_b = [1418, 1388, 1612, 1421, 1439, 1336, 1430, 1406, 1222, 1308, 1490, 1215]
+
+key_diff = set(tabela_b).difference(df2.identificacao)
+print(key_diff)
+
+#ou
+
+[x for x in tabela_b if x not in df2.identificacao.to_list()] # to_list() faz diferença aqui!
+
+
+# In[30]:
+
+
+# encontrar dígitos dentro de strings
+text = "word1anotherword23nextone456lastone333"
+numbers = [x for x in text if x.isdigit()]
+print(numbers)
+
+
+# In[31]:
+
+
+# checar se algum item de uma lista contem 'pedaço' de palavra
+lista_testa = ['aledj','abcd','defikhg']
+[x for x in lista_testa if 'a' in x] 
+
+
+# In[32]:
+
+
+# testa se ítems começam com 'a':
+[x for x in lista_testa if x.startswith('a')]  
+
+
+# In[33]:
+
+
+# testa se string contém determinada palavra
+string = "This contains a word"
+if "word" in string:
+    print("Found")
+else:
+    print("Not Found")
+
+
+# ### Join de dataframes
+
+# In[34]:
+
+
+# join de dataframes em left:
+pd.merge(df1, df2, how = 'left', left_on = 'identificacao', right_on = 'identificacao') 
+ 
+
+
+# In[35]:
+
+
+# Como há a coluna mes em df1 e df2 ficamos com mes_x e mes_y. Podemos apagar a coluna mes de algum dos dois antes de do join ou incluir mes na chave:
+# join de dataframes em left:
+
+df = pd.merge(df1, df2, how = 'left', left_on = ['identificacao','mes'], right_on = ['identificacao','mes']) 
+df
+
+
+# ### Salva/Lê em excel
+
+# In[36]:
+
+
+# salvar dataframe em excel (xlsx) sem index 
+nome_arquivo = 'tabela_de_notas'
+df.to_excel(nome_arquivo+'.xlsx', index = False)
+
+
+# In[37]:
+
+
+# lê o dataframe a partir do arquivo excel (salvo anteriormente)
+df = pd.read_excel(nome_arquivo+'.xlsx')
+df
 
