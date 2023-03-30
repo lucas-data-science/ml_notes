@@ -20,6 +20,10 @@ parts:
   - file: chapters/estatistica 
   - file: chapters/ml_models
 
+- caption: Utilidades
+  numbered: true
+  chapters:
+  - file: chapters/apendice 
 
 #- caption: Part 2 
 #  numbered: true
