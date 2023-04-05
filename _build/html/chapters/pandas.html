@@ -147,6 +147,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Utilidades
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="apendice.html">
+   5. Apêndice
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav></div>
@@ -2285,375 +2297,342 @@ Name: nota matematica, dtype: object
 <h3><a class="toc-backref" href="#id5"><span class="section-number">1.2.2. </span>Analisando Listas</a><a class="headerlink" href="#analisando-listas" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># correr linhas de um data frame</span>
-<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df1</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span> 
-      <span class="n">lista</span> <span class="o">=</span> <span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;nota matematica&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;nota fisica&#39;</span><span class="p">]]</span>
-      <span class="n">maior</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">numero</span> <span class="k">for</span> <span class="n">numero</span> <span class="ow">in</span> <span class="n">lista</span> <span class="k">if</span> <span class="n">numero</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>  
-      <span class="nb">print</span><span class="p">(</span><span class="n">maior</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.0
-nan
-5.9
-nan
-2.1
-5.9
-4.9
-5.8
-6.7
-9.8
-8.7
-nan
-8.2
-7.7
-0.5
-5.6
-4.6
-7.9
-2.7
-9.6
-6.8
-4.6
-6.4
-5.9
-8.2
-nan
-9.5
-4.3
-6.2
-4.9
-2.5
-7.1
-nan
-1.1
-7.3
-8.4
-9.4
-1.5
-9.7
-4.6
-7.0
-nan
-5.9
-nan
-2.1
-5.9
-4.9
-5.8
-6.7
-9.8
-8.7
-nan
-8.2
-7.7
-0.5
-5.6
-4.6
-7.9
-2.7
-9.6
-6.8
-4.6
-6.4
-5.9
-8.2
-nan
-9.5
-4.3
-6.2
-4.9
-2.5
-7.1
-nan
-1.1
-7.3
-8.4
-9.4
-1.5
-9.7
-4.6
-7.0
-nan
-5.9
-nan
-2.1
-5.9
-4.9
-5.8
-6.7
-9.8
-8.7
-nan
-8.2
-7.7
-0.5
-5.6
-4.6
-7.9
-2.7
-9.6
-6.8
-4.6
-6.4
-5.9
-8.2
-nan
-9.5
-4.3
-6.2
-4.9
-2.5
-7.1
-nan
-1.1
-7.3
-8.4
-9.4
-1.5
-9.7
-4.6
-7.0
-nan
-5.9
-nan
-2.1
-5.9
-4.9
-5.8
-6.7
-9.8
-8.7
-nan
-8.2
-7.7
-0.5
-5.6
-4.6
-7.9
-2.7
-9.6
-6.8
-4.6
-6.4
-5.9
-8.2
-nan
-9.5
-4.3
-6.2
-4.9
-2.5
-7.1
-nan
-1.1
-7.3
-8.4
-9.4
-1.5
-9.7
-4.6
-7.0
-nan
-5.9
-nan
-2.1
-5.9
-4.9
-5.8
-6.7
-9.8
-8.7
-nan
-8.2
-7.7
-0.5
-5.6
-4.6
-7.9
-2.7
-9.6
-6.8
-4.6
-6.4
-5.9
-8.2
-nan
-9.5
-4.3
-6.2
-4.9
-2.5
-7.1
-nan
-1.1
-7.3
-8.4
-9.4
-1.5
-9.7
-4.6
-7.0
-nan
-5.9
-nan
-2.1
-5.9
-4.9
-5.8
-6.7
-9.8
-8.7
-nan
-8.2
-7.7
-0.5
-5.6
-4.6
-7.9
-2.7
-9.6
-6.8
-4.6
-6.4
-5.9
-8.2
-nan
-9.5
-4.3
-6.2
-4.9
-2.5
-7.1
-nan
-1.1
-7.3
-8.4
-9.4
-1.5
-9.7
-4.6
-7.0
-nan
-5.9
-nan
-2.1
-5.9
-4.9
-5.8
-6.7
-9.8
-8.7
-nan
-8.2
-7.7
-0.5
-5.6
-4.6
-7.9
-2.7
-9.6
-6.8
-4.6
-6.4
-5.9
-8.2
-nan
-9.5
-4.3
-6.2
-4.9
-2.5
-7.1
-nan
-1.1
-7.3
-8.4
-9.4
-1.5
-9.7
-4.6
-7.0
-nan
-5.9
-nan
-2.1
-5.9
-4.9
-5.8
-6.7
-9.8
-8.7
-nan
-8.2
-7.7
-0.5
-5.6
-4.6
-7.9
-2.7
-9.6
-6.8
-4.6
-6.4
-5.9
-8.2
-nan
-9.5
-4.3
-6.2
-4.9
-2.5
-7.1
-nan
-1.1
-7.3
-8.4
-9.4
-1.5
-9.7
-4.6
-7.0
-nan
-5.9
-nan
-2.1
-5.9
-4.9
-5.8
-6.7
-9.8
-8.7
-nan
-8.2
-7.7
-0.5
-5.6
-4.6
-7.9
-2.7
-9.6
-6.8
-4.6
-6.4
-5.9
-8.2
-nan
-9.5
-4.3
-6.2
-4.9
-2.5
-7.1
-nan
-1.1
-7.3
-8.4
-9.4
-1.5
-9.7
-4.6
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>aluno</th>
+      <th>identificacao</th>
+      <th>mes</th>
+      <th>nota matematica</th>
+      <th>nota fisica</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Hopeful Sanderson</td>
+      <td>1408</td>
+      <td>2023-02</td>
+      <td>1.8</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Competent Mayer</td>
+      <td>1388</td>
+      <td>2023-02</td>
+      <td>NaN</td>
+      <td>9.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Beautiful Bohr</td>
+      <td>1212</td>
+      <td>2023-02</td>
+      <td>5.9</td>
+      <td>3.2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Elegant Mendel</td>
+      <td>1421</td>
+      <td>2023-02</td>
+      <td>NaN</td>
+      <td>1.9</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Elegant Gagarin</td>
+      <td>1439</td>
+      <td>2023-02</td>
+      <td>0.3</td>
+      <td>2.1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>Nostalgic Goldstine</td>
+      <td>1350</td>
+      <td>2023-10</td>
+      <td>8.4</td>
+      <td>4.5</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>Gifted Bassi</td>
+      <td>1376</td>
+      <td>2023-10</td>
+      <td>7.0</td>
+      <td>9.4</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>Silly Merkle</td>
+      <td>1382</td>
+      <td>2023-10</td>
+      <td>1.5</td>
+      <td>0.7</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>Relaxed Hypatia</td>
+      <td>1499</td>
+      <td>2023-10</td>
+      <td>2.7</td>
+      <td>9.7</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>Eager Elion</td>
+      <td>1205</td>
+      <td>2023-10</td>
+      <td>2.5</td>
+      <td>4.6</td>
+    </tr>
+  </tbody>
+</table>
+<p>360 rows × 5 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># correr linhas de um data frame</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df1</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+      <span class="n">nota_mat</span> <span class="o">=</span>  <span class="n">row</span><span class="p">[</span><span class="s1">&#39;nota matematica&#39;</span><span class="p">]</span>
+      <span class="n">nota_fis</span> <span class="o">=</span>  <span class="n">row</span><span class="p">[</span><span class="s1">&#39;nota fisica&#39;</span><span class="p">]</span>      
+      <span class="n">lista</span> <span class="o">=</span> <span class="p">[</span><span class="n">nota_mat</span><span class="p">,</span> <span class="n">nota_fis</span><span class="p">]</span> 
+      <span class="k">if</span> <span class="n">index</span> <span class="o">&lt;=</span><span class="mi">10</span><span class="p">:</span> <span class="c1"># printa o resultado das 10+1 primeiras linhaslinhas</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;nota de matemática:&#39;</span><span class="p">,</span><span class="n">lista</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;   nota de física:&#39;</span><span class="p">,</span><span class="n">lista</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+nota de matemática: 1.8    nota de física: 7.0
+1
+nota de matemática: nan    nota de física: 9.0
+2
+nota de matemática: 5.9    nota de física: 3.2
+3
+nota de matemática: nan    nota de física: 1.9
+4
+nota de matemática: 0.3    nota de física: 2.1
+5
+nota de matemática: 1.2    nota de física: 5.9
+6
+nota de matemática: 4.9    nota de física: 1.8
+7
+nota de matemática: 5.8    nota de física: 0.8
+8
+nota de matemática: 6.7    nota de física: 0.2
+9
+nota de matemática: 3.4    nota de física: 9.8
+10
+nota de matemática: 8.7    nota de física: 8.0
+0
+nota de matemática: 1.8    nota de física: 7.0
+1
+nota de matemática: nan    nota de física: 9.0
+2
+nota de matemática: 5.9    nota de física: 3.2
+3
+nota de matemática: nan    nota de física: 1.9
+4
+nota de matemática: 0.3    nota de física: 2.1
+5
+nota de matemática: 1.2    nota de física: 5.9
+6
+nota de matemática: 4.9    nota de física: 1.8
+7
+nota de matemática: 5.8    nota de física: 0.8
+8
+nota de matemática: 6.7    nota de física: 0.2
+9
+nota de matemática: 3.4    nota de física: 9.8
+10
+nota de matemática: 8.7    nota de física: 8.0
+0
+nota de matemática: 1.8    nota de física: 7.0
+1
+nota de matemática: nan    nota de física: 9.0
+2
+nota de matemática: 5.9    nota de física: 3.2
+3
+nota de matemática: nan    nota de física: 1.9
+4
+nota de matemática: 0.3    nota de física: 2.1
+5
+nota de matemática: 1.2    nota de física: 5.9
+6
+nota de matemática: 4.9    nota de física: 1.8
+7
+nota de matemática: 5.8    nota de física: 0.8
+8
+nota de matemática: 6.7    nota de física: 0.2
+9
+nota de matemática: 3.4    nota de física: 9.8
+10
+nota de matemática: 8.7    nota de física: 8.0
+0
+nota de matemática: 1.8    nota de física: 7.0
+1
+nota de matemática: nan    nota de física: 9.0
+2
+nota de matemática: 5.9    nota de física: 3.2
+3
+nota de matemática: nan    nota de física: 1.9
+4
+nota de matemática: 0.3    nota de física: 2.1
+5
+nota de matemática: 1.2    nota de física: 5.9
+6
+nota de matemática: 4.9    nota de física: 1.8
+7
+nota de matemática: 5.8    nota de física: 0.8
+8
+nota de matemática: 6.7    nota de física: 0.2
+9
+nota de matemática: 3.4    nota de física: 9.8
+10
+nota de matemática: 8.7    nota de física: 8.0
+0
+nota de matemática: 1.8    nota de física: 7.0
+1
+nota de matemática: nan    nota de física: 9.0
+2
+nota de matemática: 5.9    nota de física: 3.2
+3
+nota de matemática: nan    nota de física: 1.9
+4
+nota de matemática: 0.3    nota de física: 2.1
+5
+nota de matemática: 1.2    nota de física: 5.9
+6
+nota de matemática: 4.9    nota de física: 1.8
+7
+nota de matemática: 5.8    nota de física: 0.8
+8
+nota de matemática: 6.7    nota de física: 0.2
+9
+nota de matemática: 3.4    nota de física: 9.8
+10
+nota de matemática: 8.7    nota de física: 8.0
+0
+nota de matemática: 1.8    nota de física: 7.0
+1
+nota de matemática: nan    nota de física: 9.0
+2
+nota de matemática: 5.9    nota de física: 3.2
+3
+nota de matemática: nan    nota de física: 1.9
+4
+nota de matemática: 0.3    nota de física: 2.1
+5
+nota de matemática: 1.2    nota de física: 5.9
+6
+nota de matemática: 4.9    nota de física: 1.8
+7
+nota de matemática: 5.8    nota de física: 0.8
+8
+nota de matemática: 6.7    nota de física: 0.2
+9
+nota de matemática: 3.4    nota de física: 9.8
+10
+nota de matemática: 8.7    nota de física: 8.0
+0
+nota de matemática: 1.8    nota de física: 7.0
+1
+nota de matemática: nan    nota de física: 9.0
+2
+nota de matemática: 5.9    nota de física: 3.2
+3
+nota de matemática: nan    nota de física: 1.9
+4
+nota de matemática: 0.3    nota de física: 2.1
+5
+nota de matemática: 1.2    nota de física: 5.9
+6
+nota de matemática: 4.9    nota de física: 1.8
+7
+nota de matemática: 5.8    nota de física: 0.8
+8
+nota de matemática: 6.7    nota de física: 0.2
+9
+nota de matemática: 3.4    nota de física: 9.8
+10
+nota de matemática: 8.7    nota de física: 8.0
+0
+nota de matemática: 1.8    nota de física: 7.0
+1
+nota de matemática: nan    nota de física: 9.0
+2
+nota de matemática: 5.9    nota de física: 3.2
+3
+nota de matemática: nan    nota de física: 1.9
+4
+nota de matemática: 0.3    nota de física: 2.1
+5
+nota de matemática: 1.2    nota de física: 5.9
+6
+nota de matemática: 4.9    nota de física: 1.8
+7
+nota de matemática: 5.8    nota de física: 0.8
+8
+nota de matemática: 6.7    nota de física: 0.2
+9
+nota de matemática: 3.4    nota de física: 9.8
+10
+nota de matemática: 8.7    nota de física: 8.0
+0
+nota de matemática: 1.8    nota de física: 7.0
+1
+nota de matemática: nan    nota de física: 9.0
+2
+nota de matemática: 5.9    nota de física: 3.2
+3
+nota de matemática: nan    nota de física: 1.9
+4
+nota de matemática: 0.3    nota de física: 2.1
+5
+nota de matemática: 1.2    nota de física: 5.9
+6
+nota de matemática: 4.9    nota de física: 1.8
+7
+nota de matemática: 5.8    nota de física: 0.8
+8
+nota de matemática: 6.7    nota de física: 0.2
+9
+nota de matemática: 3.4    nota de física: 9.8
+10
+nota de matemática: 8.7    nota de física: 8.0
 </pre></div>
 </div>
 </div>

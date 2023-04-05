@@ -297,14 +297,23 @@ df1[['nota matematica','nota fisica']].dropna().astype(int)
 # In[28]:
 
 
-# correr linhas de um data frame
-for index, row in df1.iterrows(): 
-      lista = [row['nota matematica'], row['nota fisica']]
-      maior = max(numero for numero in lista if numero != 0)  
-      print(maior)
+df1
 
 
 # In[29]:
+
+
+# correr linhas de um data frame
+for index, row in df1.iterrows():
+      nota_mat =  row['nota matematica']
+      nota_fis =  row['nota fisica']      
+      lista = [nota_mat, nota_fis] 
+      if index <=10: # printa o resultado das 10+1 primeiras linhaslinhas
+            print(index)
+            print('nota de matemática:',lista[0], '   nota de física:',lista[1])
+
+
+# In[30]:
 
 
 # Identificar quais valores estão na tabela B (lista fictícia criada abaixo) e não estão na tabela A (df1.identificacao)
@@ -318,7 +327,7 @@ print(key_diff)
 [x for x in tabela_b if x not in df2.identificacao.to_list()] # to_list() faz diferença aqui!
 
 
-# In[30]:
+# In[31]:
 
 
 # encontrar dígitos dentro de strings
@@ -327,7 +336,7 @@ numbers = [x for x in text if x.isdigit()]
 print(numbers)
 
 
-# In[31]:
+# In[32]:
 
 
 # checar se algum item de uma lista contem 'pedaço' de palavra
@@ -335,14 +344,14 @@ lista_testa = ['aledj','abcd','defikhg']
 [x for x in lista_testa if 'a' in x] 
 
 
-# In[32]:
+# In[33]:
 
 
 # testa se ítems começam com 'a':
 [x for x in lista_testa if x.startswith('a')]  
 
 
-# In[33]:
+# In[34]:
 
 
 # testa se string contém determinada palavra
@@ -355,7 +364,7 @@ else:
 
 # ### Join de dataframes
 
-# In[34]:
+# In[35]:
 
 
 # join de dataframes em left:
@@ -363,7 +372,7 @@ pd.merge(df1, df2, how = 'left', left_on = 'identificacao', right_on = 'identifi
  
 
 
-# In[35]:
+# In[36]:
 
 
 # Como há a coluna mes em df1 e df2 ficamos com mes_x e mes_y. Podemos apagar a coluna mes de algum dos dois antes de do join ou incluir mes na chave:
@@ -375,7 +384,7 @@ df
 
 # ### Salva/Lê em excel
 
-# In[36]:
+# In[37]:
 
 
 # salvar dataframe em excel (xlsx) sem index 
@@ -383,7 +392,7 @@ nome_arquivo = 'tabela_de_notas'
 df.to_excel(nome_arquivo+'.xlsx', index = False)
 
 
-# In[37]:
+# In[38]:
 
 
 # lê o dataframe a partir do arquivo excel (salvo anteriormente)
