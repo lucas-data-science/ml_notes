@@ -304,11 +304,11 @@ df1
 
 
 # correr linhas de um data frame
-for index, row in df1.iterrows():
+for index, row in df1.reset_index().iterrows():
       nota_mat =  row['nota matematica']
       nota_fis =  row['nota fisica']      
       lista = [nota_mat, nota_fis] 
-      if index <=10: # printa o resultado das 10+1 primeiras linhaslinhas
+      if index <=10: # printa o resultado das 10+1 primeiras linhas 
             print(index)
             print('nota de matemática:',lista[0], '   nota de física:',lista[1])
 
