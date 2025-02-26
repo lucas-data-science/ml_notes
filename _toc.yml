@@ -5,20 +5,15 @@ format: jb-book
 root: intro
  
 parts:
-- caption: Ferramentas de Análise Descritiva
+- caption: Análise Descritiva
   numbered: true
-  chapters:
-  - file: chapters/pandas 
-  - file: chapters/plotly
-#  - file: chapters/classification 
-#  - file: chapters/clustering
-#  - file: chapters/decision-tree  
+  chapters: 
+  - file: chapters/estatistica  
   
 - caption: Ferramentas de Análise Preditiva 
   numbered: true
   chapters:
-  - file: chapters/estatistica 
-  - file: chapters/ml_models
+  - file: chapters/estatistica  
 
 - caption: Utilidades
   numbered: true
