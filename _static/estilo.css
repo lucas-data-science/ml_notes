@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+/* Definir a fonte e o tamanho no body */
+html {
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 16px !important;  /* Ajuste o tamanho conforme necessário */
+}
+
+/* Ajuste de títulos */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto', sans-serif !important;
+    font-weight: 500 !important;
+    font-size: 22px !important; /* Ajuste conforme necessário */
+}
+
+/* Ajuste o tamanho do texto nos parágrafos */
+p {
+    font-size: 14px !important; /* Ajuste conforme necessário */
+}
+
+/* Ajuste o tamanho do código */
+code {
+    font-size: 14px !important;
+}
+
+/* Ajuste do conteúdo */	
+.content {
+    font-size: 14px !important; /* Ajuste conforme necessário */
+}
+
+/* Reduz a largura da barra lateral */
+.vp-sidebar {
+    width: 300px !important; /* Defina a largura desejada */
+    min-width: 200px !important; /* Garante que a largura mínima seja respeitada */
+    background-color: #f8f9fa !important; /* Mantém a cor de fundo */
+}
+
+/* Ajusta o conteúdo principal para compensar a largura reduzida da barra lateral */
+.vp-main {
+    margin-left: 200px !important; /* Deve ser igual à largura da barra lateral */
+}
+
+/* Ajusta o espaçamento interno da barra lateral */
+.vp-sidebar .nav {
+    padding: 10px !important;
+}
+html {
+    --pst-font-family-base: Verdana, var(--pst-font-family-base-system);
+    --pst-font-family-heading: Cambria, Georgia, Times, var(--pst-font-family-base-system);
+    --pst-font-family-monospace: Courier, var(--pst-font-family-monospace-system);
+}
+
+ 

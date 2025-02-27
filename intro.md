@@ -1,13 +1,20 @@
-# Caixa de Ferrramentas de Python para Ciência de Dados
+# Ciência de Dados
 
-**Por [Lucas A. Souza](https://lucas-alves-souza.github.io/)**
+```{epigraph}
+Uma teoria com beleza matemática tem mais chances de estar correta.
 
-Importantes ferramentas utilizadas por cientistas de dados são apresentadas nestas notas curtas a fim de auxiliar no dia-a-dia de quem as usa, principalmente eu.
-Escrevo as linhas a seguir no intuito de consultá-las frequentemente devido aos lapsos de memória. Espero que ajude não só a mim.
-Caso haja interesse, me encontre [na minha página pessoal do github](https://lucas-alves-souza.github.io/).
+-- Paul Dirac
+```
 
+**Por [Lucas A. Souza](https://lucas-data-science.github.io/)**
 
-# Índice
+Este Jupyterbook é um registro pessoal de tudo que estudei e continuo estudando no vasto campo da Ciência de Dados. Aqui, reúno conhecimentos adquiridos em cursos, livros e práticas, organizados de forma a servir tanto como um guia de consulta quanto como um repositório do meu aprendizado contínuo.
 
-```{tableofcontents}
+O conteúdo abrange desde conceitos fundamentais, como Estatística e Análise Descritiva, até tópicos avançados, como Aprendizado de Máquina (Machine Learning), Séries Temporais, Python para Finanças, Aprendizado Profundo (Deep Learning) e Modelos de Linguagem (LLMs). Cada seção é dedicada a um tema específico, com estudos detalhados e exemplos práticos que refletem minha jornada de aprendizado.
+
+Caso tenha interesse em conhecer mais sobre meu trabalho ou entrar em contato, visite [minha página pessoal no GitHub](https://lucas-data-science.github.io/).
+  
+
+```{bibliography}
+:filter: docname in docnames
 ```
