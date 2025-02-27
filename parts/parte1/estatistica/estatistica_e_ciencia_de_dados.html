@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html  lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+      <title>1. Análise Exploratória, Estatística e Ciência de Dados</title>
+    
+          <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="../../../_static/theme.css " type="text/css" />
+          <link rel="stylesheet" href="../../../_static/togglebutton.css" type="text/css" />
+          <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+          <link rel="stylesheet" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
+          <link rel="stylesheet" href="../../../_static/sphinx-thebe.css" type="text/css" />
+          <link rel="stylesheet" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+          <link rel="stylesheet" href="../../../_static/estilo.css" type="text/css" />
+      
+      <!-- sphinx script_files -->
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../../../_static/togglebutton.js"></script>
+        <script src="../../../_static/translations.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script src="../../../_static/design-tabs.js"></script>
+        <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+        <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+
+      
+      <!-- bundled in js (rollup iife) -->
+      <!-- <script src="../../../_static/theme-vendors.js"></script> -->
+      <script src="../../../_static/theme.js" defer></script>
+    
+      <link rel="shortcut icon" href="../../../../../../_static/flav4.png"/>
+  <link rel="index" title="Índice" href="../../../genindex.html" />
+  <link rel="search" title="Buscar" href="../../../search.html" />
+  <link rel="next" title="2. Amostragem" href="Secao_2-Amostragem.html" />
+  <link rel="prev" title="Ciência de Dados" href="../../../intro.html" /> 
+  </head>
+
+  <body>
+    <div id="app">
+    <div class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+  <router-link to="../../../intro.html" class="home-link">
+    
+      <img class="logo" src="../../../../../../_static/logo_horizontal.svg" alt="logo"/>
+    
+  </router-link>
+
+  <div class="links">
+    <navlinks class="can-hide">
+
+  
+    <div class="nav-item">
+      <a href="../../../intro.html#ciencia-de-dados"
+         class="nav-link  router-link-active">
+         Parte 1. Estatística e Análise Descritiva
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../../../intro.html#ciencia-de-dados"
+         class="nav-link ">
+         Parte 2. Aprendizado de Máquina (Machine Learning)
+      </a>
+    </div>
+  
+
+
+
+  
+    <div class="nav-item">
+      <a href="https://github.com/lucas-data-science"
+        class="nav-link external">
+          Github <outboundlink></outboundlink>
+      </a>
+    </div>
+  
+
+    </navlinks>
+  </div>
+</navbar>
+
+      
+      <div class="sidebar-mask" @click="toggleSidebar(false)">
+      </div>
+        <sidebar @toggle-sidebar="toggleSidebar">
+          
+          <navlinks>
+            
+
+  
+    <div class="nav-item">
+      <a href="../../../intro.html#ciencia-de-dados"
+         class="nav-link  router-link-active">
+         Parte 1. Estatística e Análise Descritiva
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../../../intro.html#ciencia-de-dados"
+         class="nav-link ">
+         Parte 2. Aprendizado de Máquina (Machine Learning)
+      </a>
+    </div>
+  
+
+
+
+  
+    <div class="nav-item">
+      <a href="https://github.com/lucas-data-science"
+        class="nav-link external">
+          Github <outboundlink></outboundlink>
+      </a>
+    </div>
+  
+
+            
+          </navlinks><div id="searchbox" class="searchbox" role="search">
+  <div class="caption"><span class="caption-text">Busca rápida</span>
+    <div class="searchformwrapper">
+      <form class="search" action="../../../search.html" method="get">
+        <input type="text" name="q" />
+        <input type="submit" value="Buscar" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../../../intro.html#ciencia-de-dados">Parte 1. Estatística e Análise Descritiva</a></span>
+      </p>
+      <ul class="current">
+        
+          <li class="toctree-l1 current">
+            
+              <a href="#" class="reference internal current">Análise Exploratória, Estatística e Ciência de Dados</a>
+            
+
+            
+              <ul>
+                
+                  <li class="toctree-l2"><a href="#analise-exploratoria-estatistica-e-ciencia-de-dados" class="reference internal">Análise Exploratória, Estatística e Ciência de Dados</a></li>
+                
+              </ul>
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="Secao_2-Amostragem.html" class="reference internal ">Amostragem</a>
+            
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../../../intro.html#ciencia-de-dados">Parte 2. Aprendizado de Máquina (Machine Learning)</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 ">
+            
+              <a href="../../parte2/machine_learning/classificacao.html" class="reference internal ">Classificação</a>
+            
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+</div>
+        </sidebar>
+
+      <page>
+          <div class="body-header" role="navigation" aria-label="navigation">
+  
+  <ul class="breadcrumbs">
+    <li><a href="../../../intro.html">Docs</a> &raquo;</li>
+    
+    <li><span class="section-number">1. </span>Análise Exploratória, Estatística e Ciência de Dados</li>
+  </ul>
+  
+
+  <ul class="page-nav">
+  <li class="prev">
+    <a href="../../../intro.html"
+       title="capítulo anterior">← Ciência de Dados</a>
+  </li>
+  <li class="next">
+    <a href="Secao_2-Amostragem.html"
+       title="próximo capítulo"><span class="section-number">2. </span>Amostragem →</a>
+  </li>
+</ul>
+  
+</div>
+<hr>
+          <div class="content" role="main" v-pre>
+            
+  <section class="tex2jax_ignore mathjax_ignore" id="analise-exploratoria-estatistica-e-ciencia-de-dados">
+<h1><span class="section-number">1. </span>Análise Exploratória, Estatística e Ciência de Dados<a class="headerlink" href="#analise-exploratoria-estatistica-e-ciencia-de-dados" title="Link permanente para este cabeçalho">¶</a></h1>
+<p>A Estatística e a Ciência de Dados são duas faces da mesma moeda. Enquanto a Estatística fornece os fundamentos teóricos e os métodos para descrever, inferir e modelar dados, a Ciência de Dados amplia essas técnicas com o uso de tecnologia avançada, permitindo a aplicação em larga escala para resolver problemas complexos. Juntas, essas disciplinas capacitam organizações e indivíduos a transformar dados brutos em conhecimento acionável.</p>
+<p>Nesta primeira parte do livro, exploraremos os principais conceitos estatísticos aplicados à Ciência de Dados, com ênfase na <strong>Análise Exploratória de Dados (AED)</strong>. A AED é uma etapa fundamental do processo analítico, pois permite identificar padrões, detectar anomalias e compreender a estrutura dos dados antes da modelagem preditiva. Além disso, abordaremos métodos estatísticos essenciais para a análise de dados, ilustrados por meio de códigos práticos.</p>
+<p>A maioria dos exemplos práticos apresentados são baseados no curso <em>Estatística para Ciência de Dados e Machine Learning</em>, disponível na IA Expert Academy:</p>
+<p>🔗 <a class="reference external" href="https://iaexpert.academy/cursos-online-assinatura/estatistica-para-ciencia-de-dados-e-machine-learning/">Curso na IA Expert Academy</a></p>
+<p>Os livros e referências teóricas utilizados ao longo do estudo serão citados no decorrer do texto, proporcionando um embasamento sólido para a compreensão dos conceitos abordados.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./parts/parte1/estatistica"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+          </div>
+          <div class="page-nav">
+            <div class="inner"><ul class="page-nav">
+  <li class="prev">
+    <a href="../../../intro.html"
+       title="capítulo anterior">← Ciência de Dados</a>
+  </li>
+  <li class="next">
+    <a href="Secao_2-Amostragem.html"
+       title="próximo capítulo"><span class="section-number">2. </span>Amostragem →</a>
+  </li>
+</ul><div class="footer" role="contentinfo">
+      &#169; Copyright L. A. Souza, 2025.
+    <br>
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.0.2 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.9.1.
+</div>
+            </div>
+          </div>
+      </page>
+    </div></div>
+    
+    
+  </body>
+</html>
