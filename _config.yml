@@ -64,9 +64,8 @@ sphinx:
     # show_sidebar: false 
     #html_show_copyright: false
     #pygments_style: 'material'  
-    language: pt_BR
-    rst_prolog: |
-      .. |Docs| replace:: Início
+    language: pt_BR 
+    html_favicon: "_static/flav4.png"
 # Configurações de bibliografia
 bibtex_bibfiles:
   - references.bib    
