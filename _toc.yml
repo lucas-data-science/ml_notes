@@ -8,14 +8,15 @@ parts:
 - caption: Parte 1. Estatística e Análise Descritiva 
   numbered: true
   chapters: 
-  - file: parts/estatistica/estatistica 
-  
+  - file: parts/parte1/estatistica/estatistica_e_ciencia_de_dados
+  - file: parts/parte1/estatistica/Secao_2-Amostragem
+
+
 - caption: Parte 2. Aprendizado de Máquina (Machine Learning)
   numbered: true
   chapters:
-  - file: parts/machine_learning/classificacao
-
-#- caption: Utilidades
+  - file: parts/parte2/machine_learning/classificacao
+  #- caption: Utilidades
 #  numbered: true
 #  chapters:
 #  - file: chapters/apendice 

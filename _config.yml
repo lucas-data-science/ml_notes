@@ -6,8 +6,7 @@ title: Ciência de Dados
 author: Lucas A. Souza
 logo: _static/logo_horizontal.svg
 copyright: "L. A. Souza, 2025"
-project: "Ciência de Dados"
- 
+project: "Ciência de Dados" 
  
 
 # Define the name of the latex output file for PDF builds
@@ -33,15 +32,15 @@ repository:
 
 html:
   extra_css:
-    - _static/estilo.css   
+    - _static/estilo.css    
   #extra_navbar: ""  # Will be displayed underneath the left navbar.
   #use_repository_button: true 
   #home_page_in_navbar: true     
   
 # Configurações de execução de notebooks
-#execute:
-#  execute_notebooks: off  # Para myst-nb
-#  nbsphinx_execute: never  # Para nbsphinx
+execute:
+  execute_notebooks: off  # Para myst-nb
+  nbsphinx_execute: never  # Para nbsphinx
 
 #extensions:
 #      - myst_parser  # Para suporte a Markdown
@@ -65,7 +64,8 @@ sphinx:
     #html_show_copyright: false
     #pygments_style: 'material'  
     language: pt_BR 
-    html_favicon: "_static/flav4.png"
+    html_favicon: "_static/flav4.png" 
+    
 # Configurações de bibliografia
 bibtex_bibfiles:
   - references.bib    
