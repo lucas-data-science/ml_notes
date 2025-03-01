@@ -4,18 +4,18 @@
 format: jb-book
 root: intro
  
-parts:
-- caption: Parte 1. Estatística e Análise Descritiva 
+parts: 
+- caption: Parte I. Análise Exploratória de Dados e Estatística
   numbered: true
   chapters: 
-  - file: parts/parte1/estatistica/estatistica_e_ciencia_de_dados
-  - file: parts/parte1/estatistica/Secao_2-Amostragem
+  - file: notebooks_estatistica/estatistica_e_ciencia_de_dados
+  - file: notebooks_estatistica/Secao_2-Amostragem
 
 
-- caption: Parte 2. Aprendizado de Máquina (Machine Learning)
+- caption: Parte II. Machine Learning
   numbered: true
   chapters:
-  - file: parts/parte2/machine_learning/classificacao
+  - file: notebooks/classificacao
   #- caption: Utilidades
 #  numbered: true
 #  chapters:

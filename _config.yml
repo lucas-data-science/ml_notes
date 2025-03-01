@@ -4,7 +4,7 @@
  
 title: Ciência de Dados
 author: Lucas A. Souza
-logo: _static/logo_horizontal.svg
+logo: _static/logo1.svg
 copyright: "L. A. Souza, 2025"
 project: "Ciência de Dados" 
  
@@ -15,11 +15,12 @@ latex:
     targetname: book.tex
   latex_engine              : pdflatex  # one of 'pdflatex', 'xelatex' (recommended for unicode), 'luatex', 'platex', 'uplatex'
   use_jupyterbook_latex     : true # use sphinx-jupyterbook-latex for pdf builds as default
+  mathjax: true
   
 
 # Information about where the book exists on the web
-repository:
-  url: https://github.com/lucas-data-science/ml_notes # Online location of your book
+#repository:
+#  url: https://github.com/lucas-data-science/ml_notes # Online location of your book
   #path_to_book: docs  # Optional path to your book, relative to the repository root
   #branch: master  # Which branch of the repository should be used when creating links (optional)
  
@@ -33,14 +34,19 @@ repository:
 html:
   extra_css:
     - _static/estilo.css    
-  #extra_navbar: ""  # Will be displayed underneath the left navbar.
-  #use_repository_button: true 
-  #home_page_in_navbar: true     
+#  extra_navbar: ""  # Will be displayed underneath the left navbar.
+#  use_repository_button: true 
+#  home_page_in_navbar: true     
   
 # Configurações de execução de notebooks
 execute:
-  execute_notebooks: off  # Para myst-nb
-  nbsphinx_execute: never  # Para nbsphinx
+  execute_notebooks: auto  # Para myst-nb
+  nbsphinx_execute: auto  # Para nbsphinx
+only_build_toc_files: true
+
+
+plotly:
+  render: true
 
 #extensions:
 #      - myst_parser  # Para suporte a Markdown
@@ -49,22 +55,29 @@ execute:
 #      - sphinx.ext.napoleon
 #      - sphinx.ext.viewcode
 #      - sphinx.ext.mathjax    
+extensions: 'sphinx.ext.mathjax'
  
 sphinx:  
+  extra_extensions:
+    - sphinxcontrib.bibtex
+  recursive_update: true
   config:
     html_context:
       default_mode: light
 #    mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
     bibtex_reference_style: author_year
-    html_theme: 'press' #insipid
-    html_theme_options:
-      external_links: 
-        - ["Github", "https://github.com/lucas-data-science"]
+    html_theme: 'furo' #insipid
+    #html_theme_options:
+    #  external_links: 
+    #    - ["Github", "https://github.com/lucas-data-science"]
     # show_sidebar: false 
     #html_show_copyright: false
     #pygments_style: 'material'  
     language: pt_BR 
-    html_favicon: "_static/flav4.png" 
+    html_favicon: "_static/flav4.png"  
+ 
+    html_js_files:
+    - "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"   
     
 # Configurações de bibliografia
 bibtex_bibfiles:

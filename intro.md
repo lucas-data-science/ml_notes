@@ -1,9 +1,9 @@
-# Ciência de Dados
+# Prefácio
 
 ```{epigraph}
 Uma teoria com beleza matemática tem mais chances de estar correta.
 
--- Paul Dirac
+--  Paul Dirac
 ```
 
 **Por [Lucas A. Souza](https://lucas-data-science.github.io/)**
