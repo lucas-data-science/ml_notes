@@ -1,19 +1,19 @@
 <!doctype html>
-<html class="no-js" lang="pt-BR" data-content_root="">
+<html class="no-js" lang="pt-BR" data-content_root="../">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Índice" href="../genindex.html" /><link rel="search" title="Buscar" href="../search.html" /><link rel="next" title="4. Distribuições de Dados" href="Distribuicoes_de_Dados.html" /><link rel="prev" title="2. Análise Exploratória de Dados (AED)" href="Analise_Exploratoria.html" />
 
-    <link rel="shortcut icon" href="../_static/flav4.png"/><!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
+    <link rel="shortcut icon" href="../_static/flav4.png"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.08.06 -->
         <title>3. Amostragem - Ciência de Dados</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=109105fe" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=949a1ff5" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css?v=6ad1a40c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=302659d7" />
     <link rel="stylesheet" type="text/css" href="../_static/estilo.css?v=95c0c2e7" />
     
@@ -262,7 +262,7 @@
         </div>
         <article role="main" id="furo-main-content">
           <section class="tex2jax_ignore mathjax_ignore" id="amostragem">
-<h1><span class="section-number">3. </span>Amostragem<a class="headerlink" href="#amostragem" title="Link permanente para este cabeçalho">¶</a></h1>
+<h1><span class="section-number">3. </span>Amostragem<a class="headerlink" href="#amostragem" title="Link para este cabeçalho">¶</a></h1>
 <p>A amostragem é um conceito fundamental em estatística e ciência de dados, pois permite que trabalhemos com subconjuntos de dados representativos de uma população maior. De <span id="id1">[<a class="reference internal" href="../bib.html#id2" title="Peter Bruce, Andrew Bruce, and Peter Gedeck. Practical Statistics for Data Scientists. O’Reilly Media, Inc.,, 2 edition, 2020. URL: https://learning.oreilly.com/library/view/practical-statistics-for/9781492072935/.">Bruce <em>et al.</em>, 2020</a>]</span>, sabemos que a escolha adequada de uma amostra é crucial para garantir que as inferências feitas a partir dos dados sejam válidas e generalizáveis. Existem diferentes técnicas de amostragem, como a <strong>amostragem aleatória simples</strong>, <strong>amostragem estratificada</strong> e <strong>amostragem sistemática</strong>, cada uma com suas vantagens e aplicações específicas.</p>
 <p>Vamos aos códigos. Segue algumas checagens sobre o dataset para iniciarmaos sobre Amostragens.</p>
 <div class="cell docutils container">
@@ -663,7 +663,7 @@
 </div></div></div>
 </div>
 <section id="amostragem-aleatoria-simples-aas">
-<h2><span class="section-number">3.1. </span>Amostragem aleatória simples (AAS)<a class="headerlink" href="#amostragem-aleatoria-simples-aas" title="Link permanente para este cabeçalho">¶</a></h2>
+<h2><span class="section-number">3.1. </span>Amostragem aleatória simples (AAS)<a class="headerlink" href="#amostragem-aleatoria-simples-aas" title="Link para este cabeçalho">¶</a></h2>
 <p>A <strong>Amostragem Aleatória Simples (AAS)</strong> é um método estatístico de seleção de amostras onde cada elemento da população tem a mesma probabilidade de ser escolhido. Essa técnica garante que a amostra seja representativa, reduzindo vieses na seleção dos dados.</p>
 <hr class="docutils" />
 <p>Para realizar uma amostragem aleatória simples, pode-se:</p>
@@ -674,7 +674,7 @@
 <p><strong>Exemplo:</strong> Se temos uma população de 1.000 pessoas e queremos selecionar uma amostra de 100 indivíduos, cada um deles tem <strong>1/1.000</strong> de chance de ser escolhido.</p>
 <hr class="docutils" />
 <section id="vantagens-da-aas">
-<h3><span class="section-number">3.1.1. </span>Vantagens da AAS:<a class="headerlink" href="#vantagens-da-aas" title="Link permanente para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">3.1.1. </span>Vantagens da AAS:<a class="headerlink" href="#vantagens-da-aas" title="Link para este cabeçalho">¶</a></h3>
 <p><strong>Simplicidade e facilidade de implementação</strong></p>
 <ul class="simple">
 <li><p>O método é intuitivo e pode ser aplicado sem necessidade de cálculos complexos.</p></li>
@@ -690,7 +690,7 @@
 </section>
 <hr class="docutils" />
 <section id="desvantagens-da-aas">
-<h3><span class="section-number">3.1.2. </span>Desvantagens da AAS:<a class="headerlink" href="#desvantagens-da-aas" title="Link permanente para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">3.1.2. </span>Desvantagens da AAS:<a class="headerlink" href="#desvantagens-da-aas" title="Link para este cabeçalho">¶</a></h3>
 <p><strong>Pode não ser viável para populações grandes</strong></p>
 <ul class="simple">
 <li><p>Quando a população é muito grande, listar todos os indivíduos e realizar uma seleção aleatória pode ser impraticável.</p></li>
@@ -706,7 +706,7 @@
 </section>
 <hr class="docutils" />
 <section id="limitacoes-da-aas">
-<h3><span class="section-number">3.1.3. </span>Limitações da AAS:<a class="headerlink" href="#limitacoes-da-aas" title="Link permanente para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">3.1.3. </span>Limitações da AAS:<a class="headerlink" href="#limitacoes-da-aas" title="Link para este cabeçalho">¶</a></h3>
 <p><strong>Necessidade de uma lista completa da população</strong></p>
 <ul class="simple">
 <li><p>Para aplicar a AAS corretamente, é necessário ter acesso à totalidade da população, o que pode ser inviável em muitos cenários.</p></li>
@@ -1039,11 +1039,11 @@
 </section>
 </section>
 <section id="amostragem-sistematica">
-<h2><span class="section-number">3.2. </span>Amostragem sistemática<a class="headerlink" href="#amostragem-sistematica" title="Link permanente para este cabeçalho">¶</a></h2>
+<h2><span class="section-number">3.2. </span>Amostragem sistemática<a class="headerlink" href="#amostragem-sistematica" title="Link para este cabeçalho">¶</a></h2>
 <p>A <strong>Amostragem Sistemática</strong> é um método de amostragem probabilística onde os elementos da população são selecionados em intervalos regulares a partir de uma lista ordenada. Diferente da <strong>Amostragem Aleatória Simples (AAS)</strong>, em que cada elemento é escolhido independentemente, aqui definimos um <strong>intervalo de seleção</strong> <span class="math notranslate nohighlight">\( k \)</span> e selecionamos os elementos seguindo esse padrão.</p>
 <hr class="docutils" />
 <section id="passos-para-aplicar-a-amostragem-sistematica">
-<h3><span class="section-number">3.2.1. </span>Passos para aplicar a Amostragem Sistemática<a class="headerlink" href="#passos-para-aplicar-a-amostragem-sistematica" title="Link permanente para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">3.2.1. </span>Passos para aplicar a Amostragem Sistemática<a class="headerlink" href="#passos-para-aplicar-a-amostragem-sistematica" title="Link para este cabeçalho">¶</a></h3>
 <ol class="arabic">
 <li><p>Determinar o tamanho da população <span class="math notranslate nohighlight">\( N \)</span> e o tamanho da amostra desejada <span class="math notranslate nohighlight">\( n \)</span>.</p></li>
 <li><p>Calcular o intervalo de seleção <span class="math notranslate nohighlight">\( k \)</span>:</p>
@@ -1058,7 +1058,7 @@
 <li><p>Selecionar os próximos elementos somando <span class="math notranslate nohighlight">\( k \)</span> ao índice inicial <span class="math notranslate nohighlight">\( r \)</span>.</p></li>
 </ol>
 <section id="exemplo-pratico">
-<h4><span class="section-number">3.2.1.1. </span>Exemplo prático<a class="headerlink" href="#exemplo-pratico" title="Link permanente para este cabeçalho">¶</a></h4>
+<h4><span class="section-number">3.2.1.1. </span>Exemplo prático<a class="headerlink" href="#exemplo-pratico" title="Link para este cabeçalho">¶</a></h4>
 <p>Se temos uma população de <strong>1.000 indivíduos</strong> e queremos uma amostra de <strong>100</strong>, calculamos:</p>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
@@ -1071,7 +1071,7 @@ k = \frac{1000}{100} = 10
 </section>
 <hr class="docutils" />
 <section id="vantagens-da-amostragem-sistematica">
-<h3><span class="section-number">3.2.2. </span>Vantagens da Amostragem Sistemática<a class="headerlink" href="#vantagens-da-amostragem-sistematica" title="Link permanente para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">3.2.2. </span>Vantagens da Amostragem Sistemática<a class="headerlink" href="#vantagens-da-amostragem-sistematica" title="Link para este cabeçalho">¶</a></h3>
 <p><strong>Fácil de aplicar e rápida</strong></p>
 <ul class="simple">
 <li><p>Exige apenas um sorteio inicial, tornando-a mais eficiente do que a <strong>Amostragem Aleatória Simples</strong>.</p></li>
@@ -1087,7 +1087,7 @@ k = \frac{1000}{100} = 10
 </section>
 <hr class="docutils" />
 <section id="desvantagens-da-amostragem-sistematica">
-<h3><span class="section-number">3.2.3. </span>Desvantagens da Amostragem Sistemática<a class="headerlink" href="#desvantagens-da-amostragem-sistematica" title="Link permanente para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">3.2.3. </span>Desvantagens da Amostragem Sistemática<a class="headerlink" href="#desvantagens-da-amostragem-sistematica" title="Link para este cabeçalho">¶</a></h3>
 <p><strong>Pode gerar viés se houver padrões na população</strong></p>
 <ul class="simple">
 <li><p>Se a lista seguir um padrão cíclico que coincida com o intervalo <span class="math notranslate nohighlight">\( k \)</span>, a amostra pode não ser representativa.</p></li>
@@ -1100,7 +1100,7 @@ k = \frac{1000}{100} = 10
 </section>
 <hr class="docutils" />
 <section id="amostragem-sistematica-vs-amostragem-estratificada">
-<h3><span class="section-number">3.2.4. </span>Amostragem Sistemática vs. Amostragem Estratificada<a class="headerlink" href="#amostragem-sistematica-vs-amostragem-estratificada" title="Link permanente para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">3.2.4. </span>Amostragem Sistemática vs. Amostragem Estratificada<a class="headerlink" href="#amostragem-sistematica-vs-amostragem-estratificada" title="Link para este cabeçalho">¶</a></h3>
 <ul>
 <li><p><strong>Amostragem Estratificada</strong> (que será utilizada adiante) divide a população em <strong>grupos homogêneos (estratos)</strong> e, dentro de cada estrato, a amostragem pode ser feita de forma aleatória ou sistemática.</p></li>
 <li><p><strong>Aplicação</strong></p>
@@ -1113,7 +1113,7 @@ k = \frac{1000}{100} = 10
 </ul>
 </section>
 <section id="amostragem-sistematica-vs-amostragem-por-conglomerados">
-<h3><span class="section-number">3.2.5. </span>Amostragem Sistemática vs. Amostragem por Conglomerados<a class="headerlink" href="#amostragem-sistematica-vs-amostragem-por-conglomerados" title="Link permanente para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">3.2.5. </span>Amostragem Sistemática vs. Amostragem por Conglomerados<a class="headerlink" href="#amostragem-sistematica-vs-amostragem-por-conglomerados" title="Link para este cabeçalho">¶</a></h3>
 <ul>
 <li><p><strong>Amostragem por Conglomerados</strong> divide a população em <strong>grupos naturais (conglomerados)</strong> e seleciona alguns desses grupos aleatoriamente para análise.</p></li>
 <li><p><strong>Aplicação</strong></p>
@@ -1212,7 +1212,7 @@ k = \frac{1000}{100} = 10
 </div>
 </section>
 <section id="id2">
-<h3><span class="section-number">3.2.6. </span>Exemplo prático<a class="headerlink" href="#id2" title="Link permanente para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">3.2.6. </span>Exemplo prático<a class="headerlink" href="#id2" title="Link para este cabeçalho">¶</a></h3>
 <p>Função para amostragem sistemática:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1391,7 +1391,7 @@ k = \frac{1000}{100} = 10
 </section>
 </section>
 <section id="amostragem-por-grupos">
-<h2><span class="section-number">3.3. </span>Amostragem por grupos<a class="headerlink" href="#amostragem-por-grupos" title="Link permanente para este cabeçalho">¶</a></h2>
+<h2><span class="section-number">3.3. </span>Amostragem por grupos<a class="headerlink" href="#amostragem-por-grupos" title="Link para este cabeçalho">¶</a></h2>
 <p>Este tipo de Amostragem simplesmente divide o conjunto de dados de forma sequencial (ou seja, por ordem de entrada) em grupos iguais, sem considerar a variabilidade interna dos grupos. Isso é mais uma divisão estratificada ou simples divisão em grupos. A amostragem não é aleatória e não leva em consideração a estrutura interna dos dados.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1926,10 +1926,10 @@ k = \frac{1000}{100} = 10
 </div>
 </section>
 <section id="amostra-estratificada">
-<h2><span class="section-number">3.4. </span>Amostra estratificada<a class="headerlink" href="#amostra-estratificada" title="Link permanente para este cabeçalho">¶</a></h2>
+<h2><span class="section-number">3.4. </span>Amostra estratificada<a class="headerlink" href="#amostra-estratificada" title="Link para este cabeçalho">¶</a></h2>
 <p>A <strong>amostragem estratificada</strong> é um método de amostragem probabilística em que a população é dividida em subgrupos ou “estratos” com base em características específicas, e em seguida, amostras são retiradas de cada um desses estratos. O objetivo principal desse tipo de amostragem é garantir que diferentes subgrupos importantes da população sejam representados de forma adequada na amostra, o que aumenta a precisão das estimativas quando comparado à amostragem aleatória simples.</p>
 <section id="definindo-a-amostra">
-<h3><span class="section-number">3.4.1. </span>Definindo a amostra:<a class="headerlink" href="#definindo-a-amostra" title="Link permanente para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">3.4.1. </span>Definindo a amostra:<a class="headerlink" href="#definindo-a-amostra" title="Link para este cabeçalho">¶</a></h3>
 <ol class="arabic simple">
 <li><p><strong>Divisão da população em estratos</strong>:</p>
 <ul class="simple">
@@ -1956,7 +1956,7 @@ k = \frac{1000}{100} = 10
 </ol>
 </section>
 <section id="vantagens-da-amostragem-estratificada">
-<h3><span class="section-number">3.4.2. </span>Vantagens da amostragem estratificada:<a class="headerlink" href="#vantagens-da-amostragem-estratificada" title="Link permanente para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">3.4.2. </span>Vantagens da amostragem estratificada:<a class="headerlink" href="#vantagens-da-amostragem-estratificada" title="Link para este cabeçalho">¶</a></h3>
 <ul class="simple">
 <li><p><strong>Maior precisão</strong>: Como os estratos são grupos homogêneos, a amostragem dentro desses grupos tende a ser mais precisa do que uma amostra aleatória simples, onde a variabilidade dentro da amostra pode ser maior.</p></li>
 <li><p><strong>Representatividade de subgrupos</strong>: A amostragem estratificada garante que subgrupos importantes sejam representados adequadamente na amostra, o que pode ser crucial em pesquisas com diferentes populações ou características.</p></li>
@@ -1964,7 +1964,7 @@ k = \frac{1000}{100} = 10
 </ul>
 </section>
 <section id="exemplo-de-amostragem-estratificada">
-<h3><span class="section-number">3.4.3. </span>Exemplo de amostragem estratificada:<a class="headerlink" href="#exemplo-de-amostragem-estratificada" title="Link permanente para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">3.4.3. </span>Exemplo de amostragem estratificada:<a class="headerlink" href="#exemplo-de-amostragem-estratificada" title="Link para este cabeçalho">¶</a></h3>
 <p>Imagine que você está conduzindo uma pesquisa sobre os hábitos de consumo de diferentes faixas etárias em uma população de 1.000 pessoas, onde:</p>
 <ul class="simple">
 <li><p>200 são jovens (18-30 anos),</p></li>
@@ -1980,14 +1980,14 @@ k = \frac{1000}{100} = 10
 <p>Caso você opte por uma amostragem <strong>igual</strong>, você selecionaria 33 pessoas de cada estrato, independentemente de sua proporção na população.</p>
 </section>
 <section id="consideracoes">
-<h3><span class="section-number">3.4.4. </span>Considerações:<a class="headerlink" href="#consideracoes" title="Link permanente para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">3.4.4. </span>Considerações:<a class="headerlink" href="#consideracoes" title="Link para este cabeçalho">¶</a></h3>
 <ul class="simple">
 <li><p>A amostragem estratificada é particularmente útil quando a variabilidade entre os estratos é alta e você quer garantir que a amostra seja representativa desses estratos.</p></li>
 <li><p>É necessário ter conhecimento prévio sobre a distribuição dos estratos na população, o que pode ser uma limitação dependendo dos dados disponíveis.</p></li>
 </ul>
 </section>
 <section id="aplicacoes">
-<h3><span class="section-number">3.4.5. </span>Aplicações:<a class="headerlink" href="#aplicacoes" title="Link permanente para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">3.4.5. </span>Aplicações:<a class="headerlink" href="#aplicacoes" title="Link para este cabeçalho">¶</a></h3>
 <ul class="simple">
 <li><p><strong>Pesquisa de mercado</strong>: Para garantir que diferentes grupos de consumidores sejam representados adequadamente.</p></li>
 <li><p><strong>Pesquisas sociais e políticas</strong>: Para garantir que diferentes segmentos da população (por exemplo, regiões, classes sociais, etnias) sejam adequadamente refletidos.</p></li>
@@ -2233,10 +2233,10 @@ Name: income, dtype: int64
 </section>
 </section>
 <section id="amostragem-de-reservatorio">
-<h2><span class="section-number">3.5. </span>Amostragem de Reservatório<a class="headerlink" href="#amostragem-de-reservatorio" title="Link permanente para este cabeçalho">¶</a></h2>
+<h2><span class="section-number">3.5. </span>Amostragem de Reservatório<a class="headerlink" href="#amostragem-de-reservatorio" title="Link para este cabeçalho">¶</a></h2>
 <p>A <strong>amostragem de reservatório</strong> é um método de amostragem usado principalmente quando o tamanho da população é desconhecido ou muito grande para ser acessado diretamente. Esse método permite que amostras aleatórias sejam retiradas de uma sequência de elementos, mesmo quando a população total não é conhecida antecipadamente.</p>
 <section id="como-funciona-a-amostragem-de-reservatorio">
-<h3><span class="section-number">3.5.1. </span>Como funciona a amostragem de reservatório:<a class="headerlink" href="#como-funciona-a-amostragem-de-reservatorio" title="Link permanente para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">3.5.1. </span>Como funciona a amostragem de reservatório:<a class="headerlink" href="#como-funciona-a-amostragem-de-reservatorio" title="Link para este cabeçalho">¶</a></h3>
 <ol class="arabic simple">
 <li><p><strong>Inicialização</strong>:</p>
 <ul class="simple">
@@ -2259,7 +2259,7 @@ Name: income, dtype: int64
 </ol>
 </section>
 <section id="exemplo-de-amostragem-de-reservatorio">
-<h3><span class="section-number">3.5.2. </span>Exemplo de amostragem de reservatório:<a class="headerlink" href="#exemplo-de-amostragem-de-reservatorio" title="Link permanente para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">3.5.2. </span>Exemplo de amostragem de reservatório:<a class="headerlink" href="#exemplo-de-amostragem-de-reservatorio" title="Link para este cabeçalho">¶</a></h3>
 <p>Imagine que você está processando uma sequência de dados com 1.000.000 de elementos e deseja selecionar uma amostra de 10. Para isso, você faria o seguinte:</p>
 <ol class="arabic simple">
 <li><p>Inicialmente, você seleciona os primeiros 10 elementos e os armazena no reservatório.</p></li>
@@ -2268,7 +2268,7 @@ Name: income, dtype: int64
 </ol>
 </section>
 <section id="vantagens-da-amostragem-de-reservatorio">
-<h3><span class="section-number">3.5.3. </span>Vantagens da amostragem de reservatório:<a class="headerlink" href="#vantagens-da-amostragem-de-reservatorio" title="Link permanente para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">3.5.3. </span>Vantagens da amostragem de reservatório:<a class="headerlink" href="#vantagens-da-amostragem-de-reservatorio" title="Link para este cabeçalho">¶</a></h3>
 <ul class="simple">
 <li><p><strong>Eficiência em grandes populações</strong>: A amostragem de reservatório é especialmente útil quando o tamanho total da população ou sequência é muito grande ou desconhecido, pois você não precisa armazenar todos os elementos, apenas a amostra selecionada.</p></li>
 <li><p><strong>Simples de implementar</strong>: O algoritmo de amostragem de reservatório é relativamente simples e não requer muita memória, tornando-o adequado para grandes fluxos de dados em tempo real.</p></li>
@@ -2276,14 +2276,14 @@ Name: income, dtype: int64
 </ul>
 </section>
 <section id="desvantagens-da-amostragem-de-reservatorio">
-<h3><span class="section-number">3.5.4. </span>Desvantagens da amostragem de reservatório:<a class="headerlink" href="#desvantagens-da-amostragem-de-reservatorio" title="Link permanente para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">3.5.4. </span>Desvantagens da amostragem de reservatório:<a class="headerlink" href="#desvantagens-da-amostragem-de-reservatorio" title="Link para este cabeçalho">¶</a></h3>
 <ul class="simple">
 <li><p><strong>Desperdício de elementos não selecionados</strong>: Embora o método garanta que a amostra seja aleatória, ele pode resultar em perda de informações sobre elementos que não foram selecionados, já que a amostra não reflete a sequência inteira.</p></li>
 <li><p><strong>Seleção não ideal em casos de grandes variabilidades</strong>: Em populações muito desiguais ou com grande variabilidade entre os elementos, a amostragem de reservatório pode não ser tão eficaz quanto outros métodos de amostragem estratificada ou sistemática.</p></li>
 </ul>
 </section>
 <section id="id3">
-<h3><span class="section-number">3.5.5. </span>Aplicações:<a class="headerlink" href="#id3" title="Link permanente para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">3.5.5. </span>Aplicações:<a class="headerlink" href="#id3" title="Link para este cabeçalho">¶</a></h3>
 <p>A amostragem de reservatório é comumente usada em:</p>
 <ul class="simple">
 <li><p><strong>Processamento de fluxos de dados em tempo real</strong>: Por exemplo, na análise de logs de servidores ou dados de sensores, onde a população pode ser muito grande ou infinita.</p></li>
@@ -2292,7 +2292,7 @@ Name: income, dtype: int64
 </ul>
 </section>
 <section id="exemplo-em-codigo">
-<h3><span class="section-number">3.5.6. </span>Exemplo em código<a class="headerlink" href="#exemplo-em-codigo" title="Link permanente para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">3.5.6. </span>Exemplo em código<a class="headerlink" href="#exemplo-em-codigo" title="Link para este cabeçalho">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">amostragem_reservatorio</span><span class="p">(</span><span class="n">sequencia</span><span class="p">,</span> <span class="n">tamanho_amostra</span><span class="p">):</span>
@@ -2325,7 +2325,7 @@ Name: income, dtype: int64
 </div>
 </section>
 <section id="exemplo-usando-o-dataset-inicial">
-<h3><span class="section-number">3.5.7. </span>Exemplo usando o dataset inicial<a class="headerlink" href="#exemplo-usando-o-dataset-inicial" title="Link permanente para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">3.5.7. </span>Exemplo usando o dataset inicial<a class="headerlink" href="#exemplo-usando-o-dataset-inicial" title="Link para este cabeçalho">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stream</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">)))</span>
@@ -2518,7 +2518,7 @@ Name: income, dtype: int64
 </section>
 </section>
 <section id="comparativo-dos-resultados">
-<h2><span class="section-number">3.6. </span>Comparativo dos resultados<a class="headerlink" href="#comparativo-dos-resultados" title="Link permanente para este cabeçalho">¶</a></h2>
+<h2><span class="section-number">3.6. </span>Comparativo dos resultados<a class="headerlink" href="#comparativo-dos-resultados" title="Link para este cabeçalho">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Criação do DataFrame de comparação</span>
@@ -2610,7 +2610,7 @@ Name: income, dtype: int64
 </div>
 </section>
 <section id="sobre-a-comparacao">
-<h2><span class="section-number">3.7. </span>Sobre a comparação<a class="headerlink" href="#sobre-a-comparacao" title="Link permanente para este cabeçalho">¶</a></h2>
+<h2><span class="section-number">3.7. </span>Sobre a comparação<a class="headerlink" href="#sobre-a-comparacao" title="Link para este cabeçalho">¶</a></h2>
 <ol class="arabic simple">
 <li><p><strong>Original (dataset)</strong>:</p>
 <ul class="simple">
@@ -2777,28 +2777,26 @@ Name: income, dtype: int64
       
     </aside>
   </div>
-</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=680035da"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
-    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+</div><script src="../_static/documentation_options.js?v=2efa9f5e"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=5fa4622c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=ff8fa330"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=bcf87968"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="../_static/translations.js?v=000972dd"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/translations.js?v=daa5921a"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=36754332"></script>
-    <script src="../_static/scripts/furo.js?v=5fa4622c"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     </body>
 </html>
