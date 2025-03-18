@@ -1069,6 +1069,10 @@ Intervalo de Confiança de 95%: (44.76, 51.48)
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">resample</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
 <span class="c1"># Configuração do estilo do Seaborn</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">)</span>
@@ -1086,7 +1090,7 @@ Intervalo de Confiança de 95%: (44.76, 51.48)
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Média da amostra de 20 elementos: </span><span class="si">{</span><span class="n">sample20</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="c1"># Bootstrap: 500 reamostragens com reposição da amostra de 20 valores</span>
-<span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">resample</span><span class="p">(</span><span class="n">sample20</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">500</span><span class="p">)]</span>
+<span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">resample</span><span class="p">(</span><span class="n">sample20</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">500</span><span class="p">)]</span>
 <span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
 
 <span class="c1"># Cálculo do intervalo de confiança de 90% (percentis 5% e 95%)</span>
@@ -1098,8 +1102,8 @@ Intervalo de Confiança de 95%: (44.76, 51.48)
 
 <span class="c1"># Adicionar as linhas do intervalo de confiança</span>
 <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">confidence_interval</span><span class="p">:</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mf">0.9</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;IC 90% (</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mf">0.8</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
 
 <span class="c1"># Adicionar a linha da média da distribuição bootstrap</span>
 <span class="n">meanIncome</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
@@ -1109,7 +1113,7 @@ Intervalo de Confiança de 95%: (44.76, 51.48)
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Distribuição Bootstrap da Média Amostral&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Média Amostral&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Frequência&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s2">&quot;IC 90%&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Média Bootstrap (</span><span class="si">{</span><span class="n">meanIncome</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
 <span class="c1"># Mostrar o gráfico</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -1124,7 +1128,7 @@ Intervalo de Confiança de 95%: (44.76, 51.48)
 Média da amostra de 20 elementos: 54.25
 </pre></div>
 </div>
-<img alt="../_images/0427c233089c3c2c84305d00ca4aef28b3e13892eae17fcf8d99e66ab3a02657.png" src="../_images/0427c233089c3c2c84305d00ca4aef28b3e13892eae17fcf8d99e66ab3a02657.png" />
+<img alt="../_images/f57bce82f0a93d4a1d327b241005263ef9be8e332e8397261952a9618468520d.png" src="../_images/f57bce82f0a93d4a1d327b241005263ef9be8e332e8397261952a9618468520d.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intervalo de Confiança de 90%: (47.69, 60.80)
 </pre></div>
 </div>
