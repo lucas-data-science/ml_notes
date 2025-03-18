@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Índice" href="../genindex.html" /><link rel="search" title="Buscar" href="../search.html" /><link rel="next" title="2. Análise Exploratória de Dados (AED)" href="Secao_2-Amostragem.html" /><link rel="prev" title="Prefácio" href="../intro.html" />
+<link rel="index" title="Índice" href="../genindex.html" /><link rel="search" title="Buscar" href="../search.html" /><link rel="next" title="2. Análise Exploratória de Dados (AED)" href="Analise_Exploratoria.html" /><link rel="prev" title="Prefácio" href="../intro.html" />
 
     <link rel="shortcut icon" href="../_static/flav4.png"/><!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
         <title>1. Sobre a Parte I - Ciência de Dados</title>
@@ -15,7 +15,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css?v=6ad1a40c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=302659d7" />
-    <link rel="stylesheet" type="text/css" href="../_static/estilo.css?v=99429480" />
+    <link rel="stylesheet" type="text/css" href="../_static/estilo.css?v=95c0c2e7" />
     
     
 
@@ -210,12 +210,17 @@
   <p class="caption" role="heading"><span class="caption-text">Parte I. Análise Exploratória de Dados e Estatística</span></p>
 <ul class="current">
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">1. Sobre a Parte I</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Secao_2-Amostragem.html">2. Análise Exploratória de Dados (AED)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Secao_2-Amostragem.html#amostragem-e-distribuicoes">3. Amostragem e Distribuições</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Analise_Exploratoria.html">2. Análise Exploratória de Dados (AED)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Amostragem.html">3. Amostragem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Distribuicoes_de_Dados.html">4. Distribuições de Dados</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Parte II. Machine Learning</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../notebooks/classificacao.html">4. Classificação</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/classificacao.html">5. Classificação</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Parte Final</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../bib.html">Referências</a></li>
 </ul>
 
 </div>
@@ -260,9 +265,8 @@
 <h1><span class="section-number">1. </span>Sobre a Parte I<a class="headerlink" href="#sobre-a-parte-i" title="Link permanente para este cabeçalho">¶</a></h1>
 <p>A Estatística e a Ciência de Dados são duas faces da mesma moeda. Enquanto a Estatística fornece os fundamentos teóricos e os métodos para descrever, inferir e modelar dados, a Ciência de Dados amplia essas técnicas com o uso de tecnologia avançada, permitindo a aplicação em larga escala para resolver problemas complexos. Juntas, essas disciplinas capacitam organizações e indivíduos a transformar dados brutos em conhecimento acionável.</p>
 <p>Nesta primeira parte do livro, exploraremos os principais conceitos estatísticos aplicados à Ciência de Dados, com ênfase na <strong>Análise Exploratória de Dados (AED)</strong>. A AED é uma etapa fundamental do processo analítico, pois permite identificar padrões, detectar anomalias e compreender a estrutura dos dados antes da modelagem preditiva. Além disso, abordaremos métodos estatísticos essenciais para a análise de dados, ilustrados por meio de códigos práticos.</p>
-<p>A maioria dos exemplos práticos apresentados são baseados no curso <em>Estatística para Ciência de Dados e Machine Learning</em>, disponível na IA Expert Academy:</p>
-<p>🔗 <a class="reference external" href="https://iaexpert.academy/cursos-online-assinatura/estatistica-para-ciencia-de-dados-e-machine-learning/">Curso na IA Expert Academy</a></p>
-<p>Os livros e referências teóricas utilizados ao longo do estudo serão citados no decorrer do texto, proporcionando um embasamento sólido para a compreensão dos conceitos abordados.</p>
+<p>Muito dos exemplos práticos apresentados são baseados no livro <span id="id1">[<a class="reference internal" href="../bib.html#id2" title="Peter Bruce, Andrew Bruce, and Peter Gedeck. Practical Statistics for Data Scientists. O’Reilly Media, Inc.,, 2 edition, 2020. URL: https://learning.oreilly.com/library/view/practical-statistics-for/9781492072935/.">Bruce <em>et al.</em>, 2020</a>]</span> e no curso da IA Expert Academy, <a class="reference external" href="https://iaexpert.academy/cursos-online-assinatura/estatistica-para-ciencia-de-dados-e-machine-learning/">Estatística para Ciência de Dados e Machine Learning</a>.</p>
+<p>Outros livros e referências teóricas utilizados ao longo do estudo serão citados no decorrer do texto, proporcionando um embasamento sólido para a compreensão dos conceitos abordados.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -289,7 +293,7 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="Secao_2-Amostragem.html">
+          <a class="next-page" href="Analise_Exploratoria.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>

@@ -106,7 +106,7 @@ body div.article-container {
     padding: 5px; /* Espaçamento interno */
 } 
  
-/* Esconder o texto original */
+/* Esconder o texto original para colocar o pt no lugar*/
 .toc-title {
     visibility: hidden;
     position: relative;

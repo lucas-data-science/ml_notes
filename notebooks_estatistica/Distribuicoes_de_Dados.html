@@ -1,0 +1,1048 @@
+<!doctype html>
+<html class="no-js" lang="pt-BR" data-content_root="">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Índice" href="../genindex.html" /><link rel="search" title="Buscar" href="../search.html" /><link rel="next" title="5. Classificação" href="../notebooks/classificacao.html" /><link rel="prev" title="3. Amostragem" href="Amostragem.html" />
+
+    <link rel="shortcut icon" href="../_static/flav4.png"/><!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
+        <title>4. Distribuições de Dados - Ciência de Dados</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=109105fe" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=949a1ff5" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css?v=6ad1a40c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="../_static/estilo.css?v=95c0c2e7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../intro.html"><div class="brand">Ciência de Dados</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../intro.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../_static/logo1.svg" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Ciência de Dados</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Buscar" name="q" aria-label="Buscar">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Parte I. Análise Exploratória de Dados e Estatística</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introducao_parte_1.html">1. Sobre a Parte I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Analise_Exploratoria.html">2. Análise Exploratória de Dados (AED)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Amostragem.html">3. Amostragem</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">4. Distribuições de Dados</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Parte II. Machine Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/classificacao.html">5. Classificação</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Parte Final</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../bib.html">Referências</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../_sources/notebooks_estatistica/Distribuicoes_de_Dados.ipynb" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section class="tex2jax_ignore mathjax_ignore" id="distribuicoes-de-dados">
+<h1><span class="section-number">4. </span>Distribuições de Dados<a class="headerlink" href="#distribuicoes-de-dados" title="Link permanente para este cabeçalho">¶</a></h1>
+<p>Para aprofundarmos em Distribuições de Dados vamos primeiro revisar as medidas de dispersão.</p>
+<section id="medidas-de-dispersao">
+<h2><span class="section-number">4.1. </span>Medidas de Dispersão<a class="headerlink" href="#medidas-de-dispersao" title="Link permanente para este cabeçalho">¶</a></h2>
+<p>As <strong>medidas de dispersão</strong> são ferramentas estatísticas que nos ajudam a entender a variabilidade ou a dispersão dos dados em torno de uma medida central, como a média ou a mediana. Enquanto as medidas de tendência central (média, mediana, moda) resumem os dados em um único valor, as medidas de dispersão nos mostram o quão espalhados ou concentrados estão os dados.</p>
+<p>Neste tópico, exploraremos as principais medidas de dispersão, como <strong>variância</strong>, <strong>desvio padrão</strong>, <strong>amplitude</strong> e <strong>intervalo interquartil (IQR)</strong>, e discutiremos como elas são usadas na análise de dados.</p>
+<hr class="docutils" />
+<p>As medidas de dispersão são essenciais para:</p>
+<ul class="simple">
+<li><p>Compreensão da variabilidade pois nos ajudam a entender o quão consistentes ou variáveis são os dados.</p></li>
+<li><p>Comparação entre conjuntos de dados uma vez que podemos comparar a dispersão de diferentes conjuntos de dados para identificar padrões ou anomalias.</p></li>
+<li><p>Fundamentos para técnicas estatísticas, pois veremos que além do Teorema do Limite Central, intervalos de confiança e testes de hipóteses, também dependem do entendimento da dispersão dos dados.</p></li>
+</ul>
+<hr class="docutils" />
+<section id="amplitude">
+<h3><span class="section-number">4.1.1. </span>Amplitude<a class="headerlink" href="#amplitude" title="Link permanente para este cabeçalho">¶</a></h3>
+<p>A <strong>amplitude</strong> é a diferença entre o maior e o menor valor de um conjunto de dados. É a medida de dispersão mais simples, mas também a mais sensível a valores extremos (outliers).</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[
+\text{Amplitude} = \text{Valor Máximo} - \text{Valor Mínimo}
+\]</div>
+</div>
+<p><strong>Exemplo</strong>: Em um conjunto de dados <span class="math notranslate nohighlight">\([3, 7, 8, 5, 12]\)</span>, a amplitude é <span class="math notranslate nohighlight">\(12 - 3 = 9\)</span>.</p>
+<hr class="docutils" />
+</section>
+<section id="variancia">
+<h3><span class="section-number">4.1.2. </span>Variância<a class="headerlink" href="#variancia" title="Link permanente para este cabeçalho">¶</a></h3>
+<p>A <strong>variância</strong> mede o quão distantes os valores estão da média. É calculada como a média dos quadrados das diferenças entre cada valor e a média.</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[
+\text{Variância} (\sigma^2) = \frac{1}{n} \sum_{i=1}^{n} (x_i - \bar{x})^2
+\]</div>
+</div>
+<p>Onde:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x_i\)</span>: Cada valor do conjunto de dados.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\bar{x}\)</span>: Média dos dados.</p></li>
+<li><p><span class="math notranslate nohighlight">\(n\)</span>: Número de observações.</p></li>
+</ul>
+<p><strong>Exemplo</strong>: Para o conjunto de dados <span class="math notranslate nohighlight">\([3, 7, 8, 5, 12]\)</span>, a variância é calculada a patir de <span class="math notranslate nohighlight">\(\bar{x} = 7\)</span>, como:</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[
+\sigma^2 = \frac{(3-7)^2 + (7-7)^2 + (8-7)^2 + (5-7)^2 + (12-7)^2}{5} = 10.8
+\]</div>
+</div>
+<hr class="docutils" />
+</section>
+<section id="desvio-padrao">
+<h3><span class="section-number">4.1.3. </span>Desvio Padrão<a class="headerlink" href="#desvio-padrao" title="Link permanente para este cabeçalho">¶</a></h3>
+<p>O <strong>desvio padrão</strong> é a raiz quadrada da variância. Ele expressa a dispersão dos dados na mesma unidade dos dados originais, o que facilita a interpretação.</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[
+\text{Desvio Padrão} (\sigma) = \sqrt{\text{Variância}}
+\]</div>
+</div>
+<p><strong>Exemplo</strong>: No mesmo conjunto de dados, o desvio padrão é <span class="math notranslate nohighlight">\(\sqrt{10.8} \approx 3.29\)</span>.</p>
+<hr class="docutils" />
+</section>
+<section id="intervalo-interquartil-iqr">
+<h3><span class="section-number">4.1.4. </span>Intervalo Interquartil (IQR)<a class="headerlink" href="#intervalo-interquartil-iqr" title="Link permanente para este cabeçalho">¶</a></h3>
+<p>O <strong>intervalo interquartil (IQR)</strong> é a diferença entre o terceiro quartil (<span class="math notranslate nohighlight">\(Q3\)</span>) e o primeiro quartil (<span class="math notranslate nohighlight">\(Q1\)</span>). Ele mede a dispersão dos 50% centrais dos dados, sendo menos sensível a valores extremos.</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[
+\text{IQR} = Q3 - Q1
+\]</div>
+</div>
+<p><strong>Exemplo</strong>: Para o conjunto de dados <span class="math notranslate nohighlight">\([3, 5, 7, 8, 12]\)</span>, os quartis são:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(Q1 = 5\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(Q3 = 8\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{IQR} = 8 - 5 = 3\)</span></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="medida-de-dispersao-adequada">
+<h3><span class="section-number">4.1.5. </span>Medida de Dispersão Adequada<a class="headerlink" href="#medida-de-dispersao-adequada" title="Link permanente para este cabeçalho">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Amplitude</strong>: Útil para uma visão rápida da dispersão, mas sensível a outliers.</p></li>
+<li><p><strong>Variância e Desvio Padrão</strong>: Ideais para dados simétricos e sem outliers.</p></li>
+<li><p><strong>IQR</strong>: Melhor para dados assimétricos ou com outliers.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="exemplo-pratico-analise-de-dados-de-rendimento-anual">
+<h3><span class="section-number">4.1.6. </span>Exemplo Prático: Análise de Dados de Rendimento Anual<a class="headerlink" href="#exemplo-pratico-analise-de-dados-de-rendimento-anual" title="Link permanente para este cabeçalho">¶</a></h3>
+<p>Vamos usar os dados do capítulo 2 do livro <span id="id1">[<a class="reference internal" href="../bib.html#id2" title="Peter Bruce, Andrew Bruce, and Peter Gedeck. Practical Statistics for Data Scientists. O’Reilly Media, Inc.,, 2 edition, 2020. URL: https://learning.oreilly.com/library/view/practical-statistics-for/9781492072935/.">Bruce <em>et al.</em>, 2020</a>]</span> sobre rendimentos anuais de candidatos a empréstimos.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">resample</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">LOANS_INCOME_CSV</span> <span class="o">=</span> <span class="s1">&#39;data/loans_income.csv&#39;</span> 
+
+<span class="n">loans_income</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">LOANS_INCOME_CSV</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span>
+
+<span class="c1"># Calcular as medidas de dispersão</span>
+<span class="n">amplitude</span> <span class="o">=</span> <span class="n">loans_income</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">loans_income</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="n">variancia</span> <span class="o">=</span> <span class="n">loans_income</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
+<span class="n">desvio_padrao</span> <span class="o">=</span> <span class="n">loans_income</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="n">iqr</span> <span class="o">=</span> <span class="n">loans_income</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span> <span class="o">-</span> <span class="n">loans_income</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
+
+<span class="c1"># Exibir os resultados</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Amplitude: </span><span class="si">{</span><span class="n">amplitude</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Variância: </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">variancia</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Desvio Padrão: </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">desvio_padrao</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;IQR: </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">iqr</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Amplitude: 195000
+Variância: 1080570709
+Desvio Padrão: 32872
+IQR: 40000
+</pre></div>
+</div>
+</div>
+</div>
+<p>Podemos fazer uma representação gráfica de algumas dessas medidas de dispersão com uma distribuição seguida de um boxplot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Exemplo de dados (substitua pelo seu DataFrame ou série)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span> 
+
+<span class="c1"># Configuração do estilo do gráfico</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">)</span>
+<span class="c1"># Configuração do estilo do gráfico</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">,</span> <span class="n">font_scale</span><span class="o">=</span><span class="mf">1.3</span><span class="p">)</span>  <span class="c1"># Reduz o tamanho da fonte global</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;lines.linewidth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1"># Define a espessura das linhas como fina</span>
+<span class="c1"># Criação da figura e dos eixos</span>
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span>
+    <span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> 
+    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> 
+    <span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;height_ratios&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">]},</span> 
+    <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+
+<span class="c1"># Gráfico de distribuição (histograma + curva de densidade)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">loans_income</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Distribuição de Rendimentos Anuais&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Frequência&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+
+<span class="c1"># Boxplot horizontal</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">loans_income</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Rendimento Anual&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+
+<span class="c1"># Adicionar média e desvio padrão ao gráfico de distribuição</span>
+<span class="n">media</span> <span class="o">=</span> <span class="n">loans_income</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">desvio_padrao</span> <span class="o">=</span> <span class="n">loans_income</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">media</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Média: </span><span class="si">{</span><span class="n">media</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">media</span> <span class="o">-</span> <span class="n">desvio_padrao</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Desvio Padrão: ±</span><span class="si">{</span><span class="n">desvio_padrao</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">media</span> <span class="o">+</span> <span class="n">desvio_padrao</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+
+<span class="c1"># Ajustar layout para evitar sobreposição</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+<span class="c1"># Exibir o gráfico</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/adf6891b610287b792de88e330d4d5e7ac15e68b18399187a49e44c380dcb688.png" src="../_images/adf6891b610287b792de88e330d4d5e7ac15e68b18399187a49e44c380dcb688.png" />
+</div>
+</div>
+<p>A distância do desvio padrão dos dados é representada para a direita e para a esquerda pelas linhas verdes. A linha vermelha representa a média.
+No gráfico de baixo temos um boxplot que mostra a mediana e o tamanho da caixa é o IQR (Intervalo Interquartil).
+O boxplot é uma forma simplicada de visualizar a distribuição dos dados.</p>
+</section>
+</section>
+<section id="distribuicao-de-amostragem">
+<h2><span class="section-number">4.2. </span>Distribuição de Amostragem<a class="headerlink" href="#distribuicao-de-amostragem" title="Link permanente para este cabeçalho">¶</a></h2>
+<p>O termo <strong>distribuição de amostragem de uma estatística</strong> do segundo capítulo de <span id="id2">[<a class="reference internal" href="../bib.html#id2" title="Peter Bruce, Andrew Bruce, and Peter Gedeck. Practical Statistics for Data Scientists. O’Reilly Media, Inc.,, 2 edition, 2020. URL: https://learning.oreilly.com/library/view/practical-statistics-for/9781492072935/.">Bruce <em>et al.</em>, 2020</a>]</span>, refere-se à distribuição de valores de uma estatística (como a média ou o desvio padrão) calculada a partir de várias amostras extraídas de uma mesma população. Na estatística clássica, um dos principais objetivos é fazer inferências sobre uma população com base em amostras relativamente pequenas. Devemos considerar os importantes tópicos:</p>
+<ul class="simple">
+<li><p><strong>Inferência Estatística</strong>: Quando extraímos uma amostra de uma população, usamos estatísticas amostrais (como a média ou a variância) para estimar parâmetros populacionais. No entanto, como estamos trabalhando com uma amostra, há sempre um grau de incerteza associado a essas estimativas.</p></li>
+<li><p><strong>Variabilidade Amostral</strong>: Diferentes amostras podem produzir estatísticas diferentes. A distribuição de amostragem nos ajuda a entender a variabilidade dessas estatísticas e a quantificar a incerteza associada às nossas estimativas.</p></li>
+<li><p><strong>Tamanho da Amostra</strong>: Quanto maior o tamanho da amostra, mais precisa e estável será a estimativa da estatística. Isso ocorre porque a distribuição de amostragem tende a se tornar mais concentrada e simétrica à medida que o tamanho da amostra aumenta.</p></li>
+</ul>
+<section id="diferenca-entre-distribuicao-dos-dados-e-distribuicao-de-amostragem">
+<h3><span class="section-number">4.2.1. </span>Diferença Entre Distribuição dos Dados e Distribuição de Amostragem<a class="headerlink" href="#diferenca-entre-distribuicao-dos-dados-e-distribuicao-de-amostragem" title="Link permanente para este cabeçalho">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Distribuição dos Dados</strong>: Refere-se à distribuição dos valores individuais em um conjunto de dados. Por exemplo, a distribuição dos rendimentos anuais de candidatos a empréstimo.</p></li>
+<li><p><strong>Distribuição de Amostragem</strong>: Refere-se à distribuição de uma estatística (como a média) calculada a partir de várias amostras. Essa distribuição tende a ser mais regular e próxima de uma distribuição normal (campanular) do que a distribuição dos dados originais.</p></li>
+</ul>
+</section>
+<section id="exemplo-pratico-rendimentos-anuais-de-candidatos-a-emprestimo">
+<h3><span class="section-number">4.2.2. </span>Exemplo Prático: Rendimentos Anuais de Candidatos a Empréstimo<a class="headerlink" href="#exemplo-pratico-rendimentos-anuais-de-candidatos-a-emprestimo" title="Link permanente para este cabeçalho">¶</a></h3>
+<p>Vamos ilustrar esses conceitos com um exemplo utilizando dados de rendimentos anuais de candidatos a empréstimo no Lending Club usado anteriormente. Considere três cenários:</p>
+<ol class="arabic simple">
+<li><p><strong>Amostra de 1.000 valores individuais</strong>:</p>
+<ul class="simple">
+<li><p>A distribuição dos dados é amplamente espalhada e assimétrica, com uma inclinação para valores mais altos.</p></li>
+</ul>
+</li>
+<li><p><strong>Amostra de 1.000 médias de 5 valores</strong>:</p>
+<ul class="simple">
+<li><p>A distribuição das médias é mais compacta e próxima de uma distribuição normal.</p></li>
+</ul>
+</li>
+<li><p><strong>Amostra de 1.000 médias de 20 valores</strong>:</p>
+<ul class="simple">
+<li><p>A distribuição das médias é ainda mais compacta e campanular, demonstrando o efeito do aumento do tamanho da amostra.</p></li>
+</ul>
+</li>
+</ol>
+<p>Vamo construir um código para gerar os histogramas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;income&#39;</span><span class="p">:</span> <span class="n">loans_income</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">1000</span><span class="p">),</span>
+    <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;Data&#39;</span><span class="p">,</span>
+<span class="p">})</span>
+
+<span class="n">sample_mean_05</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;income&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">loans_income</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">)],</span>
+    <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;Mean of 5&#39;</span><span class="p">,</span>
+<span class="p">})</span>
+
+<span class="n">sample_mean_20</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;income&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">loans_income</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">)],</span>
+    <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;Mean of 20&#39;</span><span class="p">,</span>
+<span class="p">})</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">sample_data</span><span class="p">,</span> <span class="n">sample_mean_05</span><span class="p">,</span> <span class="n">sample_mean_20</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         income  type
+33553   92000.0  Data
+9427    50000.0  Data
+199     40000.0  Data
+12447   95000.0  Data
+39489  135000.0  Data
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Simulação dos dados de rendimento anual</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>  <span class="c1"># Para reproducibilidade</span>
+ 
+<span class="c1"># Amostra de 1.000 valores individuais</span>
+<span class="n">sample_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;income&#39;</span><span class="p">:</span> <span class="n">loans_income</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span>
+    <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;Data&#39;</span><span class="p">,</span>
+<span class="p">})</span>
+
+<span class="c1"># Amostra de 1.000 médias de 5 valores</span>
+<span class="n">sample_mean_05</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;income&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">loans_income</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">)],</span>
+    <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;Mean of 5&#39;</span><span class="p">,</span>
+<span class="p">})</span>
+
+<span class="c1"># Amostra de 1.000 médias de 20 valores</span>
+<span class="n">sample_mean_20</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;income&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">loans_income</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">)],</span>
+    <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;Mean of 20&#39;</span><span class="p">,</span>
+<span class="p">})</span>
+
+<span class="c1"># Combina os dados em um único DataFrame</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">sample_data</span><span class="p">,</span> <span class="n">sample_mean_05</span><span class="p">,</span> <span class="n">sample_mean_20</span><span class="p">])</span>
+
+<span class="c1"># Configuração do estilo do gráfico</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">,</span> <span class="n">font_scale</span><span class="o">=</span><span class="mf">1.2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;lines.linewidth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="c1"># Criação dos histogramas</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="c1"># Histograma para os dados originais</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">sample_data</span><span class="p">[</span><span class="s1">&#39;income&#39;</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">20000</span><span class="p">,</span> <span class="mi">200000</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Histograma de Rendimentos Anuais de 1.000 Candidatos a Empréstimo&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Rendimento Anual&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequência&#39;</span><span class="p">)</span>
+
+<span class="c1"># Histograma para as médias de 5 valores</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">sample_mean_05</span><span class="p">[</span><span class="s1">&#39;income&#39;</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">20000</span><span class="p">,</span> <span class="mi">200000</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Histograma de 1.000 Médias de Amostras de Tamanho 5&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Média de Rendimento Anual&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequência&#39;</span><span class="p">)</span>
+
+<span class="c1"># Histograma para as médias de 20 valores</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">sample_mean_20</span><span class="p">[</span><span class="s1">&#39;income&#39;</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">20000</span><span class="p">,</span> <span class="mi">200000</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Histograma de 1.000 Médias de Amostras de Tamanho 20&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Média de Rendimento Anual&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequência&#39;</span><span class="p">)</span>
+
+<span class="c1"># Ajusta o layout para evitar sobreposição</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+<span class="c1"># Exibe o gráfico</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/90055295482c82aabaeda98a43e4faac2ad6321969e141128d930dde5eaf00b3.png" src="../_images/90055295482c82aabaeda98a43e4faac2ad6321969e141128d930dde5eaf00b3.png" />
+</div>
+</div>
+<p>No gráfico foi usada a biblioteca seaborn.</p>
+</section>
+</section>
+<section id="teorema-do-limite-central">
+<h2><span class="section-number">4.3. </span>Teorema do Limite Central<a class="headerlink" href="#teorema-do-limite-central" title="Link permanente para este cabeçalho">¶</a></h2>
+<p>O <strong>Teorema do Limite Central (TLC)</strong> é um dos conceitos mais importantes da estatística e da ciência de dados. Ele fornece a base teórica para muitas técnicas de inferência estatística, como intervalos de confiança e testes de hipóteses. Neste tópico, exploraremos o que é o TLC, por que ele é importante e como aplicá-lo na prática.</p>
+<hr class="docutils" />
+<section id="conceito">
+<h3><span class="section-number">4.3.1. </span>Conceito<a class="headerlink" href="#conceito" title="Link permanente para este cabeçalho">¶</a></h3>
+<p>O Teorema do Limite Central afirma que, <strong>independentemente da distribuição da população</strong>, a distribuição das médias amostrais se aproxima de uma distribuição normal à medida que o tamanho da amostra aumenta. Em outras palavras:</p>
+<ul class="simple">
+<li><p>Se você coletar várias amostras de uma população (com ou sem distribuição normal) e calcular a média de cada amostra, a distribuição dessas médias será aproximadamente normal.</p></li>
+<li><p>Quanto maior o tamanho da amostra, mais próxima a distribuição das médias estará de uma distribuição normal.</p></li>
+</ul>
+</section>
+<section id="conceito-formal">
+<h3><span class="section-number">4.3.2. </span>Conceito formal<a class="headerlink" href="#conceito-formal" title="Link permanente para este cabeçalho">¶</a></h3>
+<p>Dada uma população com média <span class="math notranslate nohighlight">\(\mu\)</span> e desvio padrão <span class="math notranslate nohighlight">\(\sigma\)</span>, a distribuição das médias amostrais (<span class="math notranslate nohighlight">\(\bar{X}\)</span>) de tamanho <span class="math notranslate nohighlight">\(n\)</span> terá:</p>
+<ul class="simple">
+<li><p>Média: <span class="math notranslate nohighlight">\(\mu\)</span></p></li>
+<li><p>Desvio padrão: <span class="math notranslate nohighlight">\(\frac{\sigma}{\sqrt{n}}\)</span> (também conhecido como <strong>erro padrão da média</strong>)</p></li>
+</ul>
+<p>A distribuição das médias amostrais será aproximadamente normal para <span class="math notranslate nohighlight">\(n\)</span> suficientemente grande (geralmente <span class="math notranslate nohighlight">\(n \geq 30\)</span>).</p>
+</section>
+<hr class="docutils" />
+<section id="importancia">
+<h3><span class="section-number">4.3.3. </span>Importância<a class="headerlink" href="#importancia" title="Link permanente para este cabeçalho">¶</a></h3>
+<p>O TLC é fundamental porque:</p>
+<ol class="arabic simple">
+<li><p><strong>Permite inferências sobre populações</strong>: Mesmo que a distribuição da população seja desconhecida ou não normal, podemos usar a distribuição normal para fazer inferências sobre a média populacional.</p></li>
+<li><p><strong>Justifica o uso da distribuição normal</strong>: Muitas técnicas estatísticas, como testes de hipóteses e intervalos de confiança, assumem que a distribuição das médias amostrais é normal.</p></li>
+<li><p><strong>Aplica-se a diversas situações</strong>: O TLC é válido para quase qualquer tipo de distribuição populacional, desde que as amostras sejam suficientemente grandes.</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="condicoes-para-aplicacao">
+<h3><span class="section-number">4.3.4. </span>Condições para aplicação<a class="headerlink" href="#condicoes-para-aplicacao" title="Link permanente para este cabeçalho">¶</a></h3>
+<p>Para que o TLC seja válido, algumas condições devem ser atendidas:</p>
+<ol class="arabic simple">
+<li><p><strong>Amostras independentes</strong>: As observações na amostra devem ser independentes umas das outras.</p></li>
+<li><p><strong>Tamanho da amostra</strong>: O TLC funciona melhor com amostras grandes (<span class="math notranslate nohighlight">\(n \geq 30\)</span>). Para populações altamente assimétricas, amostras maiores podem ser necessárias.</p></li>
+<li><p><strong>Variância finita</strong>: A população deve ter uma variância finita (<span class="math notranslate nohighlight">\(\sigma^2 &lt; \infty\)</span>).</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="exemplo-grafico-para-o-teorema-do-limite-central">
+<h3><span class="section-number">4.3.5. </span>Exemplo gráfico para o teorema do limite central<a class="headerlink" href="#exemplo-grafico-para-o-teorema-do-limite-central" title="Link permanente para este cabeçalho">¶</a></h3>
+<p>Para ilustrar o TLC graficamente nós vamos fazer o equivalente ao que foi feito no exemplo de rendimentos anuais, que foi discutido anteriormente. Portanto iremos:</p>
+<ul class="simple">
+<li><p>Usar uma distribuição assimétrica (por exemplo, uma distribuição exponencial ou log-normal) para simular a população.</p></li>
+<li><p>Extrair várias amostras de tamanho pequeno, médio e grande da população.</p></li>
+<li><p>Calcule a média de cada amostra.</p></li>
+<li><p>Plotar as distribuições das médias amostrais a fim de comparar a distribuição das médias amostrais com a distribuição da população.</p></li>
+<li><p>Por fim mostrar como a distribuição das médias se torna mais normal à medida que o tamanho da amostra aumenta.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Configuração do estilo do gráfico</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">,</span> <span class="n">font_scale</span><span class="o">=</span><span class="mf">1.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;lines.linewidth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="c1"># Gerar dados de uma população não normal (distribuição exponencial)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">populacao</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+
+<span class="c1"># Função para calcular médias amostrais</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calcular_medias_amostrais</span><span class="p">(</span><span class="n">populacao</span><span class="p">,</span> <span class="n">tamanho_amostra</span><span class="p">,</span> <span class="n">n_amostras</span><span class="p">):</span>
+    <span class="n">medias</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">populacao</span><span class="p">,</span> <span class="n">tamanho_amostra</span><span class="p">))</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_amostras</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="n">medias</span>
+
+<span class="c1"># Tamanhos das amostras</span>
+<span class="n">tamanhos_amostra</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+<span class="n">n_amostras</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="c1"># Calcular médias para cada tamanho de amostra</span>
+<span class="n">medias_amostrais</span> <span class="o">=</span> <span class="p">{</span><span class="sa">f</span><span class="s1">&#39;n=</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">:</span> <span class="n">calcular_medias_amostrais</span><span class="p">(</span><span class="n">populacao</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">n_amostras</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">tamanhos_amostra</span><span class="p">}</span>
+
+<span class="c1"># Criar DataFrame para facilitar a plotagem</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">medias_amostrais</span><span class="p">)</span>
+
+<span class="c1"># Plotar as distribuições</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="c1"># Distribuição da população</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">populacao</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribuição da População&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Valor&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequência&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+<span class="c1"># Distribuição das médias amostrais para n=1</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;n=1&#39;</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribuição das Médias (n=1)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Média Amostral&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequência&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+<span class="c1"># Distribuição das médias amostrais para n=5</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;n=5&#39;</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribuição das Médias (n=5)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Média Amostral&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequência&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+<span class="c1"># Distribuição das médias amostrais para n=30</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;n=30&#39;</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribuição das Médias (n=30)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Média Amostral&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequência&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+<span class="c1"># Ajustar layout</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+<span class="c1"># Exibir o gráfico</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/1b91058403481b3fa459e4c531e933451e69e05c8e9029d39d2c68944c706990.png" src="../_images/1b91058403481b3fa459e4c531e933451e69e05c8e9029d39d2c68944c706990.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="o-metodo-bootstrap">
+<h2><span class="section-number">4.4. </span>O Método Bootstrap<a class="headerlink" href="#o-metodo-bootstrap" title="Link permanente para este cabeçalho">¶</a></h2>
+<p>O <strong>método Bootstrap</strong> é uma técnica de reamostragem usada em estatística para estimar a distribuição de uma estatística (como a média, mediana ou desvio padrão) a partir de amostras aleatórias com reposição. Ele é especialmente útil quando a distribuição teórica da estatística é desconhecida ou difícil de derivar.</p>
+<p>A ideia central do Bootstrap é gerar várias amostras (chamadas de amostras bootstrap) a partir dos dados originais, calcular a estatística de interesse para cada amostra e, em seguida, usar essas estatísticas para inferir propriedades da distribuição, como intervalos de confiança ou erro padrão.</p>
+<p>O Bootstrap é uma técnica não paramétrica, ou seja, não assume que os dados seguem uma distribuição específico. Pode ser aplicado a uma ampla variedade de estatísticas, desde médias até coeficientes de regressão.
+Além disso é fácil de implementar e entender, especialmente com o uso de ferramentas computacionais, funcionando bem com pequenas amostras e dados complexos.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/bootstrap.png"><img alt="Descrição da imagem" src="../_images/bootstrap.png" style="width: 800px;" /></a>
+</figure>
+<section id="passos-do-metodo-bootstrap">
+<h3><span class="section-number">4.4.1. </span>Passos do Método Bootstrap<a class="headerlink" href="#passos-do-metodo-bootstrap" title="Link permanente para este cabeçalho">¶</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Coletar uma amostra original</strong>: Tenha um conjunto de dados de tamanho <span class="math notranslate nohighlight">\(n\)</span>.</p></li>
+<li><p><strong>Gerar amostras bootstrap</strong>:</p>
+<ul class="simple">
+<li><p>Extraia amostras de tamanho <span class="math notranslate nohighlight">\(n\)</span> <strong>com reposição</strong> a partir dos dados originais.</p></li>
+<li><p>Repita esse processo <span class="math notranslate nohighlight">\(B\)</span> vezes (geralmente <span class="math notranslate nohighlight">\(B = 1000\)</span> ou mais).</p></li>
+</ul>
+</li>
+<li><p><strong>Calcular a estatística de interesse</strong>:</p>
+<ul class="simple">
+<li><p>Para cada amostra bootstrap, calcule a estatística desejada (por exemplo, a média).</p></li>
+</ul>
+</li>
+<li><p><strong>Analisar a distribuição das estatísticas</strong>:</p>
+<ul class="simple">
+<li><p>Use as estatísticas bootstrap para estimar intervalos de confiança, erro padrão ou outras propriedades.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="aplicacoes-do-bootstrap">
+<h3><span class="section-number">4.4.2. </span>Aplicações do Bootstrap<a class="headerlink" href="#aplicacoes-do-bootstrap" title="Link permanente para este cabeçalho">¶</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Estimação de intervalos de confiança</strong>:</p>
+<ul class="simple">
+<li><p>Calcule intervalos de confiança para estatísticas como a média ou a mediana.</p></li>
+</ul>
+</li>
+<li><p><strong>Estimação de erro padrão</strong>:</p>
+<ul class="simple">
+<li><p>Use o desvio padrão das estatísticas bootstrap para estimar o erro padrão.</p></li>
+</ul>
+</li>
+<li><p><strong>Testes de hipóteses</strong>:</p>
+<ul class="simple">
+<li><p>Compare estatísticas de diferentes grupos usando amostras bootstrap.</p></li>
+</ul>
+</li>
+<li><p><strong>Validação de modelos</strong>:</p>
+<ul class="simple">
+<li><p>Avalie a performance de modelos de machine learning usando técnicas como o Bootstrap Aggregating (Bagging).</p></li>
+</ul>
+</li>
+</ol>
+<hr class="docutils" />
+<p>Vamos ilustrar o método Bootstrap com um exemplo simples: estimar o intervalo de confiança para a média de um conjunto de dados.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Dados originais</span>
+<span class="n">dados</span> <span class="o">=</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dados</span><span class="p">)</span>  <span class="c1"># Tamanho da amostra original</span>
+<span class="n">B</span> <span class="o">=</span> <span class="mi">1000</span>  <span class="c1"># Número de amostras bootstrap</span>
+
+<span class="c1"># Gerar amostras bootstrap e calcular a média de cada uma</span>
+<span class="n">medias_bootstrap</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">B</span><span class="p">):</span>
+    <span class="n">amostra</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">dados</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># Amostra com reposição</span>
+    <span class="n">media</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+    <span class="n">medias_bootstrap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">media</span><span class="p">)</span>
+
+<span class="c1"># Calcular o intervalo de confiança de 95% para a média</span>
+<span class="n">intervalo_confianca</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">medias_bootstrap</span><span class="p">,</span> <span class="p">[</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">97.5</span><span class="p">])</span>
+<span class="n">media_original</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dados</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Média original: </span><span class="si">{</span><span class="n">media_original</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Intervalo de confiança de 95%: </span><span class="si">{</span><span class="n">intervalo_confianca</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Média original: 51.88
+Intervalo de confiança de 95%: [39.375 67.5  ]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="metodo-bootstrap-para-dados-multivariados">
+<h3><span class="section-number">4.4.3. </span>Método Bootstrap para Dados Multivariados<a class="headerlink" href="#metodo-bootstrap-para-dados-multivariados" title="Link permanente para este cabeçalho">¶</a></h3>
+<p>Dados multivariados são conjuntos de dados onde cada observação (linha) contém múltiplas variáveis (colunas). Por exemplo:</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>ID</p></th>
+<th class="head"><p>Idade</p></th>
+<th class="head"><p>Renda (R$)</p></th>
+<th class="head"><p>Educação</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>25</p></td>
+<td><p>3000</p></td>
+<td><p>Graduado</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>30</p></td>
+<td><p>5000</p></td>
+<td><p>Mestrado</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>22</p></td>
+<td><p>2000</p></td>
+<td><p>Graduado</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><em><strong>Passos do Bootstrap Multivariado</strong></em></p>
+<ol class="arabic simple">
+<li><p><strong>Amostragem com reposição</strong>:<br />
+Selecione linhas inteiras do conjunto de dados original, permitindo repetições.</p>
+<ul class="simple">
+<li><p>Exemplo de amostra bootstrap: <code class="docutils literal notranslate"><span class="pre">[Linha</span> <span class="pre">1,</span> <span class="pre">Linha</span> <span class="pre">3,</span> <span class="pre">Linha</span> <span class="pre">1,</span> <span class="pre">Linha</span> <span class="pre">5,</span> <span class="pre">Linha</span> <span class="pre">2]</span></code>.</p></li>
+</ul>
+</li>
+<li><p><strong>Cálculo da estatística</strong>:<br />
+Para cada amostra, calcule a estatística de interesse (ex: média, matriz de covariância).</p></li>
+<li><p><strong>Repetição</strong>:<br />
+Repita os passos 1 e 2 por <span class="math notranslate nohighlight">\(B\)</span> iterações (ex: <span class="math notranslate nohighlight">\(B = 1000\)</span>).</p></li>
+<li><p><strong>Análise</strong>:<br />
+Use as estatísticas bootstrap para estimar:</p>
+<ul class="simple">
+<li><p>Intervalos de confiança</p></li>
+<li><p>Erro padrão</p></li>
+<li><p>Viés</p></li>
+</ul>
+</li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># Dados multivariados (Idade, Renda, Educação codificada)</span>
+<span class="n">dados</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">3000</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>  <span class="c1"># Graduado</span>
+    <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">5000</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>  <span class="c1"># Mestrado</span>
+    <span class="p">[</span><span class="mi">22</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>  <span class="c1"># Graduado</span>
+    <span class="p">[</span><span class="mi">35</span><span class="p">,</span> <span class="mi">6000</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>  <span class="c1"># Doutorado</span>
+    <span class="p">[</span><span class="mi">28</span><span class="p">,</span> <span class="mi">4000</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>   <span class="c1"># Mestrado</span>
+<span class="p">])</span>
+
+<span class="n">B</span> <span class="o">=</span> <span class="mi">1000</span>  <span class="c1"># Número de amostras</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">dados</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># Tamanho da amostra original</span>
+<span class="n">medias_bootstrap</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">B</span><span class="p">):</span>
+    <span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">amostra</span> <span class="o">=</span> <span class="n">dados</span><span class="p">[</span><span class="n">indices</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="n">media</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">amostra</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">medias_bootstrap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">media</span><span class="p">)</span>
+
+<span class="n">medias_bootstrap</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">medias_bootstrap</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Intervalo de confiança de 95% para cada variável</span>
+<span class="n">intervalo_confianca</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">medias_bootstrap</span><span class="p">,</span> <span class="p">[</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">97.5</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Média original:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dados</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Intervalos de confiança (95%):</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">intervalo_confianca</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Média original: [2.8e+01 4.0e+03 1.8e+00]
+Intervalos de confiança (95%):
+ [[2.4400e+01 2.8000e+03 1.2000e+00]
+ [3.2005e+01 5.2000e+03 2.4050e+00]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks_estatistica"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="../notebooks/classificacao.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title"><span class="section-number">5. </span>Classificação</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="Amostragem.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title"><span class="section-number">3. </span>Amostragem</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; L. A. Souza, 2025
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">4. Distribuições de Dados</a><ul>
+<li><a class="reference internal" href="#medidas-de-dispersao">4.1. Medidas de Dispersão</a><ul>
+<li><a class="reference internal" href="#amplitude">4.1.1. Amplitude</a></li>
+<li><a class="reference internal" href="#variancia">4.1.2. Variância</a></li>
+<li><a class="reference internal" href="#desvio-padrao">4.1.3. Desvio Padrão</a></li>
+<li><a class="reference internal" href="#intervalo-interquartil-iqr">4.1.4. Intervalo Interquartil (IQR)</a></li>
+<li><a class="reference internal" href="#medida-de-dispersao-adequada">4.1.5. Medida de Dispersão Adequada</a></li>
+<li><a class="reference internal" href="#exemplo-pratico-analise-de-dados-de-rendimento-anual">4.1.6. Exemplo Prático: Análise de Dados de Rendimento Anual</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#distribuicao-de-amostragem">4.2. Distribuição de Amostragem</a><ul>
+<li><a class="reference internal" href="#diferenca-entre-distribuicao-dos-dados-e-distribuicao-de-amostragem">4.2.1. Diferença Entre Distribuição dos Dados e Distribuição de Amostragem</a></li>
+<li><a class="reference internal" href="#exemplo-pratico-rendimentos-anuais-de-candidatos-a-emprestimo">4.2.2. Exemplo Prático: Rendimentos Anuais de Candidatos a Empréstimo</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#teorema-do-limite-central">4.3. Teorema do Limite Central</a><ul>
+<li><a class="reference internal" href="#conceito">4.3.1. Conceito</a></li>
+<li><a class="reference internal" href="#conceito-formal">4.3.2. Conceito formal</a></li>
+<li><a class="reference internal" href="#importancia">4.3.3. Importância</a></li>
+<li><a class="reference internal" href="#condicoes-para-aplicacao">4.3.4. Condições para aplicação</a></li>
+<li><a class="reference internal" href="#exemplo-grafico-para-o-teorema-do-limite-central">4.3.5. Exemplo gráfico para o teorema do limite central</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#o-metodo-bootstrap">4.4. O Método Bootstrap</a><ul>
+<li><a class="reference internal" href="#passos-do-metodo-bootstrap">4.4.1. Passos do Método Bootstrap</a></li>
+<li><a class="reference internal" href="#aplicacoes-do-bootstrap">4.4.2. Aplicações do Bootstrap</a></li>
+<li><a class="reference internal" href="#metodo-bootstrap-para-dados-multivariados">4.4.3. Método Bootstrap para Dados Multivariados</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=680035da"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=ff8fa330"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=bcf87968"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/translations.js?v=000972dd"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    </body>
+</html>
