@@ -82,7 +82,7 @@ article#furo-main-content {
 
 /* Aplica o estilo ao contêiner principal nas páginas únicas */
 body div.article-container article#furo-main-content {
-    max-width: 55vw !important; /* Largura máxima */
+    max-width: 45vw !important; /* Largura máxima */
     margin: 0  !important; /* Centraliza o conteúdo */
     padding: 10px !important; /* Espaçamento interno */ 
 }
@@ -100,7 +100,7 @@ body div.article-container {
     width: 15vw; /* Define a largura do TOC */
     height: 100vh; /* Ocupa 100% da altura da tela */
     background-color: white; /* Cor de fundo */
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1); /* Sombra para destacar */
+    box-shadow:  2px 0 5px rgba(0, 0, 0, 0.1); /* Sombra para destacar */
     z-index: 1000; /* Garante que fique acima de outros elementos */
     overflow-y: auto; /* Adiciona scroll se o conteúdo for muito longo */
     padding: 5px; /* Espaçamento interno */
