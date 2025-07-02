@@ -1,0 +1,544 @@
+<!doctype html>
+<html class="no-js" lang="pt-BR" data-content_root="../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Índice" href="../genindex.html" /><link rel="search" title="Buscar" href="../search.html" /><link rel="next" title="Referências" href="../bib.html" /><link rel="prev" title="14. DRNN LEARNING" href="FDRNN_ivA_system_initializations.html" />
+
+    <link rel="shortcut icon" href="../_static/flav4.png"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.08.06 -->
+        <title>15. Task-Aware BPTT (Retropropagação no Tempo Sensível à Tarefa) - Ciência de Dados</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="../_static/estilo.css?v=6d8328f8" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../intro.html"><div class="brand">Ciência de Dados</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../intro.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../_static/logo1.svg" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Ciência de Dados</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Buscar" name="q" aria-label="Buscar">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Parte I. Elementos de Estatística e Análise Exploratória de Dados</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks_estatistica/introducao_parte_1.html">1. Sobre a Parte I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks_estatistica/Analise_Exploratoria.html">2. Análise Exploratória de Dados (AED)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks_estatistica/Amostragem.html">3. Amostragem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks_estatistica/Distribuicoes_de_Dados.html">4. Distribuições de Dados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks_estatistica/Teste_Hipotese.html">5. Testes de Hipóteses e Inferência Estatística</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks_estatistica/Teste_Hipotese.html#intervalos-de-confianca-e-classificacao">6. Intervalos de Confiança e Classificação</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks_estatistica/Teste_Hipotese.html#teste-de-hipotese">7. Teste de Hipótese</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Parte II. Machine Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ML_intro.html">8. Introdução ao Aprendizado de Máquina (Machine Learning)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Parte III. Aprendizado por Reforço para Finanças</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="FDRNN_resumo.html">9. Fonte e Resumo do Estudo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FDRNN_intro.html">10. Introdução</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FDRNN_iiiA_direct_reforcement_trading.html">11. Direct Deep Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FDRNN_iiiB_RNN_for_DPP.html">12. Rede Neural Recorrente Profunda para DDR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FDRNN_iiiC_fuzzy.html">13. Extensões Fuzzy para Reduzir Incertezas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FDRNN_ivA_system_initializations.html">14. DRNN LEARNING</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">15. Task-Aware BPTT (Retropropagação no Tempo Sensível à Tarefa)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Parte Final</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../bib.html">Referências</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../_sources/notebooks/FDRNN_ivB_task-aware_BPTT.ipynb" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="task-aware-bptt-retropropagacao-no-tempo-sensivel-a-tarefa">
+<h1><span class="section-number">15. </span>Task-Aware BPTT (Retropropagação no Tempo Sensível à Tarefa)<a class="headerlink" href="#task-aware-bptt-retropropagacao-no-tempo-sensivel-a-tarefa" title="Link para este cabeçalho">¶</a></h1>
+<section id="contexto-do-problema">
+<h2><span class="section-number">15.1. </span>Contexto do Problema<a class="headerlink" href="#contexto-do-problema" title="Link para este cabeçalho">¶</a></h2>
+<p>Após a inicialização dos parâmetros (Seção IV.A), o próximo passo é o <strong>ajuste fino</strong> (fine tuning) do modelo FDRNN.<br />
+Esse ajuste exige a aplicação do <strong>método de retropropagação do erro</strong>, mas com uma dificuldade adicional:</p>
+<blockquote>
+<div><p>A arquitetura FDRNN é <strong>profunda e recorrente ao mesmo tempo</strong>, o que torna o cálculo dos gradientes mais complexo do que em redes feedforward simples.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="gradiente-com-estrutura-recorrente">
+<h2><span class="section-number">15.2. </span>Gradiente com estrutura recorrente<a class="headerlink" href="#gradiente-com-estrutura-recorrente" title="Link para este cabeçalho">¶</a></h2>
+<p>Os autores indicam que, devido à recorrência, o cálculo do gradiente para qualquer parâmetro <strong>envolve múltiplos termos recursivos</strong>, incluindo dependências de estados anteriores (<span class="math notranslate nohighlight">\(δ_{t−1}\)</span>, <span class="math notranslate nohighlight">\(δ_{t−2}\)</span>, …, até o tempo inicial).</p>
+<p>O gradiente da função de recompensa total <span class="math notranslate nohighlight">\(U_T\)</span> com relação a um parâmetro <span class="math notranslate nohighlight">\(θ\)</span> segue uma cadeia de dependência:</p>
+<p>\begin{equation}
+\frac{\partial U_T}{\partial \theta} = \sum_t \frac{d U_t}{d R_t} \left{
+\frac{d R_t}{d \delta_t} \cdot \frac{d \delta_t}{d \theta}</p>
+<ul class="simple">
+<li><p>\frac{d R_t}{d \delta_{t-1}} \cdot \frac{d \delta_{t-1}}{d \theta}
+\right}
+\end{equation}</p></li>
+</ul>
+<p>\begin{equation}
+\frac{d \delta_t}{d \theta} = \frac{\partial \delta_t}{\partial \theta}</p>
+<ul class="simple">
+<li><p>\frac{\partial \delta_t}{\partial \delta_{t-1}} \cdot \frac{d \delta_{t-1}}{d \theta}
+\end{equation}</p></li>
+</ul>
+<p>Isso gera uma <strong>explosão de termos recursivos</strong>, que torna o cálculo direto inviável e propenso a instabilidade.</p>
+</section>
+<hr class="docutils" />
+<section id="solucao-backpropagation-through-time-bptt">
+<h2><span class="section-number">15.3. </span>Solução: Backpropagation Through Time (BPTT)<a class="headerlink" href="#solucao-backpropagation-through-time-bptt" title="Link para este cabeçalho">¶</a></h2>
+<p>Para resolver isso, o artigo propõe usar a técnica conhecida como <strong>Backpropagation Through Time (BPTT)</strong>:</p>
+<ul class="simple">
+<li><p>O BPTT <strong>“desenrola” a rede no tempo</strong>, transformando a estrutura recorrente em uma sequência de redes feedforward.</p></li>
+<li><p>Cada “tempo” se torna uma <strong>cópia da rede</strong>, chamada de <strong>time stack</strong>.</p></li>
+<li><p>Com isso, a rede <strong>perde sua recorrência temporariamente</strong>, o que permite aplicar o algoritmo de backpropagation comum.</p></li>
+</ul>
+<section id="exemplo-visual">
+<h3><span class="section-number">15.3.1. </span>Exemplo visual:<a class="headerlink" href="#exemplo-visual" title="Link para este cabeçalho">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">τ</span> <span class="pre">=</span> <span class="pre">0</span></code> → estado atual</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">τ</span> <span class="pre">=</span> <span class="pre">1</span></code> → um passo anterior</p></li>
+<li><p>Cada <code class="docutils literal notranslate"><span class="pre">τ</span></code> é uma cópia da rede com seus próprios estados e camadas ocultas</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="problema-degradacao-do-gradiente">
+<h2><span class="section-number">15.4. </span>Problema: Degradação do gradiente<a class="headerlink" href="#problema-degradacao-do-gradiente" title="Link para este cabeçalho">¶</a></h2>
+<p>Ao aplicar BPTT diretamente, surgem dois problemas:</p>
+<ol class="arabic simple">
+<li><p>A rede <strong>fica ainda mais profunda</strong>, já que se estende ao longo do tempo (tempo × profundidade = profundidade total maior).</p></li>
+<li><p>O gradiente <strong>tende a desaparecer</strong> (vanishing gradient), especialmente:</p>
+<ul class="simple">
+<li><p>Em camadas mais próximas da entrada</p></li>
+<li><p>Em time stacks mais antigos (com <code class="docutils literal notranslate"><span class="pre">τ</span></code> alto)</p></li>
+</ul>
+</li>
+</ol>
+<p>Isso <strong>prejudica o aprendizado</strong>, porque os sinais de erro não chegam adequadamente às camadas que mais precisam ser ajustadas.</p>
+</section>
+<hr class="docutils" />
+<section id="proposta-task-aware-bptt">
+<h2><span class="section-number">15.5. </span>Proposta: Task-Aware BPTT<a class="headerlink" href="#proposta-task-aware-bptt" title="Link para este cabeçalho">¶</a></h2>
+<p>Para resolver esse problema, os autores propõem o <strong>Task-Aware BPTT</strong>:</p>
+<ul class="simple">
+<li><p>Durante o desenrolar no tempo, <strong>linhas virtuais</strong> são adicionadas, conectando diretamente:</p>
+<ol class="arabic simple">
+<li><p>A <strong>função objetivo <code class="docutils literal notranslate"><span class="pre">U_T</span></code></strong> com a saída de cada time stack</p></li>
+<li><p>A <strong>saída de cada time stack</strong> com suas respectivas camadas ocultas</p></li>
+</ol>
+</li>
+</ul>
+<section id="o-que-isso-muda">
+<h3><span class="section-number">15.5.1. </span>O que isso muda?<a class="headerlink" href="#o-que-isso-muda" title="Link para este cabeçalho">¶</a></h3>
+<ul class="simple">
+<li><p>Cada bloco temporal <strong>recebe gradientes diretamente da tarefa final</strong> (<code class="docutils literal notranslate"><span class="pre">U_T</span></code>), além dos gradientes das etapas anteriores.</p></li>
+<li><p>Isso <strong>reforça a retropropagação</strong> e <strong>reduz a perda de sinal de erro</strong>, especialmente nas camadas mais distantes e nos tempos mais antigos.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="resumo-da-tecnica">
+<h2><span class="section-number">15.6. </span>Resumo da técnica<a class="headerlink" href="#resumo-da-tecnica" title="Link para este cabeçalho">¶</a></h2>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Conceito</p></th>
+<th class="head"><p>Explicação</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Time stack</p></td>
+<td><p>Cópia da rede para um instante no tempo (<code class="docutils literal notranslate"><span class="pre">τ</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>BPTT</p></td>
+<td><p>Desenrola a recorrência para aplicar backpropagation padrão</p></td>
+</tr>
+<tr class="row-even"><td><p>Problema do gradiente</p></td>
+<td><p>Em redes profundas e longas, o erro “some” antes de alcançar as bases</p></td>
+</tr>
+<tr class="row-odd"><td><p>Task-aware BPTT</p></td>
+<td><p>Injeta gradiente diretamente da função de recompensa em cada tempo</p></td>
+</tr>
+<tr class="row-even"><td><p>Benefício</p></td>
+<td><p>Aprendizado mais eficaz em todas as camadas e tempos</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="algoritmo-1-resumo">
+<h2><span class="section-number">15.7. </span>Algoritmo 1 (resumo)<a class="headerlink" href="#algoritmo-1-resumo" title="Link para este cabeçalho">¶</a></h2>
+<p>O algoritmo descrito no final da seção segue os seguintes passos:</p>
+<ol class="arabic simple">
+<li><p>Inicialize os parâmetros da FDRNN (já feito na Seção IV.A).</p></li>
+<li><p>Desenrole a rede no tempo para formar os time stacks.</p></li>
+<li><p>Calcule os gradientes em cada time stack, com:</p>
+<ul class="simple">
+<li><p>Gradientes normais (da retropropagação padrão)</p></li>
+<li><p>Gradientes adicionais vindos da função <code class="docutils literal notranslate"><span class="pre">U_T</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>Normalize o vetor de gradiente</strong> (para evitar explosões numéricas).</p></li>
+<li><p>Atualize os parâmetros com descida de gradiente.</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="conclusao">
+<h2><span class="section-number">15.8. </span>Conclusão<a class="headerlink" href="#conclusao" title="Link para este cabeçalho">¶</a></h2>
+<p>O <strong>Task-Aware BPTT</strong> é uma adaptação sofisticada do BPTT tradicional, ajustada às necessidades de:</p>
+<ul class="simple">
+<li><p>Redes <strong>profundas e recorrentes</strong></p></li>
+<li><p>Treinamento com <strong>função de recompensa não supervisionada</strong></p></li>
+<li><p>Aplicações <strong>financeiras ruidosas e sensíveis ao tempo</strong></p></li>
+</ul>
+<p>Essa técnica permite <strong>treinar a FDRNN de forma robusta</strong>, mesmo com grande profundidade e dependência temporal.</p>
+<p>Na próxima seção, o artigo testa esse modelo no mundo real.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="../bib.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Referências</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="FDRNN_ivA_system_initializations.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title"><span class="section-number">14. </span>DRNN LEARNING</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; L. A. Souza, 2025
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">15. Task-Aware BPTT (Retropropagação no Tempo Sensível à Tarefa)</a><ul>
+<li><a class="reference internal" href="#contexto-do-problema">15.1. Contexto do Problema</a></li>
+<li><a class="reference internal" href="#gradiente-com-estrutura-recorrente">15.2. Gradiente com estrutura recorrente</a></li>
+<li><a class="reference internal" href="#solucao-backpropagation-through-time-bptt">15.3. Solução: Backpropagation Through Time (BPTT)</a><ul>
+<li><a class="reference internal" href="#exemplo-visual">15.3.1. Exemplo visual:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#problema-degradacao-do-gradiente">15.4. Problema: Degradação do gradiente</a></li>
+<li><a class="reference internal" href="#proposta-task-aware-bptt">15.5. Proposta: Task-Aware BPTT</a><ul>
+<li><a class="reference internal" href="#o-que-isso-muda">15.5.1. O que isso muda?</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#resumo-da-tecnica">15.6. Resumo da técnica</a></li>
+<li><a class="reference internal" href="#algoritmo-1-resumo">15.7. Algoritmo 1 (resumo)</a></li>
+<li><a class="reference internal" href="#conclusao">15.8. Conclusão</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/documentation_options.js?v=2efa9f5e"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/translations.js?v=daa5921a"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    </body>
+</html>
