@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Índice" href="../genindex.html" /><link rel="search" title="Buscar" href="../search.html" /><link rel="next" title="8. Introdução ao Aprendizado de Máquina (Machine Learning)" href="../notebooks/ML_intro.html" /><link rel="prev" title="4. Distribuições de Dados" href="Distribuicoes_de_Dados.html" />
+<link rel="index" title="Índice" href="../genindex.html" /><link rel="search" title="Buscar" href="../search.html" /><link rel="next" title="8. Fundamentos de Machine Learning" href="../notebooks/ML_intro.html" /><link rel="prev" title="4. Distribuições de Dados" href="Distribuicoes_de_Dados.html" />
 
     <link rel="shortcut icon" href="../_static/flav4.png"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.08.06 -->
         <title>5. Testes de Hipóteses e Inferência Estatística - Ciência de Dados</title>
@@ -219,7 +219,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Parte II. Machine Learning</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../notebooks/ML_intro.html">8. Introdução ao Aprendizado de Máquina (Machine Learning)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/ML_intro.html">8. Fundamentos de Machine Learning</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Parte III. Aprendizado por Reforço para Finanças</span></p>
 <ul>
@@ -2025,6 +2025,105 @@ statistic = 3.570, p-value = 0.167</p>
 <li><p>Atribuem-se ranks e somam-se separadamente os ranks dos valores positivos e negativos.</p></li>
 <li><p>Com isso, calcula-se uma <strong>estatística W</strong>, que é usada para obter o <strong>valor p</strong>.</p></li>
 </ol>
+<p>Exemplo prático (comparando dois modelos)</p>
+<p>Imagine que você fez 30 execuções de validação cruzada com dois modelos (por exemplo, Naive Bayes e Regressão Logística). Você obteve duas listas:</p>
+<p>resultados_naive_cv = [0.81, 0.79, 0.83, …, 0.80]</p>
+<p>resultados_logistica_cv = [0.82, 0.77, 0.84, …, 0.79]</p>
+<p>Esses vetores têm 30 valores cada, e cada elemento em resultados_naive_cv[i] corresponde à mesma rodada de validação que resultados_logistica_cv[i].</p>
+<p>Isso forma um par de observações para cada i.</p>
+<p>Para cada par de valores i, o teste calcula:</p>
+<p>diferença[i] = resultados_naive_cv[i] - resultados_logistica_cv[i]</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">wilcoxon</span>
+<span class="n">_</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">wilcoxon</span><span class="p">(</span><span class="n">resultados_naive_cv</span><span class="p">,</span> <span class="n">resultados_logistica_cv</span><span class="p">)</span>
+<span class="n">p</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(1.862645149230957e-09)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">wilcoxon</span><span class="p">(</span><span class="n">resultados_naive_cv</span><span class="p">,</span> <span class="n">resultados_forest_cv</span><span class="p">)</span>
+<span class="n">p</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(1.862645149230957e-09)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">wilcoxon</span><span class="p">(</span><span class="n">resultados_logistica_cv</span><span class="p">,</span> <span class="n">resultados_forest_cv</span><span class="p">)</span>
+<span class="n">p</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(1.862645149230957e-09)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="teste-de-friedman">
+<h3><span class="section-number">7.9.4. </span>Teste de Friedman<a class="headerlink" href="#teste-de-friedman" title="Link para este cabeçalho">¶</a></h3>
+<p>O <strong>teste de Friedman</strong> é um <strong>teste estatístico não paramétrico</strong> utilizado para <strong>comparar três ou mais métodos ou tratamentos relacionados</strong>, quando os pressupostos do teste ANOVA de medidas repetidas <strong>não são atendidos</strong> — por exemplo, quando os dados <strong>não seguem uma distribuição normal</strong>.</p>
+</section>
+<hr class="docutils" />
+<section id="id4">
+<h3><span class="section-number">7.9.5. </span>Quando usar<a class="headerlink" href="#id4" title="Link para este cabeçalho">¶</a></h3>
+<ul class="simple">
+<li><p>Quando você quer comparar <strong>três ou mais modelos</strong> (ex: Naive Bayes, Regressão Logística e Random Forest),</p></li>
+<li><p>E os modelos foram avaliados <strong>sob as mesmas condições</strong> (ex: mesma divisão de dados em validação cruzada),</p></li>
+<li><p>Mas os dados <strong>não são normalmente distribuídos</strong> (o que inviabilizaria o uso da ANOVA).</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id5">
+<h3><span class="section-number">7.9.6. </span>Hipóteses do teste<a class="headerlink" href="#id5" title="Link para este cabeçalho">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Hipótese nula (H₀)</strong>: todos os modelos têm <strong>desempenho equivalente</strong> (as medianas são iguais).</p></li>
+<li><p><strong>Hipótese alternativa (H₁)</strong>: pelo menos um modelo <strong>tem desempenho diferente</strong> dos outros.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id6">
+<h3><span class="section-number">7.9.7. </span>Como funciona<a class="headerlink" href="#id6" title="Link para este cabeçalho">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Para cada execução (ex: uma rodada de validação cruzada), os modelos são <strong>ranqueados</strong>:</p>
+<ul class="simple">
+<li><p>O melhor modelo recebe rank 1, o segundo melhor rank 2, e assim por diante.</p></li>
+</ul>
+</li>
+<li><p>O teste calcula a <strong>soma dos ranks</strong> de cada modelo ao longo das execuções.</p></li>
+<li><p>Com base nisso, calcula-se uma <strong>estatística de teste</strong> que indica se há diferença significativa entre os modelos.</p></li>
+</ol>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">friedmanchisquare</span>
+
+<span class="n">friedmanchisquare</span><span class="p">(</span><span class="n">resultados_naive_cv</span><span class="p">,</span> <span class="n">resultados_logistica_cv</span><span class="p">,</span> <span class="n">resultados_forest_cv</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FriedmanchisquareResult(statistic=np.float64(60.0), pvalue=np.float64(9.357622968840163e-14))
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 </section>
@@ -2058,7 +2157,7 @@ statistic = 3.570, p-value = 0.167</p>
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title"><span class="section-number">8. </span>Introdução ao Aprendizado de Máquina (Machine Learning)</div>
+                <div class="title"><span class="section-number">8. </span>Fundamentos de Machine Learning</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -2164,6 +2263,10 @@ statistic = 3.570, p-value = 0.167</p>
 <li><a class="reference internal" href="#id2">7.9.1. Quando usar</a></li>
 <li><a class="reference internal" href="#hipoteses-do-teste">7.9.2. Hipóteses do teste</a></li>
 <li><a class="reference internal" href="#id3">7.9.3. Como funciona</a></li>
+<li><a class="reference internal" href="#teste-de-friedman">7.9.4. Teste de Friedman</a></li>
+<li><a class="reference internal" href="#id4">7.9.5. Quando usar</a></li>
+<li><a class="reference internal" href="#id5">7.9.6. Hipóteses do teste</a></li>
+<li><a class="reference internal" href="#id6">7.9.7. Como funciona</a></li>
 </ul>
 </li>
 </ul>

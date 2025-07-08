@@ -219,7 +219,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Parte II. Machine Learning</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../notebooks/ML_intro.html">8. Introdução ao Aprendizado de Máquina (Machine Learning)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/ML_intro.html">8. Fundamentos de Machine Learning</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Parte III. Aprendizado por Reforço para Finanças</span></p>
 <ul>
@@ -374,168 +374,6 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span> 
 <span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">resample</span> 
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A module that was compiled using NumPy 1.x cannot be run in
-NumPy 2.0.0 as it may crash. To support both 1.x and 2.x
-versions of NumPy, modules must be compiled with NumPy 2.0.
-Some module may need to rebuild instead e.g. with &#39;pybind11&gt;=2.12&#39;.
-
-If you are a user of the module, the easiest solution will be to
-downgrade to &#39;numpy&lt;2&#39; or try to upgrade the affected module.
-We expect that some modules will need time to support NumPy 2.
-
-Traceback (most recent call last):  File &quot;&lt;frozen runpy&gt;&quot;, line 198, in _run_module_as_main
-  File &quot;&lt;frozen runpy&gt;&quot;, line 88, in _run_code
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\ipykernel_launcher.py&quot;, line 17, in &lt;module&gt;
-    app.launch_new_instance()
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\traitlets\config\application.py&quot;, line 992, in launch_instance
-    app.start()
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\ipykernel\kernelapp.py&quot;, line 736, in start
-    self.io_loop.start()
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\tornado\platform\asyncio.py&quot;, line 205, in start
-    self.asyncio_loop.run_forever()
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\asyncio\base_events.py&quot;, line 607, in run_forever
-    self._run_once()
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\asyncio\base_events.py&quot;, line 1922, in _run_once
-    handle._run()
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\asyncio\events.py&quot;, line 80, in _run
-    self._context.run(self._callback, *self._args)
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\ipykernel\kernelbase.py&quot;, line 516, in dispatch_queue
-    await self.process_one()
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\ipykernel\kernelbase.py&quot;, line 505, in process_one
-    await dispatch(*args)
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\ipykernel\kernelbase.py&quot;, line 412, in dispatch_shell
-    await result
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\ipykernel\kernelbase.py&quot;, line 740, in execute_request
-    reply_content = await reply_content
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\ipykernel\ipkernel.py&quot;, line 422, in do_execute
-    res = shell.run_cell(
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\ipykernel\zmqshell.py&quot;, line 546, in run_cell
-    return super().run_cell(*args, **kwargs)
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\IPython\core\interactiveshell.py&quot;, line 3024, in run_cell
-    result = self._run_cell(
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\IPython\core\interactiveshell.py&quot;, line 3079, in _run_cell
-    result = runner(coro)
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\IPython\core\async_helpers.py&quot;, line 129, in _pseudo_sync_runner
-    coro.send(None)
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\IPython\core\interactiveshell.py&quot;, line 3284, in run_cell_async
-    has_raised = await self.run_ast_nodes(code_ast.body, cell_name,
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\IPython\core\interactiveshell.py&quot;, line 3466, in run_ast_nodes
-    if await self.run_code(code, result, async_=asy):
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\IPython\core\interactiveshell.py&quot;, line 3526, in run_code
-    exec(code_obj, self.user_global_ns, self.user_ns)
-  File &quot;C:\Users\lucas.souza\AppData\Local\Temp\ipykernel_27776\2519162096.py&quot;, line 1, in &lt;module&gt;
-    import pandas as pd
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\pandas\__init__.py&quot;, line 62, in &lt;module&gt;
-    from pandas.core.api import (
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\pandas\core\api.py&quot;, line 28, in &lt;module&gt;
-    from pandas.core.arrays import Categorical
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\pandas\core\arrays\__init__.py&quot;, line 1, in &lt;module&gt;
-    from pandas.core.arrays.arrow import ArrowExtensionArray
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\pandas\core\arrays\arrow\__init__.py&quot;, line 5, in &lt;module&gt;
-    from pandas.core.arrays.arrow.array import ArrowExtensionArray
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\pandas\core\arrays\arrow\array.py&quot;, line 50, in &lt;module&gt;
-    from pandas.core import (
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\pandas\core\ops\__init__.py&quot;, line 8, in &lt;module&gt;
-    from pandas.core.ops.array_ops import (
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\pandas\core\ops\array_ops.py&quot;, line 56, in &lt;module&gt;
-    from pandas.core.computation import expressions
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\pandas\core\computation\expressions.py&quot;, line 21, in &lt;module&gt;
-    from pandas.core.computation.check import NUMEXPR_INSTALLED
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\pandas\core\computation\check.py&quot;, line 5, in &lt;module&gt;
-    ne = import_optional_dependency(&quot;numexpr&quot;, errors=&quot;warn&quot;)
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\pandas\compat\_optional.py&quot;, line 135, in import_optional_dependency
-    module = importlib.import_module(name)
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\importlib\__init__.py&quot;, line 126, in import_module
-    return _bootstrap._gcd_import(name[level:], package, level)
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\numexpr\__init__.py&quot;, line 24, in &lt;module&gt;
-    from numexpr.interpreter import MAX_THREADS, use_vml, __BLOCK_SIZE1__
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="ne">AttributeError</span>: _ARRAY_API not found
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A module that was compiled using NumPy 1.x cannot be run in
-NumPy 2.0.0 as it may crash. To support both 1.x and 2.x
-versions of NumPy, modules must be compiled with NumPy 2.0.
-Some module may need to rebuild instead e.g. with &#39;pybind11&gt;=2.12&#39;.
-
-If you are a user of the module, the easiest solution will be to
-downgrade to &#39;numpy&lt;2&#39; or try to upgrade the affected module.
-We expect that some modules will need time to support NumPy 2.
-
-Traceback (most recent call last):  File &quot;&lt;frozen runpy&gt;&quot;, line 198, in _run_module_as_main
-  File &quot;&lt;frozen runpy&gt;&quot;, line 88, in _run_code
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\ipykernel_launcher.py&quot;, line 17, in &lt;module&gt;
-    app.launch_new_instance()
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\traitlets\config\application.py&quot;, line 992, in launch_instance
-    app.start()
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\ipykernel\kernelapp.py&quot;, line 736, in start
-    self.io_loop.start()
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\tornado\platform\asyncio.py&quot;, line 205, in start
-    self.asyncio_loop.run_forever()
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\asyncio\base_events.py&quot;, line 607, in run_forever
-    self._run_once()
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\asyncio\base_events.py&quot;, line 1922, in _run_once
-    handle._run()
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\asyncio\events.py&quot;, line 80, in _run
-    self._context.run(self._callback, *self._args)
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\ipykernel\kernelbase.py&quot;, line 516, in dispatch_queue
-    await self.process_one()
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\ipykernel\kernelbase.py&quot;, line 505, in process_one
-    await dispatch(*args)
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\ipykernel\kernelbase.py&quot;, line 412, in dispatch_shell
-    await result
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\ipykernel\kernelbase.py&quot;, line 740, in execute_request
-    reply_content = await reply_content
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\ipykernel\ipkernel.py&quot;, line 422, in do_execute
-    res = shell.run_cell(
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\ipykernel\zmqshell.py&quot;, line 546, in run_cell
-    return super().run_cell(*args, **kwargs)
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\IPython\core\interactiveshell.py&quot;, line 3024, in run_cell
-    result = self._run_cell(
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\IPython\core\interactiveshell.py&quot;, line 3079, in _run_cell
-    result = runner(coro)
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\IPython\core\async_helpers.py&quot;, line 129, in _pseudo_sync_runner
-    coro.send(None)
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\IPython\core\interactiveshell.py&quot;, line 3284, in run_cell_async
-    has_raised = await self.run_ast_nodes(code_ast.body, cell_name,
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\IPython\core\interactiveshell.py&quot;, line 3466, in run_ast_nodes
-    if await self.run_code(code, result, async_=asy):
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\IPython\core\interactiveshell.py&quot;, line 3526, in run_code
-    exec(code_obj, self.user_global_ns, self.user_ns)
-  File &quot;C:\Users\lucas.souza\AppData\Local\Temp\ipykernel_27776\2519162096.py&quot;, line 1, in &lt;module&gt;
-    import pandas as pd
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\pandas\__init__.py&quot;, line 62, in &lt;module&gt;
-    from pandas.core.api import (
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\pandas\core\api.py&quot;, line 28, in &lt;module&gt;
-    from pandas.core.arrays import Categorical
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\pandas\core\arrays\__init__.py&quot;, line 1, in &lt;module&gt;
-    from pandas.core.arrays.arrow import ArrowExtensionArray
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\pandas\core\arrays\arrow\__init__.py&quot;, line 5, in &lt;module&gt;
-    from pandas.core.arrays.arrow.array import ArrowExtensionArray
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\pandas\core\arrays\arrow\array.py&quot;, line 64, in &lt;module&gt;
-    from pandas.core.arrays.masked import BaseMaskedArray
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\pandas\core\arrays\masked.py&quot;, line 60, in &lt;module&gt;
-    from pandas.core import (
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\pandas\core\nanops.py&quot;, line 52, in &lt;module&gt;
-    bn = import_optional_dependency(&quot;bottleneck&quot;, errors=&quot;warn&quot;)
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\pandas\compat\_optional.py&quot;, line 135, in import_optional_dependency
-    module = importlib.import_module(name)
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\importlib\__init__.py&quot;, line 126, in import_module
-    return _bootstrap._gcd_import(name[level:], package, level)
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\bottleneck\__init__.py&quot;, line 7, in &lt;module&gt;
-    from .move import (move_argmax, move_argmin, move_max, move_mean, move_median,
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="ne">AttributeError</span>: _ARRAY_API not found
 </pre></div>
 </div>
 </div>
@@ -1726,107 +1564,11 @@ f(x; \alpha, \beta) = \frac{x^{\alpha - 1} e^{-x/\beta}}{\Gamma(\alpha) \beta^{\
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A module that was compiled using NumPy 1.x cannot be run in
-NumPy 2.3.0 as it may crash. To support both 1.x and 2.x
-versions of NumPy, modules must be compiled with NumPy 2.0.
-Some module may need to rebuild instead e.g. with &#39;pybind11&gt;=2.12&#39;.
-
-If you are a user of the module, the easiest solution will be to
-downgrade to &#39;numpy&lt;2&#39; or try to upgrade the affected module.
-We expect that some modules will need time to support NumPy 2.
-
-Traceback (most recent call last):  File &quot;&lt;frozen runpy&gt;&quot;, line 198, in _run_module_as_main
-  File &quot;&lt;frozen runpy&gt;&quot;, line 88, in _run_code
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\ipykernel_launcher.py&quot;, line 17, in &lt;module&gt;
-    app.launch_new_instance()
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\traitlets\config\application.py&quot;, line 992, in launch_instance
-    app.start()
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\ipykernel\kernelapp.py&quot;, line 736, in start
-    self.io_loop.start()
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\tornado\platform\asyncio.py&quot;, line 205, in start
-    self.asyncio_loop.run_forever()
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\asyncio\base_events.py&quot;, line 607, in run_forever
-    self._run_once()
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\asyncio\base_events.py&quot;, line 1922, in _run_once
-    handle._run()
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\asyncio\events.py&quot;, line 80, in _run
-    self._context.run(self._callback, *self._args)
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\ipykernel\kernelbase.py&quot;, line 516, in dispatch_queue
-    await self.process_one()
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\ipykernel\kernelbase.py&quot;, line 505, in process_one
-    await dispatch(*args)
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\ipykernel\kernelbase.py&quot;, line 412, in dispatch_shell
-    await result
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\ipykernel\kernelbase.py&quot;, line 740, in execute_request
-    reply_content = await reply_content
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\ipykernel\ipkernel.py&quot;, line 422, in do_execute
-    res = shell.run_cell(
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\ipykernel\zmqshell.py&quot;, line 546, in run_cell
-    return super().run_cell(*args, **kwargs)
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\IPython\core\interactiveshell.py&quot;, line 3024, in run_cell
-    result = self._run_cell(
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\IPython\core\interactiveshell.py&quot;, line 3079, in _run_cell
-    result = runner(coro)
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\IPython\core\async_helpers.py&quot;, line 129, in _pseudo_sync_runner
-    coro.send(None)
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\IPython\core\interactiveshell.py&quot;, line 3284, in run_cell_async
-    has_raised = await self.run_ast_nodes(code_ast.body, cell_name,
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\IPython\core\interactiveshell.py&quot;, line 3466, in run_ast_nodes
-    if await self.run_code(code, result, async_=asy):
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\IPython\core\interactiveshell.py&quot;, line 3526, in run_code
-    exec(code_obj, self.user_global_ns, self.user_ns)
-  File &quot;C:\Users\lucas.souza\AppData\Local\Temp\ipykernel_8556\83194667.py&quot;, line 3, in &lt;module&gt;
-    import seaborn as sns
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\seaborn\__init__.py&quot;, line 2, in &lt;module&gt;
-    from .rcmod import *  # noqa: F401,F403
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\seaborn\rcmod.py&quot;, line 5, in &lt;module&gt;
-    from . import palettes
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\seaborn\palettes.py&quot;, line 9, in &lt;module&gt;
-    from .utils import desaturate, get_color_cycle
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\seaborn\utils.py&quot;, line 11, in &lt;module&gt;
-    import pandas as pd
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\pandas\__init__.py&quot;, line 62, in &lt;module&gt;
-    from pandas.core.api import (
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\pandas\core\api.py&quot;, line 28, in &lt;module&gt;
-    from pandas.core.arrays import Categorical
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\pandas\core\arrays\__init__.py&quot;, line 1, in &lt;module&gt;
-    from pandas.core.arrays.arrow import ArrowExtensionArray
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\pandas\core\arrays\arrow\__init__.py&quot;, line 5, in &lt;module&gt;
-    from pandas.core.arrays.arrow.array import ArrowExtensionArray
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\pandas\core\arrays\arrow\array.py&quot;, line 50, in &lt;module&gt;
-    from pandas.core import (
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\pandas\core\ops\__init__.py&quot;, line 8, in &lt;module&gt;
-    from pandas.core.ops.array_ops import (
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\pandas\core\ops\array_ops.py&quot;, line 56, in &lt;module&gt;
-    from pandas.core.computation import expressions
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\pandas\core\computation\expressions.py&quot;, line 21, in &lt;module&gt;
-    from pandas.core.computation.check import NUMEXPR_INSTALLED
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\pandas\core\computation\check.py&quot;, line 5, in &lt;module&gt;
-    ne = import_optional_dependency(&quot;numexpr&quot;, errors=&quot;warn&quot;)
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\pandas\compat\_optional.py&quot;, line 135, in import_optional_dependency
-    module = importlib.import_module(name)
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\importlib\__init__.py&quot;, line 126, in import_module
-    return _bootstrap._gcd_import(name[level:], package, level)
-  File &quot;c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\numexpr\__init__.py&quot;, line 24, in &lt;module&gt;
-    from numexpr.interpreter import MAX_THREADS, use_vml, __BLOCK_SIZE1__
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/lucas/.local/lib/python3.10/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn(&quot;Unable to import Axes3D. This may be due to multiple versions of &quot;
 </pre></div>
 </div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="ne">AttributeError</span>: _ARRAY_API not found
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\seaborn\_oldcore.py:1119: FutureWarning: use_inf_as_na option is deprecated and will be removed in a future version. Convert inf values to NaN before operating instead.
-  with pd.option_context(&#39;mode.use_inf_as_na&#39;, True):
-c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\seaborn\_oldcore.py:1119: FutureWarning: use_inf_as_na option is deprecated and will be removed in a future version. Convert inf values to NaN before operating instead.
-  with pd.option_context(&#39;mode.use_inf_as_na&#39;, True):
-c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\seaborn\_oldcore.py:1119: FutureWarning: use_inf_as_na option is deprecated and will be removed in a future version. Convert inf values to NaN before operating instead.
-  with pd.option_context(&#39;mode.use_inf_as_na&#39;, True):
-c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\seaborn\_oldcore.py:1119: FutureWarning: use_inf_as_na option is deprecated and will be removed in a future version. Convert inf values to NaN before operating instead.
-  with pd.option_context(&#39;mode.use_inf_as_na&#39;, True):
-</pre></div>
-</div>
-<img alt="../_images/ee3bd68272f420d81d444966e1f98f73e2194cc572bdd3a2e4c1fcf9f4deca36.png" src="../_images/ee3bd68272f420d81d444966e1f98f73e2194cc572bdd3a2e4c1fcf9f4deca36.png" />
+<img alt="../_images/1f740727fcae807aded87e294c8c4ac66b5fe8a821600619b701cf54433c0601.png" src="../_images/1f740727fcae807aded87e294c8c4ac66b5fe8a821600619b701cf54433c0601.png" />
 </div>
 </div>
 </section>
@@ -1882,7 +1624,7 @@ c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\seaborn\_oldcore.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/b604152e7f955b06300e7b0b15265b52655fd8044c9e1c6814aa224a6777bbbb.png" src="../_images/b604152e7f955b06300e7b0b15265b52655fd8044c9e1c6814aa224a6777bbbb.png" />
+<img alt="../_images/4617d4a5d0abe7762541182638de4788d3db615e25b2c22554ccf5b0d9fa68e7.png" src="../_images/4617d4a5d0abe7762541182638de4788d3db615e25b2c22554ccf5b0d9fa68e7.png" />
 </div>
 </div>
 </section>
@@ -2036,9 +1778,9 @@ f(x; \lambda, k) = \frac{k}{\lambda} \left(\frac{x}{\lambda}\right)^{k-1} e^{-(x
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/61dc40339eb3f38ead3a8ac04754f82b00fa1c87ff112f4fc60d63de10a84ab9.png" src="../_images/61dc40339eb3f38ead3a8ac04754f82b00fa1c87ff112f4fc60d63de10a84ab9.png" />
-<img alt="../_images/ef08998d2e19985709923076c81fddeb3ec38bec0379fa30cf8578ab63638b9f.png" src="../_images/ef08998d2e19985709923076c81fddeb3ec38bec0379fa30cf8578ab63638b9f.png" />
-<img alt="../_images/5469fc912b4956e9e1d8298744be481fcdeacdb5c2c67d2a85682c11b52b3100.png" src="../_images/5469fc912b4956e9e1d8298744be481fcdeacdb5c2c67d2a85682c11b52b3100.png" />
+<img alt="../_images/efe317502cf5ef22a905dc5f84ea73eb47bb3f49fbcae7b753818995103c23cb.png" src="../_images/efe317502cf5ef22a905dc5f84ea73eb47bb3f49fbcae7b753818995103c23cb.png" />
+<img alt="../_images/b38989b4c822b118cfea2248ccb890bc0585e96d3b1c72e9634254d9776e5cf2.png" src="../_images/b38989b4c822b118cfea2248ccb890bc0585e96d3b1c72e9634254d9776e5cf2.png" />
+<img alt="../_images/77833f083d4e6e1fc4a6995cccb6a6fac71edaaeea593048eb6e35b486fd3b0e.png" src="../_images/77833f083d4e6e1fc4a6995cccb6a6fac71edaaeea593048eb6e35b486fd3b0e.png" />
 </div>
 </div>
 <p>Veja que o gráfico da Distribuição de Poisson saiu como um histograma (ou gráfico de barras) e não como uma curva porque a Distribuição de Poisson é uma distribuição discreta, ou seja, ela é definida apenas para valores inteiros (como 0, 1, 2, 3, etc.). Portanto, faz sentido representá-la como um gráfico de barras, onde cada barra corresponde à probabilidade de um valor específico
@@ -2158,7 +1900,7 @@ P(X = k) = \binom{n}{k} p^k (1 - p)^{n - k}, \quad k = 0, 1, 2, \dots, n
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(0.9772498680518208)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9772498680518208
 </pre></div>
 </div>
 </div>
@@ -2199,7 +1941,7 @@ P(X = k) = \binom{n}{k} p^k (1 - p)^{n - k}, \quad k = 0, 1, 2, \dots, n
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(0.24609375)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.24609375000000003
 </pre></div>
 </div>
 </div>
@@ -2218,7 +1960,7 @@ P(X = k) = \binom{n}{k} p^k (1 - p)^{n - k}, \quad k = 0, 1, 2, \dots, n
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(0.26682793200000005)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.26682793200000005
 </pre></div>
 </div>
 </div>
@@ -2270,7 +2012,7 @@ P(X = k) = \binom{n}{k} p^k (1 - p)^{n - k}, \quad k = 0, 1, 2, \dots, n
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(5.207710444602616)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.207710444602616
 </pre></div>
 </div>
 </div>
@@ -2298,7 +2040,7 @@ P(X = k) = \binom{n}{k} p^k (1 - p)^{n - k}, \quad k = 0, 1, 2, \dots, n
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(4.756147122503571)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.756147122503571
 </pre></div>
 </div>
 </div>
@@ -2312,7 +2054,7 @@ P(X = k) = \binom{n}{k} p^k (1 - p)^{n - k}, \quad k = 0, 1, 2, \dots, n
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(95.1229424500714)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>95.1229424500714
 </pre></div>
 </div>
 </div>

@@ -6,7 +6,7 @@
 <link rel="index" title="Índice" href="../genindex.html" /><link rel="search" title="Buscar" href="../search.html" /><link rel="next" title="9. Fonte e Resumo do Estudo" href="FDRNN_resumo.html" /><link rel="prev" title="5. Testes de Hipóteses e Inferência Estatística" href="../notebooks_estatistica/Teste_Hipotese.html" />
 
     <link rel="shortcut icon" href="../_static/flav4.png"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.08.06 -->
-        <title>8. Introdução ao Aprendizado de Máquina (Machine Learning) - Ciência de Dados</title>
+        <title>8. Fundamentos de Machine Learning - Ciência de Dados</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
@@ -184,7 +184,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -219,7 +219,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Parte II. Machine Learning</span></p>
 <ul class="current">
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">8. Introdução ao Aprendizado de Máquina (Machine Learning)</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">8. Fundamentos de Machine Learning</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Parte III. Aprendizado por Reforço para Finanças</span></p>
 <ul>
@@ -268,14 +268,260 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section class="tex2jax_ignore mathjax_ignore" id="introducao-ao-aprendizado-de-maquina-machine-learning">
-<h1><span class="section-number">8. </span>Introdução ao Aprendizado de Máquina (Machine Learning)<a class="headerlink" href="#introducao-ao-aprendizado-de-maquina-machine-learning" title="Link para este cabeçalho">¶</a></h1>
+          <section class="tex2jax_ignore mathjax_ignore" id="fundamentos-de-machine-learning">
+<h1><span class="section-number">8. </span>Fundamentos de Machine Learning<a class="headerlink" href="#fundamentos-de-machine-learning" title="Link para este cabeçalho">¶</a></h1>
+<p>Neste capítulo, exploraremos os conceitos básicos de <em>Machine Learning (ML)</em> baseado no Capítulo 2 do livro <em>Modern applications of machine learning in quantum sciences</em> <span id="id1">[<a class="reference internal" href="../bib.html#id6" title="Anna Dawid, Julian Arnold, Borja Requena, Alexander Gresch, Marcin Płodzień, Kaelan Donatella, Kim A. Nicoli, Paolo Stornati, Rouven Koch, Miriam Büttner, Robert Okuła, Gorka Muñoz-Gil, Rodrigo A. Vargas-Hernández, Alba Cervera-Lierta, Juan Carrasquilla, Vedran Dunjko, Marylou Gabrié, Patrick Huembeli, Evert van Nieuwenburg, Filippo Vicentini, Lei Wang, Sebastian J. Wetzel, Giuseppe Carleo, Eliška Greplová, Roman Krems, Florian Marquardt, Michał Tomza, Maciej Lewenstein, and Alexandre Dauphin. Modern applications of machine learning in quantum sciences. 2025. URL: https://arxiv.org/abs/2204.04198, arXiv:2204.04198.">Dawid <em>et al.</em>, 2025</a>]</span> com foco especial nas suas conexões com <strong>otimização</strong> e <strong>generalização</strong>. Este documento introduz os conceitos fundamentais do aprendizado de máquina (ML), começando por defini-lo como um problema de otimização. Vamos explorar as funções de perda, como o Erro Quadrático Médio (MSE) e a Entropia Cruzada (CE), que quantificam os erros dos modelos, e discute os métodos de otimização baseados em gradiente, como o Gradiente Descendente Estocástico (SGD), para ajustar os parâmetros do modelo. O texto do livro também aborda a generalização, a capacidade do modelo de fazer previsões precisas em dados novos e não vistos, e técnicas de regularização para evitar o sobreajuste. Além disso, apresenta uma visão probabilística do ML, explicando como os modelos podem estimar distribuições de probabilidade usando o princípio da máxima verossimilhança e o teorema de Bayes, e diferencia modelos de ML padrão (como regressão linear e máquinas de vetores de suporte) de redes neurais profundas (DNNs), incluindo CNNs, Autoencoders e ARNNs. Finalmente, veremos sobre o algoritmo de retropropagação, essencial para o treinamento eficiente de DNNs.</p>
+<section id="aprendizado-como-um-problema-de-otimizacao">
+<h2><span class="section-number">8.1. </span>Aprendizado como um Problema de Otimização<a class="headerlink" href="#aprendizado-como-um-problema-de-otimizacao" title="Link para este cabeçalho">¶</a></h2>
+<p>ML é capaz de resolver diversas tarefas (por exemplo, <strong>classificação</strong> ou <strong>regressão</strong>) e existem diferentes maneiras para a máquina acessar os dados. O elemento final essencial é um <strong>modelo</strong> que aprende a resolver a tarefa designada com os dados disponíveis. Em termos gerais, um modelo é uma <strong>função dos dados de entrada</strong>, <span class="math notranslate nohighlight">\(f(x)\)</span>, cuja saída é interpretada como uma <strong>previsão</strong> para esses dados.</p>
+<p>A forma da saída depende da tarefa em questão. Por exemplo, pode ser uma classe de um conjunto discreto de classes possíveis em uma tarefa de classificação, ou um valor contínuo (como um tensor proveniente de uma distribuição alvo contínua) em uma tarefa de regressão. Encontrar a função que proporciona o melhor mapeamento entre os dados e o resultado desejado para uma tarefa específica é o <strong>cerne do ML</strong>.</p>
+<p>Começamos definindo uma parametrização específica para um modelo (função). Por exemplo, podemos ter</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[f(\mathbf{x}) = \mathbf{w}^\intercal \mathbf{x} + \mathbf{b}, \ \ \text{ com}\ \ \theta \supset \{\mathbf{w}, \mathbf{b}\}\]</div>
+</div>
+<p>onde os parâmetros do modelo são <span class="math notranslate nohighlight">\(\theta = \{\mathbf{w}, \mathbf{b}\}\)</span>. O conjunto de todas as possíveis parametrizações dessa função forma o que chamamos de <strong>classe de hipóteses</strong> (ou espaço de hipóteses). A Seção 2.4 apresentará exemplos específicos de classes de hipóteses, mas por enquanto, focaremos no processo de aprendizado em si.</p>
+<p>Os esquemas de aprendizado mencionados – <strong>aprendizado supervisionado, não supervisionado ou por reforço</strong> – compartilham o mesmo processo fundamental: encontrar um <strong>modelo ótimo</strong> <span class="math notranslate nohighlight">\(\hat{f} \equiv f_{\theta^* }\)</span> com <strong>parâmetros ótimos</strong> <span class="math notranslate nohighlight">\(\theta^*\)</span> dentro do espaço de hipóteses. Este modelo ótimo é aquele que minimiza uma <strong>função de perda alvo</strong> ou maximiza uma métrica de desempenho do modelo. Para maior clareza ao longo desta seção, vamos nos concentrar na <strong>minimização da função de perda</strong>, <span class="math notranslate nohighlight">\(L\)</span>, que intuitivamente atua como uma <strong>penalidade pelos erros</strong> cometidos pelo modelo.</p>
+<blockquote>
+<div><p>Máquinas “aprendem” minimizando a função de perda dos dados de treinamento, ou seja, todos os dados
+acessíveis ao modelo de ML durante o processo de aprendizado. A minimização é feita
+ajustando os parâmetros do modelo. A fórmula da função de perda varia entre as tarefas
+e há uma certa liberdade sobre como ela pode ser escolhida. Em geral, a função de perda
+compara as previsões do modelo ou uma solução desenvolvida com a realidade ou as expectativas.
+Portanto, o aprendizado se torna um problema de otimização.</p>
+</div></blockquote>
+<p>Popular exemplos de funções de perda incluem o <strong>erro quadrático médio (MSE - Mean-Squared Error)</strong> e a <strong>entropia cruzada (CE - Cross-Entropy)</strong>, usadas para problemas de <strong>regressão supervisionada</strong> e <strong>classificação</strong>, respectivamente. A saída da função de perda depende do modelo (que entra nas fórmulas através das previsões) e do conjunto de dados. Elas também são normalizadas pelo número de pontos de dados <span class="math notranslate nohighlight">\(n\)</span> para comparar seus valores entre problemas com diferentes tamanhos de conjunto de dados.</p>
+<p>A MSE é uma função de perda popular, herdada de problemas de regressão linear, e é definida como:</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[ \mathcal{L}_{\text{MSE}} = \frac{1}{n} \sum_{i=1}^{n} (y_i - f(\mathbf{x}_i))^2. \]</div>
+</div>
+<p>O MSE surge naturalmente de uma perspectiva probabilística, particularmente da maximização da verossimilhança sob a suposição de que os alvos são amostrados de uma distribuição Gaussiana.</p>
+<p>Outra função de perda para regressão é o Erro Médio Absoluto (MAE - Mean Absolute Error), que é mais sensível a pequenos erros do que o MSE. Os dois são mostrados na Figura a seguir.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">fitz</span>  <span class="c1"># PyMuPDF</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">SVG</span><span class="p">,</span> <span class="n">display</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_pdf_as_svg</span><span class="p">(</span><span class="n">pdf_path</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Lê um PDF de uma página (gráfico), aplica zoom interno (matrix) no conteúdo,</span>
+<span class="sd">    e também ajusta a tela externa (width, height) do SVG final.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">doc</span> <span class="o">=</span> <span class="n">fitz</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">pdf_path</span><span class="p">)</span>
+    <span class="n">page</span> <span class="o">=</span> <span class="n">doc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="c1"># Cria matriz de zoom</span>
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">fitz</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">zoom</span><span class="p">,</span> <span class="n">zoom</span><span class="p">)</span>
+
+    <span class="c1"># Gera SVG com conteúdo escalado</span>
+    <span class="n">svg_text</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="n">get_svg_image</span><span class="p">(</span><span class="n">matrix</span><span class="o">=</span><span class="n">matrix</span><span class="p">)</span>
+
+    <span class="c1"># Substitui a tag &lt;svg&gt; para ajustar a moldura externa (pixels finais)</span>
+    <span class="n">svg_tag_pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;&lt;svg\b[^&gt;]*&gt;&#39;</span>
+    <span class="n">new_svg_tag</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; &#39;</span>
+                   <span class="sa">f</span><span class="s1">&#39;xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; &#39;</span>
+                   <span class="sa">f</span><span class="s1">&#39;width=&quot;</span><span class="si">{</span><span class="n">width</span><span class="si">}</span><span class="s1">&quot; height=&quot;</span><span class="si">{</span><span class="n">height</span><span class="si">}</span><span class="s1">&quot;&gt;&#39;</span><span class="p">)</span>
+    <span class="n">svg_text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">svg_tag_pattern</span><span class="p">,</span> <span class="n">new_svg_tag</span><span class="p">,</span> <span class="n">svg_text</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Exibe</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">SVG</span><span class="p">(</span><span class="n">svg_text</span><span class="p">))</span>
+
+    <span class="n">doc</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_pdf_as_svg</span><span class="p">(</span><span class="s1">&#39;../_static/fig_2_1.pdf&#39;</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="mf">2.7</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1200</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">400</span>  <span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/10cf62680e3fed49abcffecc86ff02eca29a177d8c245d85234ab4ca1f26efea.svg" src="../_images/10cf62680e3fed49abcffecc86ff02eca29a177d8c245d85234ab4ca1f26efea.svg" />
+</div>
+</div>
+<p><em>Figura 2.1 da Ref.<span id="id2">[<a class="reference internal" href="../bib.html#id6" title="Anna Dawid, Julian Arnold, Borja Requena, Alexander Gresch, Marcin Płodzień, Kaelan Donatella, Kim A. Nicoli, Paolo Stornati, Rouven Koch, Miriam Büttner, Robert Okuła, Gorka Muñoz-Gil, Rodrigo A. Vargas-Hernández, Alba Cervera-Lierta, Juan Carrasquilla, Vedran Dunjko, Marylou Gabrié, Patrick Huembeli, Evert van Nieuwenburg, Filippo Vicentini, Lei Wang, Sebastian J. Wetzel, Giuseppe Carleo, Eliška Greplová, Roman Krems, Florian Marquardt, Michał Tomza, Maciej Lewenstein, and Alexandre Dauphin. Modern applications of machine learning in quantum sciences. 2025. URL: https://arxiv.org/abs/2204.04198, arXiv:2204.04198.">Dawid <em>et al.</em>, 2025</a>]</span>: Exemplos de funções de perda.</em></p>
+<p><em>(a) Gráfico da entropia cruzada binária (cross-entropy) para um único ponto de dado <span class="math notranslate nohighlight">\( x_i \)</span>, considerando que o rótulo verdadeiro <span class="math notranslate nohighlight">\( y_i \)</span> seja 0 (linha azul) ou 1 (linha roxa).</em></p>
+<p><em>(b) Intuição por trás das funções de perda usadas em problemas de regressão. As linhas tracejadas representam as diferenças entre os rótulos reais <span class="math notranslate nohighlight">\( y_i \)</span> e os valores previstos pelo modelo <span class="math notranslate nohighlight">\( f(x_i) \)</span>.</em></p>
+<p><em>(c) Gráficos do Erro Quadrático Médio (MSE) em roxo e do Erro Absoluto Médio (MAE) em azul, para um único ponto de dado <span class="math notranslate nohighlight">\( x_i \)</span>, quando o rótulo verdadeiro <span class="math notranslate nohighlight">\( y_i = 0 \)</span>.</em></p>
+<section id="entropia-cruzada-ce-cross-entropy">
+<h3><span class="section-number">8.1.1. </span>Entropia Cruzada (CE - Cross-Entropy)<a class="headerlink" href="#entropia-cruzada-ce-cross-entropy" title="Link para este cabeçalho">¶</a></h3>
+<p>A Entropia Cruzada é uma função de perda com raízes na teoria da informação e conexões com a teoria da probabilidade, usada para problemas de classificação supervisionada. Temos:</p>
+<p>A <strong>Entropia Cruzada Binária (BCE - Binary Cross-Entropy)</strong>: Conhecida também como log loss, é usada para tarefas de classificação binária.</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[ L_{BCE} = - \frac{1}{n} \sum_{i=1}^{n} [y_i \cdot \log(f(x_i)) + (1-y_i) \cdot \log(1-f(x_i))],\]</div>
+</div>
+<p>E a <strong>Entropia Cruzada Categórica (CCE - Categorical Cross-Entropy):</strong> Utilizada para classificação multi-classe. Esta fórmula requer a representação dos rótulos em um formato chamado one-hot encoding. Por exemplo, em um problema com <span class="math notranslate nohighlight">\(K\)</span> classes, um rótulo <span class="math notranslate nohighlight">\(y_i\)</span> é codificado como um vetor de <span class="math notranslate nohighlight">\(K\)</span> elementos onde todos são zero, exceto um ‘1’ na posição correspondente à classe do exemplo (e.g., <span class="math notranslate nohighlight">\(y_i = [0, 0, 1, ..., 0]\)</span> para a terceira classe). A equação é</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[ L_{CCE} = - \frac{1}{n} \sum_{i=1}^{n} \sum_{c=1}^{K} y_{i,c} \cdot \log(f(x_i)). \]</div>
+</div>
+<p>A minimização da Entropia Cruzada é equivalente a minimizar a divergência de Kullback-Leibler (KL) entre a distribuição de probabilidade de referência e a distribuição do modelo.
+A saída da função de perda depende do modelo (que entra nas fórmulas através das previsões) e do conjunto de dados. As funções de perda são tipicamente normalizadas pelo número de pontos de dados (<span class="math notranslate nohighlight">\(n\)</span>) para permitir a comparação de seus valores entre problemas com diferentes tamanhos de conjunto de dados.
+É crucial entender que, para a otimização baseada em gradiente, as medidas de desempenho precisam ser suaves e diferenciáveis. Essas condições distinguem as funções de perda de outras métricas de avaliação, como acurácia, recall ou precisão. Por exemplo, a acurácia (razão entre exemplos classificados corretamente e o tamanho do conjunto de dados) pode ser uma medida mais intuitiva de desempenho para classificação, mas não é diferenciável, o que a torna inadequada para otimização baseada em gradientes.
+Uma vez que uma função de perda é escolhida, ela pode ser minimizada através da variação dos parâmetros do modelo de ML, utilizando qualquer método de otimização. Em geral, o mínimo da função de perda pode ser encontrado por construção analítica ou por métodos de otimização, que podem ser baseados em gradiente ou sem gradiente.</p>
+<p>Um exemplo popular de método baseado em gradiente é o de descida do gradiente (gradient descent). A otimização geralmente começa em um ponto aleatório no espaço de parâmetros do modelo (ou seja, com parâmetros inicializados aleatoriamente).</p>
+<blockquote>
+<div><p>As etapas do processo de descida do gradiente são:</p>
+<ol class="arabic simple">
+<li><p>Com o modelo e seus parâmetros iniciais, faça previsões sobre os dados de treinamento.</p></li>
+<li><p>A partir dessas previsões e dos valores reais, calcule a função de perda.</p></li>
+<li><p>Calcule os gradientes da função de perda em relação a cada parâmetro do modelo.</p></li>
+<li><p>Atualize os parâmetros subtraindo os gradientes respectivos, multiplicados por uma taxa de aprendizado (<span class="math notranslate nohighlight">\(\eta\)</span>). A intuição é que a descida do  gradiente atualiza os parâmetros do modelo dando passos na direção oposta ao gradiente, que indica onde o valor da função cresce.</p></li>
+</ol>
+<p>5.Essas etapas são repetidas até que o mínimo seja alcançado, e cada repetição é chamada de época (epoch).</p>
+</div></blockquote>
+<p>A fórmula de atualização para um parâmetro <span class="math notranslate nohighlight">\(\theta_j\)</span> é:</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\theta_j := \theta_j - \eta \frac{\partial L}{\partial \theta_j}.\]</div>
+</div>
+</section>
+<section id="a-importancia-da-taxa-de-aprendizado-eta-e-hiperparametros">
+<h3><span class="section-number">8.1.2. </span>A Importância da Taxa de Aprendizado (<span class="math notranslate nohighlight">\(\eta\)</span>) e Hiperparâmetros<a class="headerlink" href="#a-importancia-da-taxa-de-aprendizado-eta-e-hiperparametros" title="Link para este cabeçalho">¶</a></h3>
+<p>A taxa de aprendizado (<span class="math notranslate nohighlight">\(\eta\)</span>) controla o tamanho desses passos. A escolha de <span class="math notranslate nohighlight">\(\eta\)</span> é crítica: tanto um <span class="math notranslate nohighlight">\(\eta\)</span> muito grande (levando a “saltos” ou overshooting) quanto um <span class="math notranslate nohighlight">\(\eta\)</span> muito pequeno (tornando a otimização lenta e necessitando de muitas épocas) podem dificultar a convergência. Encontrar uma <span class="math notranslate nohighlight">\(\eta\)</span> ótima geralmente exige tentativa e erro, tornando-a um hiperparâmetro do processo de aprendizado. Hiperparâmetros são valores que controlam o processo de aprendizado (como a velocidade de convergência e a qualidade do mínimo) e são escolhidos pelo usuário, em contraste com os parâmetros do modelo que são derivados através do treinamento. O número total de épocas ou a escolha da função de perda também são exemplos de hiperparâmetros.
+A otimização com descida do gradiente é muito eficiente quando a “paisagem de perda” (a representação dos valores de perda ao redor do espaço de parâmetros do modelo) é convexa. No entanto, especialmente para modelos de Deep Learning (DL), as paisagens de perda são frequentemente altamente não-convexas e exibem múltiplos mínimos locais. Para lidar com esses problemas, uma modificação popular da descida do gradiente é a descida do gradiente estocástica (SGD - Stochastic Gradient Descent). O SGD calcula a função de perda em cada época em mini-batches (subconjuntos) dos dados de treinamento, selecionados aleatoriamente. Essa estocasticidade resultante ajuda a escapar de pontos de sela e mínimos locais “estreitos”. Além disso, calcular a função de perda e os gradientes apenas para um mini-batch, em vez de todo o conjunto de dados, proporciona uma aceleração computacional significativa para grandes conjuntos de dados.
+Existem outras alterações populares ao SGD, como a inclusão de um termo de momento que considera as direções de atualização anteriores ou taxas de aprendizado adaptativas entre as épocas, culminando em otimizadores como o Adam. Métodos que incorporam a segunda derivada, como o algoritmo L-BFGS, também existem. Além dos métodos baseados em gradiente, há abordagens de otimização sem gradiente que são usadas quando os gradientes ou a própria função de perda são caros ou impossíveis de calcular, como algoritmos genéticos, otimização por enxame de partículas, busca aleatória e recozimento simulado.</p>
+<p>Para realizar o método da descida do gradiente, é fundamental calcular o gradiente da função de perda (<span class="math notranslate nohighlight">\(L\)</span>) em relação a cada um dos parâmetros do modelo (<span class="math notranslate nohighlight">\(\nabla_\theta L\)</span>) antes de cada etapa de atualização. Existem diversas abordagens para computar essas derivadas.</p>
+<p><strong>Derivadas Analíticas Manuais:</strong> Poder-se-ia calcular as derivadas analiticamente “à mão”. No entanto, esta abordagem é suscetível a erros e pode ser extremamente tediosa, especialmente para arquiteturas de redes neurais complexas.</p>
+<p><strong>Aproximação Numérica:</strong> Outra opção é aproximá-las numericamente com base em diferenças finitas.</p>
+<p><strong>Diferenciação Automática (AD - Automatic Differentiation)</strong>: Quando a preocupação é a avaliação numérica precisa das derivadas, e não sua forma simbólica, a Diferenciação Automática (AD) é uma excelente escolha.</p>
+</section>
+<section id="diferenciacao-automatica-ad-e-a-regra-da-cadeia">
+<h3><span class="section-number">8.1.3. </span>Diferenciação Automática (AD) e a Regra da Cadeia<a class="headerlink" href="#diferenciacao-automatica-ad-e-a-regra-da-cadeia" title="Link para este cabeçalho">¶</a></h3>
+<p>A AD aproveita o fato de que os programas de computador que calculam a função de perda podem ser decompostos em uma sequência de operações aritméticas elementares (como adições ou multiplicações) e funções (como exponenciais ou seno). Assim, o valor numérico da derivada do programa (ou seja, da função de perda) pode ser calculado de forma automatizada e eficiente pela aplicação repetida de regras de diferenciação básicas predefinidas, como a regra da cadeia:</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\frac{df(g(x))}{dx} = f'(g(x))g'(x).\]</div>
+</div>
+<p>É importante notar que a retropropagação (backpropagation), o algoritmo de escolha para o treinamento eficiente de Redes Neurais (NNs), é um caso especial de aplicação da AD em modo reverso a NNs.</p>
+</section>
+<section id="desafios-da-otimizacao-e-a-descida-do-gradiente-estocastica-sgd">
+<h3><span class="section-number">8.1.4. </span>Desafios da Otimização e a Descida do Gradiente Estocástica (SGD)<a class="headerlink" href="#desafios-da-otimizacao-e-a-descida-do-gradiente-estocastica-sgd" title="Link para este cabeçalho">¶</a></h3>
+<p>O procedimento de otimização baseado na descida do gradiente é muito eficiente quando a “paisagem de perda” (a representação dos valores de perda no espaço de parâmetros do modelo) é convexa. No entanto, e especialmente para modelos de Deep Learning (DL), as paisagens de perda são frequentemente altamente não-convexas e geralmente apresentam múltiplos mínimos locais e pontos de sela. Isso levanta questões importantes:</p>
+<ol class="arabic simple">
+<li><p>Como evitar ficar preso em mínimos locais correspondentes a valores altos da função de perda ou em pontos de sela nessas paisagens?</p></li>
+<li><p>Alguns mínimos são melhores que outros?</p></li>
+</ol>
+<p>Para lidar com esses problemas, uma modificação popular do algoritmo de descida do gradiente é a Descida do Gradiente Estocástica (SGD - Stochastic Gradient Descent).</p>
+<p><strong>Mini-batches:</strong> O SGD calcula a função de perda em cada época em mini-batches (subconjuntos) dos dados de treinamento, selecionados aleatoriamente.</p>
+<p><strong>Estocasticidade e Escape de Mínimos Locais:</strong> A estocasticidade resultante ajuda a escapar de pontos de sela e mínimos locais “estreitos”.</p>
+<p><strong>Aceleração Computacional:</strong> Calcular a função de perda e os gradientes apenas para um mini-batch, em vez de todo o conjunto de dados, proporciona uma aceleração computacional significativa para grandes conjuntos de dados.</p>
+<p>Dos pontos principais sobre a paisagem da função de perda em modelos de Machine Learning (ML), especialmente em Deep Learning (DL) têm-se:</p>
+</section>
+<section id="analise-de-minimos-locais-e-pontos-de-sela-em-dl">
+<h3><span class="section-number">8.1.5. </span>Análise de Mínimos Locais e Pontos de Sela em DL<a class="headerlink" href="#analise-de-minimos-locais-e-pontos-de-sela-em-dl" title="Link para este cabeçalho">¶</a></h3>
+<p>A otimização de modelos de ML frequentemente leva a mínimos locais ou pontos de sela.</p>
+<p>Para examinar esses pontos, é usada a Hessiana da função de perda de treinamento (<span class="math notranslate nohighlight">\(H_{θ^*}\)</span>), que é uma matriz de derivadas parciais de segunda ordem da função de perda em relação aos parâmetros do modelo, calculada no mínimo.</p>
+<p>Os autovetores da Hessiana com os maiores autovalores positivos indicam as direções de subida mais íngreme em torno do mínimo. Uma alta curvatura nessas direções significa que os dados de treinamento determinam fortemente os parâmetros do modelo nessa direção.</p>
+<p>É notável que, em modelos de ML, a grande maioria dos autovalores da Hessiana é próxima de zero, sugerindo direções “planas”. Além disso, pequenos autovalores negativos também podem estar presentes, indicando direções com curvatura negativa. O texto sugere que mais informações sobre a Hessiana podem ser encontradas na seção 3.5.3.</p>
+<p>Uma questão que surge é por que confiar em um modelo que não atinge o mínimo global. O texto esclarece que, na prática, para grandes redes, a maioria dos mínimos locais é equivalente e oferece desempenho similar no conjunto de teste. A probabilidade de encontrar um “mínimo ruim” (com alto valor de perda) é não-zero para redes pequenas, mas diminui rapidamente com o tamanho da rede. Tentar encontrar o mínimo global no conjunto de treinamento não é útil e pode levar a overfitting, ou seja, um desempenho muito melhor no treinamento do que no teste, o que é sinônimo de má generalização.</p>
+</section>
+<section id="evolucoes-dos-metodos-de-otimizacao-baseados-em-gradiente">
+<h3><span class="section-number">8.1.6. </span>Evoluções dos Métodos de Otimização Baseados em Gradiente<a class="headerlink" href="#evolucoes-dos-metodos-de-otimizacao-baseados-em-gradiente" title="Link para este cabeçalho">¶</a></h3>
+<p>Até este ponto, a Descida do Gradiente Estocástica (SGD) era o único método baseado em gradiente descrito. O SGD, como discutido anteriormente em nossa conversa, envolve o cálculo da função de perda em mini-batches dos dados de treinamento a cada época, resultando em uma estocasticidade que ajuda a escapar de pontos de sela e mínimos locais estreitos, além de oferecer um ganho computacional.</p>
+<section id="alteracoes-populares-no-sgd">
+<h4><span class="section-number">8.1.6.1. </span>Alterações populares no SGD<a class="headerlink" href="#alteracoes-populares-no-sgd" title="Link para este cabeçalho">¶</a></h4>
+<p>Alterações populares no SGD incluem:</p>
+<p>A adição de um termo de momento, que considera as direções de atualização anteriores.</p>
+<p>O uso de taxas de aprendizado adaptativas entre as épocas.</p>
+<p>A combinação de ambos, culminando no amplamente utilizado otimizador Adam.</p>
+<p>Outra ideia é incorporar a segunda derivada na regra de atualização, como feito pelo algoritmo L-BFGS (limited-memory Broyden–Fletcher–Goldfarb–Shanno).</p>
+</section>
+<section id="abordagens-de-otimizacao-sem-gradiente-gradient-free">
+<h4><span class="section-number">8.1.6.2. </span>Abordagens de Otimização Sem Gradiente (Gradient-Free)<a class="headerlink" href="#abordagens-de-otimizacao-sem-gradiente-gradient-free" title="Link para este cabeçalho">¶</a></h4>
+<p>Existem também métodos de otimização que não utilizam gradientes. Estes são particularmente úteis quando os gradientes ou a própria função de perda são caros ou impossíveis de calcular, por exemplo, na otimização de experimentos.</p>
+<p>Exemplos notáveis incluem algoritmos genéticos, otimização por enxame de partículas, busca aleatória e recozimento simulado.</p>
+<p>A Otimização Bayesiana (BO) é outro exemplo que será discutido em mais detalhes na seção 4.3 de  <span id="id3">[<a class="reference internal" href="../bib.html#id6" title="Anna Dawid, Julian Arnold, Borja Requena, Alexander Gresch, Marcin Płodzień, Kaelan Donatella, Kim A. Nicoli, Paolo Stornati, Rouven Koch, Miriam Büttner, Robert Okuła, Gorka Muñoz-Gil, Rodrigo A. Vargas-Hernández, Alba Cervera-Lierta, Juan Carrasquilla, Vedran Dunjko, Marylou Gabrié, Patrick Huembeli, Evert van Nieuwenburg, Filippo Vicentini, Lei Wang, Sebastian J. Wetzel, Giuseppe Carleo, Eliška Greplová, Roman Krems, Florian Marquardt, Michał Tomza, Maciej Lewenstein, and Alexandre Dauphin. Modern applications of machine learning in quantum sciences. 2025. URL: https://arxiv.org/abs/2204.04198, arXiv:2204.04198.">Dawid <em>et al.</em>, 2025</a>]</span>.</p>
+<p>Abaixo temos o algoritmo de uma modificação do método de Descida do Gradiente, projetado para otimizar modelos de Machine Learning, especialmente em cenários com paisagens de função de perda (loss landscapes) não-convexas, comuns em Deep Learning.</p>
+<hr class="docutils" />
+<p><strong>Algoritmo 1:</strong> Minibatch stochastic gradient descent (SGD)</p>
+<p><strong>Requer:</strong> Taxa de aprendizado <span class="math notranslate nohighlight">\( \eta \)</span><br />
+Inicialize <span class="math notranslate nohighlight">\( \theta \)</span> com valores aleatórios</p>
+<p><strong>Para</strong> epoch = 1 até no_epochs <strong>faça</strong><br />
+  Embaralhe <span class="math notranslate nohighlight">\( \mathcal{D}_{\text{train}} \)</span></p>
+<p><strong>Para</strong> i = 1 até m (onde m é o tamanho do minibatch) <strong>faça</strong><br />
+    <span class="math notranslate nohighlight">\( x_i, y_i \sim \mathcal{D}_{\text{train}} \)</span>           ▹ Sorteie dados aleatórios sem reposição<br />
+    <span class="math notranslate nohighlight">\( \mathcal{L} \gets \frac{1}{m} \sum_{i=1}^{m} \mathcal{L}(y_i, f(x_i)) \)</span>      ▹ Calcule a função de perda no minibatch<br />
+    <span class="math notranslate nohighlight">\( (\nabla \mathcal{L})_j \gets \frac{\partial \mathcal{L}}{\partial \theta_j} \)</span>             ▹ Calcule os gradientes<br />
+    <span class="math notranslate nohighlight">\( \theta_j \gets \theta_j - \eta \frac{\partial \mathcal{L}}{\partial \theta_j} \)</span>             ▹ Atualize os parâmetros<br />
+  <strong>Fim para</strong></p>
+<p><strong>Fim para</strong></p>
+</section>
+</section>
+</section>
+<section id="retorne-theta">
+<h2><span class="section-number">8.2. </span><strong>Retorne</strong> <span class="math notranslate nohighlight">\( \theta \)</span><a class="headerlink" href="#retorne-theta" title="Link para este cabeçalho">¶</a></h2>
+<p>Segue explicação sobre os termos presentes no algoritmo:</p>
+<ol class="arabic simple">
+<li><p><strong>Requer:</strong> Taxa de aprendizado <span class="math notranslate nohighlight">\( \eta \)</span></p></li>
+</ol>
+<p>Isso indica um pré-requisito para o algoritmo: a taxa de aprendizado (<span class="math notranslate nohighlight">\(\eta\)</span>).</p>
+<p>A taxa de aprendizado é um hiperparâmetro crucial que controla o tamanho dos passos que o algoritmo de otimização dá em direção ao mínimo da função de perda.</p>
+<p>Uma <span class="math notranslate nohighlight">\(\eta\)</span> muito pequena torna o treinamento lento e prolongado, enquanto uma <span class="math notranslate nohighlight">\(\eta\)</span> muito grande pode fazer a otimização “pular” o mínimo (overshoot), dificultando ou impedindo a convergência. Um valor ótimo de <span class="math notranslate nohighlight">\(\eta\)</span> é essencial para uma convergência eficiente e geralmente é encontrado por tentativa e erro.</p>
+<ol class="arabic simple" start="2">
+<li><p>Inicialize <span class="math notranslate nohighlight">\( \theta \)</span> com valores aleatórios:</p></li>
+</ol>
+<p>Antes de iniciar o processo de aprendizado, os parâmetros do modelo (<span class="math notranslate nohighlight">\(\theta\)</span>) são inicializados com valores aleatórios.</p>
+<p>Na prática, esses parâmetros são geralmente inicializados aleatoriamente, mas com restrições para terem média zero e variância constante entre as camadas, a fim de evitar problemas com gradientes que desaparecem ou explodem.</p>
+<ol class="arabic simple" start="3">
+<li><p><strong>Para</strong> epoch = 1 até no_epochs <strong>faça</strong></p></li>
+</ol>
+<p>Este é o laço externo do algoritmo, que define o número total de épocas.</p>
+<p>Uma época refere-se a uma repetição completa do processo de atualização dos parâmetros do modelo, que envolve percorrer todo o conjunto de dados de treinamento.</p>
+<ol class="arabic simple" start="4">
+<li><p>Embaralhe <span class="math notranslate nohighlight">\( \mathcal{D}_{\text{train}} \)</span></p></li>
+</ol>
+<p>Dentro de cada época, o conjunto de dados de treinamento (Dtrain) é embaralhado.</p>
+<p>Isso garante que os mini-batches selecionados em cada iteração sejam aleatórios, o que é fundamental para a “estocasticidade” do SGD e ajuda a evitar que o algoritmo fique preso em mínimos locais ou pontos de sela.</p>
+<ol class="arabic simple" start="5">
+<li><p><strong>Para</strong> i = 1 até m (onde m é o tamanho do minibatch) <strong>faça</strong></p></li>
+</ol>
+<p>Este é o laço interno, onde o treinamento é realizado em mini-batches dos dados.</p>
+<p><span class="math notranslate nohighlight">\(m\)</span> representa o tamanho de cada mini-batch. Em vez de usar todo o conjunto de dados (como na Descida do Gradiente Batch), o SGD calcula a perda e os gradientes em pequenos subconjuntos de dados.</p>
+<ol class="arabic simple" start="6">
+<li><p><span class="math notranslate nohighlight">\( x_i, y_i \sim \mathcal{D}_{\text{train}} :\)</span></p></li>
+</ol>
+<p>Dentro de cada iteração do laço interno, pontos de dados aleatórios (xi, yi) são extraídos do conjunto de treinamento para formar o mini-batch atual.</p>
+<p>O fato de serem “aleatoriamente selecionados” e “sem substituição” contribui para a natureza estocástica do SGD.</p>
+<ol class="arabic simple" start="7">
+<li><p><span class="math notranslate nohighlight">\( \mathcal{L} \gets \frac{1}{m} \sum_{i=1}^{m} \mathcal{L}(y_i, f(x_i)) :\)</span></p></li>
+</ol>
+<p>A função de perda (L) é calculada para o mini-batch atual.</p>
+<p>A função de perda quantifica o “erro” ou “penalidade” das previsões do modelo em comparação com os valores reais (yi). Exemplos populares incluem Erro Quadrático Médio (MSE) para regressão e Entropia Cruzada (CE) para classificação.</p>
+<ol class="arabic simple" start="8">
+<li><p><span class="math notranslate nohighlight">\( (\nabla \mathcal{L})_j \gets \frac{\partial \mathcal{L}}{\partial \theta_j} :\)</span></p></li>
+</ol>
+<p>Os gradientes da função de perda (∇L) em relação a cada parâmetro do modelo (<span class="math notranslate nohighlight">\(\theta_j\)</span>) são calculados para o mini-batch.</p>
+<p>O gradiente indica a direção de maior crescimento da função de perda. Para minimizá-la, move-se na direção oposta ao gradiente.</p>
+<p>Para Redes Neurais (NNs), o cálculo desses gradientes é feito eficientemente por um algoritmo chamado retropropagação (backpropagation), que é uma forma de diferenciação automática.</p>
+<ol class="arabic simple" start="9">
+<li><p><span class="math notranslate nohighlight">\( \theta_j \gets \theta_j - \eta \frac{\partial \mathcal{L}}{\partial \theta_j} :\)</span></p></li>
+</ol>
+<p>Os parâmetros do modelo (<span class="math notranslate nohighlight">\(\theta_j\)</span>) são atualizados.</p>
+<p>Esta é a regra de atualização central da descida do gradiente: o parâmetro é ajustado subtraindo o gradiente (multiplicado pela taxa de aprendizado <span class="math notranslate nohighlight">\(\eta\)</span>) do valor atual do parâmetro. Isso move os parâmetros na direção que minimiza a função de perda.</p>
+<ol class="arabic simple" start="10">
+<li><p><strong>Fim para</strong> (dois blocos):</p></li>
+</ol>
+<p>Fechamento dos laços interno e externo.
+11. <strong>Retorne</strong> <span class="math notranslate nohighlight">\( \theta :\)</span></p>
+<p>Após o número especificado de épocas, o algoritmo retorna os parâmetros do modelo otimizados (θ).
+Benefícios do SGD:
+A utilização de mini-batches e a consequente estocasticidade do SGD trazem dois benefícios principais:</p>
+<p>• Escape de Mínimos Locais e Pontos de Sela: O fato de os gradientes apontarem em várias direções a cada época ajuda o algoritmo a escapar de pontos de sela e mínimos locais “estreitos” na complexa paisagem de perda de modelos de Deep Learning, que é tipicamente não-convexa e possui múltiplos mínimos locais.</p>
+<p>• Eficiência Computacional: Calcular a função de perda e os gradientes apenas para um mini-batch, em vez de para todo o conjunto de dados, proporciona um ganho significativo de velocidade computacional para grandes conjuntos de dados.
+Este algoritmo é a base para muitos dos otimizadores modernos em Machine Learning, incluindo alterações populares como a inclusão de um termo de momento ou taxas de aprendizado adaptativas (como no otimizador Adam).</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -340,8 +586,40 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">8. Fundamentos de Machine Learning</a><ul>
+<li><a class="reference internal" href="#aprendizado-como-um-problema-de-otimizacao">8.1. Aprendizado como um Problema de Otimização</a><ul>
+<li><a class="reference internal" href="#entropia-cruzada-ce-cross-entropy">8.1.1. Entropia Cruzada (CE - Cross-Entropy)</a></li>
+<li><a class="reference internal" href="#a-importancia-da-taxa-de-aprendizado-eta-e-hiperparametros">8.1.2. A Importância da Taxa de Aprendizado (<span class="math notranslate nohighlight">\(\eta\)</span>) e Hiperparâmetros</a></li>
+<li><a class="reference internal" href="#diferenciacao-automatica-ad-e-a-regra-da-cadeia">8.1.3. Diferenciação Automática (AD) e a Regra da Cadeia</a></li>
+<li><a class="reference internal" href="#desafios-da-otimizacao-e-a-descida-do-gradiente-estocastica-sgd">8.1.4. Desafios da Otimização e a Descida do Gradiente Estocástica (SGD)</a></li>
+<li><a class="reference internal" href="#analise-de-minimos-locais-e-pontos-de-sela-em-dl">8.1.5. Análise de Mínimos Locais e Pontos de Sela em DL</a></li>
+<li><a class="reference internal" href="#evolucoes-dos-metodos-de-otimizacao-baseados-em-gradiente">8.1.6. Evoluções dos Métodos de Otimização Baseados em Gradiente</a><ul>
+<li><a class="reference internal" href="#alteracoes-populares-no-sgd">8.1.6.1. Alterações populares no SGD</a></li>
+<li><a class="reference internal" href="#abordagens-de-otimizacao-sem-gradiente-gradient-free">8.1.6.2. Abordagens de Otimização Sem Gradiente (Gradient-Free)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#retorne-theta">8.2. <strong>Retorne</strong> <span class="math notranslate nohighlight">\( \theta \)</span></a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
@@ -364,6 +642,8 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     </body>
 </html>
