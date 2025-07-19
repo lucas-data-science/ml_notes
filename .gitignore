@@ -3,6 +3,8 @@
 *.txt
 *.yml
 *.md
+*.bib
+notebooks_estatistica
 LEIA-ME
 _static/
 notebooks/
