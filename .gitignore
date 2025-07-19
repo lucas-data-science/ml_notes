@@ -1,3 +1,7 @@
 *.xlsx
+*.sh
+*.txt
+*.yml
+*.md
 _static/
 notebooks/
