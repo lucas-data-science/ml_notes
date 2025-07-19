@@ -1,19 +1,19 @@
 <!doctype html>
-<html class="no-js" lang="pt-BR" data-content_root="../">
+<html class="no-js" lang="pt-BR" data-content_root="">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Índice" href="../genindex.html" /><link rel="search" title="Buscar" href="../search.html" /><link rel="next" title="8. Fundamentos de Machine Learning" href="../notebooks/ML_intro.html" /><link rel="prev" title="4. Distribuições de Dados" href="Distribuicoes_de_Dados.html" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Índice" href="../genindex.html" /><link rel="search" title="Buscar" href="../search.html" /><link rel="next" title="8. Processos Estocásticos" href="Processos_Estocasticos.html" /><link rel="prev" title="4. Distribuições de Dados" href="Distribuicoes_de_Dados.html" />
 
-    <link rel="shortcut icon" href="../_static/flav4.png"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.08.06 -->
+    <link rel="shortcut icon" href="../_static/flav4.png"/><!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
         <title>5. Testes de Hipóteses e Inferência Estatística - Ciência de Dados</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=109105fe" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=949a1ff5" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css?v=6ad1a40c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=302659d7" />
     <link rel="stylesheet" type="text/css" href="../_static/estilo.css?v=6d8328f8" />
     
@@ -216,20 +216,23 @@
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">5. Testes de Hipóteses e Inferência Estatística</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#intervalos-de-confianca-e-classificacao">6. Intervalos de Confiança e Classificação</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#teste-de-hipotese">7. Teste de Hipótese</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Processos_Estocasticos.html">8. Processos Estocásticos</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Parte II. Machine Learning</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../notebooks/ML_intro.html">8. Fundamentos de Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/ML/ML_intro.html">9. Fundamentos de Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/ML/ML_models.html">10. Modelos de Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/ML/ML_models.html#backpropagation">11. Backpropagation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Parte III. Aprendizado por Reforço para Finanças</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../notebooks/FDRNN_resumo.html">9. Fonte e Resumo do Estudo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../notebooks/FDRNN_intro.html">10. Introdução</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../notebooks/FDRNN_iiiA_direct_reforcement_trading.html">11. Direct Deep Reinforcement Learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../notebooks/FDRNN_iiiB_RNN_for_DPP.html">12. Rede Neural Recorrente Profunda para DDR</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../notebooks/FDRNN_iiiC_fuzzy.html">13. Extensões Fuzzy para Reduzir Incertezas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../notebooks/FDRNN_ivA_system_initializations.html">14. DRNN LEARNING</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../notebooks/FDRNN_ivB_task-aware_BPTT.html">15. Task-Aware BPTT (Retropropagação no Tempo Sensível à Tarefa)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/FDRNN/FDRNN_resumo.html">12. Fonte e Resumo do Estudo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/FDRNN/FDRNN_intro.html">13. Introdução</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/FDRNN/FDRNN_iiiA_direct_reforcement_trading.html">14. Direct Deep Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/FDRNN/FDRNN_iiiB_RNN_for_DPP.html">15. Rede Neural Recorrente Profunda para DDR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/FDRNN/FDRNN_iiiC_fuzzy.html">16. Extensões Fuzzy para Reduzir Incertezas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/FDRNN/FDRNN_ivA_system_initializations.html">17. DRNN LEARNING</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/FDRNN/FDRNN_ivB_task-aware_BPTT.html">18. Task-Aware BPTT (Retropropagação no Tempo Sensível à Tarefa)</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Parte Final</span></p>
 <ul>
@@ -275,7 +278,7 @@
         </div>
         <article role="main" id="furo-main-content">
           <section id="testes-de-hipoteses-e-inferencia-estatistica">
-<h1><span class="section-number">5. </span>Testes de Hipóteses e Inferência Estatística<a class="headerlink" href="#testes-de-hipoteses-e-inferencia-estatistica" title="Link para este cabeçalho">¶</a></h1>
+<h1><span class="section-number">5. </span>Testes de Hipóteses e Inferência Estatística<a class="headerlink" href="#testes-de-hipoteses-e-inferencia-estatistica" title="Link permanente para este cabeçalho">¶</a></h1>
 <p>Na parte sobre distribuições vimos vários tipos de distribuições para vários tipos de dados e também com calcular a probailidade associada a algumas distribuições.</p>
 <p>Agora vamos fazer alguns exercícios que consistem em testar hipóteses.<br />
 Experimentos desse tipo estão presente em estatística aplicada a áreas diversas como medicina, economia, engenharia, ciências sociais e, especialmente, ciência de dados. O objetivo é claro: construir experimentos capazes de <strong>confirmar ou rejeitar uma hipótese</strong>, com base em evidências empíricas.</p>
@@ -289,7 +292,7 @@ Experimentos desse tipo estão presente em estatística aplicada a áreas divers
 <hr class="docutils" />
 <div class="unnumbered-subsection">
 <section id="a-cadeia-classica-da-inferencia-estatistica">
-<h2><span class="section-number">5.1. </span>A Cadeia Clássica da Inferência Estatística<a class="headerlink" href="#a-cadeia-classica-da-inferencia-estatistica" title="Link para este cabeçalho">¶</a></h2>
+<h2><span class="section-number">5.1. </span>A Cadeia Clássica da Inferência Estatística<a class="headerlink" href="#a-cadeia-classica-da-inferencia-estatistica" title="Link permanente para este cabeçalho">¶</a></h2>
 </div>
 <p>Sempre que você se deparar com termos como <strong>significância estatística</strong>, <strong>teste t</strong> ou <strong>valor p</strong>, eles estão inseridos em um processo estruturado, muitas vezes chamado de <strong>cadeia clássica da inferência estatística</strong>, que pode ser descrita nos seguintes passos:</p>
 <ol class="arabic">
@@ -311,7 +314,7 @@ Com base nos resultados, tomamos decisões: <strong>rejeitar ou não a hipótese
 <div class="unnumbered-subsection">
 </section>
 <section id="intervalos-de-confianca-e-testes-de-hipoteses">
-<h2><span class="section-number">5.2. </span>Intervalos de Confiança e Testes de Hipóteses<a class="headerlink" href="#intervalos-de-confianca-e-testes-de-hipoteses" title="Link para este cabeçalho">¶</a></h2>
+<h2><span class="section-number">5.2. </span>Intervalos de Confiança e Testes de Hipóteses<a class="headerlink" href="#intervalos-de-confianca-e-testes-de-hipoteses" title="Link permanente para este cabeçalho">¶</a></h2>
 </div>
 <p>Uma das primeiras ferramentas utilizadas nesse processo são os <strong>intervalos de confiança</strong>. Eles fornecem uma estimativa de onde, com determinada confiança (por exemplo, 95%), está o parâmetro real da população (como uma média, proporção, ou diferença entre grupos). Esses intervalos ajudam a entender a <strong>precisão das estimativas</strong> e servem de base para decisões formais em testes de hipótese.</p>
 <p>Por exemplo, se ao comparar duas versões de uma interface de usuário, o intervalo de confiança da diferença entre as taxas de conversão <strong>não contém zero</strong>, temos uma indicação de que <strong>existe uma diferença estatisticamente significativa</strong> entre as versões — o que pode motivar uma ação prática.</p>
@@ -333,11 +336,11 @@ Com base nos resultados, tomamos decisões: <strong>rejeitar ou não a hipótese
 <p>Vamos construir esse conhecimento passo a passo, conectando a teoria estatística com a prática do dia a dia no desenvolvimento de produtos, experimentação e tomada de decisões baseadas em dados.</p>
 </section>
 <section id="intervalo-de-confianca">
-<h2><span class="section-number">5.3. </span>Intervalo de Confiança<a class="headerlink" href="#intervalo-de-confianca" title="Link para este cabeçalho">¶</a></h2>
+<h2><span class="section-number">5.3. </span>Intervalo de Confiança<a class="headerlink" href="#intervalo-de-confianca" title="Link permanente para este cabeçalho">¶</a></h2>
 <p>Os intervalos de confiança são usados para estimar um parâmetro populacional com base em dados amostrais, fornecendo uma faixa dentro da qual o valor verdadeiro provavelmente se encontra.</p>
 <hr class="docutils" />
 <section id="ic-para-a-media-conhecido-distribuicao-normal">
-<h3><span class="section-number">5.3.1. </span>IC para a Média (σ conhecido, distribuição Normal)<a class="headerlink" href="#ic-para-a-media-conhecido-distribuicao-normal" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">5.3.1. </span>IC para a Média (σ conhecido, distribuição Normal)<a class="headerlink" href="#ic-para-a-media-conhecido-distribuicao-normal" title="Link permanente para este cabeçalho">¶</a></h3>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
@@ -516,7 +519,7 @@ Traceback (most recent call last):  File &quot;&lt;frozen runpy&gt;&quot;, line 
 </div>
 </section>
 <section id="calculo-manual-do-intervalo-de-confianca">
-<h3><span class="section-number">5.3.2. </span>Cálculo manual do Intervalo de Confiança<a class="headerlink" href="#calculo-manual-do-intervalo-de-confianca" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">5.3.2. </span>Cálculo manual do Intervalo de Confiança<a class="headerlink" href="#calculo-manual-do-intervalo-de-confianca" title="Link permanente para este cabeçalho">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.05</span> <span class="o">/</span> <span class="mi">2</span>    <span class="c1"># alpha referente a 95%, dividindo alpha por 2 para o teste bicaudal</span>
@@ -602,7 +605,7 @@ Traceback (most recent call last):  File &quot;&lt;frozen runpy&gt;&quot;, line 
 </div>
 </section>
 <section id="calculo-do-intervalo-de-confianca-com-scipy">
-<h3><span class="section-number">5.3.3. </span>Cálculo do intervalo de confiança com Scipy<a class="headerlink" href="#calculo-do-intervalo-de-confianca-com-scipy" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">5.3.3. </span>Cálculo do intervalo de confiança com Scipy<a class="headerlink" href="#calculo-do-intervalo-de-confianca-com-scipy" title="Link permanente para este cabeçalho">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stats</span><span class="o">.</span><span class="n">sem</span><span class="p">(</span><span class="n">dados</span><span class="p">)</span>
@@ -655,7 +658,7 @@ Traceback (most recent call last):  File &quot;&lt;frozen runpy&gt;&quot;, line 
 </div>
 </section>
 <section id="diferentes-niveis-de-confianca">
-<h3><span class="section-number">5.3.4. </span>Diferentes níveis de confiança<a class="headerlink" href="#diferentes-niveis-de-confianca" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">5.3.4. </span>Diferentes níveis de confiança<a class="headerlink" href="#diferentes-niveis-de-confianca" title="Link permanente para este cabeçalho">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">nivel_conf</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">]:</span>
@@ -677,7 +680,7 @@ Intervalo de confiança 0.99: (np.float64(155.71628000694295), np.float64(162.78
 </div>
 </section>
 <section id="exercicio">
-<h3><span class="section-number">5.3.5. </span>Exercicio<a class="headerlink" href="#exercicio" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">5.3.5. </span>Exercicio<a class="headerlink" href="#exercicio" title="Link permanente para este cabeçalho">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dados_salario</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">82.1191</span><span class="p">,</span> <span class="mf">72.8014</span><span class="p">,</span> <span class="mf">79.1266</span><span class="p">,</span> <span class="mf">71.3552</span><span class="p">,</span> <span class="mf">59.192</span> <span class="p">,</span> <span class="mf">79.1952</span><span class="p">,</span> <span class="mf">56.518</span> <span class="p">,</span>
@@ -720,10 +723,10 @@ no intervalo entre 67.26 e 73.01</p>
 </section>
 </section>
 <section id="intervalos-de-confianca-com-distribuicao-t-student">
-<h2><span class="section-number">5.4. </span>Intervalos de confiança com Distribuição T Student<a class="headerlink" href="#intervalos-de-confianca-com-distribuicao-t-student" title="Link para este cabeçalho">¶</a></h2>
+<h2><span class="section-number">5.4. </span>Intervalos de confiança com Distribuição T Student<a class="headerlink" href="#intervalos-de-confianca-com-distribuicao-t-student" title="Link permanente para este cabeçalho">¶</a></h2>
 <p>Lembrando que a T Stdent é adequada para amostras pequenas (n &lt; 30) ou quando a variância da população é desconhecida.</p>
 <section id="ic-para-a-media-desconhecido-distribuicao-t-student">
-<h3><span class="section-number">5.4.1. </span>IC para a Média (σ desconhecido, Distribuição T Student)<a class="headerlink" href="#ic-para-a-media-desconhecido-distribuicao-t-student" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">5.4.1. </span>IC para a Média (σ desconhecido, Distribuição T Student)<a class="headerlink" href="#ic-para-a-media-desconhecido-distribuicao-t-student" title="Link permanente para este cabeçalho">¶</a></h3>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
@@ -811,7 +814,7 @@ Margem de erro: 9.828922339675927
 </section>
 </section>
 <section id="intervalos-de-confianca-e-classificacao">
-<h1><span class="section-number">6. </span>Intervalos de Confiança e Classificação<a class="headerlink" href="#intervalos-de-confianca-e-classificacao" title="Link para este cabeçalho">¶</a></h1>
+<h1><span class="section-number">6. </span>Intervalos de Confiança e Classificação<a class="headerlink" href="#intervalos-de-confianca-e-classificacao" title="Link permanente para este cabeçalho">¶</a></h1>
 <p>Predição de pagamento de empréstimo.</p>
 <p>O código abaixo realiza um experimento de comparação entre três algoritmos de classificação — <strong>Naive Bayes</strong>, <strong>Regressão Logística</strong> e <strong>Random Forest</strong> — usando validação cruzada repetida.</p>
 <div class="cell docutils container">
@@ -949,7 +952,7 @@ c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\seaborn\_oldcore.
 </div>
 </div>
 <section id="intervalos-de-confianca-para-distribuicoes-normal-e-t">
-<h2><span class="section-number">6.1. </span>Intervalos de confiança para distribuições normal e T<a class="headerlink" href="#intervalos-de-confianca-para-distribuicoes-normal-e-t" title="Link para este cabeçalho">¶</a></h2>
+<h2><span class="section-number">6.1. </span>Intervalos de confiança para distribuições normal e T<a class="headerlink" href="#intervalos-de-confianca-para-distribuicoes-normal-e-t" title="Link permanente para este cabeçalho">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">t</span>
@@ -959,7 +962,7 @@ c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\seaborn\_oldcore.
 </div>
 </div>
 <section id="neive-bayes">
-<h3><span class="section-number">6.1.1. </span>Neïve Bayes<a class="headerlink" href="#neive-bayes" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">6.1.1. </span>Neïve Bayes<a class="headerlink" href="#neive-bayes" title="Link permanente para este cabeçalho">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">intervalos_naive_bayes_t</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">interval</span><span class="p">(</span><span class="mf">0.95</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">resultados_naive_bayes_cv</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> 
@@ -992,7 +995,7 @@ c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\seaborn\_oldcore.
 </div>
 </section>
 <section id="regressao-logistica">
-<h3><span class="section-number">6.1.2. </span>Regressão Logística<a class="headerlink" href="#regressao-logistica" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">6.1.2. </span>Regressão Logística<a class="headerlink" href="#regressao-logistica" title="Link permanente para este cabeçalho">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">intervalos_logistica_t</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">interval</span><span class="p">(</span><span class="mf">0.95</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">resultados_logistica_cv</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> 
@@ -1024,7 +1027,7 @@ c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\seaborn\_oldcore.
 </div>
 </section>
 <section id="random-forest">
-<h3><span class="section-number">6.1.3. </span>Random Forest<a class="headerlink" href="#random-forest" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">6.1.3. </span>Random Forest<a class="headerlink" href="#random-forest" title="Link permanente para este cabeçalho">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">intervalos_forest_t</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">interval</span><span class="p">(</span><span class="mf">0.95</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">resultados_forest_cv</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> 
@@ -1060,7 +1063,7 @@ no intervalo entre 98,63% e 98,74% - 98,59% e 98,77%</p>
 </section>
 </section>
 <section id="teste-de-hipotese">
-<h1><span class="section-number">7. </span>Teste de Hipótese<a class="headerlink" href="#teste-de-hipotese" title="Link para este cabeçalho">¶</a></h1>
+<h1><span class="section-number">7. </span>Teste de Hipótese<a class="headerlink" href="#teste-de-hipotese" title="Link permanente para este cabeçalho">¶</a></h1>
 <p>Vimos que eles fornecem uma estimativa de onde, com determinada confiança (por exemplo, 95%), está o parâmetro real da população (como uma média, proporção, ou diferença entre grupos). Esses intervalos ajudam a entender a precisão das estimativas e servem de base para decisões formais em testes de hipótese.</p>
 <p>Por exemplo, se ao comparar duas versões de uma interface de usuário, o intervalo de confiança da diferença entre as taxas de conversão não contém zero, temos uma indicação de que existe uma diferença estatisticamente significativa entre as versões — o que pode motivar uma ação prática.</p>
 <p>Nível de Significância, Valor p e Tipos de Erro</p>
@@ -1121,7 +1124,7 @@ H1 Média: 164.0275, H1 Desvio Padrão: 14.0595
 </div>
 </div>
 <section id="teste-de-hipotese-z">
-<h2><span class="section-number">7.1. </span>Teste de hipótese Z<a class="headerlink" href="#teste-de-hipotese-z" title="Link para este cabeçalho">¶</a></h2>
+<h2><span class="section-number">7.1. </span>Teste de hipótese Z<a class="headerlink" href="#teste-de-hipotese-z" title="Link permanente para este cabeçalho">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">H1_n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dados_novos</span><span class="p">)</span>
@@ -1155,7 +1158,7 @@ Hipótese nula rejeitada
 </div>
 </div>
 <section id="teste-com-o-statsmodels">
-<h3><span class="section-number">7.1.1. </span>Teste com o statsmodels<a class="headerlink" href="#teste-com-o-statsmodels" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">7.1.1. </span>Teste com o statsmodels<a class="headerlink" href="#teste-com-o-statsmodels" title="Link permanente para este cabeçalho">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">statsmodels.stats.weightstats</span><span class="w"> </span><span class="kn">import</span> <span class="n">ztest</span>
@@ -1177,7 +1180,7 @@ Hipótese nula rejeitada
 </section>
 </section>
 <section id="teste-de-hipotese-t">
-<h2><span class="section-number">7.2. </span>Teste de hipótese T<a class="headerlink" href="#teste-de-hipotese-t" title="Link para este cabeçalho">¶</a></h2>
+<h2><span class="section-number">7.2. </span>Teste de hipótese T<a class="headerlink" href="#teste-de-hipotese-t" title="Link permanente para este cabeçalho">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dados_originais</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">149.</span> <span class="p">,</span> <span class="mf">160.</span><span class="p">,</span> <span class="mf">147.</span><span class="p">,</span> <span class="mf">189.</span><span class="p">,</span> <span class="mf">175.</span><span class="p">,</span> <span class="mf">168.</span><span class="p">,</span> <span class="mf">156.</span><span class="p">,</span> <span class="mf">160.</span><span class="p">,</span> <span class="mf">152.</span><span class="p">])</span>
@@ -1230,7 +1233,7 @@ Desvio Padrão dos Dados Novos: 13.042692291939664
 </div>
 </section>
 <section id="teste-qui-quadrado">
-<h2><span class="section-number">7.3. </span>Teste qui quadrado<a class="headerlink" href="#teste-qui-quadrado" title="Link para este cabeçalho">¶</a></h2>
+<h2><span class="section-number">7.3. </span>Teste qui quadrado<a class="headerlink" href="#teste-qui-quadrado" title="Link permanente para este cabeçalho">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">chi2_contingency</span>
@@ -1265,7 +1268,7 @@ Hipótese alternativa rejeitada
 </div>
 </section>
 <section id="selecao-de-atributos-com-testes-de-hipoteses-univariate-selectfdr">
-<h2><span class="section-number">7.4. </span>Seleção de atributos com testes de hipóteses - univariate SelectFdr<a class="headerlink" href="#selecao-de-atributos-com-testes-de-hipoteses-univariate-selectfdr" title="Link para este cabeçalho">¶</a></h2>
+<h2><span class="section-number">7.4. </span>Seleção de atributos com testes de hipóteses - univariate SelectFdr<a class="headerlink" href="#selecao-de-atributos-com-testes-de-hipoteses-univariate-selectfdr" title="Link permanente para este cabeçalho">¶</a></h2>
 <p>Testes estatísticos univariados são aqueles que envolvem uma variável dependente, por exemplo, teste t ou teste z para comparação de médias</p>
 <p>Documentação: <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.SelectFpr.html#sklearn.feature_selection.SelectFpr">https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.SelectFpr.html#sklearn.feature_selection.SelectFpr</a></p>
 <p>False discovery rate: <a class="reference external" href="https://en.wikipedia.org/wiki/False_discovery_rate">https://en.wikipedia.org/wiki/False_discovery_rate</a></p>
@@ -1299,7 +1302,7 @@ Hipótese alternativa rejeitada
 </div>
 </div>
 <section id="sem-selecao-de-atributos">
-<h3><span class="section-number">7.4.1. </span>Sem seleção de atributos<a class="headerlink" href="#sem-selecao-de-atributos" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">7.4.1. </span>Sem seleção de atributos<a class="headerlink" href="#sem-selecao-de-atributos" title="Link permanente para este cabeçalho">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">naive1</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
@@ -1317,7 +1320,7 @@ Hipótese alternativa rejeitada
 </div>
 </section>
 <section id="selecao-de-atributos-com-qui-quadrado">
-<h3><span class="section-number">7.4.2. </span>Seleção de atributos com Qui Quadrado<a class="headerlink" href="#selecao-de-atributos-com-qui-quadrado" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">7.4.2. </span>Seleção de atributos com Qui Quadrado<a class="headerlink" href="#selecao-de-atributos-com-qui-quadrado" title="Link permanente para este cabeçalho">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">selecao</span> <span class="o">=</span> <span class="n">SelectFdr</span><span class="p">(</span><span class="n">chi2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
@@ -1407,11 +1410,11 @@ Acurácia sem qui-quadrado: 0.7813357731015553
 </section>
 </section>
 <section id="anova-analise-de-variancia">
-<h2><span class="section-number">7.5. </span>ANOVA — Análise de Variância<a class="headerlink" href="#anova-analise-de-variancia" title="Link para este cabeçalho">¶</a></h2>
+<h2><span class="section-number">7.5. </span>ANOVA — Análise de Variância<a class="headerlink" href="#anova-analise-de-variancia" title="Link permanente para este cabeçalho">¶</a></h2>
 <p>A <strong>ANOVA</strong> (<em>Analysis of Variance</em>) é um teste estatístico utilizado para comparar <strong>médias entre três ou mais grupos independentes</strong>. Ao invés de realizar múltiplos testes t pareados (o que aumenta o risco de erro tipo I), a ANOVA permite testar, de forma global, se pelo menos um dos grupos difere significativamente dos outros.</p>
 <hr class="docutils" />
 <section id="quando-usar-anova">
-<h3><span class="section-number">7.5.1. </span>Quando usar ANOVA?<a class="headerlink" href="#quando-usar-anova" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">7.5.1. </span>Quando usar ANOVA?<a class="headerlink" href="#quando-usar-anova" title="Link permanente para este cabeçalho">¶</a></h3>
 <ul class="simple">
 <li><p>Quando há <strong>mais de dois grupos</strong> e queremos saber se <strong>existe alguma diferença entre as médias</strong>.</p></li>
 <li><p>Exemplo típico: comparar a taxa de conversão de três versões de uma página (A, B e C).</p></li>
@@ -1419,7 +1422,7 @@ Acurácia sem qui-quadrado: 0.7813357731015553
 </section>
 <hr class="docutils" />
 <section id="hipoteses-do-teste-anova">
-<h3><span class="section-number">7.5.2. </span>Hipóteses do teste ANOVA<a class="headerlink" href="#hipoteses-do-teste-anova" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">7.5.2. </span>Hipóteses do teste ANOVA<a class="headerlink" href="#hipoteses-do-teste-anova" title="Link permanente para este cabeçalho">¶</a></h3>
 <ul>
 <li><p><strong>Hipótese nula (H₀)</strong>: todas as médias são iguais.</p>
 <blockquote>
@@ -1431,7 +1434,7 @@ Acurácia sem qui-quadrado: 0.7813357731015553
 </section>
 <hr class="docutils" />
 <section id="como-funciona">
-<h3><span class="section-number">7.5.3. </span>Como funciona<a class="headerlink" href="#como-funciona" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">7.5.3. </span>Como funciona<a class="headerlink" href="#como-funciona" title="Link permanente para este cabeçalho">¶</a></h3>
 <p>A ANOVA avalia a variação total dos dados e a decompõe em duas partes:</p>
 <ul class="simple">
 <li><p><strong>Variação entre os grupos</strong> (devido às diferenças entre as médias dos grupos)</p></li>
@@ -1448,7 +1451,7 @@ F = \frac{\text{Variância entre os grupos}}{\text{Variância dentro dos grupos}
 </section>
 <hr class="docutils" />
 <section id="valor-p-na-anova">
-<h3><span class="section-number">7.5.4. </span>Valor p na ANOVA<a class="headerlink" href="#valor-p-na-anova" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">7.5.4. </span>Valor p na ANOVA<a class="headerlink" href="#valor-p-na-anova" title="Link permanente para este cabeçalho">¶</a></h3>
 <p>Assim como em outros testes de hipótese, o valor p obtido indica a <strong>probabilidade de observar uma estatística F tão extrema quanto a encontrada, assumindo que H₀ é verdadeira</strong>.</p>
 <ul class="simple">
 <li><p>Se o <strong>valor p &lt; α (ex: 0,05)</strong> → rejeita-se a hipótese nula → pelo menos um grupo tem média diferente.</p></li>
@@ -1457,7 +1460,7 @@ F = \frac{\text{Variância entre os grupos}}{\text{Variância dentro dos grupos}
 </section>
 <hr class="docutils" />
 <section id="importante">
-<h3><span class="section-number">7.5.5. </span>Importante<a class="headerlink" href="#importante" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">7.5.5. </span>Importante<a class="headerlink" href="#importante" title="Link permanente para este cabeçalho">¶</a></h3>
 <ul class="simple">
 <li><p>A ANOVA apenas detecta <strong>se há diferença</strong>, mas <strong>não informa quais grupos diferem entre si</strong>.</p></li>
 <li><p>Para isso, utiliza-se um <strong>teste post hoc</strong>, como <strong>Tukey</strong> ou <strong>Bonferroni</strong>, que faz comparações múltiplas controlando o erro tipo I.</p></li>
@@ -1527,17 +1530,17 @@ F = \frac{\text{Variância entre os grupos}}{\text{Variância dentro dos grupos}
 </section>
 </section>
 <section id="teste-de-tukey-hsd-honest-significant-difference">
-<h2><span class="section-number">7.6. </span>Teste de Tukey (HSD – Honest Significant Difference)<a class="headerlink" href="#teste-de-tukey-hsd-honest-significant-difference" title="Link para este cabeçalho">¶</a></h2>
+<h2><span class="section-number">7.6. </span>Teste de Tukey (HSD – Honest Significant Difference)<a class="headerlink" href="#teste-de-tukey-hsd-honest-significant-difference" title="Link permanente para este cabeçalho">¶</a></h2>
 <p>O <strong>Teste de Tukey</strong>, também conhecido como <strong>Tukey HSD (Honest Significant Difference)</strong>, é um teste <strong>post hoc</strong> utilizado após uma <strong>ANOVA</strong> quando encontramos uma diferença significativa entre os grupos.</p>
 <p>Enquanto a ANOVA nos diz <strong>se existe alguma diferença</strong> entre as médias, ela <strong>não informa quais grupos diferem entre si</strong>. É aí que entra o teste de Tukey: ele realiza <strong>comparações múltiplas pareadas</strong> entre os grupos para identificar exatamente <strong>quais pares de médias</strong> são significativamente diferentes.</p>
 <hr class="docutils" />
 <section id="objetivo">
-<h3><span class="section-number">7.6.1. </span>Objetivo<a class="headerlink" href="#objetivo" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">7.6.1. </span>Objetivo<a class="headerlink" href="#objetivo" title="Link permanente para este cabeçalho">¶</a></h3>
 <p>Identificar <strong>quais grupos específicos possuem médias significativamente diferentes</strong>, controlando o <strong>erro do tipo I</strong> que surgiria se fizéssemos diversos testes t independentes.</p>
 </section>
 <hr class="docutils" />
 <section id="id1">
-<h3><span class="section-number">7.6.2. </span>Como funciona<a class="headerlink" href="#id1" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">7.6.2. </span>Como funciona<a class="headerlink" href="#id1" title="Link permanente para este cabeçalho">¶</a></h3>
 <p>O teste calcula uma <strong>diferença mínima significativa</strong> entre as médias dos grupos com base em:</p>
 <ul class="simple">
 <li><p>A variabilidade dos dados (variância dentro dos grupos)</p></li>
@@ -1548,7 +1551,7 @@ F = \frac{\text{Variância entre os grupos}}{\text{Variância dentro dos grupos}
 </section>
 <hr class="docutils" />
 <section id="quando-usar">
-<h3><span class="section-number">7.6.3. </span>Quando usar<a class="headerlink" href="#quando-usar" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">7.6.3. </span>Quando usar<a class="headerlink" href="#quando-usar" title="Link permanente para este cabeçalho">¶</a></h3>
 <ul class="simple">
 <li><p>Após uma ANOVA com resultado significativo (valor p &lt; α)</p></li>
 <li><p>Quando há <strong>três ou mais grupos</strong> sendo comparados</p></li>
@@ -1557,7 +1560,7 @@ F = \frac{\text{Variância entre os grupos}}{\text{Variância dentro dos grupos}
 </section>
 <hr class="docutils" />
 <section id="exemplo-pratico">
-<h3><span class="section-number">7.6.4. </span>Exemplo prático<a class="headerlink" href="#exemplo-pratico" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">7.6.4. </span>Exemplo prático<a class="headerlink" href="#exemplo-pratico" title="Link permanente para este cabeçalho">¶</a></h3>
 <p>Suponha que um teste ANOVA com três versões de uma campanha de marketing (A, B e C) resultou em <strong>p &lt; 0,01</strong>. Com o teste de Tukey, podemos descobrir se:</p>
 <ul class="simple">
 <li><p>A difere de B</p></li>
@@ -1727,7 +1730,7 @@ group1 group2 meandiff p-adj   lower    upper   reject
 </div>
 </section>
 <section id="selecao-de-atributos-com-anova">
-<h3><span class="section-number">7.6.5. </span>Seleção de atributos com ANOVA<a class="headerlink" href="#selecao-de-atributos-com-anova" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">7.6.5. </span>Seleção de atributos com ANOVA<a class="headerlink" href="#selecao-de-atributos-com-anova" title="Link permanente para este cabeçalho">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.feature_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">SelectFdr</span><span class="p">,</span> <span class="n">f_classif</span>
@@ -1785,7 +1788,7 @@ group1 group2 meandiff p-adj   lower    upper   reject
 <p>Provavelemente retornou os mesmo atributos do SelectFdr com chi2, mas com uma abordagem diferente de teste estatístico.</p>
 </section>
 <section id="teste-de-hipotese-de-shapiro-wilk">
-<h3><span class="section-number">7.6.6. </span>Teste de hipótese de Shapiro-Wilk<a class="headerlink" href="#teste-de-hipotese-de-shapiro-wilk" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">7.6.6. </span>Teste de hipótese de Shapiro-Wilk<a class="headerlink" href="#teste-de-hipotese-de-shapiro-wilk" title="Link permanente para este cabeçalho">¶</a></h3>
 <p>O <strong>teste de Shapiro-Wilk</strong> é um dos métodos mais usados para verificar se uma amostra de dados segue uma <strong>distribuição normal</strong>. Ele é especialmente indicado para <strong>amostras pequenas ou moderadas</strong> (n &lt; 50, mas aplicável até n ≈ 2000) e é amplamente utilizado em análises estatísticas e experimentos científicos como um pré-requisito para testes paramétricos, como <strong>teste t</strong> ou <strong>ANOVA</strong>.</p>
 <ul class="simple">
 <li><p><strong>Hipótese nula (H₀)</strong>: os dados seguem uma distribuição normal.</p></li>
@@ -1940,7 +1943,7 @@ c:\Users\lucas.souza\AppData\Local\anaconda3\Lib\site-packages\seaborn\_oldcore.
 </section>
 </section>
 <section id="teste-de-hipotese-de-d-agostinho-k2">
-<h2><span class="section-number">7.7. </span>Teste de hipótese de D’Agostinho K²<a class="headerlink" href="#teste-de-hipotese-de-d-agostinho-k2" title="Link para este cabeçalho">¶</a></h2>
+<h2><span class="section-number">7.7. </span>Teste de hipótese de D’Agostinho K²<a class="headerlink" href="#teste-de-hipotese-de-d-agostinho-k2" title="Link permanente para este cabeçalho">¶</a></h2>
 <p>Além do teste de Shapiro-Wilk, outra abordagem comum para verificar se uma amostra segue uma distribuição normal é o <strong>teste de normalidade de D’Agostino e Pearson</strong>, acessado via <code class="docutils literal notranslate"><span class="pre">scipy.stats.normaltest</span></code>. Ele combina medidas de assimetria (skewness) e curtose para testar a hipótese de que a amostra provém de uma distribuição normal.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/D%27Agostino%27s_K-squared_test">https://en.wikipedia.org/wiki/D’Agostino’s_K-squared_test</a></p></li>
@@ -1973,7 +1976,7 @@ statistic = 3.570, p-value = 0.167</p>
 <p>Essa verificação fortalece a suposição de normalidade dos dados, permitindo o uso de testes paramétricos como o teste t ou a ANOVA para comparar o desempenho entre modelos de forma estatisticamente rigorosa.</p>
 </section>
 <section id="teste-de-hipotese-de-anderson-darling">
-<h2><span class="section-number">7.8. </span>Teste de hipótese de Anderson-Darling<a class="headerlink" href="#teste-de-hipotese-de-anderson-darling" title="Link para este cabeçalho">¶</a></h2>
+<h2><span class="section-number">7.8. </span>Teste de hipótese de Anderson-Darling<a class="headerlink" href="#teste-de-hipotese-de-anderson-darling" title="Link permanente para este cabeçalho">¶</a></h2>
 <p>O <strong>teste de Anderson-Darling</strong> é outro método estatístico usado para verificar se uma amostra segue uma determinada distribuição — neste caso, <strong>a normal</strong>. É considerado mais sensível que o teste de Shapiro-Wilk, especialmente para detectar desvios nas caudas da distribuição.</p>
 <p>Este teste retorna um valor estatístico (<code class="docutils literal notranslate"><span class="pre">statistic</span></code>) que deve ser comparado com <strong>valores críticos associados a diferentes níveis de significância (α)</strong>. Esses valores são fornecidos pelo próprio resultado do <code class="docutils literal notranslate"><span class="pre">anderson()</span></code>.</p>
 <ul class="simple">
@@ -1997,11 +2000,11 @@ statistic = 3.570, p-value = 0.167</p>
 </section>
 <hr class="docutils" />
 <section id="teste-de-wilcoxon-signed-rank">
-<h2><span class="section-number">7.9. </span>Teste de Wilcoxon Signed-Rank<a class="headerlink" href="#teste-de-wilcoxon-signed-rank" title="Link para este cabeçalho">¶</a></h2>
+<h2><span class="section-number">7.9. </span>Teste de Wilcoxon Signed-Rank<a class="headerlink" href="#teste-de-wilcoxon-signed-rank" title="Link permanente para este cabeçalho">¶</a></h2>
 <p>O <strong>teste de Wilcoxon Signed-Rank</strong> é um <strong>teste não paramétrico</strong> usado para <strong>comparar dois conjuntos de dados emparelhados</strong>, como os resultados de dois modelos aplicados à mesma base de dados. Ele é a alternativa ao <strong>teste t pareado</strong> quando os dados <strong>não seguem uma distribuição normal</strong>.</p>
 <hr class="docutils" />
 <section id="id2">
-<h3><span class="section-number">7.9.1. </span>Quando usar<a class="headerlink" href="#id2" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">7.9.1. </span>Quando usar<a class="headerlink" href="#id2" title="Link permanente para este cabeçalho">¶</a></h3>
 <ul class="simple">
 <li><p>Quando você quer comparar o desempenho de <strong>dois modelos diferentes</strong>, como suas acurácias em várias execuções, <strong>com os mesmos conjuntos de dados</strong>.</p></li>
 <li><p>Quando os <strong>valores são emparelhados</strong> (ex: mesma amostra ou mesma rodada de validação cruzada).</p></li>
@@ -2010,7 +2013,7 @@ statistic = 3.570, p-value = 0.167</p>
 </section>
 <hr class="docutils" />
 <section id="hipoteses-do-teste">
-<h3><span class="section-number">7.9.2. </span>Hipóteses do teste<a class="headerlink" href="#hipoteses-do-teste" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">7.9.2. </span>Hipóteses do teste<a class="headerlink" href="#hipoteses-do-teste" title="Link permanente para este cabeçalho">¶</a></h3>
 <ul class="simple">
 <li><p><strong>Hipótese nula (H₀)</strong>: a <strong>mediana das diferenças</strong> entre os pares é zero (ou seja, <strong>não há diferença</strong> entre os métodos).</p></li>
 <li><p><strong>Hipótese alternativa (H₁)</strong>: a mediana das diferenças <strong>é diferente de zero</strong> (há diferença entre os métodos).</p></li>
@@ -2018,7 +2021,7 @@ statistic = 3.570, p-value = 0.167</p>
 </section>
 <hr class="docutils" />
 <section id="id3">
-<h3><span class="section-number">7.9.3. </span>Como funciona<a class="headerlink" href="#id3" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">7.9.3. </span>Como funciona<a class="headerlink" href="#id3" title="Link permanente para este cabeçalho">¶</a></h3>
 <ol class="arabic simple">
 <li><p>Calcula-se a diferença entre os pares de observações.</p></li>
 <li><p>Ignora-se o sinal e ordena-se as diferenças por magnitude.</p></li>
@@ -2077,12 +2080,12 @@ statistic = 3.570, p-value = 0.167</p>
 </section>
 <hr class="docutils" />
 <section id="teste-de-friedman">
-<h3><span class="section-number">7.9.4. </span>Teste de Friedman<a class="headerlink" href="#teste-de-friedman" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">7.9.4. </span>Teste de Friedman<a class="headerlink" href="#teste-de-friedman" title="Link permanente para este cabeçalho">¶</a></h3>
 <p>O <strong>teste de Friedman</strong> é um <strong>teste estatístico não paramétrico</strong> utilizado para <strong>comparar três ou mais métodos ou tratamentos relacionados</strong>, quando os pressupostos do teste ANOVA de medidas repetidas <strong>não são atendidos</strong> — por exemplo, quando os dados <strong>não seguem uma distribuição normal</strong>.</p>
 </section>
 <hr class="docutils" />
 <section id="id4">
-<h3><span class="section-number">7.9.5. </span>Quando usar<a class="headerlink" href="#id4" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">7.9.5. </span>Quando usar<a class="headerlink" href="#id4" title="Link permanente para este cabeçalho">¶</a></h3>
 <ul class="simple">
 <li><p>Quando você quer comparar <strong>três ou mais modelos</strong> (ex: Naive Bayes, Regressão Logística e Random Forest),</p></li>
 <li><p>E os modelos foram avaliados <strong>sob as mesmas condições</strong> (ex: mesma divisão de dados em validação cruzada),</p></li>
@@ -2091,7 +2094,7 @@ statistic = 3.570, p-value = 0.167</p>
 </section>
 <hr class="docutils" />
 <section id="id5">
-<h3><span class="section-number">7.9.6. </span>Hipóteses do teste<a class="headerlink" href="#id5" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">7.9.6. </span>Hipóteses do teste<a class="headerlink" href="#id5" title="Link permanente para este cabeçalho">¶</a></h3>
 <ul class="simple">
 <li><p><strong>Hipótese nula (H₀)</strong>: todos os modelos têm <strong>desempenho equivalente</strong> (as medianas são iguais).</p></li>
 <li><p><strong>Hipótese alternativa (H₁)</strong>: pelo menos um modelo <strong>tem desempenho diferente</strong> dos outros.</p></li>
@@ -2099,7 +2102,7 @@ statistic = 3.570, p-value = 0.167</p>
 </section>
 <hr class="docutils" />
 <section id="id6">
-<h3><span class="section-number">7.9.7. </span>Como funciona<a class="headerlink" href="#id6" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">7.9.7. </span>Como funciona<a class="headerlink" href="#id6" title="Link permanente para este cabeçalho">¶</a></h3>
 <ol class="arabic simple">
 <li><p>Para cada execução (ex: uma rodada de validação cruzada), os modelos são <strong>ranqueados</strong>:</p>
 <ul class="simple">
@@ -2152,12 +2155,12 @@ statistic = 3.570, p-value = 0.167</p>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="../notebooks/ML_intro.html">
+          <a class="next-page" href="Processos_Estocasticos.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title"><span class="section-number">8. </span>Fundamentos de Machine Learning</div>
+                <div class="title"><span class="section-number">8. </span>Processos Estocásticos</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -2280,26 +2283,28 @@ statistic = 3.570, p-value = 0.167</p>
       
     </aside>
   </div>
-</div><script src="../_static/documentation_options.js?v=2efa9f5e"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/scripts/furo.js?v=5fa4622c"></script>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=680035da"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js"></script>
+    <script src="../_static/copybutton.js?v=ff8fa330"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
-    <script src="../_static/translations.js?v=daa5921a"></script>
+    <script src="../_static/togglebutton.js?v=bcf87968"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/translations.js?v=000972dd"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=afe5de03"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     </body>
 </html>
