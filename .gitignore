@@ -3,5 +3,6 @@
 *.txt
 *.yml
 *.md
+LEIA-ME
 _static/
 notebooks/
