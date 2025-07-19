@@ -5,21 +5,34 @@ format: jb-book
 root: intro
  
 parts: 
-- caption: Parte I. Análise Exploratória de Dados e Estatística
+- caption: Parte I. Elementos de Estatística e Análise Exploratória de Dados
   numbered: true
-  chapters: 
-  - file: notebooks_estatistica/estatistica_e_ciencia_de_dados
-  - file: notebooks_estatistica/Secao_2-Amostragem
+  chapters:  
+  - file: notebooks_estatistica/introducao_parte_1
+  - file: notebooks_estatistica/Analise_Exploratoria
+  - file: notebooks_estatistica/Amostragem
+  - file: notebooks_estatistica/Distribuicoes_de_Dados
+  - file: notebooks_estatistica/Teste_Hipotese
+  - file: notebooks_estatistica/Processos_Estocasticos
 
 
 - caption: Parte II. Machine Learning
   numbered: true
   chapters:
-  - file: notebooks/classificacao
-  #- caption: Utilidades
-#  numbered: true
-#  chapters:
-#  - file: chapters/apendice 
+  - file: notebooks/ML/ML_intro
+  - file: notebooks/ML/ML_models
+ 
+- caption: Parte III. Aprendizado por Reforço para Finanças
+  numbered: true
+  chapters:
+  - file: notebooks/FDRNN/FDRNN_resumo
+  - file: notebooks/FDRNN/FDRNN_intro
+  - file: notebooks/FDRNN/FDRNN_iiiA_direct_reforcement_trading
+  - file: notebooks/FDRNN/FDRNN_iiiB_RNN_for_DPP
+  - file: notebooks/FDRNN/FDRNN_iiiC_fuzzy
+  - file: notebooks/FDRNN/FDRNN_ivA_system_initializations
+  - file: notebooks/FDRNN/FDRNN_ivB_task-aware_BPTT
+
 
 #- caption: Part 2 
 #  numbered: true
@@ -27,7 +40,7 @@ parts:
 #  - file: chapters/dimensional reduction
 #  - file: chapters/reinforcement learning
   
-#- caption: Final Part 
-#  chapters: 
-#  - file: bib  
+- caption: Parte Final
+  chapters: 
+  - file: bib  
    

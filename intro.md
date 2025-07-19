@@ -15,6 +15,4 @@ O conteúdo abrange desde conceitos fundamentais, como Estatística e Análise D
 Caso tenha interesse em conhecer mais sobre meu trabalho ou entrar em contato, visite [minha página pessoal no GitHub](https://lucas-data-science.github.io/).
   
 
-```{bibliography}
-:filter: docname in docnames
-```
+
