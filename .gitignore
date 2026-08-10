@@ -1,10 +1,12 @@
+# Build output
+_build/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Python
+__pycache__/
+*.pyc
+
+# Data
 *.xlsx
-*.sh
-*.txt
-*.yml
-*.md
-*.bib
-notebooks_estatistica
-LEIA-ME
-_static/
-notebooks/
