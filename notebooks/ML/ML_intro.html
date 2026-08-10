@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Índice" href="../../genindex.html" /><link rel="search" title="Buscar" href="../../search.html" /><link rel="next" title="11. Modelos de Machine Learning" href="ML_models.html" /><link rel="prev" title="8. Processos Estocásticos" href="../../notebooks_estatistica/Processos_Estocasticos.html" />
+<link rel="index" title="Índice" href="../../genindex.html" /><link rel="search" title="Buscar" href="../../search.html" /><link rel="next" title="9. Modelos de Machine Learning" href="ML_models.html" /><link rel="prev" title="6. Processos Estocásticos" href="../../notebooks_estatistica/Processos_Estocasticos.html" />
 
     <link rel="shortcut icon" href="../../_static/flav4.png"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.08.06 -->
-        <title>9. Sobre a Parte II - Ciência de Dados</title>
+        <title>7. Sobre a Parte II - Ciência de Dados</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
@@ -210,19 +210,17 @@
   <p class="caption" role="heading"><span class="caption-text">Parte I. Elementos de Estatística e Análise Exploratória de Dados</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../notebooks_estatistica/introducao_parte_1.html">1. Sobre a Parte I</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../notebooks_estatistica/Analise_Exploratoria.html">2. Análise Exploratória de Dados (AED)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks_estatistica/Analise_Exploratoria.html">2. Análise Exploratória de Dados (EDA)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../notebooks_estatistica/Amostragem.html">3. Amostragem</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../notebooks_estatistica/Distribuicoes_de_Dados.html">4. Distribuições de Dados</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../notebooks_estatistica/Teste_Hipotese.html">5. Testes de Hipóteses e Inferência Estatística</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../notebooks_estatistica/Teste_Hipotese.html#intervalos-de-confianca-e-classificacao">6. Intervalos de Confiança e Classificação</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../notebooks_estatistica/Teste_Hipotese.html#teste-de-hipotese">7. Teste de Hipótese</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../notebooks_estatistica/Processos_Estocasticos.html">8. Processos Estocásticos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks_estatistica/Processos_Estocasticos.html">6. Processos Estocásticos</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Parte II. Machine Learning</span></p>
 <ul class="current">
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">9. Sobre a Parte II</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#fundamentos-de-machine-learning">10. Fundamentos de Machine Learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ML_models.html">11. Modelos de Machine Learning</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">7. Sobre a Parte II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#fundamentos-de-machine-learning">8. Fundamentos de Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ML_models.html">9. Modelos de Machine Learning</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Parte Final</span></p>
 <ul>
@@ -268,7 +266,7 @@
         </div>
         <article role="main" id="furo-main-content">
           <section class="tex2jax_ignore mathjax_ignore" id="sobre-a-parte-ii">
-<h1><span class="section-number">9. </span>Sobre a Parte II<a class="headerlink" href="#sobre-a-parte-ii" title="Link para este cabeçalho">¶</a></h1>
+<h1><span class="section-number">7. </span>Sobre a Parte II<a class="headerlink" href="#sobre-a-parte-ii" title="Link para este cabeçalho">¶</a></h1>
 <p>O <strong>Machine Learning (ML)</strong> amplia a análise de dados ao permitir que padrões, relações e estruturas sejam aprendidos diretamente a partir dos dados. Enquanto a Estatística fornece grande parte da base conceitual para compreender variabilidade, incerteza e inferência, o Machine Learning combina esses fundamentos com métodos computacionais de otimização e modelagem, tornando possível construir sistemas capazes de realizar previsões, classificações e outras tarefas a partir de exemplos.</p>
 <p>Nesta segunda parte do livro, serão apresentados os principais fundamentos de Machine Learning necessários para compreender como esses modelos são construídos e treinados. Antes de estudar algoritmos específicos, discutiremos o processo de aprendizado como um <strong>problema de otimização</strong>, no qual os parâmetros de um modelo são ajustados de modo a minimizar uma função de perda. Conceitos como <strong>funções de custo, descida do gradiente, taxa de aprendizado, hiperparâmetros e otimização estocástica</strong> formarão a base para entender o treinamento dos diferentes modelos.</p>
 <p>Um aspecto central desta parte será a distinção entre simplesmente ajustar os dados disponíveis e construir modelos capazes de <strong>generalizar para novas observações</strong>. Nesse contexto, serão discutidos conceitos fundamentais como conjuntos de treino, validação e teste, <em>underfitting</em>, <em>overfitting</em>, regularização e o compromisso entre <strong>viés e variância</strong>. Esses conceitos são essenciais para compreender por que um modelo com excelente desempenho nos dados utilizados durante o treinamento pode apresentar resultados insatisfatórios quando aplicado a dados ainda não observados.</p>
@@ -278,7 +276,7 @@
 <p>Grande parte da organização conceitual, das figuras e das discussões apresentadas nesta parte é baseada no livro adotado como referência principal para este estudo, complementado por outras referências de Machine Learning, Estatística e Deep Learning. Materiais adicionais e referências específicas serão citados ao longo dos capítulos sempre que necessários.</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="fundamentos-de-machine-learning">
-<h1><span class="section-number">10. </span>Fundamentos de Machine Learning<a class="headerlink" href="#fundamentos-de-machine-learning" title="Link para este cabeçalho">¶</a></h1>
+<h1><span class="section-number">8. </span>Fundamentos de Machine Learning<a class="headerlink" href="#fundamentos-de-machine-learning" title="Link para este cabeçalho">¶</a></h1>
 <p>Este capítulo reúne os conceitos fundamentais de <em>Machine Learning (ML)</em> que serão usados ao longo das próximas notas, tomando como referência principal o Capítulo 2 de <em>Modern Applications of Machine Learning in Quantum Sciences</em> <span id="id1">[<a class="reference internal" href="../../bib.html#id6" title="Anna Dawid, Julian Arnold, Borja Requena, Alexander Gresch, Marcin Płodzień, Kaelan Donatella, Kim A. Nicoli, Paolo Stornati, Rouven Koch, Miriam Büttner, Robert Okuła, Gorka Muñoz-Gil, Rodrigo A. Vargas-Hernández, Alba Cervera-Lierta, Juan Carrasquilla, Vedran Dunjko, Marylou Gabrié, Patrick Huembeli, Evert van Nieuwenburg, Filippo Vicentini, Lei Wang, Sebastian J. Wetzel, Giuseppe Carleo, Eliška Greplová, Roman Krems, Florian Marquardt, Michał Tomza, Maciej Lewenstein, and Alexandre Dauphin. Modern applications of machine learning in quantum sciences. 2025. URL: https://arxiv.org/abs/2204.04198, arXiv:2204.04198.">Dawid <em>et al.</em>, 2025</a>]</span>.</p>
 <p>A ideia aqui não é apresentar ainda uma coleção de algoritmos, mas construir a linguagem comum por trás deles. Em particular, vamos responder a quatro perguntas:</p>
 <ol class="arabic simple">
@@ -295,7 +293,7 @@
 </ul>
 <p>Esses conceitos preparam o terreno para o próximo notebook, dedicado aos <strong>modelos de Machine Learning propriamente ditos</strong>: regressão linear e ridge, regressão logística, SVMs, redes neurais, CNNs, autoencoders e modelos autoregressivos.</p>
 <section id="aprendizado-como-um-problema-de-otimizacao">
-<h2><span class="section-number">10.1. </span>Aprendizado como um problema de otimização<a class="headerlink" href="#aprendizado-como-um-problema-de-otimizacao" title="Link para este cabeçalho">¶</a></h2>
+<h2><span class="section-number">8.1. </span>Aprendizado como um problema de otimização<a class="headerlink" href="#aprendizado-como-um-problema-de-otimizacao" title="Link para este cabeçalho">¶</a></h2>
 <p>Um modelo de Machine Learning pode ser visto, em sua forma mais geral, como uma função parametrizada</p>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
@@ -338,7 +336,7 @@ f_\theta(\mathbf{x}) = \mathbf{w}^\intercal \mathbf{x} + b,
 <div><p><strong>Ideia central:</strong> em grande parte do Machine Learning, “aprender” significa transformar o ajuste de um modelo em um problema de otimização.</p>
 </div></blockquote>
 <section id="funcoes-de-perda">
-<h3><span class="section-number">10.1.1. </span>Funções de perda<a class="headerlink" href="#funcoes-de-perda" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">8.1.1. </span>Funções de perda<a class="headerlink" href="#funcoes-de-perda" title="Link para este cabeçalho">¶</a></h3>
 <p>A função de perda quantifica o quanto as previsões produzidas pelo modelo diferem do resultado desejado. Ela fornece o critério objetivo que o algoritmo de treinamento tentará minimizar.</p>
 <p>Duas funções de perda aparecem repetidamente em Machine Learning:</p>
 <ul class="simple">
@@ -422,7 +420,7 @@ y_i - f_\theta(\mathbf{x}_i)
 <p><strong>(c) MSE e MAE para um único ponto.</strong> O MSE cresce como o quadrado do erro, enquanto o MAE cresce linearmente. Essa diferença explica por que o MSE é mais sensível a grandes desvios e o MAE tende a ser mais robusto à presença de <em>outliers</em>.</p>
 </section>
 <section id="entropia-cruzada">
-<h3><span class="section-number">10.1.2. </span>Entropia cruzada<a class="headerlink" href="#entropia-cruzada" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">8.1.2. </span>Entropia cruzada<a class="headerlink" href="#entropia-cruzada" title="Link para este cabeçalho">¶</a></h3>
 <p>Em classificação binária, é comum interpretar a saída do modelo como uma probabilidade</p>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
@@ -471,7 +469,7 @@ y_{i,c}
 <p>A conexão entre <strong>entropia cruzada</strong>, <strong>divergência de Kullback–Leibler</strong> e <strong>máxima verossimilhança</strong> será retomada na seção de visão probabilística.</p>
 </section>
 <section id="descida-do-gradiente">
-<h3><span class="section-number">10.1.3. </span>Descida do gradiente<a class="headerlink" href="#descida-do-gradiente" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">8.1.3. </span>Descida do gradiente<a class="headerlink" href="#descida-do-gradiente" title="Link para este cabeçalho">¶</a></h3>
 <p>Depois de escolher uma função de perda, precisamos encontrar os parâmetros que a minimizam. Um dos métodos mais importantes é a <strong>descida do gradiente</strong> (<em>gradient descent</em>).</p>
 <p>O gradiente</p>
 <div class="math-wrapper docutils container">
@@ -505,7 +503,7 @@ y_{i,c}
 <p>A taxa de aprendizado é um exemplo de <strong>hiperparâmetro</strong>: um valor escolhido para controlar o processo de aprendizagem. Isso a diferencia dos <strong>parâmetros do modelo</strong>, como pesos e <em>biases</em>, que são ajustados durante o treinamento.</p>
 </section>
 <section id="treinamento-validacao-e-hiperparametros">
-<h3><span class="section-number">10.1.4. </span>Treinamento, validação e hiperparâmetros<a class="headerlink" href="#treinamento-validacao-e-hiperparametros" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">8.1.4. </span>Treinamento, validação e hiperparâmetros<a class="headerlink" href="#treinamento-validacao-e-hiperparametros" title="Link para este cabeçalho">¶</a></h3>
 <p>Como hiperparâmetros não são aprendidos da mesma forma que os parâmetros internos do modelo, precisamos de dados separados para escolhê-los.</p>
 <p>Uma divisão conceitual importante é:</p>
 <ul class="simple">
@@ -517,7 +515,7 @@ y_{i,c}
 <p>Essa separação será retomada em mais detalhes quando discutirmos <strong>generalização</strong>. Por enquanto, o ponto principal é: otimizar os parâmetros e escolher hiperparâmetros são problemas diferentes, e idealmente não devem usar exatamente a mesma informação.</p>
 </section>
 <section id="diferenciacao-automatica">
-<h3><span class="section-number">10.1.5. </span>Diferenciação automática<a class="headerlink" href="#diferenciacao-automatica" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">8.1.5. </span>Diferenciação automática<a class="headerlink" href="#diferenciacao-automatica" title="Link para este cabeçalho">¶</a></h3>
 <p>A descida do gradiente exige o cálculo de derivadas da função de perda em relação aos parâmetros. Existem diferentes maneiras de obtê-las:</p>
 <ul class="simple">
 <li><p>derivação analítica;</p></li>
@@ -537,7 +535,7 @@ f'(g(x))g'(x),
 <p>Nas redes neurais, a aplicação eficiente da diferenciação automática em modo reverso dá origem à <strong>retropropagação</strong> (<em>backpropagation</em>), que será estudada em detalhe no notebook de modelos.</p>
 </section>
 <section id="paisagem-de-perda-sgd-e-otimizadores">
-<h3><span class="section-number">10.1.6. </span>Paisagem de perda, SGD e otimizadores<a class="headerlink" href="#paisagem-de-perda-sgd-e-otimizadores" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">8.1.6. </span>Paisagem de perda, SGD e otimizadores<a class="headerlink" href="#paisagem-de-perda-sgd-e-otimizadores" title="Link para este cabeçalho">¶</a></h3>
 <p>A representação de <span class="math notranslate nohighlight">\(\mathcal{L}(\theta)\)</span> no espaço de parâmetros é frequentemente chamada de <strong>paisagem de perda</strong> (<em>loss landscape</em>).</p>
 <p>Se a função for convexa, a otimização é relativamente simples. Entretanto, em modelos complexos — especialmente em Deep Learning — a paisagem costuma ser altamente não convexa e pode conter muitos mínimos locais, regiões planas e pontos de sela.</p>
 <p>Uma modificação fundamental da descida do gradiente é a <strong>Descida do Gradiente Estocástica (SGD — Stochastic Gradient Descent)</strong>. Em vez de calcular a perda e o gradiente usando todo o conjunto de treinamento em cada atualização, utiliza-se um <strong>mini-batch</strong>.</p>
@@ -588,7 +586,7 @@ para cada época:
 <p>Vários otimizadores modernos partem dessa ideia. <strong>Momentum</strong> incorpora informação das atualizações anteriores; métodos adaptativos ajustam efetivamente a escala dos passos; o <strong>Adam</strong> combina essas duas ideias. O <strong>L-BFGS</strong>, por outro lado, utiliza informação aproximada de curvatura. Também existem métodos sem gradiente, como algoritmos genéticos, enxame de partículas, busca aleatória, recozimento simulado e otimização Bayesiana.</p>
 </section>
 <section id="curvatura-e-hessiana">
-<h3><span class="section-number">10.1.7. </span>Curvatura e Hessiana<a class="headerlink" href="#curvatura-e-hessiana" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">8.1.7. </span>Curvatura e Hessiana<a class="headerlink" href="#curvatura-e-hessiana" title="Link para este cabeçalho">¶</a></h3>
 <p>A curvatura da função de perda em torno de um ponto <span class="math notranslate nohighlight">\(\theta^\ast\)</span> pode ser estudada pela <strong>matriz Hessiana</strong>,</p>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
@@ -607,7 +605,7 @@ H_{\theta^\ast}
 </section>
 </section>
 <section id="generalizacao-e-regularizacao">
-<h2><span class="section-number">10.2. </span>Generalização e Regularização<a class="headerlink" href="#generalizacao-e-regularizacao" title="Link para este cabeçalho">¶</a></h2>
+<h2><span class="section-number">8.2. </span>Generalização e Regularização<a class="headerlink" href="#generalizacao-e-regularizacao" title="Link para este cabeçalho">¶</a></h2>
 <p>Até aqui, Machine Learning poderia parecer apenas uma forma sofisticada de ajustar funções aos dados disponíveis. O aspecto que transforma esse ajuste em aprendizado útil é a <strong>generalização</strong>:</p>
 <blockquote>
 <div><p><strong>Generalização é a capacidade de produzir boas previsões para dados novos, que não participaram do treinamento.</strong></p>
@@ -636,7 +634,7 @@ H_{\theta^\ast}
 </div>
 <p>O livro sugere a proporção 8:1:1 apenas como um possível ponto de partida; a divisão adequada depende da quantidade e da estrutura dos dados.</p>
 <section id="vazamento-de-informacao">
-<h3><span class="section-number">10.2.1. </span>Vazamento de informação<a class="headerlink" href="#vazamento-de-informacao" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">8.2.1. </span>Vazamento de informação<a class="headerlink" href="#vazamento-de-informacao" title="Link para este cabeçalho">¶</a></h3>
 <p>Um cuidado fundamental é evitar <strong>data leakage</strong>: qualquer situação em que informação que deveria estar indisponível no momento da previsão acaba influenciando o treinamento.</p>
 <p>Um exemplo clássico é normalizar todo o conjunto de dados antes da separação em treino, validação e teste. Nesse caso, estatísticas calculadas usando o conjunto de teste — como média, desvio padrão, mínimo ou máximo — passam indiretamente para o processo de treinamento.</p>
 <p>A prática correta é ajustar transformações usando <strong>somente o conjunto de treino</strong> e depois aplicar os parâmetros aprendidos aos conjuntos de validação e teste.</p>
@@ -655,7 +653,7 @@ H_{\theta^\ast}
 <p>Portanto, <strong>menor erro de treinamento não implica necessariamente melhor modelo</strong>. O objetivo é encontrar uma função que capture regularidades que se mantenham fora da amostra de treino.</p>
 </section>
 <section id="capacidade-e-regularizacao">
-<h3><span class="section-number">10.2.2. </span>Capacidade e regularização<a class="headerlink" href="#capacidade-e-regularizacao" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">8.2.2. </span>Capacidade e regularização<a class="headerlink" href="#capacidade-e-regularizacao" title="Link para este cabeçalho">¶</a></h3>
 <p>A <strong>capacidade</strong> de um modelo pode ser entendida, de forma aproximada, como sua habilidade de representar uma variedade de funções.</p>
 <ul class="simple">
 <li><p>capacidade muito baixa <span class="math notranslate nohighlight">\(\rightarrow\)</span> <strong>underfitting</strong>;</p></li>
@@ -702,7 +700,7 @@ H_{\theta^\ast}
 <p>A motivação pode ser relacionada à <strong>navalha de Occam</strong>: entre explicações que descrevem adequadamente os dados observados, há boas razões para favorecer soluções mais simples. Ao mesmo tempo, o teorema <em>no free lunch</em> lembra que não existe um algoritmo universalmente superior em todos os problemas possíveis. A regularização introduz hipóteses sobre quais soluções esperamos que funcionem melhor para a tarefa específica.</p>
 </section>
 <section id="trade-off-entre-vies-e-variancia">
-<h3><span class="section-number">10.2.3. </span>Trade-off entre viés e variância<a class="headerlink" href="#trade-off-entre-vies-e-variancia" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">8.2.3. </span>Trade-off entre viés e variância<a class="headerlink" href="#trade-off-entre-vies-e-variancia" title="Link para este cabeçalho">¶</a></h3>
 <p>A relação entre complexidade e generalização pode ser formalizada pelo <strong>trade-off viés–variância</strong>.</p>
 <p>Considere um problema de regressão em que</p>
 <div class="math-wrapper docutils container">
@@ -787,7 +785,7 @@ y = f(x) + \varepsilon,
 </section>
 </section>
 <section id="visao-probabilistica-em-machine-learning">
-<h2><span class="section-number">10.3. </span>Visão probabilística em Machine Learning<a class="headerlink" href="#visao-probabilistica-em-machine-learning" title="Link para este cabeçalho">¶</a></h2>
+<h2><span class="section-number">8.3. </span>Visão probabilística em Machine Learning<a class="headerlink" href="#visao-probabilistica-em-machine-learning" title="Link para este cabeçalho">¶</a></h2>
 <p>A formulação por otimização nos diz <strong>como</strong> ajustar um modelo. A visão probabilística ajuda a entender <strong>o que está sendo estimado</strong> e como incorporar <strong>incerteza</strong>.</p>
 <p>O livro destaca três fontes gerais de incerteza:</p>
 <ol class="arabic simple">
@@ -797,7 +795,7 @@ y = f(x) + \varepsilon,
 </ol>
 <p>A linguagem de probabilidades fornece uma forma natural de representar essas limitações.</p>
 <section id="variaveis-aleatorias-e-distribuicoes">
-<h3><span class="section-number">10.3.1. </span>Variáveis aleatórias e distribuições<a class="headerlink" href="#variaveis-aleatorias-e-distribuicoes" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">8.3.1. </span>Variáveis aleatórias e distribuições<a class="headerlink" href="#variaveis-aleatorias-e-distribuicoes" title="Link para este cabeçalho">¶</a></h3>
 <p>Uma variável aleatória <span class="math notranslate nohighlight">\(X\)</span> pode assumir diferentes valores <span class="math notranslate nohighlight">\(x\)</span> segundo uma distribuição de probabilidade.</p>
 <p>Para variáveis discretas usamos uma função de massa de probabilidade; para variáveis contínuas, uma densidade de probabilidade. Em notação compacta, escrevemos simplesmente</p>
 <div class="math-wrapper docutils container">
@@ -826,7 +824,7 @@ p(x)p(y).
 <p>Essa hipótese aparece frequentemente em Machine Learning, especialmente quando assumimos observações <strong>independentes e identicamente distribuídas (i.i.d.)</strong>.</p>
 </section>
 <section id="probabilidade-condicional-e-regra-da-cadeia">
-<h3><span class="section-number">10.3.2. </span>Probabilidade condicional e regra da cadeia<a class="headerlink" href="#probabilidade-condicional-e-regra-da-cadeia" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">8.3.2. </span>Probabilidade condicional e regra da cadeia<a class="headerlink" href="#probabilidade-condicional-e-regra-da-cadeia" title="Link para este cabeçalho">¶</a></h3>
 <p>A probabilidade de <span class="math notranslate nohighlight">\(Y=y\)</span> sabendo que <span class="math notranslate nohighlight">\(X=x\)</span> é</p>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
@@ -854,7 +852,7 @@ x^{(1)},\ldots,x^{(i-1)}
 <p>Essa decomposição é especialmente importante em modelos autoregressivos, nos quais uma distribuição complexa é construída como produto de distribuições condicionais.</p>
 </section>
 <section id="teorema-de-bayes">
-<h3><span class="section-number">10.3.3. </span>Teorema de Bayes<a class="headerlink" href="#teorema-de-bayes" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">8.3.3. </span>Teorema de Bayes<a class="headerlink" href="#teorema-de-bayes" title="Link para este cabeçalho">¶</a></h3>
 <p>O teorema de Bayes permite inverter uma probabilidade condicional:</p>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
@@ -885,7 +883,7 @@ p(x|y)
 <p>Essa ideia será importante mais adiante quando compararmos <strong>máxima verossimilhança (MLE)</strong> e <strong>máximo a posteriori (MAP)</strong>. Na regressão ridge, por exemplo, a regularização <span class="math notranslate nohighlight">\(L_2\)</span> poderá ser interpretada como consequência da introdução de um prior Gaussiano sobre os parâmetros.</p>
 </section>
 <section id="aprendizado-supervisionado-e-nao-supervisionado-em-linguagem-probabilistica">
-<h3><span class="section-number">10.3.4. </span>Aprendizado supervisionado e não supervisionado em linguagem probabilística<a class="headerlink" href="#aprendizado-supervisionado-e-nao-supervisionado-em-linguagem-probabilistica" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">8.3.4. </span>Aprendizado supervisionado e não supervisionado em linguagem probabilística<a class="headerlink" href="#aprendizado-supervisionado-e-nao-supervisionado-em-linguagem-probabilistica" title="Link para este cabeçalho">¶</a></h3>
 <p>A visão probabilística permite reinterpretar os dois principais cenários de aprendizado.</p>
 <p>No <strong>aprendizado não supervisionado</strong>, observamos exemplos</p>
 <div class="math-wrapper docutils container">
@@ -930,7 +928,7 @@ p(y|\mathbf{x}).
 <p>Esse limite fundamental é chamado de <strong>erro de Bayes</strong>. Ele representa a parcela de ambiguidade intrínseca ao problema que não pode ser eliminada simplesmente escolhendo um modelo mais sofisticado.</p>
 </section>
 <section id="verossimilhanca">
-<h3><span class="section-number">10.3.5. </span>Verossimilhança<a class="headerlink" href="#verossimilhanca" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">8.3.5. </span>Verossimilhança<a class="headerlink" href="#verossimilhanca" title="Link para este cabeçalho">¶</a></h3>
 <p>Considere agora um modelo parametrizado por <span class="math notranslate nohighlight">\(\theta\)</span> e um conjunto observado de dados <span class="math notranslate nohighlight">\(\mathcal{D}\)</span>.</p>
 <p>A <strong>verossimilhança</strong></p>
 <div class="math-wrapper docutils container">
@@ -968,7 +966,7 @@ p(\mathcal{D}|\theta).
 <p>Essa conexão é central porque muitas funções de perda usadas em ML correspondem, essencialmente, ao <strong>negativo do logaritmo de uma verossimilhança</strong>.</p>
 </section>
 <section id="divergencia-de-kullbackleibler-e-entropia-cruzada">
-<h3><span class="section-number">10.3.6. </span>Divergência de Kullback–Leibler e entropia cruzada<a class="headerlink" href="#divergencia-de-kullbackleibler-e-entropia-cruzada" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">8.3.6. </span>Divergência de Kullback–Leibler e entropia cruzada<a class="headerlink" href="#divergencia-de-kullbackleibler-e-entropia-cruzada" title="Link para este cabeçalho">¶</a></h3>
 <p>Para comparar duas distribuições <span class="math notranslate nohighlight">\(p\)</span> e <span class="math notranslate nohighlight">\(q\)</span>, podemos utilizar a <strong>divergência de Kullback–Leibler (KL)</strong>:</p>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
@@ -1046,7 +1044,7 @@ D_{\mathrm{KL}}(p\|q)
 <p>Isso explica por que a entropia cruzada aparece tão naturalmente na classificação: o treinamento procura aproximar a distribuição-alvo pelas probabilidades produzidas pelo modelo.</p>
 </section>
 <section id="fechando-o-ciclo-probabilidade-perda-e-otimizacao">
-<h3><span class="section-number">10.3.7. </span>Fechando o ciclo: probabilidade, perda e otimização<a class="headerlink" href="#fechando-o-ciclo-probabilidade-perda-e-otimizacao" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">8.3.7. </span>Fechando o ciclo: probabilidade, perda e otimização<a class="headerlink" href="#fechando-o-ciclo-probabilidade-perda-e-otimizacao" title="Link para este cabeçalho">¶</a></h3>
 <p>Agora podemos conectar as três perspectivas discutidas neste capítulo.</p>
 <p>Em Machine Learning supervisionado, dispomos de dados e escolhemos uma família parametrizada de modelos. O treinamento ajusta os parâmetros por otimização, mas as funções de perda frequentemente possuem uma interpretação probabilística:</p>
 <ul class="simple">
@@ -1104,7 +1102,7 @@ D_{\mathrm{KL}}(p\|q)
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title"><span class="section-number">11. </span>Modelos de Machine Learning</div>
+                <div class="title"><span class="section-number">9. </span>Modelos de Machine Learning</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -1115,7 +1113,7 @@ D_{\mathrm{KL}}(p\|q)
                   <span>Previous</span>
                 </div>
                 
-                <div class="title"><span class="section-number">8. </span>Processos Estocásticos</div>
+                <div class="title"><span class="section-number">6. </span>Processos Estocásticos</div>
                 
               </div>
             </a>
