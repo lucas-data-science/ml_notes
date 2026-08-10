@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Índice" href="../../genindex.html" /><link rel="search" title="Buscar" href="../../search.html" /><link rel="next" title="Referências" href="../../bib.html" /><link rel="prev" title="9. Fundamentos de Machine Learning" href="ML_intro.html" />
+<link rel="index" title="Índice" href="../../genindex.html" /><link rel="search" title="Buscar" href="../../search.html" /><link rel="next" title="Referências" href="../../bib.html" /><link rel="prev" title="9. Sobre a Parte II" href="ML_intro.html" />
 
     <link rel="shortcut icon" href="../../_static/flav4.png"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.08.06 -->
-        <title>10. Modelos de Machine Learning - Ciência de Dados</title>
+        <title>11. Modelos de Machine Learning - Ciência de Dados</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
@@ -220,8 +220,9 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Parte II. Machine Learning</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="ML_intro.html">9. Fundamentos de Machine Learning</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">10. Modelos de Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ML_intro.html">9. Sobre a Parte II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ML_intro.html#fundamentos-de-machine-learning">10. Fundamentos de Machine Learning</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">11. Modelos de Machine Learning</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Parte Final</span></p>
 <ul>
@@ -267,7 +268,7 @@
         </div>
         <article role="main" id="furo-main-content">
           <section class="tex2jax_ignore mathjax_ignore" id="modelos-de-machine-learning">
-<h1><span class="section-number">10. </span>Modelos de Machine Learning<a class="headerlink" href="#modelos-de-machine-learning" title="Link para este cabeçalho">¶</a></h1>
+<h1><span class="section-number">11. </span>Modelos de Machine Learning<a class="headerlink" href="#modelos-de-machine-learning" title="Link para este cabeçalho">¶</a></h1>
 <p>Depois de discutir <strong>otimização, generalização, regularização e a interpretação probabilística do aprendizado</strong>, chegamos ao terceiro ingrediente de um problema de <em>Machine Learning</em>: o <strong>modelo</strong>. Um modelo é a família de funções que estabelece como a entrada <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> pode ser transformada em uma previsão <span class="math notranslate nohighlight">\(\hat{y}\)</span> ou, de forma mais geral, em uma distribuição de probabilidade sobre possíveis saídas.</p>
 <p>Seguindo a organização do Capítulo 2 de <em>Modern Applications of Machine Learning in Quantum Sciences</em> <span id="id1">[<a class="reference internal" href="../../bib.html#id6" title="Anna Dawid, Julian Arnold, Borja Requena, Alexander Gresch, Marcin Płodzień, Kaelan Donatella, Kim A. Nicoli, Paolo Stornati, Rouven Koch, Miriam Büttner, Robert Okuła, Gorka Muñoz-Gil, Rodrigo A. Vargas-Hernández, Alba Cervera-Lierta, Juan Carrasquilla, Vedran Dunjko, Marylou Gabrié, Patrick Huembeli, Evert van Nieuwenburg, Filippo Vicentini, Lei Wang, Sebastian J. Wetzel, Giuseppe Carleo, Eliška Greplová, Roman Krems, Florian Marquardt, Michał Tomza, Maciej Lewenstein, and Alexandre Dauphin. Modern applications of machine learning in quantum sciences. 2025. URL: https://arxiv.org/abs/2204.04198, arXiv:2204.04198.">Dawid <em>et al.</em>, 2025</a>]</span>, começaremos por alguns modelos de <strong>Machine Learning tradicional</strong> — regressão linear, regressão logística e <em>Support Vector Machines</em> — e depois passaremos para modelos baseados em <strong>redes neurais</strong>, incluindo CNNs, autoencoders e redes autoregressivas.</p>
 <blockquote>
@@ -312,9 +313,9 @@
 </div>
 </div>
 <section id="regressao-linear-e-regressao-ridge">
-<h2><span class="section-number">10.1. </span>Regressão linear e regressão ridge<a class="headerlink" href="#regressao-linear-e-regressao-ridge" title="Link para este cabeçalho">¶</a></h2>
+<h2><span class="section-number">11.1. </span>Regressão linear e regressão ridge<a class="headerlink" href="#regressao-linear-e-regressao-ridge" title="Link para este cabeçalho">¶</a></h2>
 <section id="o-problema-de-regressao">
-<h3><span class="section-number">10.1.1. </span>O problema de regressão<a class="headerlink" href="#o-problema-de-regressao" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">11.1.1. </span>O problema de regressão<a class="headerlink" href="#o-problema-de-regressao" title="Link para este cabeçalho">¶</a></h3>
 <p>Em uma tarefa supervisionada de regressão, observamos um conjunto de dados rotulado</p>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
@@ -356,7 +357,7 @@ y_i=f(\mathbf{x}_i)+\varepsilon_i.
 <p>leva à regressão polinomial de grau <span class="math notranslate nohighlight">\(p\)</span>, mas o modelo continua linear em relação aos coeficientes que serão ajustados.</p>
 </section>
 <section id="ajuste-por-minimos-quadrados">
-<h3><span class="section-number">10.1.2. </span>Ajuste por mínimos quadrados<a class="headerlink" href="#ajuste-por-minimos-quadrados" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">11.1.2. </span>Ajuste por mínimos quadrados<a class="headerlink" href="#ajuste-por-minimos-quadrados" title="Link para este cabeçalho">¶</a></h3>
 <p>Para medir a discrepância entre os valores observados e as previsões, uma escolha natural é o erro quadrático médio:</p>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
@@ -388,7 +389,7 @@ X^{+}\mathbf{y},
 <p>onde <span class="math notranslate nohighlight">\(X^{+}\)</span> é a pseudoinversa de Moore–Penrose.</p>
 </section>
 <section id="por-que-o-mse-aparece-naturalmente">
-<h3><span class="section-number">10.1.3. </span>Por que o MSE aparece naturalmente?<a class="headerlink" href="#por-que-o-mse-aparece-naturalmente" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">11.1.3. </span>Por que o MSE aparece naturalmente?<a class="headerlink" href="#por-que-o-mse-aparece-naturalmente" title="Link para este cabeçalho">¶</a></h3>
 <p>A escolha do MSE também pode ser justificada probabilisticamente. Suponha que, para uma entrada <span class="math notranslate nohighlight">\(\mathbf{x}_i\)</span>, o alvo seja distribuído segundo uma Gaussiana cuja média é a previsão linear:</p>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
@@ -434,7 +435,7 @@ y_i\mid\mathbf{x}_i^\top\boldsymbol{\theta},\sigma^2
 <p>Isto conecta três ideias vistas anteriormente: <strong>regressão linear, minimização do MSE e máxima verossimilhança sob ruído Gaussiano</strong>.</p>
 </section>
 <section id="ridge-regularizando-o-modelo">
-<h3><span class="section-number">10.1.4. </span>Ridge: regularizando o modelo<a class="headerlink" href="#ridge-regularizando-o-modelo" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">11.1.4. </span>Ridge: regularizando o modelo<a class="headerlink" href="#ridge-regularizando-o-modelo" title="Link para este cabeçalho">¶</a></h3>
 <p>O ajuste de mínimos quadrados tenta explicar o conjunto de treinamento tão bem quanto possível. Quando há ruído, multicolinearidade ou uma representação com muitos graus de liberdade, isso pode produzir coeficientes de grande magnitude e pior generalização.</p>
 <p>Uma maneira de restringir o espaço de soluções é introduzir um <em>prior</em> Gaussiano sobre os parâmetros,</p>
 <div class="math-wrapper docutils container">
@@ -499,10 +500,10 @@ p(\boldsymbol{\theta}\mid X,\mathbf y).
 </section>
 </section>
 <section id="regressao-logistica">
-<h2><span class="section-number">10.2. </span>Regressão logística<a class="headerlink" href="#regressao-logistica" title="Link para este cabeçalho">¶</a></h2>
+<h2><span class="section-number">11.2. </span>Regressão logística<a class="headerlink" href="#regressao-logistica" title="Link para este cabeçalho">¶</a></h2>
 <p>Apesar do nome, <strong>regressão logística é um modelo de classificação</strong>. A ideia é começar com um escore real — frequentemente uma combinação linear das entradas — e transformá-lo em uma probabilidade.</p>
 <section id="classificacao-binaria">
-<h3><span class="section-number">10.2.1. </span>Classificação binária<a class="headerlink" href="#classificacao-binaria" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">11.2.1. </span>Classificação binária<a class="headerlink" href="#classificacao-binaria" title="Link para este cabeçalho">¶</a></h3>
 <p>Considere duas classes, <span class="math notranslate nohighlight">\(K_1\)</span> e <span class="math notranslate nohighlight">\(K_2\)</span>. A probabilidade posterior de uma observação pertencer à classe <span class="math notranslate nohighlight">\(K_1\)</span> pode ser escrita na forma</p>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
@@ -552,7 +553,7 @@ z=\boldsymbol{\theta}^{\top}\mathbf{x}+\theta_0
 </div>
 </section>
 <section id="extensao-para-multiplas-classes">
-<h3><span class="section-number">10.2.2. </span>Extensão para múltiplas classes<a class="headerlink" href="#extensao-para-multiplas-classes" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">11.2.2. </span>Extensão para múltiplas classes<a class="headerlink" href="#extensao-para-multiplas-classes" title="Link para este cabeçalho">¶</a></h3>
 <p>Para <span class="math notranslate nohighlight">\(K\)</span> classes, usamos um vetor de escores <span class="math notranslate nohighlight">\(\mathbf z=(z_1,\ldots,z_K)\)</span> e a função <strong>softmax</strong>:</p>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
@@ -575,7 +576,7 @@ p(K_k\mid\mathbf{x})
 </section>
 </section>
 <section id="support-vector-machines-svm">
-<h2><span class="section-number">10.3. </span>Support Vector Machines (SVM)<a class="headerlink" href="#support-vector-machines-svm" title="Link para este cabeçalho">¶</a></h2>
+<h2><span class="section-number">11.3. </span>Support Vector Machines (SVM)<a class="headerlink" href="#support-vector-machines-svm" title="Link para este cabeçalho">¶</a></h2>
 <p>As <strong>Support Vector Machines</strong> abordam a classificação por uma perspectiva geométrica. No caso binário e linearmente separável, buscamos um hiperplano</p>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
@@ -650,7 +651,7 @@ y_i\left(
 </div>
 <p>e a classe é obtida pelo sinal de <span class="math notranslate nohighlight">\(\hat f(\mathbf{x})\)</span>.</p>
 <section id="mais-de-duas-classes">
-<h3><span class="section-number">10.3.1. </span>Mais de duas classes<a class="headerlink" href="#mais-de-duas-classes" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">11.3.1. </span>Mais de duas classes<a class="headerlink" href="#mais-de-duas-classes" title="Link para este cabeçalho">¶</a></h3>
 <p>Uma SVM binária pode ser estendida para várias classes, por exemplo, por:</p>
 <ul class="simple">
 <li><p><strong>one-vs-one:</strong> treinar um classificador para cada par de classes;</p></li>
@@ -660,7 +661,7 @@ y_i\left(
 </section>
 </section>
 <section id="redes-neurais">
-<h2><span class="section-number">10.4. </span>Redes neurais<a class="headerlink" href="#redes-neurais" title="Link para este cabeçalho">¶</a></h2>
+<h2><span class="section-number">11.4. </span>Redes neurais<a class="headerlink" href="#redes-neurais" title="Link para este cabeçalho">¶</a></h2>
 <p>Uma <strong>rede neural artificial</strong> é uma função parametrizada construída pela composição de várias funções mais simples. A unidade básica é o <strong>neurônio artificial</strong> ou <strong>perceptron</strong>.</p>
 <p>Para um vetor de entradas <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>, um neurônio calcula primeiro uma combinação afim</p>
 <div class="math-wrapper docutils container">
@@ -691,7 +692,7 @@ a_i=\sigma(z_i).
 </div>
 <p><em>Figura 2.6 da Ref. <span id="id3">[<a class="reference internal" href="../../bib.html#id6" title="Anna Dawid, Julian Arnold, Borja Requena, Alexander Gresch, Marcin Płodzień, Kaelan Donatella, Kim A. Nicoli, Paolo Stornati, Rouven Koch, Miriam Büttner, Robert Okuła, Gorka Muñoz-Gil, Rodrigo A. Vargas-Hernández, Alba Cervera-Lierta, Juan Carrasquilla, Vedran Dunjko, Marylou Gabrié, Patrick Huembeli, Evert van Nieuwenburg, Filippo Vicentini, Lei Wang, Sebastian J. Wetzel, Giuseppe Carleo, Eliška Greplová, Roman Krems, Florian Marquardt, Michał Tomza, Maciej Lewenstein, and Alexandre Dauphin. Modern applications of machine learning in quantum sciences. 2025. URL: https://arxiv.org/abs/2204.04198, arXiv:2204.04198.">Dawid <em>et al.</em>, 2025</a>]</span>: (a) rede neural totalmente conectada e (b) operação realizada por um neurônio.</em></p>
 <section id="como-ler-a-figura">
-<h3><span class="section-number">10.4.1. </span>Como ler a figura<a class="headerlink" href="#como-ler-a-figura" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">11.4.1. </span>Como ler a figura<a class="headerlink" href="#como-ler-a-figura" title="Link para este cabeçalho">¶</a></h3>
 <p>No painel <strong>(a)</strong>, a informação percorre a rede da esquerda para a direita:</p>
 <ol class="arabic simple">
 <li><p>a <strong>camada de entrada</strong> recebe os atributos <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>;</p></li>
@@ -738,13 +739,13 @@ W^{(l)}\mathbf{a}^{(l-1)}
 <p>Sem funções de ativação não lineares, a composição de várias camadas lineares continuaria sendo apenas uma transformação linear. Portanto, <strong>profundidade sem não linearidade não aumenta a classe funcional do modelo</strong>.</p>
 </section>
 <section id="aproximacao-universal-e-profundidade">
-<h3><span class="section-number">10.4.2. </span>Aproximação universal e profundidade<a class="headerlink" href="#aproximacao-universal-e-profundidade" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">11.4.2. </span>Aproximação universal e profundidade<a class="headerlink" href="#aproximacao-universal-e-profundidade" title="Link para este cabeçalho">¶</a></h3>
 <p>O teorema da aproximação universal estabelece, sob condições adequadas, que uma rede com uma camada oculta e número suficiente de neurônios pode aproximar arbitrariamente bem uma grande classe de funções contínuas. Isso é um resultado de existência: ele não diz que o treinamento encontrará facilmente os pesos necessários, nem que uma rede rasa será eficiente.</p>
 <p>Na prática, redes profundas podem representar certas funções com muito menos parâmetros do que redes rasas. Esse é um dos motivos pelos quais <strong>Deep Neural Networks (DNNs)</strong> se tornaram tão importantes.</p>
 <p>Durante a avaliação de uma rede, a informação flui da entrada para a saída — <strong>forward propagation</strong>. Durante o treinamento, os gradientes da função de perda são propagados no sentido inverso por <strong>backpropagation</strong>, que veremos ao final deste capítulo.</p>
 </section>
 <section id="redes-neurais-convolucionais-cnns">
-<h3><span class="section-number">10.4.3. </span>Redes neurais convolucionais (CNNs)<a class="headerlink" href="#redes-neurais-convolucionais-cnns" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">11.4.3. </span>Redes neurais convolucionais (CNNs)<a class="headerlink" href="#redes-neurais-convolucionais-cnns" title="Link para este cabeçalho">¶</a></h3>
 <p>Em dados com estrutura espacial, como imagens, a conectividade total pode ser desnecessária e muito cara. As <strong>Convolutional Neural Networks (CNNs)</strong> substituem parte das multiplicações matriciais densas por <strong>convoluções locais</strong>.</p>
 <p>A hipótese incorporada pelo modelo é que padrões locais são importantes: pixels próximos tendem a carregar relações mais fortes do que pixels muito distantes. Um pequeno conjunto de pesos — o <strong>kernel</strong> ou <strong>filtro</strong> — é reutilizado em diferentes posições da entrada.</p>
 <div class="cell docutils container">
@@ -774,7 +775,7 @@ W^{(l)}\mathbf{a}^{(l-1)}
 </section>
 </section>
 <section id="autoencoders">
-<h2><span class="section-number">10.5. </span>Autoencoders<a class="headerlink" href="#autoencoders" title="Link para este cabeçalho">¶</a></h2>
+<h2><span class="section-number">11.5. </span>Autoencoders<a class="headerlink" href="#autoencoders" title="Link para este cabeçalho">¶</a></h2>
 <p><strong>Autoencoders (AEs)</strong> são redes neurais muito utilizadas em aprendizado não supervisionado e redução de dimensionalidade. A ideia é aprender uma representação compacta dos dados sem precisar de rótulos.</p>
 <p>Um autoencoder possui duas partes:</p>
 <ul class="simple">
@@ -825,13 +826,13 @@ g_{\mathrm{dec}}(\mathbf{z}).
 <p>A restrição do gargalo é essencial. Sem ela — ou sem outra forma de regularização — uma rede suficientemente flexível poderia simplesmente aprender a copiar a entrada, sem descobrir uma representação útil.</p>
 <p>Ao minimizar o erro de reconstrução, encoder e decoder são otimizados conjuntamente. Idealmente, a variável latente retém as variações mais relevantes dos dados e descarta redundâncias. Isso aproxima conceitualmente os autoencoders de métodos como PCA, embora as redes neurais permitam transformações muito mais flexíveis e não lineares.</p>
 <section id="autoencoders-variacionais">
-<h3><span class="section-number">10.5.1. </span>Autoencoders variacionais<a class="headerlink" href="#autoencoders-variacionais" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">11.5.1. </span>Autoencoders variacionais<a class="headerlink" href="#autoencoders-variacionais" title="Link para este cabeçalho">¶</a></h3>
 <p>Um desenvolvimento importante é o <strong>Variational Autoencoder (VAE)</strong>. Em vez de representar cada entrada por um único ponto latente, o VAE aprende parâmetros de uma distribuição no espaço latente. Depois do treinamento, podemos amostrar dessa distribuição e decodificar as amostras para gerar novos exemplos semelhantes aos dados de treinamento.</p>
 <p>Existem ainda variantes como <em>denoising autoencoders</em>, <em>sparse autoencoders</em> e outras arquiteturas que alteram a restrição imposta à representação latente.</p>
 </section>
 </section>
 <section id="redes-neurais-autoregressivas">
-<h2><span class="section-number">10.6. </span>Redes neurais autoregressivas<a class="headerlink" href="#redes-neurais-autoregressivas" title="Link para este cabeçalho">¶</a></h2>
+<h2><span class="section-number">11.6. </span>Redes neurais autoregressivas<a class="headerlink" href="#redes-neurais-autoregressivas" title="Link para este cabeçalho">¶</a></h2>
 <p>Modelos <strong>autoregressivos</strong> representam uma distribuição conjunta de alta dimensão como um produto de distribuições condicionais. Pela regra da cadeia da probabilidade,</p>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
@@ -897,7 +898,7 @@ p(W\mid\text{palavras anteriores}),
 <p>Embora hoje Transformers dominem grande parte do processamento de linguagem, RNNs continuam sendo fundamentais para entender a evolução dos modelos sequenciais e o princípio autoregressivo que permanece central em muitos modelos generativos modernos.</p>
 </section>
 <section id="backpropagation">
-<h2><span class="section-number">10.7. </span>Backpropagation<a class="headerlink" href="#backpropagation" title="Link para este cabeçalho">¶</a></h2>
+<h2><span class="section-number">11.7. </span>Backpropagation<a class="headerlink" href="#backpropagation" title="Link para este cabeçalho">¶</a></h2>
 <p>Redes neurais são normalmente treinadas por métodos baseados em gradiente. Para atualizar cada peso e <em>bias</em>, precisamos calcular</p>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
@@ -909,7 +910,7 @@ p(W\mid\text{palavras anteriores}),
 </div>
 <p>Fazer isso manualmente para cada arquitetura seria inviável. A <strong>backpropagation</strong> é uma aplicação eficiente da diferenciação automática em modo reverso que explora a estrutura em camadas da rede e a regra da cadeia.</p>
 <section id="forward-pass">
-<h3><span class="section-number">10.7.1. </span>Forward pass<a class="headerlink" href="#forward-pass" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">11.7.1. </span>Forward pass<a class="headerlink" href="#forward-pass" title="Link para este cabeçalho">¶</a></h3>
 <p>Para a camada <span class="math notranslate nohighlight">\(l\)</span>,</p>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
@@ -948,7 +949,7 @@ W^{(l)}\mathbf a^{(l-1)}
 <p>Também armazenamos as ativações e os valores intermediários necessários para as derivadas. Esse armazenamento evita recalcular o mesmo caminho durante a etapa reversa.</p>
 </section>
 <section id="reverse-pass">
-<h3><span class="section-number">10.7.2. </span>Reverse pass<a class="headerlink" href="#reverse-pass" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">11.7.2. </span>Reverse pass<a class="headerlink" href="#reverse-pass" title="Link para este cabeçalho">¶</a></h3>
 <p>Começamos na saída, calculando o erro local da última camada. Usando a convenção de vetores coluna, podemos definir</p>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
@@ -1010,7 +1011,7 @@ W^{(l)}\mathbf a^{(l-1)}
 <p>A figura pode ser lida em três etapas.</p>
 </section>
 <section id="a-rede-e-parametros">
-<h3><span class="section-number">10.7.3. </span>(a) Rede e parâmetros<a class="headerlink" href="#a-rede-e-parametros" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">11.7.3. </span>(a) Rede e parâmetros<a class="headerlink" href="#a-rede-e-parametros" title="Link para este cabeçalho">¶</a></h3>
 <p>A rede recebe</p>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
@@ -1040,7 +1041,7 @@ W^{(l)}\mathbf a^{(l-1)}
 <p>O alvo do exemplo é <span class="math notranslate nohighlight">\(y=0\)</span>.</p>
 </section>
 <section id="b-forward-pass">
-<h3><span class="section-number">10.7.4. </span>(b) Forward pass<a class="headerlink" href="#b-forward-pass" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">11.7.4. </span>(b) Forward pass<a class="headerlink" href="#b-forward-pass" title="Link para este cabeçalho">¶</a></h3>
 <p>Para o primeiro neurônio oculto,</p>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
@@ -1113,7 +1114,7 @@ a^{(2)}=\operatorname{ReLU}(0.4)=0.4.
 <p>Observe que o <em>forward pass</em> não produz apenas a previsão: ele também fornece as ativações e informa em quais neurônios a derivada da ReLU será 0 ou 1. Esses valores são reutilizados na etapa reversa.</p>
 </section>
 <section id="c-backward-pass">
-<h3><span class="section-number">10.7.5. </span>(c) Backward pass<a class="headerlink" href="#c-backward-pass" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">11.7.5. </span>(c) Backward pass<a class="headerlink" href="#c-backward-pass" title="Link para este cabeçalho">¶</a></h3>
 <p>Na saída,</p>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
@@ -1173,7 +1174,7 @@ w_1^{(2)}
 <p>O segundo neurônio oculto tem ativação nula e <span class="math notranslate nohighlight">\(z_2^{(1)}&lt;0\)</span>. Nesse exemplo, sua derivada da ReLU é zero, bloqueando a propagação de gradiente por esse caminho.</p>
 </section>
 <section id="por-que-calcular-os-gradientes-de-tras-para-frente">
-<h3><span class="section-number">10.7.6. </span>Por que calcular os gradientes de trás para frente?<a class="headerlink" href="#por-que-calcular-os-gradientes-de-tras-para-frente" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">11.7.6. </span>Por que calcular os gradientes de trás para frente?<a class="headerlink" href="#por-que-calcular-os-gradientes-de-tras-para-frente" title="Link para este cabeçalho">¶</a></h3>
 <p>O custo de treinar redes grandes vem do fato de existirem muitos parâmetros. Se calculássemos separadamente a derivada da saída em relação a cada peso seguindo o fluxo para frente, repetiríamos uma enorme quantidade de operações.</p>
 <p>A backpropagation resolve isso reutilizando os mesmos termos intermediários da regra da cadeia. Um único <em>forward pass</em> calcula e armazena as ativações; um único <em>backward pass</em> produz os gradientes de todos os parâmetros. Essa eficiência computacional foi essencial para tornar viável o treinamento de redes neurais profundas.</p>
 <blockquote>
@@ -1223,7 +1224,7 @@ w_1^{(2)}
                   <span>Previous</span>
                 </div>
                 
-                <div class="title"><span class="section-number">9. </span>Fundamentos de Machine Learning</div>
+                <div class="title"><span class="section-number">9. </span>Sobre a Parte II</div>
                 
               </div>
             </a>
@@ -1257,41 +1258,41 @@ w_1^{(2)}
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">10. Modelos de Machine Learning</a><ul>
-<li><a class="reference internal" href="#regressao-linear-e-regressao-ridge">10.1. Regressão linear e regressão ridge</a><ul>
-<li><a class="reference internal" href="#o-problema-de-regressao">10.1.1. O problema de regressão</a></li>
-<li><a class="reference internal" href="#ajuste-por-minimos-quadrados">10.1.2. Ajuste por mínimos quadrados</a></li>
-<li><a class="reference internal" href="#por-que-o-mse-aparece-naturalmente">10.1.3. Por que o MSE aparece naturalmente?</a></li>
-<li><a class="reference internal" href="#ridge-regularizando-o-modelo">10.1.4. Ridge: regularizando o modelo</a></li>
+<li><a class="reference internal" href="#">11. Modelos de Machine Learning</a><ul>
+<li><a class="reference internal" href="#regressao-linear-e-regressao-ridge">11.1. Regressão linear e regressão ridge</a><ul>
+<li><a class="reference internal" href="#o-problema-de-regressao">11.1.1. O problema de regressão</a></li>
+<li><a class="reference internal" href="#ajuste-por-minimos-quadrados">11.1.2. Ajuste por mínimos quadrados</a></li>
+<li><a class="reference internal" href="#por-que-o-mse-aparece-naturalmente">11.1.3. Por que o MSE aparece naturalmente?</a></li>
+<li><a class="reference internal" href="#ridge-regularizando-o-modelo">11.1.4. Ridge: regularizando o modelo</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#regressao-logistica">10.2. Regressão logística</a><ul>
-<li><a class="reference internal" href="#classificacao-binaria">10.2.1. Classificação binária</a></li>
-<li><a class="reference internal" href="#extensao-para-multiplas-classes">10.2.2. Extensão para múltiplas classes</a></li>
+<li><a class="reference internal" href="#regressao-logistica">11.2. Regressão logística</a><ul>
+<li><a class="reference internal" href="#classificacao-binaria">11.2.1. Classificação binária</a></li>
+<li><a class="reference internal" href="#extensao-para-multiplas-classes">11.2.2. Extensão para múltiplas classes</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#support-vector-machines-svm">10.3. Support Vector Machines (SVM)</a><ul>
-<li><a class="reference internal" href="#mais-de-duas-classes">10.3.1. Mais de duas classes</a></li>
+<li><a class="reference internal" href="#support-vector-machines-svm">11.3. Support Vector Machines (SVM)</a><ul>
+<li><a class="reference internal" href="#mais-de-duas-classes">11.3.1. Mais de duas classes</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#redes-neurais">10.4. Redes neurais</a><ul>
-<li><a class="reference internal" href="#como-ler-a-figura">10.4.1. Como ler a figura</a></li>
-<li><a class="reference internal" href="#aproximacao-universal-e-profundidade">10.4.2. Aproximação universal e profundidade</a></li>
-<li><a class="reference internal" href="#redes-neurais-convolucionais-cnns">10.4.3. Redes neurais convolucionais (CNNs)</a></li>
+<li><a class="reference internal" href="#redes-neurais">11.4. Redes neurais</a><ul>
+<li><a class="reference internal" href="#como-ler-a-figura">11.4.1. Como ler a figura</a></li>
+<li><a class="reference internal" href="#aproximacao-universal-e-profundidade">11.4.2. Aproximação universal e profundidade</a></li>
+<li><a class="reference internal" href="#redes-neurais-convolucionais-cnns">11.4.3. Redes neurais convolucionais (CNNs)</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#autoencoders">10.5. Autoencoders</a><ul>
-<li><a class="reference internal" href="#autoencoders-variacionais">10.5.1. Autoencoders variacionais</a></li>
+<li><a class="reference internal" href="#autoencoders">11.5. Autoencoders</a><ul>
+<li><a class="reference internal" href="#autoencoders-variacionais">11.5.1. Autoencoders variacionais</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#redes-neurais-autoregressivas">10.6. Redes neurais autoregressivas</a></li>
-<li><a class="reference internal" href="#backpropagation">10.7. Backpropagation</a><ul>
-<li><a class="reference internal" href="#forward-pass">10.7.1. Forward pass</a></li>
-<li><a class="reference internal" href="#reverse-pass">10.7.2. Reverse pass</a></li>
-<li><a class="reference internal" href="#a-rede-e-parametros">10.7.3. (a) Rede e parâmetros</a></li>
-<li><a class="reference internal" href="#b-forward-pass">10.7.4. (b) Forward pass</a></li>
-<li><a class="reference internal" href="#c-backward-pass">10.7.5. (c) Backward pass</a></li>
-<li><a class="reference internal" href="#por-que-calcular-os-gradientes-de-tras-para-frente">10.7.6. Por que calcular os gradientes de trás para frente?</a></li>
+<li><a class="reference internal" href="#redes-neurais-autoregressivas">11.6. Redes neurais autoregressivas</a></li>
+<li><a class="reference internal" href="#backpropagation">11.7. Backpropagation</a><ul>
+<li><a class="reference internal" href="#forward-pass">11.7.1. Forward pass</a></li>
+<li><a class="reference internal" href="#reverse-pass">11.7.2. Reverse pass</a></li>
+<li><a class="reference internal" href="#a-rede-e-parametros">11.7.3. (a) Rede e parâmetros</a></li>
+<li><a class="reference internal" href="#b-forward-pass">11.7.4. (b) Forward pass</a></li>
+<li><a class="reference internal" href="#c-backward-pass">11.7.5. (c) Backward pass</a></li>
+<li><a class="reference internal" href="#por-que-calcular-os-gradientes-de-tras-para-frente">11.7.6. Por que calcular os gradientes de trás para frente?</a></li>
 </ul>
 </li>
 </ul>
