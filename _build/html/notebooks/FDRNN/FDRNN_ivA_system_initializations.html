@@ -1,19 +1,19 @@
 <!doctype html>
-<html class="no-js" lang="pt-BR" data-content_root="">
+<html class="no-js" lang="pt-BR" data-content_root="../../">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Índice" href="../../genindex.html" /><link rel="search" title="Buscar" href="../../search.html" /><link rel="next" title="18. Task-Aware BPTT (Retropropagação no Tempo Sensível à Tarefa)" href="FDRNN_ivB_task-aware_BPTT.html" /><link rel="prev" title="16. Extensões Fuzzy para Reduzir Incertezas" href="FDRNN_iiiC_fuzzy.html" />
 
-    <link rel="shortcut icon" href="../../_static/flav4.png"/><!-- Generated with Sphinx 7.1.2 and Furo 2024.08.06 -->
+    <link rel="shortcut icon" href="../../_static/flav4.png"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.08.06 -->
         <title>17. DRNN LEARNING - Ciência de Dados</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=109105fe" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=949a1ff5" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css?v=6ad1a40c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
     <link rel="stylesheet" type="text/css" href="../../_static/estilo.css?v=6d8328f8" />
     
@@ -278,11 +278,11 @@
         </div>
         <article role="main" id="furo-main-content">
           <section class="tex2jax_ignore mathjax_ignore" id="drnn-learning">
-<h1><span class="section-number">17. </span>DRNN LEARNING<a class="headerlink" href="#drnn-learning" title="Link permanente para este cabeçalho">¶</a></h1>
+<h1><span class="section-number">17. </span>DRNN LEARNING<a class="headerlink" href="#drnn-learning" title="Link para este cabeçalho">¶</a></h1>
 <section id="desafios-no-treinamento-da-fdrnn">
-<h2><span class="section-number">17.1. </span>Desafios no Treinamento da FDRNN<a class="headerlink" href="#desafios-no-treinamento-da-fdrnn" title="Link permanente para este cabeçalho">¶</a></h2>
+<h2><span class="section-number">17.1. </span>Desafios no Treinamento da FDRNN<a class="headerlink" href="#desafios-no-treinamento-da-fdrnn" title="Link para este cabeçalho">¶</a></h2>
 <section id="problema-apontado">
-<h3><span class="section-number">17.1.1. </span>Problema apontado<a class="headerlink" href="#problema-apontado" title="Link permanente para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">17.1.1. </span>Problema apontado<a class="headerlink" href="#problema-apontado" title="Link para este cabeçalho">¶</a></h3>
 <p>Embora a formulação apresentada na equação (8) seja <strong>conceitualmente elegante</strong>, ela traz uma <strong>grande dificuldade prática</strong>:</p>
 <blockquote>
 <div><p>A otimização do modelo se torna <strong>muito complexa</strong>, pois envolve uma rede neural profunda com <strong>milhares de parâmetros ocultos (latentes)</strong>.</p>
@@ -302,7 +302,7 @@
 </section>
 <hr class="docutils" />
 <section id="solucao-proposta">
-<h3><span class="section-number">17.1.2. </span>Solução proposta<a class="headerlink" href="#solucao-proposta" title="Link permanente para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">17.1.2. </span>Solução proposta<a class="headerlink" href="#solucao-proposta" title="Link para este cabeçalho">¶</a></h3>
 <p>Para contornar essa dificuldade, os autores propõem uma <strong>estratégia de treinamento prática</strong> baseada em <strong>duas etapas principais</strong>:</p>
 <ol class="arabic simple">
 <li><p><strong>Inicialização do sistema (System Initialization)</strong></p>
@@ -320,12 +320,12 @@
 </section>
 <hr class="docutils" />
 <section id="intencao-dessa-secao">
-<h3><span class="section-number">17.1.3. </span>Intenção dessa seção<a class="headerlink" href="#intencao-dessa-secao" title="Link permanente para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">17.1.3. </span>Intenção dessa seção<a class="headerlink" href="#intencao-dessa-secao" title="Link para este cabeçalho">¶</a></h3>
 <p>A partir daqui, a <strong>Seção IV</strong> vai detalhar <strong>como implementar esse treinamento em duas fases</strong>, explicando como lidar com a recorrência, com os gradientes temporais, e como evitar problemas como o desaparecimento ou explosão do gradiente.</p>
 </section>
 </section>
 <section id="inicializacao-do-sistema">
-<h2><span class="section-number">17.2. </span>Inicialização do Sistema<a class="headerlink" href="#inicializacao-do-sistema" title="Link permanente para este cabeçalho">¶</a></h2>
+<h2><span class="section-number">17.2. </span>Inicialização do Sistema<a class="headerlink" href="#inicializacao-do-sistema" title="Link para este cabeçalho">¶</a></h2>
 <p>A inicialização dos parâmetros é <strong>uma etapa crítica</strong> no treinamento de redes neurais profundas (DNNs), especialmente quando se trabalha com estruturas complexas como o FDRNN. Esta seção descreve como inicializar <strong>cada uma das três partes do modelo</strong>:</p>
 <ol class="arabic simple">
 <li><p>Representação Fuzzy</p></li>
@@ -334,7 +334,7 @@
 </ol>
 <hr class="docutils" />
 <section id="inicializacao-da-representacao-fuzzy">
-<h3><span class="section-number">17.2.1. </span>1.  Inicialização da Representação Fuzzy<a class="headerlink" href="#inicializacao-da-representacao-fuzzy" title="Link permanente para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">17.2.1. </span>1.  Inicialização da Representação Fuzzy<a class="headerlink" href="#inicializacao-da-representacao-fuzzy" title="Link para este cabeçalho">¶</a></h3>
 <ul class="simple">
 <li><p>Cada entrada do vetor <span class="math notranslate nohighlight">\({\bf f}_t\)</span> é conectada a <strong>três funções de pertinência fuzzy</strong>.</p></li>
 <li><p>Cada função fuzzy tem dois parâmetros:</p>
@@ -345,7 +345,7 @@
 </li>
 </ul>
 <section id="estrategia">
-<h4><span class="section-number">17.2.1.1. </span>Estratégia:<a class="headerlink" href="#estrategia" title="Link permanente para este cabeçalho">¶</a></h4>
+<h4><span class="section-number">17.2.1.1. </span>Estratégia:<a class="headerlink" href="#estrategia" title="Link para este cabeçalho">¶</a></h4>
 <ul class="simple">
 <li><p>Utiliza-se o algoritmo <strong>k-means</strong> para dividir os dados de treino em <strong>k = 3 grupos</strong>:</p>
 <ul>
@@ -359,17 +359,17 @@
 </section>
 <hr class="docutils" />
 <section id="inicializacao-da-transformacao-profunda-rede-densa">
-<h3><span class="section-number">17.2.2. </span>2.  Inicialização da Transformação Profunda (Rede Densa)<a class="headerlink" href="#inicializacao-da-transformacao-profunda-rede-densa" title="Link permanente para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">17.2.2. </span>2.  Inicialização da Transformação Profunda (Rede Densa)<a class="headerlink" href="#inicializacao-da-transformacao-profunda-rede-densa" title="Link para este cabeçalho">¶</a></h3>
 <p>Para inicializar a rede profunda, os autores utilizam uma técnica clássica de <strong>aprendizado não supervisionado</strong> chamada <strong>Autoencoder (AE)</strong>.</p>
 <section id="o-que-e-um-autoencoder">
-<h4><span class="section-number">17.2.2.1. </span>O que é um Autoencoder?<a class="headerlink" href="#o-que-e-um-autoencoder" title="Link permanente para este cabeçalho">¶</a></h4>
+<h4><span class="section-number">17.2.2.1. </span>O que é um Autoencoder?<a class="headerlink" href="#o-que-e-um-autoencoder" title="Link para este cabeçalho">¶</a></h4>
 <ul class="simple">
 <li><p>Um AE tenta <strong>reconstruir a entrada</strong> após passá-la por uma ou mais camadas ocultas.</p></li>
 <li><p>Serve para aprender <strong>representações úteis (codificações)</strong> sem usar rótulos.</p></li>
 </ul>
 </section>
 <section id="como-e-usado-aqui">
-<h4><span class="section-number">17.2.2.2. </span>Como é usado aqui:<a class="headerlink" href="#como-e-usado-aqui" title="Link permanente para este cabeçalho">¶</a></h4>
+<h4><span class="section-number">17.2.2.2. </span>Como é usado aqui:<a class="headerlink" href="#como-e-usado-aqui" title="Link para este cabeçalho">¶</a></h4>
 <ul class="simple">
 <li><p>Define-se três camadas:</p>
 <ul>
@@ -382,7 +382,7 @@
 </ul>
 </section>
 <section id="funcao-de-perda-do-ae">
-<h4><span class="section-number">17.2.2.3. </span>Função de perda do AE:<a class="headerlink" href="#funcao-de-perda-do-ae" title="Link permanente para este cabeçalho">¶</a></h4>
+<h4><span class="section-number">17.2.2.3. </span>Função de perda do AE:<a class="headerlink" href="#funcao-de-perda-do-ae" title="Link para este cabeçalho">¶</a></h4>
 <p>A minimização é feita sobre:</p>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
@@ -394,14 +394,14 @@
 </ul>
 </section>
 <section id="resultado">
-<h4><span class="section-number">17.2.2.4. </span>Resultado:<a class="headerlink" href="#resultado" title="Link permanente para este cabeçalho">¶</a></h4>
+<h4><span class="section-number">17.2.2.4. </span>Resultado:<a class="headerlink" href="#resultado" title="Link para este cabeçalho">¶</a></h4>
 <ul class="simple">
 <li><p>Após treinar o AE, os <strong>parâmetros da camada oculta <span class="math notranslate nohighlight">\(l+1\)</span> (θ = {w, b})</strong> são salvos e usados como inicialização da rede profunda.</p></li>
 <li><p>Os parâmetros da camada de reconstrução (<span class="math notranslate nohighlight">\(γ\)</span>) <strong>são descartados</strong> — ela é apenas uma estrutura auxiliar.</p></li>
 </ul>
 </section>
 <section id="processo">
-<h4><span class="section-number">17.2.2.5. </span>Processo:<a class="headerlink" href="#processo" title="Link permanente para este cabeçalho">¶</a></h4>
+<h4><span class="section-number">17.2.2.5. </span>Processo:<a class="headerlink" href="#processo" title="Link para este cabeçalho">¶</a></h4>
 <ul class="simple">
 <li><p>Esse procedimento é <strong>repetido camada por camada</strong>, até que todas as camadas da rede profunda estejam inicializadas.</p></li>
 </ul>
@@ -409,7 +409,7 @@
 </section>
 <hr class="docutils" />
 <section id="inicializacao-da-parte-de-decisao-drl">
-<h3><span class="section-number">17.2.3. </span>3.  Inicialização da Parte de Decisão (DRL)<a class="headerlink" href="#inicializacao-da-parte-de-decisao-drl" title="Link permanente para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">17.2.3. </span>3.  Inicialização da Parte de Decisão (DRL)<a class="headerlink" href="#inicializacao-da-parte-de-decisao-drl" title="Link para este cabeçalho">¶</a></h3>
 <ul class="simple">
 <li><p>Após obter a representação profunda <span class="math notranslate nohighlight">\(F_t\)</span> com o DNN inicializado, usa-se essa entrada para <strong>treinar a parte de decisão</strong> (<span class="math notranslate nohighlight">\(δ_t\)</span>).</p></li>
 <li><p>Isso equivale a treinar uma <strong>rede rasa recorrente</strong> (como na Fig. 1(a)), já conhecida da literatura.</p></li>
@@ -417,7 +417,7 @@
 </section>
 <hr class="docutils" />
 <section id="conclusao-da-inicializacao">
-<h3><span class="section-number">17.2.4. </span>Conclusão da Inicialização<a class="headerlink" href="#conclusao-da-inicializacao" title="Link permanente para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">17.2.4. </span>Conclusão da Inicialização<a class="headerlink" href="#conclusao-da-inicializacao" title="Link para este cabeçalho">¶</a></h3>
 <p>Todos os procedimentos descritos até aqui tratam apenas de <strong>inicializações</strong>.<br />
 No entanto, para que o sistema como um todo seja eficaz, ainda é necessário um <strong>ajuste fino (fine tuning)</strong>.</p>
 <p>Esse ajuste final:</p>
@@ -540,28 +540,26 @@ No entanto, para que o sistema como um todo seja eficaz, ainda é necessário um
       
     </aside>
   </div>
-</div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=680035da"></script>
-    <script src="../../_static/doctools.js?v=888ff710"></script>
-    <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+</div><script src="../../_static/documentation_options.js?v=2efa9f5e"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../_static/copybutton.js?v=ff8fa330"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=bcf87968"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="../../_static/translations.js?v=000972dd"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/translations.js?v=daa5921a"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
-    <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     </body>
 </html>
