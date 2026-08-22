@@ -1,0 +1,661 @@
+
+<!DOCTYPE html>
+
+
+<html lang="pt-BR" data-content_root="../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>15. Task-Aware BPTT (Retropropagação no Tempo Sensível à Tarefa) &#8212; Ciência de Dados</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=2efa9f5e"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/translations.js?v=daa5921a"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/FDRNN/FDRNN_ivB_task-aware_BPTT';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="icon" href="../../_static/icon-data-science.png"/>
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Buscar" href="../../search.html" />
+    <link rel="next" title="Referências" href="../../bib.html" />
+    <link rel="prev" title="14. DRNN LEARNING" href="FDRNN_ivA_system_initializations.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="pt-BR"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../_static/icon-data-science.png" class="logo__image only-light" alt="Ciência de Dados - Home"/>
+    <script>document.write(`<img src="../../_static/icon-data-science.png" class="logo__image only-dark" alt="Ciência de Dados - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Buscar" aria-label="Buscar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Buscar</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Prefácio
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte I. Elementos de Estatística e Análise Exploratória de Dados</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks_estatistica/introducao_parte_1.html">1. Sobre a Parte I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks_estatistica/Analise_Exploratoria.html">2. Análise Exploratória de Dados (EDA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks_estatistica/Amostragem.html">3. Amostragem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks_estatistica/Distribuicoes_de_Dados.html">4. Distribuições de Dados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks_estatistica/Teste_Hipotese.html">5. Testes de Hipóteses e Inferência Estatística</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte II. Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ML/introducao_parte_2.html">6. Sobre a Parte II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ML/ML_fundamentals.html">7. Fundamentos de Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ML/ML_models.html">8. Modelos de Machine Learning</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte III. Aprendizado por Reforço para Finanças</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="FDRNN_resumo.html">9. Fonte e Resumo do Estudo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FDRNN_intro.html">10. Introdução</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FDRNN_iiiA_direct_reforcement_trading.html">11. Direct Deep Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FDRNN_iiiB_RNN_for_DPP.html">12. Rede Neural Recorrente Profunda para DDR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FDRNN_iiiC_fuzzy.html">13. Extensões Fuzzy para Reduzir Incertezas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FDRNN_ivA_system_initializations.html">14. DRNN LEARNING</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">15. Task-Aware BPTT (Retropropagação no Tempo Sensível à Tarefa)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte Final</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../bib.html">Referências</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Baixe esta página">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notebooks/FDRNN/FDRNN_ivB_task-aware_BPTT.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Baixar arquivo fonte"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir em PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Modo tela cheia"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Buscar" aria-label="Buscar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Task-Aware BPTT (Retropropagação no Tempo Sensível à Tarefa)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Conteúdo </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contexto-do-problema">15.1. Contexto do Problema</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gradiente-com-estrutura-recorrente">15.2. Gradiente com estrutura recorrente</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solucao-backpropagation-through-time-bptt">15.3. Solução: Backpropagation Through Time (BPTT)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-visual">15.3.1. Exemplo visual:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problema-degradacao-do-gradiente">15.4. Problema: Degradação do gradiente</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proposta-task-aware-bptt">15.5. Proposta: Task-Aware BPTT</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#o-que-isso-muda">15.5.1. O que isso muda?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resumo-da-tecnica">15.6. Resumo da técnica</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritmo-1-resumo">15.7. Algoritmo 1 (resumo)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusao">15.8. Conclusão</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="task-aware-bptt-retropropagacao-no-tempo-sensivel-a-tarefa">
+<h1><span class="section-number">15. </span>Task-Aware BPTT (Retropropagação no Tempo Sensível à Tarefa)<a class="headerlink" href="#task-aware-bptt-retropropagacao-no-tempo-sensivel-a-tarefa" title="Link para este cabeçalho">#</a></h1>
+<section id="contexto-do-problema">
+<h2><span class="section-number">15.1. </span>Contexto do Problema<a class="headerlink" href="#contexto-do-problema" title="Link para este cabeçalho">#</a></h2>
+<p>Após a inicialização dos parâmetros (Seção IV.A), o próximo passo é o <strong>ajuste fino</strong> (fine tuning) do modelo FDRNN.<br />
+Esse ajuste exige a aplicação do <strong>método de retropropagação do erro</strong>, mas com uma dificuldade adicional:</p>
+<blockquote>
+<div><p>A arquitetura FDRNN é <strong>profunda e recorrente ao mesmo tempo</strong>, o que torna o cálculo dos gradientes mais complexo do que em redes feedforward simples.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="gradiente-com-estrutura-recorrente">
+<h2><span class="section-number">15.2. </span>Gradiente com estrutura recorrente<a class="headerlink" href="#gradiente-com-estrutura-recorrente" title="Link para este cabeçalho">#</a></h2>
+<p>Os autores indicam que, devido à recorrência, o cálculo do gradiente para qualquer parâmetro <strong>envolve múltiplos termos recursivos</strong>, incluindo dependências de estados anteriores (<span class="math notranslate nohighlight">\(δ_{t−1}\)</span>, <span class="math notranslate nohighlight">\(δ_{t−2}\)</span>, …, até o tempo inicial).</p>
+<p>O gradiente da função de recompensa total <span class="math notranslate nohighlight">\(U_T\)</span> com relação a um parâmetro <span class="math notranslate nohighlight">\(θ\)</span> segue uma cadeia de dependência:</p>
+<p>\begin{equation}
+\frac{\partial U_T}{\partial \theta} = \sum_t \frac{d U_t}{d R_t} \left{
+\frac{d R_t}{d \delta_t} \cdot \frac{d \delta_t}{d \theta}</p>
+<ul class="simple">
+<li><p>\frac{d R_t}{d \delta_{t-1}} \cdot \frac{d \delta_{t-1}}{d \theta}
+\right}
+\end{equation}</p></li>
+</ul>
+<p>\begin{equation}
+\frac{d \delta_t}{d \theta} = \frac{\partial \delta_t}{\partial \theta}</p>
+<ul class="simple">
+<li><p>\frac{\partial \delta_t}{\partial \delta_{t-1}} \cdot \frac{d \delta_{t-1}}{d \theta}
+\end{equation}</p></li>
+</ul>
+<p>Isso gera uma <strong>explosão de termos recursivos</strong>, que torna o cálculo direto inviável e propenso a instabilidade.</p>
+</section>
+<hr class="docutils" />
+<section id="solucao-backpropagation-through-time-bptt">
+<h2><span class="section-number">15.3. </span>Solução: Backpropagation Through Time (BPTT)<a class="headerlink" href="#solucao-backpropagation-through-time-bptt" title="Link para este cabeçalho">#</a></h2>
+<p>Para resolver isso, o artigo propõe usar a técnica conhecida como <strong>Backpropagation Through Time (BPTT)</strong>:</p>
+<ul class="simple">
+<li><p>O BPTT <strong>“desenrola” a rede no tempo</strong>, transformando a estrutura recorrente em uma sequência de redes feedforward.</p></li>
+<li><p>Cada “tempo” se torna uma <strong>cópia da rede</strong>, chamada de <strong>time stack</strong>.</p></li>
+<li><p>Com isso, a rede <strong>perde sua recorrência temporariamente</strong>, o que permite aplicar o algoritmo de backpropagation comum.</p></li>
+</ul>
+<section id="exemplo-visual">
+<h3><span class="section-number">15.3.1. </span>Exemplo visual:<a class="headerlink" href="#exemplo-visual" title="Link para este cabeçalho">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">τ</span> <span class="pre">=</span> <span class="pre">0</span></code> → estado atual</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">τ</span> <span class="pre">=</span> <span class="pre">1</span></code> → um passo anterior</p></li>
+<li><p>Cada <code class="docutils literal notranslate"><span class="pre">τ</span></code> é uma cópia da rede com seus próprios estados e camadas ocultas</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="problema-degradacao-do-gradiente">
+<h2><span class="section-number">15.4. </span>Problema: Degradação do gradiente<a class="headerlink" href="#problema-degradacao-do-gradiente" title="Link para este cabeçalho">#</a></h2>
+<p>Ao aplicar BPTT diretamente, surgem dois problemas:</p>
+<ol class="arabic simple">
+<li><p>A rede <strong>fica ainda mais profunda</strong>, já que se estende ao longo do tempo (tempo × profundidade = profundidade total maior).</p></li>
+<li><p>O gradiente <strong>tende a desaparecer</strong> (vanishing gradient), especialmente:</p>
+<ul class="simple">
+<li><p>Em camadas mais próximas da entrada</p></li>
+<li><p>Em time stacks mais antigos (com <code class="docutils literal notranslate"><span class="pre">τ</span></code> alto)</p></li>
+</ul>
+</li>
+</ol>
+<p>Isso <strong>prejudica o aprendizado</strong>, porque os sinais de erro não chegam adequadamente às camadas que mais precisam ser ajustadas.</p>
+</section>
+<hr class="docutils" />
+<section id="proposta-task-aware-bptt">
+<h2><span class="section-number">15.5. </span>Proposta: Task-Aware BPTT<a class="headerlink" href="#proposta-task-aware-bptt" title="Link para este cabeçalho">#</a></h2>
+<p>Para resolver esse problema, os autores propõem o <strong>Task-Aware BPTT</strong>:</p>
+<ul class="simple">
+<li><p>Durante o desenrolar no tempo, <strong>linhas virtuais</strong> são adicionadas, conectando diretamente:</p>
+<ol class="arabic simple">
+<li><p>A <strong>função objetivo <code class="docutils literal notranslate"><span class="pre">U_T</span></code></strong> com a saída de cada time stack</p></li>
+<li><p>A <strong>saída de cada time stack</strong> com suas respectivas camadas ocultas</p></li>
+</ol>
+</li>
+</ul>
+<section id="o-que-isso-muda">
+<h3><span class="section-number">15.5.1. </span>O que isso muda?<a class="headerlink" href="#o-que-isso-muda" title="Link para este cabeçalho">#</a></h3>
+<ul class="simple">
+<li><p>Cada bloco temporal <strong>recebe gradientes diretamente da tarefa final</strong> (<code class="docutils literal notranslate"><span class="pre">U_T</span></code>), além dos gradientes das etapas anteriores.</p></li>
+<li><p>Isso <strong>reforça a retropropagação</strong> e <strong>reduz a perda de sinal de erro</strong>, especialmente nas camadas mais distantes e nos tempos mais antigos.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="resumo-da-tecnica">
+<h2><span class="section-number">15.6. </span>Resumo da técnica<a class="headerlink" href="#resumo-da-tecnica" title="Link para este cabeçalho">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Conceito</p></th>
+<th class="head"><p>Explicação</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Time stack</p></td>
+<td><p>Cópia da rede para um instante no tempo (<code class="docutils literal notranslate"><span class="pre">τ</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>BPTT</p></td>
+<td><p>Desenrola a recorrência para aplicar backpropagation padrão</p></td>
+</tr>
+<tr class="row-even"><td><p>Problema do gradiente</p></td>
+<td><p>Em redes profundas e longas, o erro “some” antes de alcançar as bases</p></td>
+</tr>
+<tr class="row-odd"><td><p>Task-aware BPTT</p></td>
+<td><p>Injeta gradiente diretamente da função de recompensa em cada tempo</p></td>
+</tr>
+<tr class="row-even"><td><p>Benefício</p></td>
+<td><p>Aprendizado mais eficaz em todas as camadas e tempos</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="algoritmo-1-resumo">
+<h2><span class="section-number">15.7. </span>Algoritmo 1 (resumo)<a class="headerlink" href="#algoritmo-1-resumo" title="Link para este cabeçalho">#</a></h2>
+<p>O algoritmo descrito no final da seção segue os seguintes passos:</p>
+<ol class="arabic simple">
+<li><p>Inicialize os parâmetros da FDRNN (já feito na Seção IV.A).</p></li>
+<li><p>Desenrole a rede no tempo para formar os time stacks.</p></li>
+<li><p>Calcule os gradientes em cada time stack, com:</p>
+<ul class="simple">
+<li><p>Gradientes normais (da retropropagação padrão)</p></li>
+<li><p>Gradientes adicionais vindos da função <code class="docutils literal notranslate"><span class="pre">U_T</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>Normalize o vetor de gradiente</strong> (para evitar explosões numéricas).</p></li>
+<li><p>Atualize os parâmetros com descida de gradiente.</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="conclusao">
+<h2><span class="section-number">15.8. </span>Conclusão<a class="headerlink" href="#conclusao" title="Link para este cabeçalho">#</a></h2>
+<p>O <strong>Task-Aware BPTT</strong> é uma adaptação sofisticada do BPTT tradicional, ajustada às necessidades de:</p>
+<ul class="simple">
+<li><p>Redes <strong>profundas e recorrentes</strong></p></li>
+<li><p>Treinamento com <strong>função de recompensa não supervisionada</strong></p></li>
+<li><p>Aplicações <strong>financeiras ruidosas e sensíveis ao tempo</strong></p></li>
+</ul>
+<p>Essa técnica permite <strong>treinar a FDRNN de forma robusta</strong>, mesmo com grande profundidade e dependência temporal.</p>
+<p>Na próxima seção, o artigo testa esse modelo no mundo real.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/FDRNN"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="FDRNN_ivA_system_initializations.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title"><span class="section-number">14. </span>DRNN LEARNING</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../bib.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">próximo</p>
+        <p class="prev-next-title">Referências</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Conteúdo
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contexto-do-problema">15.1. Contexto do Problema</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gradiente-com-estrutura-recorrente">15.2. Gradiente com estrutura recorrente</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solucao-backpropagation-through-time-bptt">15.3. Solução: Backpropagation Through Time (BPTT)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-visual">15.3.1. Exemplo visual:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problema-degradacao-do-gradiente">15.4. Problema: Degradação do gradiente</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proposta-task-aware-bptt">15.5. Proposta: Task-Aware BPTT</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#o-que-isso-muda">15.5.1. O que isso muda?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resumo-da-tecnica">15.6. Resumo da técnica</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritmo-1-resumo">15.7. Algoritmo 1 (resumo)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusao">15.8. Conclusão</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+De Lucas A. Souza
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright L. A. Souza, 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

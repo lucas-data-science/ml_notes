@@ -1,0 +1,849 @@
+
+<!DOCTYPE html>
+
+
+<html lang="pt-BR" data-content_root="../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>11. Direct Deep Reinforcement Learning &#8212; Ciência de Dados</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=2efa9f5e"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/translations.js?v=daa5921a"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/FDRNN/FDRNN_iiiA_direct_reforcement_trading';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="icon" href="../../_static/icon-data-science.png"/>
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Buscar" href="../../search.html" />
+    <link rel="next" title="12. Rede Neural Recorrente Profunda para DDR" href="FDRNN_iiiB_RNN_for_DPP.html" />
+    <link rel="prev" title="10. Introdução" href="FDRNN_intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="pt-BR"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../_static/icon-data-science.png" class="logo__image only-light" alt="Ciência de Dados - Home"/>
+    <script>document.write(`<img src="../../_static/icon-data-science.png" class="logo__image only-dark" alt="Ciência de Dados - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Buscar" aria-label="Buscar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Buscar</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Prefácio
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte I. Elementos de Estatística e Análise Exploratória de Dados</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks_estatistica/introducao_parte_1.html">1. Sobre a Parte I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks_estatistica/Analise_Exploratoria.html">2. Análise Exploratória de Dados (EDA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks_estatistica/Amostragem.html">3. Amostragem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks_estatistica/Distribuicoes_de_Dados.html">4. Distribuições de Dados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks_estatistica/Teste_Hipotese.html">5. Testes de Hipóteses e Inferência Estatística</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte II. Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ML/introducao_parte_2.html">6. Sobre a Parte II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ML/ML_fundamentals.html">7. Fundamentos de Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ML/ML_models.html">8. Modelos de Machine Learning</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte III. Aprendizado por Reforço para Finanças</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="FDRNN_resumo.html">9. Fonte e Resumo do Estudo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FDRNN_intro.html">10. Introdução</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">11. Direct Deep Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FDRNN_iiiB_RNN_for_DPP.html">12. Rede Neural Recorrente Profunda para DDR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FDRNN_iiiC_fuzzy.html">13. Extensões Fuzzy para Reduzir Incertezas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FDRNN_ivA_system_initializations.html">14. DRNN LEARNING</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FDRNN_ivB_task-aware_BPTT.html">15. Task-Aware BPTT (Retropropagação no Tempo Sensível à Tarefa)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte Final</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../bib.html">Referências</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Baixe esta página">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notebooks/FDRNN/FDRNN_iiiA_direct_reforcement_trading.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Baixar arquivo fonte"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir em PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Modo tela cheia"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Buscar" aria-label="Buscar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Direct Deep Reinforcement Learning</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Conteúdo </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-negociacao-por-reforco-direto-direct-reinforcement-trading">11.1. A. Negociação por Reforço Direto (Direct Reinforcement Trading)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretacao-da-formula">11.1.1. Interpretação da fórmula:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplos-de-ganho-e-perda-com-a-formula-de-reforco-direto">11.2. Exemplos de Ganho e Perda com a Fórmula de Reforço Direto</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-1-lucro-com-posicao-comprada">11.2.1. Exemplo 1: Lucro com posição comprada</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-2-prejuizo-com-posicao-comprada">11.2.2. Exemplo 2: Prejuízo com posição comprada</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-3-lucro-com-posicao-vendida">11.2.3. Exemplo 3: Lucro com posição vendida</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-4-mudanca-de-posicao-com-custo-sem-retorno-imediato">11.2.4. Exemplo 4: Mudança de posição com custo, sem retorno imediato</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-5-mudanca-de-posicao-com-lucro-subsequente">11.2.5. Exemplo 5: Mudança de posição com lucro subsequente</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#no-tempo-t">11.2.5.1. No tempo <span class="math notranslate nohighlight">\( t \)</span>:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#no-tempo-t-1">11.2.5.2. No tempo <span class="math notranslate nohighlight">\( t+1 \)</span>:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#recompensa-acumulada-mais-simples-total-profit-tp">11.2.5.3. Recompensa acumulada mais simples: Total Profit (TP)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#alternativas-mais-sofisticadas">11.2.5.4. Alternativas mais sofisticadas</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aprendizado-direto-da-politica">11.2.6. Aprendizado Direto da Política</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#limitacoes-do-aprendizado-convencional-por-reforco">11.2.6.1. Limitações do Aprendizado Convencional por Reforço</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-contribuicao-do-drl">11.2.6.2. A Contribuição do DRL</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#funcao-da-politica-direta">11.2.6.3. Função da Política Direta</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretacao">11.2.6.4. Interpretação</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#equacao-para-bf-f-t-e-a-estrutura-do-drl">11.3. Equação para <span class="math notranslate nohighlight">\(\bf f_t\)</span>  e a Estrutura do DRL</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="direct-deep-reinforcement-learning">
+<h1><span class="section-number">11. </span>Direct Deep Reinforcement Learning<a class="headerlink" href="#direct-deep-reinforcement-learning" title="Link para este cabeçalho">#</a></h1>
+<section id="a-negociacao-por-reforco-direto-direct-reinforcement-trading">
+<h2><span class="section-number">11.1. </span>A. Negociação por Reforço Direto (Direct Reinforcement Trading)<a class="headerlink" href="#a-negociacao-por-reforco-direto-direct-reinforcement-trading" title="Link para este cabeçalho">#</a></h2>
+<p>Nesta seção, os autores revisam a estrutura de <em>aprendizado por reforço direto</em> (DRL - <em>Direct Reinforcement Learning</em>), originalmente proposta por <span id="id1">[<a class="reference internal" href="../../bib.html#id4" title="John Moody, Lizhong Wu, Yuansong Liao, and Matthew Saffell. Performance functions and reinforcement learning for trading systems and portfolios. Journal of Forecasting, 17(5-6):441-470, 1998. URL: https://onlinelibrary.wiley.com/doi/abs/10.1002/%28SICI%291099-131X%281998090%2917%3A5/6%3C441%3A%3AAID-FOR707%3E3.0.CO%3B2-%23, arXiv:https://onlinelibrary.wiley.com/doi/pdf/10.1002/%28SICI%291099-131X%281998090%2917%3A5/6%3C441%3A%3AAID-FOR707%3E3.0.CO%3B2-%23, doi:https://doi.org/10.1002/(SICI)1099-131X(1998090)17:5/6&lt;441::AID-FOR707&gt;3.0.CO;2-\#.">Moody <em>et al.</em>, 1998</a>]</span>. Eles mostram que esse tipo de DRL pode ser interpretado como uma <strong>rede neural recorrente (RNN)</strong> com apenas <strong>uma camada</strong>, o que a torna um modelo relativamente simples, mas ainda assim útil.</p>
+<p>O ambiente é modelado como uma sequência de preços de um ativo financeiro ao longo do tempo:</p>
+<div class="math notranslate nohighlight">
+\[
+p_1, p_2, \dots, p_t, \dots
+\]</div>
+<p>A variação de preço (ou retorno) entre dois instantes consecutivos é definida por:</p>
+<div class="math notranslate nohighlight">
+\[
+z_t = p_t - p_{t-1}
+\]</div>
+<p>Com base nas condições atuais do mercado, o modelo toma uma <strong>decisão de negociação em tempo real</strong> a cada instante de tempo <span class="math notranslate nohighlight">\(t\)</span>. Essa decisão, chamada <strong><span class="math notranslate nohighlight">\(\delta_t\)</span></strong>, pode assumir os seguintes valores:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(1\)</span>: posição comprada (<em>long</em>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(0\)</span>: posição neutra (<em>neutral</em>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(-1\)</span>: posição vendida (<em>short</em>)</p></li>
+</ul>
+<p>O <strong>lucro (ou prejuízo) no tempo <span class="math notranslate nohighlight">\(t\)</span></strong>, representado por <span class="math notranslate nohighlight">\(R_t\)</span>, é dado pela seguinte equação:</p>
+<div class="math notranslate nohighlight">
+\[
+R_t = \delta_{t-1} \cdot z_t - c \cdot \left| \delta_t - \delta_{t-1} \right|
+\tag{1}
+\]</div>
+<section id="interpretacao-da-formula">
+<h3><span class="section-number">11.1.1. </span>Interpretação da fórmula:<a class="headerlink" href="#interpretacao-da-formula" title="Link para este cabeçalho">#</a></h3>
+<ul class="simple">
+<li><p>O primeiro termo <span class="math notranslate nohighlight">\(\delta_{t-1} \cdot z_t\)</span> representa o ganho (ou perda) obtido com a variação do mercado, <strong>de acordo com a posição assumida no período anterior</strong>.</p>
+<ul>
+<li><p>Exemplo: se você estava comprado (<span class="math notranslate nohighlight">\(\delta_{t-1} = 1\)</span>) e o preço subiu (<span class="math notranslate nohighlight">\(z_t &gt; 0\)</span>), você tem lucro.</p></li>
+<li><p>Se estava vendido (<span class="math notranslate nohighlight">\(\delta_{t-1} = -1\)</span>) e o preço caiu (<span class="math notranslate nohighlight">\(z_t &lt; 0\)</span>), também há lucro.</p></li>
+<li><p>Se estava neutro (<span class="math notranslate nohighlight">\(\delta_{t-1} = 0\)</span>), esse termo é nulo.</p></li>
+</ul>
+</li>
+<li><p>O segundo termo <span class="math notranslate nohighlight">\(c \cdot \left| \delta_t - \delta_{t-1} \right|\)</span> representa o <strong>custo de transação (transaction cost - TC)</strong>. Ele é cobrado <strong>apenas quando há mudança de posição</strong> entre dois instantes consecutivos.</p>
+<ul>
+<li><p>Exemplo: mudar de neutro para comprado gera custo.</p></li>
+<li><p>Manter a mesma posição (<span class="math notranslate nohighlight">\(\delta_t = \delta_{t-1}\)</span>) <strong>não gera custo</strong>.</p></li>
+</ul>
+</li>
+</ul>
+<p>O parâmetro <span class="math notranslate nohighlight">\(c\)</span> representa esse custo, que pode incluir taxas da corretora, impostos, ou perdas por slippage (diferença entre o preço esperado e o executado). Esses custos são importantes para simular de forma realista os impactos de decisões frequentes de compra e venda no lucro final.</p>
+</section>
+</section>
+<section id="exemplos-de-ganho-e-perda-com-a-formula-de-reforco-direto">
+<h2><span class="section-number">11.2. </span>Exemplos de Ganho e Perda com a Fórmula de Reforço Direto<a class="headerlink" href="#exemplos-de-ganho-e-perda-com-a-formula-de-reforco-direto" title="Link para este cabeçalho">#</a></h2>
+<section id="exemplo-1-lucro-com-posicao-comprada">
+<h3><span class="section-number">11.2.1. </span>Exemplo 1: Lucro com posição comprada<a class="headerlink" href="#exemplo-1-lucro-com-posicao-comprada" title="Link para este cabeçalho">#</a></h3>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( p_{t-1} = 100 \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( p_t = 103 \)</span> → <span class="math notranslate nohighlight">\( z_t = 3 \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( \delta_{t-1} = 1 \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( \delta_t = 1 \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( c = 0.5 \)</span></p></li>
+</ul>
+<p><strong>Cálculo:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+R_t = 1 \cdot 3 - 0.5 \cdot |1 - 1| = 3 - 0 = \boxed{3}
+\]</div>
+<p><strong>Lucro de 3 unidades</strong>.</p>
+</section>
+<hr class="docutils" />
+<section id="exemplo-2-prejuizo-com-posicao-comprada">
+<h3><span class="section-number">11.2.2. </span>Exemplo 2: Prejuízo com posição comprada<a class="headerlink" href="#exemplo-2-prejuizo-com-posicao-comprada" title="Link para este cabeçalho">#</a></h3>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( z_t = -2 \)</span> (queda de preço)</p></li>
+<li><p><span class="math notranslate nohighlight">\( \delta_{t-1} = 1 \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( \delta_t = 1 \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( c = 0.5 \)</span></p></li>
+</ul>
+<p><strong>Cálculo:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+R_t = 1 \cdot (-2) - 0.5 \cdot |1 - 1| = -2 - 0 = \boxed{-2}
+\]</div>
+<p><strong>Prejuízo de 2 unidades</strong>, sem custo de transação.</p>
+</section>
+<hr class="docutils" />
+<section id="exemplo-3-lucro-com-posicao-vendida">
+<h3><span class="section-number">11.2.3. </span>Exemplo 3: Lucro com posição vendida<a class="headerlink" href="#exemplo-3-lucro-com-posicao-vendida" title="Link para este cabeçalho">#</a></h3>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( z_t = -4 \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( \delta_{t-1} = -1 \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( \delta_t = -1 \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( c = 0.5 \)</span></p></li>
+</ul>
+<p><strong>Cálculo:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+R_t = (-1) \cdot (-4) - 0.5 \cdot |-1 - (-1)| = 4 - 0 = \boxed{4}
+\]</div>
+<p><strong>Lucro de 4 unidades</strong>, pois o preço caiu e o agente estava vendido.</p>
+</section>
+<hr class="docutils" />
+<section id="exemplo-4-mudanca-de-posicao-com-custo-sem-retorno-imediato">
+<h3><span class="section-number">11.2.4. </span>Exemplo 4: Mudança de posição com custo, sem retorno imediato<a class="headerlink" href="#exemplo-4-mudanca-de-posicao-com-custo-sem-retorno-imediato" title="Link para este cabeçalho">#</a></h3>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( z_t = 2 \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( \delta_{t-1} = 0 \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( \delta_t = 1 \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( c = 0.5 \)</span></p></li>
+</ul>
+<p><strong>Cálculo:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+R_t = 0 \cdot 2 - 0.5 \cdot |1 - 0| = 0 - 0.5 = \boxed{-0.5}
+\]</div>
+<p>*<strong>Perda de 0.5 unidades</strong>, referente apenas ao custo de entrada.</p>
+</section>
+<hr class="docutils" />
+<section id="exemplo-5-mudanca-de-posicao-com-lucro-subsequente">
+<h3><span class="section-number">11.2.5. </span>Exemplo 5: Mudança de posição com lucro subsequente<a class="headerlink" href="#exemplo-5-mudanca-de-posicao-com-lucro-subsequente" title="Link para este cabeçalho">#</a></h3>
+<section id="no-tempo-t">
+<h4><span class="section-number">11.2.5.1. </span>No tempo <span class="math notranslate nohighlight">\( t \)</span>:<a class="headerlink" href="#no-tempo-t" title="Link para este cabeçalho">#</a></h4>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( z_t = 5 \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( \delta_{t-1} = 0 \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( \delta_t = 1 \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( c = 0.5 \)</span></p></li>
+</ul>
+<p><strong>Cálculo:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+R_t = 0 \cdot 5 - 0.5 \cdot |1 - 0| = 0 - 0.5 = \boxed{-0.5}
+\]</div>
+</section>
+<section id="no-tempo-t-1">
+<h4><span class="section-number">11.2.5.2. </span>No tempo <span class="math notranslate nohighlight">\( t+1 \)</span>:<a class="headerlink" href="#no-tempo-t-1" title="Link para este cabeçalho">#</a></h4>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( z_{t+1} = 3 \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( \delta_t = 1 \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( \delta_{t+1} = 1 \)</span></p></li>
+</ul>
+<p><strong>Cálculo:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+R_{t+1} = 1 \cdot 3 - 0.5 \cdot |1 - 1| = 3 - 0 = \boxed{3}
+\]</div>
+<p><strong>Resumo</strong>: perdeu 0.5 na entrada, mas ganhou 3 depois → <strong>Lucro líquido: 2.5</strong></p>
+<hr class="docutils" />
+<p>A função apresentada anteriormente (Equação 1) representa a <strong>função de valor</strong> típica usada em frameworks de <em>Deep Reinforcement Learning</em> (DRL). Essa função avalia o <strong>lucro instantâneo</strong> <span class="math notranslate nohighlight">\( R_t \)</span> em cada ponto do tempo.</p>
+<p>Com base nesses valores <span class="math notranslate nohighlight">\( R_t \)</span>, é possível definir o valor acumulado ao longo de todo o período de treinamento como:</p>
+<div class="math notranslate nohighlight">
+\[
+\max_{\Theta} \ U_T\{R_1, R_2, \dots, R_T \ | \ \Theta\}
+\tag{2}
+\]</div>
+<p>Onde:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( U_T\{\cdot\} \)</span> é a função que <strong>acumula os lucros/recompensas</strong> entre os tempos <span class="math notranslate nohighlight">\( t = 1 \)</span> até <span class="math notranslate nohighlight">\( T \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( \Theta \)</span> é a política de negociação, ou seja, a estratégia usada para tomar decisões ao longo do tempo</p></li>
+<li><p>O objetivo do treinamento é encontrar a política <span class="math notranslate nohighlight">\( \Theta \)</span> que <strong>maximiza</strong> esse valor acumulado</p></li>
+</ul>
+</section>
+<section id="recompensa-acumulada-mais-simples-total-profit-tp">
+<h4><span class="section-number">11.2.5.3. </span>Recompensa acumulada mais simples: Total Profit (TP)<a class="headerlink" href="#recompensa-acumulada-mais-simples-total-profit-tp" title="Link para este cabeçalho">#</a></h4>
+<p>A forma mais direta de acumular as recompensas é simplesmente somar os lucros em todos os períodos:</p>
+<div class="math notranslate nohighlight">
+\[
+U_T = \sum_{t=1}^{T} R_t
+\]</div>
+<p>Essa soma representa o <strong>lucro total (Total Profit – TP)</strong> obtido no período completo de treinamento.</p>
+</section>
+<section id="alternativas-mais-sofisticadas">
+<h4><span class="section-number">11.2.5.4. </span>Alternativas mais sofisticadas<a class="headerlink" href="#alternativas-mais-sofisticadas" title="Link para este cabeçalho">#</a></h4>
+<p>Embora o lucro total seja a forma mais intuitiva de recompensa, é possível utilizar <strong>funções de recompensa mais complexas</strong>, como:</p>
+<ul class="simple">
+<li><p>Retorno ajustado pelo risco (por exemplo, <strong>Sharpe Ratio</strong>)</p></li>
+<li><p>Lucro médio com penalizações por drawdown ou volatilidade</p></li>
+</ul>
+<p>Estas opções são mencionadas como possíveis objetivos de aprendizado por reforço, mas <strong>os autores escolhem usar o TP (lucro total)</strong> como função objetivo principal ao longo do artigo, por simplificar a explicação e facilitar a implementação.</p>
+<blockquote>
+<div><p>Essas abordagens alternativas serão discutidas mais detalhadamente na Seção V do artigo.</p>
+</div></blockquote>
+</section>
+</section>
+<section id="aprendizado-direto-da-politica">
+<h3><span class="section-number">11.2.6. </span>Aprendizado Direto da Política<a class="headerlink" href="#aprendizado-direto-da-politica" title="Link para este cabeçalho">#</a></h3>
+<p>Com a função de recompensa já bem definida, o desafio agora é:  <strong>como otimizar essa função de forma eficiente</strong>?</p>
+<hr class="docutils" />
+<section id="limitacoes-do-aprendizado-convencional-por-reforco">
+<h4><span class="section-number">11.2.6.1. </span>Limitações do Aprendizado Convencional por Reforço<a class="headerlink" href="#limitacoes-do-aprendizado-convencional-por-reforco" title="Link para este cabeçalho">#</a></h4>
+<p>Nos métodos clássicos de <em>Reinforcement Learning</em>, as funções de valor são definidas em <strong>espaços discretos de estados</strong> e otimizadas via <strong>programação dinâmica</strong> (como Q-Learning ou métodos de política-valor).</p>
+<p>No entanto, os autores destacam que essa abordagem <strong>não funciona bem para negociação financeira</strong>, porque:</p>
+<ul class="simple">
+<li><p>O mercado é altamente <strong>complexo e contínuo</strong></p></li>
+<li><p>É difícil representar as condições de mercado com um número razoável de <strong>estados discretos</strong></p></li>
+<li><p>O ambiente é <strong>não estacionário</strong> e com ruídos, o que dificulta aprender o valor de cada estado</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="a-contribuicao-do-drl">
+<h4><span class="section-number">11.2.6.2. </span>A Contribuição do DRL<a class="headerlink" href="#a-contribuicao-do-drl" title="Link para este cabeçalho">#</a></h4>
+<p>Diante dessas limitações, a proposta de <span id="id2">[<a class="reference internal" href="../../bib.html#id5" title="J. Moody and M. Saffell. Learning to trade via direct reinforcement. IEEE Transactions on Neural Networks, 12(4):875-889, July 2001. doi:10.1109/72.935097.">Moody and Saffell, 2001</a>]</span> e aprofundada no artigo é:</p>
+<blockquote>
+<div><p>Em vez de aprender o valor de cada estado, <strong>aprender diretamente a política</strong> de decisão.</p>
+</div></blockquote>
+<p>Esse paradigma é chamado de <strong>Aprendizado por Reforço Direto</strong> (<em>Direct Reinforcement Learning – DRL</em>).</p>
+</section>
+<hr class="docutils" />
+<section id="funcao-da-politica-direta">
+<h4><span class="section-number">11.2.6.3. </span>Função da Política Direta<a class="headerlink" href="#funcao-da-politica-direta" title="Link para este cabeçalho">#</a></h4>
+<p>A política de negociação é representada por uma <strong>função não linear</strong>, que estima diretamente a ação a ser tomada no tempo <span class="math notranslate nohighlight">\( t \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\delta_t = \tanh\left( \langle \mathbf{w}, \mathbf{f}_t \rangle + b + u \cdot \delta_{t-1} \right)
+\tag{3}
+\]</div>
+<p>Onde:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \delta_t \in (-1, 1) \)</span>: saída contínua da política, representando a intensidade da posição (tanh aproxima os sinais <span class="math notranslate nohighlight">\(-1\)</span>, <span class="math notranslate nohighlight">\(0\)</span>, <span class="math notranslate nohighlight">\(1\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\( \mathbf{f}_t \)</span>: vetor de <strong>features do mercado</strong> no tempo <span class="math notranslate nohighlight">\( t \)</span> (ex: indicadores, retornos, volatilidade etc.)</p></li>
+<li><p><span class="math notranslate nohighlight">\( \mathbf{w} \)</span>: vetor de <strong>pesos (parâmetros)</strong> aprendidos para cada feature</p></li>
+<li><p><span class="math notranslate nohighlight">\( b \)</span>: <strong>viés (bias)</strong> da função</p></li>
+<li><p><span class="math notranslate nohighlight">\( u \cdot \delta_{t-1} \)</span>: termo de <strong>memória</strong>, que introduz dependência da ação anterior</p></li>
+<li><p><span class="math notranslate nohighlight">\( \langle \mathbf{w}, \mathbf{f}_t \rangle \)</span>: <strong>produto interno</strong> (ou somatório ponderado das features)</p></li>
+</ul>
+<p>A função tangente hiperbólica <span class="math notranslate nohighlight">\( \tanh(\cdot) \)</span> comprime a saída para o intervalo <span class="math notranslate nohighlight">\( (-1, 1) \)</span>, permitindo representar tanto posições compradas, neutras ou vendidas <strong>de forma contínua</strong>.</p>
+</section>
+<hr class="docutils" />
+<section id="interpretacao">
+<h4><span class="section-number">11.2.6.4. </span>Interpretação<a class="headerlink" href="#interpretacao" title="Link para este cabeçalho">#</a></h4>
+<p>O modelo base de decisão do paper é uma rede neural extremamente simples, mas poderosa. Ela é composta por três partes principais:</p>
+<hr class="docutils" />
+<ol class="arabic simple">
+<li><p>Camada Linear</p></li>
+</ol>
+<p>A primeira etapa da rede é uma <strong>soma ponderada das entradas do mercado</strong>, também chamada de produto interno.</p>
+<ul class="simple">
+<li><p>Cada feature do vetor de entrada tem um peso associado.</p></li>
+<li><p>Também há um termo de viés (bias), que serve como um deslocamento.</p></li>
+<li><p>Essa combinação resulta em um valor escalar que representa a <strong>situação atual do mercado</strong> conforme interpretada pela rede.</p></li>
+</ul>
+<p><strong>Intuição:</strong><br />
+É como um trader que diz:<br />
+“Dou mais importância aos retornos recentes do que aos antigos, e tendo a favorecer posições compradas em geral.”</p>
+<hr class="docutils" />
+<ol class="arabic simple" start="2">
+<li><p>Feedback da Ação Anterior</p></li>
+</ol>
+<p>O modelo incorpora um <strong>termo de memória</strong>, que é a <strong>posição de trading tomada no tempo anterior multiplicada por um peso</strong>.</p>
+<ul class="simple">
+<li><p>Isso permite ao modelo <strong>levar em conta sua decisão passada</strong> ao decidir o que fazer agora.</p></li>
+<li><p>A ideia é evitar trocas desnecessárias de posição, o que reduz custos operacionais (como taxas e slippage).</p></li>
+<li><p>Também permite que o modelo <strong>favoreça a continuidade das ações</strong> quando o mercado não muda drasticamente.</p></li>
+</ul>
+<p><strong>Intuição:</strong><br />
+É como um trader que pensa:<br />
+“Se eu estava comprado ontem e não mudou muita coisa, talvez seja melhor continuar comprado.”</p>
+<hr class="docutils" />
+<ol class="arabic simple" start="3">
+<li><p>Ativação Tanh: Direção e Intensidade</p></li>
+</ol>
+<p>Após a soma ponderada e o termo de memória, o resultado passa por uma <strong>função de ativação tangente hiperbólica</strong>.</p>
+<ul class="simple">
+<li><p>Essa função gera um valor contínuo entre -1 e 1.</p></li>
+<li><p>O resultado já é a <strong>ação de trading</strong>:</p>
+<ul>
+<li><p>Valores próximos de -1 indicam posição vendida.</p></li>
+<li><p>Valores próximos de 0 indicam posição neutra.</p></li>
+<li><p>Valores próximos de 1 indicam posição comprada.</p></li>
+</ul>
+</li>
+<li><p>Isso também permite <strong>posições parciais</strong>, como meio comprado ou meio vendido.</p></li>
+</ul>
+<p><strong>Vantagem:</strong><br />
+Não é necessário discretizar ações (como “comprar”, “vender”, “parar”).<br />
+O modelo já produz ações contínuas, mais suaves e mais fáceis de otimizar via gradiente.</p>
+<hr class="docutils" />
+<p>Por que isso é elegante?</p>
+<p>Com uma estrutura extremamente simples, o modelo já consegue:</p>
+<ul class="simple">
+<li><p>Ter <strong>memória</strong> do passado (recurrente).</p></li>
+<li><p>Fazer decisões <strong>suaves e contínuas</strong>.</p></li>
+<li><p>Aprender <strong>diretamente dos dados brutos do mercado</strong>.</p></li>
+<li><p><strong>Evitar regras manuais</strong> ou discretização de estados/ações.</p></li>
+</ul>
+<p>É uma forma poderosa e minimalista de tomar decisões em tempo real no mercado financeiro.</p>
+</section>
+</section>
+</section>
+<section id="equacao-para-bf-f-t-e-a-estrutura-do-drl">
+<h2><span class="section-number">11.3. </span>Equação para <span class="math notranslate nohighlight">\(\bf f_t\)</span>  e a Estrutura do DRL<a class="headerlink" href="#equacao-para-bf-f-t-e-a-estrutura-do-drl" title="Link para este cabeçalho">#</a></h2>
+<p>No modelo de <strong>Reinforcement Learning Direto (DRL)</strong>, os <strong>m retornos mais recentes</strong> são utilizados diretamente como vetor de entrada (features), representado por:</p>
+<div class="math notranslate nohighlight">
+\[
+{\bf f_t} = [z_{t-m+1}, ..., z_t] ∈ ℝ^m
+\]</div>
+<p>Além dessas features, um <strong>termo adicional</strong> <span class="math notranslate nohighlight">\(u * δ_{t-1}\)</span> também é incluído na regressão. Esse termo representa a <strong>decisão de trading do instante anterior</strong> e é incorporado ao modelo para <strong>desencorajar mudanças frequentes de posição</strong>, com o objetivo de <strong>evitar custos de transação elevados</strong>.</p>
+<p>A saída dessa soma linear é então passada por uma função de ativação <strong>tangente hiperbólica (tanh)</strong>, que mapeia o resultado para o intervalo <strong>(-1, 1)</strong>. Esse valor final é interpretado como a <strong>decisão de trading do agente</strong> naquele momento, podendo ser:</p>
+<ul class="simple">
+<li><p>Próximo de -1 → posição vendida</p></li>
+<li><p>Próximo de  0 → posição neutra</p></li>
+<li><p>Próximo de +1 → posição comprada</p></li>
+</ul>
+<p>A <strong>otimização do DRL</strong> consiste em encontrar o melhor conjunto de parâmetros:</p>
+<div class="math notranslate nohighlight">
+\[
+Θ = {{\bf w}, u, b}
+\]</div>
+<p>que <strong>maximiza a função de recompensa global</strong> definida anteriormente.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/FDRNN"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="FDRNN_intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Introdução</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="FDRNN_iiiB_RNN_for_DPP.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">próximo</p>
+        <p class="prev-next-title"><span class="section-number">12. </span>Rede Neural Recorrente Profunda para DDR</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Conteúdo
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-negociacao-por-reforco-direto-direct-reinforcement-trading">11.1. A. Negociação por Reforço Direto (Direct Reinforcement Trading)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretacao-da-formula">11.1.1. Interpretação da fórmula:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplos-de-ganho-e-perda-com-a-formula-de-reforco-direto">11.2. Exemplos de Ganho e Perda com a Fórmula de Reforço Direto</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-1-lucro-com-posicao-comprada">11.2.1. Exemplo 1: Lucro com posição comprada</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-2-prejuizo-com-posicao-comprada">11.2.2. Exemplo 2: Prejuízo com posição comprada</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-3-lucro-com-posicao-vendida">11.2.3. Exemplo 3: Lucro com posição vendida</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-4-mudanca-de-posicao-com-custo-sem-retorno-imediato">11.2.4. Exemplo 4: Mudança de posição com custo, sem retorno imediato</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exemplo-5-mudanca-de-posicao-com-lucro-subsequente">11.2.5. Exemplo 5: Mudança de posição com lucro subsequente</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#no-tempo-t">11.2.5.1. No tempo <span class="math notranslate nohighlight">\( t \)</span>:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#no-tempo-t-1">11.2.5.2. No tempo <span class="math notranslate nohighlight">\( t+1 \)</span>:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#recompensa-acumulada-mais-simples-total-profit-tp">11.2.5.3. Recompensa acumulada mais simples: Total Profit (TP)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#alternativas-mais-sofisticadas">11.2.5.4. Alternativas mais sofisticadas</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aprendizado-direto-da-politica">11.2.6. Aprendizado Direto da Política</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#limitacoes-do-aprendizado-convencional-por-reforco">11.2.6.1. Limitações do Aprendizado Convencional por Reforço</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-contribuicao-do-drl">11.2.6.2. A Contribuição do DRL</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#funcao-da-politica-direta">11.2.6.3. Função da Política Direta</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretacao">11.2.6.4. Interpretação</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#equacao-para-bf-f-t-e-a-estrutura-do-drl">11.3. Equação para <span class="math notranslate nohighlight">\(\bf f_t\)</span>  e a Estrutura do DRL</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+De Lucas A. Souza
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright L. A. Souza, 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

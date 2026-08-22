@@ -1,0 +1,644 @@
+
+<!DOCTYPE html>
+
+
+<html lang="pt-BR" data-content_root="../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>13. Extensões Fuzzy para Reduzir Incertezas &#8212; Ciência de Dados</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=2efa9f5e"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/translations.js?v=daa5921a"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/FDRNN/FDRNN_iiiC_fuzzy';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="icon" href="../../_static/icon-data-science.png"/>
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Buscar" href="../../search.html" />
+    <link rel="next" title="14. DRNN LEARNING" href="FDRNN_ivA_system_initializations.html" />
+    <link rel="prev" title="12. Rede Neural Recorrente Profunda para DDR" href="FDRNN_iiiB_RNN_for_DPP.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="pt-BR"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../_static/icon-data-science.png" class="logo__image only-light" alt="Ciência de Dados - Home"/>
+    <script>document.write(`<img src="../../_static/icon-data-science.png" class="logo__image only-dark" alt="Ciência de Dados - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Buscar" aria-label="Buscar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Buscar</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Prefácio
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte I. Elementos de Estatística e Análise Exploratória de Dados</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks_estatistica/introducao_parte_1.html">1. Sobre a Parte I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks_estatistica/Analise_Exploratoria.html">2. Análise Exploratória de Dados (EDA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks_estatistica/Amostragem.html">3. Amostragem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks_estatistica/Distribuicoes_de_Dados.html">4. Distribuições de Dados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks_estatistica/Teste_Hipotese.html">5. Testes de Hipóteses e Inferência Estatística</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte II. Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ML/introducao_parte_2.html">6. Sobre a Parte II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ML/ML_fundamentals.html">7. Fundamentos de Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ML/ML_models.html">8. Modelos de Machine Learning</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte III. Aprendizado por Reforço para Finanças</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="FDRNN_resumo.html">9. Fonte e Resumo do Estudo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FDRNN_intro.html">10. Introdução</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FDRNN_iiiA_direct_reforcement_trading.html">11. Direct Deep Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FDRNN_iiiB_RNN_for_DPP.html">12. Rede Neural Recorrente Profunda para DDR</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">13. Extensões Fuzzy para Reduzir Incertezas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FDRNN_ivA_system_initializations.html">14. DRNN LEARNING</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FDRNN_ivB_task-aware_BPTT.html">15. Task-Aware BPTT (Retropropagação no Tempo Sensível à Tarefa)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte Final</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../bib.html">Referências</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Baixe esta página">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notebooks/FDRNN/FDRNN_iiiC_fuzzy.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Baixar arquivo fonte"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir em PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Modo tela cheia"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Buscar" aria-label="Buscar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Extensões Fuzzy para Reduzir Incertezas</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Conteúdo </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problema-abordado-incerteza-dos-dados-financeiros">13.1. Problema abordado: Incerteza dos dados financeiros</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solucao-representacao-fuzzy">13.2. Solução: Representação Fuzzy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicando-ao-problema-financeiro">13.3. Aplicando ao problema financeiro</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementacao-pratica">13.4. Implementação prática</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arquitetura-final-fuzzy-drnn-fdrnn">13.5. Arquitetura final: Fuzzy DRNN (FDRNN)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formulacao-final-do-problema-equacao-8">13.6. Formulação final do problema (Equação 8)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusao">13.7. Conclusão</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="extensoes-fuzzy-para-reduzir-incertezas">
+<h1><span class="section-number">13. </span>Extensões Fuzzy para Reduzir Incertezas<a class="headerlink" href="#extensoes-fuzzy-para-reduzir-incertezas" title="Link para este cabeçalho">#</a></h1>
+<section id="problema-abordado-incerteza-dos-dados-financeiros">
+<h2><span class="section-number">13.1. </span>Problema abordado: Incerteza dos dados financeiros<a class="headerlink" href="#problema-abordado-incerteza-dos-dados-financeiros" title="Link para este cabeçalho">#</a></h2>
+<p>Embora o uso de redes neurais profundas (DL) tenha melhorado a capacidade de aprender representações do mercado, <strong>há um outro desafio fundamental no domínio financeiro</strong>:</p>
+<blockquote>
+<div><p>A <strong>alta incerteza e imprevisibilidade dos dados financeiros</strong>.</p>
+</div></blockquote>
+<p>Diferente de sinais como <strong>imagens ou voz</strong>, que têm padrões relativamente estáveis, os dados de mercado sofrem com:</p>
+<ul class="simple">
+<li><p>Ruídos imprevisíveis e aleatórios (devido à natureza especulativa);</p></li>
+<li><p>Fatores externos imprevisíveis como política, rumores, clima econômico global, etc.</p></li>
+</ul>
+<p><strong>Reduzir essa incerteza nos dados brutos</strong> é uma estratégia importante para tornar o modelo mais robusto e confiável.</p>
+</section>
+<hr class="docutils" />
+<section id="solucao-representacao-fuzzy">
+<h2><span class="section-number">13.2. </span>Solução: Representação Fuzzy<a class="headerlink" href="#solucao-representacao-fuzzy" title="Link para este cabeçalho">#</a></h2>
+<p>Na comunidade de inteligência artificial, uma abordagem eficaz para lidar com incertezas é o <strong>aprendizado fuzzy</strong>.</p>
+<ul class="simple">
+<li><p>Sistemas fuzzy não descrevem fenômenos com precisão rígida.</p></li>
+<li><p>Em vez disso, usam <strong>valores linguísticos fuzzy</strong> como:</p>
+<ul>
+<li><p>“tendência de alta”,</p></li>
+<li><p>“sem tendência”,</p></li>
+<li><p>“tendência de baixa”.</p></li>
+</ul>
+</li>
+</ul>
+<p>Esses valores são atribuídos por meio de <strong>funções de pertinência fuzzy</strong> que <strong>mapeiam os dados reais para graus de pertencimento</strong>.</p>
+<p>Assim, a rede trabalha apenas com essas representações fuzzy, tornando o processo de decisão mais robusto.</p>
+</section>
+<hr class="docutils" />
+<section id="aplicando-ao-problema-financeiro">
+<h2><span class="section-number">13.3. </span>Aplicando ao problema financeiro<a class="headerlink" href="#aplicando-ao-problema-financeiro" title="Link para este cabeçalho">#</a></h2>
+<p>Nesse modelo:</p>
+<ul class="simple">
+<li><p>Cada retorno no vetor de entrada <span class="math notranslate nohighlight">\(\bf f_t\)</span> pode ser classificado em <strong>três categorias fuzzy</strong>:</p>
+<ul>
+<li><p>Tendência de alta (increasing)</p></li>
+<li><p>Tendência de baixa (decreasing)</p></li>
+<li><p>Sem tendência (no trend)</p></li>
+</ul>
+</li>
+</ul>
+<p>Essas categorias são representadas por <strong>funções de pertinência Gaussianas</strong>, que assumem a forma:</p>
+<div class="math notranslate nohighlight">
+\[ v_i(a_i) = exp( - (a_i - m_i)^2 / σ_i^2 )\]</div>
+<p>Onde:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(v_i(a_i)\)</span> representa o <strong>grau fuzzy</strong> do valor de entrada <span class="math notranslate nohighlight">\(a_i\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(m_i\)</span> é a média (centro da função);</p></li>
+<li><p><span class="math notranslate nohighlight">\(σ_i\)</span> é o desvio padrão (controle da largura da curva).</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="implementacao-pratica">
+<h2><span class="section-number">13.4. </span>Implementação prática<a class="headerlink" href="#implementacao-pratica" title="Link para este cabeçalho">#</a></h2>
+<ul class="simple">
+<li><p>Para cada feature do vetor de entrada <span class="math notranslate nohighlight">\(f_t\)</span>, são calculados <strong>k graus de pertencimento fuzzy</strong>.</p></li>
+<li><p>No modelo do artigo, eles fixam <span class="math notranslate nohighlight">\(k = 3\)</span>:</p>
+<ul>
+<li><p>Uma função para cada tipo de tendência (alta, baixa, neutra).</p></li>
+</ul>
+</li>
+<li><p>Cada entrada é então <strong>expandida em 3 valores fuzzy</strong>, formando um vetor fuzzy de entrada com 3 vezes mais dimensões.</p></li>
+</ul>
+<p>Essa representação fuzzy é conectada diretamente à <strong>rede profunda de transformação <span class="math notranslate nohighlight">\(g_d(·)\)</span></strong>.</p>
+</section>
+<hr class="docutils" />
+<section id="arquitetura-final-fuzzy-drnn-fdrnn">
+<h2><span class="section-number">13.5. </span>Arquitetura final: Fuzzy DRNN (FDRNN)<a class="headerlink" href="#arquitetura-final-fuzzy-drnn-fdrnn" title="Link para este cabeçalho">#</a></h2>
+<p>O modelo FDRNN é composto por <strong>três blocos principais</strong>:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Componente</p></th>
+<th class="head"><p>Função</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Representação Fuzzy</strong> <span class="math notranslate nohighlight">\(v(f_t)\)</span></p></td>
+<td><p>Reduzir a incerteza nos dados brutos</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Transformação Profunda</strong> <span class="math notranslate nohighlight">\(g_d(·)\)</span></p></td>
+<td><p>Aprender representações robustas do mercado</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Tomada de Decisão (DRT)</strong></p></td>
+<td><p>Gerar ações de trading baseadas na política aprendida</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="formulacao-final-do-problema-equacao-8">
+<h2><span class="section-number">13.6. </span>Formulação final do problema (Equação 8)<a class="headerlink" href="#formulacao-final-do-problema-equacao-8" title="Link para este cabeçalho">#</a></h2>
+<p>A otimização completa é expressa como:</p>
+<div class="math notranslate nohighlight">
+\[max \{Θ, g_d(·), v(·)\} \ \ U_T(R_1, ..., R_T)\]</div>
+<p>Sujeito a:</p>
+<div class="math notranslate nohighlight">
+\[
+R_t = δ_{t−1} * z_t − c * |δ_t − δ_{t−1}|
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+δ_t = tanh( {\bf w} · {\bf F_t} + b + u · δ_{t−1} )
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+{\bf F_t} = g_d( v({\bf f}_t) )
+\]</div>
+<p>Onde:</p>
+<ul class="simple">
+<li><p><strong><span class="math notranslate nohighlight">\(Θ = {{\bf w}, b, u}\)</span></strong>: parâmetros da política de trading;</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\(v(·)\)</span></strong>: funções de pertinência fuzzy (aprendidas dos dados);</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\(g_d(·)\)</span></strong>: rede profunda que transforma os dados fuzzy em representações abstratas;</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\(δ_t\)</span></strong>: ação de trading final (posição);</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\(U_T\)</span></strong>: função de recompensa a ser maximizada (lucro ou Sharpe ratio);</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\(R_t\)</span></strong>: retorno líquido no tempo <span class="math notranslate nohighlight">\(t\)</span>.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="conclusao">
+<h2><span class="section-number">13.7. </span>Conclusão<a class="headerlink" href="#conclusao" title="Link para este cabeçalho">#</a></h2>
+<p>O modelo FDRNN é uma <strong>arquitetura unificada e robusta</strong> que combina:</p>
+<ol class="arabic simple">
+<li><p><strong>Redução de ruído via representação fuzzy</strong>;</p></li>
+<li><p><strong>Extração de padrões complexos via deep learning</strong>;</p></li>
+<li><p><strong>Tomada de decisão contínua via reinforcement learning direto</strong>.</p></li>
+</ol>
+<p>Essa combinação torna o modelo capaz de lidar melhor com:</p>
+<ul class="simple">
+<li><p>Ambientes voláteis e não estacionários;</p></li>
+<li><p>Dados altamente ruidosos;</p></li>
+<li><p>Necessidade de decisões frequentes e em tempo real.</p></li>
+</ul>
+<p>Na próxima seção, o artigo explicará <strong>como treinar essa arquitetura complexa de forma eficiente</strong>, usando uma abordagem chamada <strong>Task-aware Backpropagation Through Time</strong>.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/FDRNN"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="FDRNN_iiiB_RNN_for_DPP.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title"><span class="section-number">12. </span>Rede Neural Recorrente Profunda para DDR</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="FDRNN_ivA_system_initializations.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">próximo</p>
+        <p class="prev-next-title"><span class="section-number">14. </span>DRNN LEARNING</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Conteúdo
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problema-abordado-incerteza-dos-dados-financeiros">13.1. Problema abordado: Incerteza dos dados financeiros</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solucao-representacao-fuzzy">13.2. Solução: Representação Fuzzy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicando-ao-problema-financeiro">13.3. Aplicando ao problema financeiro</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementacao-pratica">13.4. Implementação prática</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arquitetura-final-fuzzy-drnn-fdrnn">13.5. Arquitetura final: Fuzzy DRNN (FDRNN)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formulacao-final-do-problema-equacao-8">13.6. Formulação final do problema (Equação 8)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusao">13.7. Conclusão</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+De Lucas A. Souza
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright L. A. Souza, 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

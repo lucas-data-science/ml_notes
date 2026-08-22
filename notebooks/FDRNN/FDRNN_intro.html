@@ -1,0 +1,538 @@
+
+<!DOCTYPE html>
+
+
+<html lang="pt-BR" data-content_root="../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>10. Introdução &#8212; Ciência de Dados</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=2efa9f5e"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/translations.js?v=daa5921a"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/FDRNN/FDRNN_intro';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="icon" href="../../_static/icon-data-science.png"/>
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Buscar" href="../../search.html" />
+    <link rel="next" title="11. Direct Deep Reinforcement Learning" href="FDRNN_iiiA_direct_reforcement_trading.html" />
+    <link rel="prev" title="9. Fonte e Resumo do Estudo" href="FDRNN_resumo.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="pt-BR"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../_static/icon-data-science.png" class="logo__image only-light" alt="Ciência de Dados - Home"/>
+    <script>document.write(`<img src="../../_static/icon-data-science.png" class="logo__image only-dark" alt="Ciência de Dados - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Buscar" aria-label="Buscar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Buscar</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Prefácio
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte I. Elementos de Estatística e Análise Exploratória de Dados</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks_estatistica/introducao_parte_1.html">1. Sobre a Parte I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks_estatistica/Analise_Exploratoria.html">2. Análise Exploratória de Dados (EDA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks_estatistica/Amostragem.html">3. Amostragem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks_estatistica/Distribuicoes_de_Dados.html">4. Distribuições de Dados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks_estatistica/Teste_Hipotese.html">5. Testes de Hipóteses e Inferência Estatística</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte II. Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ML/introducao_parte_2.html">6. Sobre a Parte II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ML/ML_fundamentals.html">7. Fundamentos de Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ML/ML_models.html">8. Modelos de Machine Learning</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte III. Aprendizado por Reforço para Finanças</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="FDRNN_resumo.html">9. Fonte e Resumo do Estudo</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">10. Introdução</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FDRNN_iiiA_direct_reforcement_trading.html">11. Direct Deep Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FDRNN_iiiB_RNN_for_DPP.html">12. Rede Neural Recorrente Profunda para DDR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FDRNN_iiiC_fuzzy.html">13. Extensões Fuzzy para Reduzir Incertezas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FDRNN_ivA_system_initializations.html">14. DRNN LEARNING</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FDRNN_ivB_task-aware_BPTT.html">15. Task-Aware BPTT (Retropropagação no Tempo Sensível à Tarefa)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte Final</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../bib.html">Referências</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Baixe esta página">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notebooks/FDRNN/FDRNN_intro.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Baixar arquivo fonte"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir em PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Modo tela cheia"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Buscar" aria-label="Buscar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introdução</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="introducao">
+<h1><span class="section-number">10. </span>Introdução<a class="headerlink" href="#introducao" title="Link para este cabeçalho">#</a></h1>
+<p>Segue tabela com siglas usadas e seus significados.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sigla</p></th>
+<th class="head"><p>Significado</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>AE</p></td>
+<td><p>Autoencoder</p></td>
+</tr>
+<tr class="row-odd"><td><p>BPTT</p></td>
+<td><p>Backpropagation through time</p></td>
+</tr>
+<tr class="row-even"><td><p>DL</p></td>
+<td><p>Deep learning</p></td>
+</tr>
+<tr class="row-odd"><td><p>DNN</p></td>
+<td><p>Deep neural network</p></td>
+</tr>
+<tr class="row-even"><td><p>DRL</p></td>
+<td><p>Direct reinforcement learning</p></td>
+</tr>
+<tr class="row-odd"><td><p>DDR</p></td>
+<td><p>Deep direct reinforcement</p></td>
+</tr>
+<tr class="row-even"><td><p>FDDR</p></td>
+<td><p>Fuzzy deep direct reinforcement</p></td>
+</tr>
+<tr class="row-odd"><td><p>RDNN</p></td>
+<td><p>Recurrent DNN</p></td>
+</tr>
+<tr class="row-even"><td><p>RL</p></td>
+<td><p>Reinforcement learning</p></td>
+</tr>
+<tr class="row-odd"><td><p>NN</p></td>
+<td><p>Neural network</p></td>
+</tr>
+<tr class="row-even"><td><p>SR</p></td>
+<td><p>Sharpe ratio</p></td>
+</tr>
+<tr class="row-odd"><td><p>TP</p></td>
+<td><p>Total profits</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Treinar agentes inteligentes para operar automaticamente no mercado financeiro é um tema antigo e amplamente debatido dentro da inteligência artificial moderna. Em essência, o processo de negociação pode ser descrito como um problema de tomada de decisão em tempo real que envolve dois passos fundamentais: compreender o estado atual do mercado e executar a melhor ação possível com base nessa leitura.</p>
+<p>Diferentemente de tarefas clássicas de aprendizado supervisionado — que contam com dados rotulados por especialistas —, a tomada de decisão dinâmica é mais desafiadora porque exige que o agente explore um ambiente desconhecido sem orientação direta, enquanto precisa agir corretamente em tempo real. Essa capacidade de aprender por conta própria é justamente o foco do aprendizado por reforço (RL), uma abordagem inspirada na forma como seres vivos aprendem a se comportar, com raízes teóricas na neurociência e no controle de comportamento.</p>
+<p>Do ponto de vista teórico, o RL já foi bem formalizado como um problema de controle ótimo estocástico. Na prática, seus sucessos são comprovados em várias áreas, como navegação de robôs, jogos Atari, e controle de helicópteros. Em alguns casos, os algoritmos de RL chegaram até a superar especialistas humanos em determinadas tarefas. Isso nos leva a uma pergunta importante: será que também é possível treinar um modelo de RL capaz de vencer traders experientes nos mercados financeiros?</p>
+<p>A resposta a essa pergunta é difícil e envolve dois grandes desafios:</p>
+<ol class="arabic simple">
+<li><p>Como representar e resumir o ambiente financeiro?
+O mercado financeiro é um ambiente altamente volátil, com dados ruidosos, instáveis e imprevisíveis. Para tentar lidar com isso, analistas costumam usar indicadores técnicos como médias móveis ou estocásticos, com o objetivo de extrair padrões úteis. No entanto, esses indicadores têm limitações — por exemplo, a média móvel pode funcionar bem em tendências claras, mas fracassar em cenários de reversão de tendência.</p></li>
+</ol>
+<p>Isso levanta uma nova questão: em vez de depender de indicadores manuais, seria possível extrair automaticamente representações mais robustas diretamente dos dados?</p>
+<ol class="arabic simple" start="2">
+<li><p>Como lidar com a execução dinâmica das ordens de compra e venda?
+Negociar não é apenas tomar decisões a cada instante — é preciso considerar fatores práticos, como custos de transação e “slippage” (desvios entre o preço esperado e o preço real de execução). Se o sistema ficar trocando de posição (entre compra e venda) com muita frequência, isso pode gerar prejuízos mesmo que as decisões estejam corretas em teoria.</p></li>
+</ol>
+<p>Além disso, o sistema precisa “lembrar” do que fez no passado: decisões anteriores e posições mantidas influenciam o que deve ser feito agora. Como incluir essa memória no modelo, sem complicar demais a arquitetura?</p>
+<p>Para enfrentar essas duas questões, os autores propõem uma arquitetura baseada em Redes Neurais Profundas Recorrentes (RDNN). Esse modelo é dividido em duas partes principais:</p>
+<p>Uma rede profunda (DNN), que aprende automaticamente a extrair características relevantes do mercado;</p>
+<p>Uma rede recorrente (RNN), que lida com a tomada de decisões no tempo, mantendo memória das ações passadas.</p>
+<p>Para melhorar ainda mais a robustez frente à incerteza do mercado, os autores incorporam conceitos de aprendizado fuzzy (fuzzy learning), que ajudam a lidar com imprecisões nos dados de entrada.</p>
+<p>Embora o aprendizado profundo (DL) já tenha se mostrado promissor em áreas como reconhecimento de imagem e fala, esta é a primeira vez, segundo os autores, que ele é implementado para desenvolver um sistema real de negociação financeira com aprendizado por reforço totalmente automatizado.</p>
+<p>O modelo completo resulta em uma rede neural bastante complexa, combinando profundidade e recorrência. Para treinar esse tipo de rede, é necessário “desenrolar” a parte recorrente no tempo, usando o método conhecido como Backpropagation Through Time (BPTT). No entanto, isso traz um problema: o desaparecimento do gradiente, que dificulta o aprendizado em redes muito profundas.</p>
+<p>Para contornar isso, os autores propõem um novo método de treinamento chamado BPTT consciente da tarefa (task-aware BPTT). Ele consiste em criar conexões virtuais entre a função objetivo final e camadas profundas da rede durante o treinamento, permitindo que essas camadas “enxerguem” diretamente o impacto de seus ajustes no resultado final — o que melhora a eficiência do aprendizado.</p>
+<p>O sistema proposto, chamado DDR (Deep Direct Reinforcement), é testado em mercados financeiros reais, usando contratos futuros de ações e de commodities. Os dados históricos desses ativos são utilizados para verificar a performance do modelo.</p>
+<p>Nas comparações realizadas, os autores mostram que o DDR (e sua versão fuzzy) é mais robusto que outros sistemas de negociação, sendo capaz de gerar lucros consistentes em diferentes condições de mercado.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/FDRNN"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="FDRNN_resumo.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>Fonte e Resumo do Estudo</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="FDRNN_iiiA_direct_reforcement_trading.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">próximo</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>Direct Deep Reinforcement Learning</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+De Lucas A. Souza
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright L. A. Souza, 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
