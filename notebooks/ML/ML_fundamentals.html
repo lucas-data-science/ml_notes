@@ -1,271 +1,391 @@
-<!doctype html>
-<html class="no-js" lang="pt-BR" data-content_root="../../">
-  <head><meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Índice" href="../../genindex.html" /><link rel="search" title="Buscar" href="../../search.html" /><link rel="next" title="8. Modelos de Machine Learning" href="ML_models.html" /><link rel="prev" title="6. Sobre a Parte II" href="introducao_parte_2.html" />
 
-    <link rel="shortcut icon" href="../../_static/flav4.png"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.08.06 -->
-        <title>7. Fundamentos de Machine Learning - Ciência de Dados</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
+<!DOCTYPE html>
+
+
+<html lang="pt-BR" data-content_root="../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>7. Fundamentos de Machine Learning &#8212; Ciência de Dados</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
-    <link rel="stylesheet" type="text/css" href="../../_static/estilo.css?v=6d8328f8" />
-    
-    
-
-
-<style>
-  body {
-    --color-code-background: #eeffcc;
-  --color-code-foreground: black;
   
-  }
-  @media not print {
-    body[data-theme="dark"] {
-      --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=2efa9f5e"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/translations.js?v=daa5921a"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/ML/ML_fundamentals';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="icon" href="../../_static/icon-data-science.png"/>
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Buscar" href="../../search.html" />
+    <link rel="next" title="8. Modelos de Machine Learning" href="ML_models.html" />
+    <link rel="prev" title="6. Sobre a Parte II" href="introducao_parte_2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="pt-BR"/>
+  </head>
   
-    }
-    @media (prefers-color-scheme: dark) {
-      body:not([data-theme="light"]) {
-        --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
   
-      }
-    }
-  }
-</style></head>
-  <body>
-    
-    <script>
-      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
-    </script>
-    
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
 
-<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-  <symbol id="svg-toc" viewBox="0 0 24 24">
-    <title>Contents</title>
-    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
-      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
-    </svg>
-  </symbol>
-  <symbol id="svg-menu" viewBox="0 0 24 24">
-    <title>Menu</title>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
-      <line x1="3" y1="12" x2="21" y2="12"></line>
-      <line x1="3" y1="6" x2="21" y2="6"></line>
-      <line x1="3" y1="18" x2="21" y2="18"></line>
-    </svg>
-  </symbol>
-  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
-    <title>Expand</title>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
-      <polyline points="9 18 15 12 9 6"></polyline>
-    </svg>
-  </symbol>
-  <symbol id="svg-sun" viewBox="0 0 24 24">
-    <title>Light mode</title>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
-      <circle cx="12" cy="12" r="5"></circle>
-      <line x1="12" y1="1" x2="12" y2="3"></line>
-      <line x1="12" y1="21" x2="12" y2="23"></line>
-      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-      <line x1="1" y1="12" x2="3" y2="12"></line>
-      <line x1="21" y1="12" x2="23" y2="12"></line>
-      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-    </svg>
-  </symbol>
-  <symbol id="svg-moon" viewBox="0 0 24 24">
-    <title>Dark mode</title>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
-    </svg>
-  </symbol>
-  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
-    <title>Auto light/dark, in light mode</title>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
-      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
-      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
-      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
-      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
-      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
-      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
-      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
-      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
-      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
-      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
-      <circle cx="14.5" cy="9.55" r="3.6"/>
-    </svg>
-  </symbol>
-  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
-    <title>Auto light/dark, in dark mode</title>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
-      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
-      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
-      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
-      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
-      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
-      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
-      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
-      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
-      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
-      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
-      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
-    </svg>
-  </symbol>
-  <symbol id="svg-pencil" viewBox="0 0 24 24">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
-      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
-      <path d="M13.5 6.5l4 4" />
-      <path d="M20 21l2 -2l-2 -2" />
-      <path d="M17 17l-2 2l2 2" />
-    </svg>
-  </symbol>
-  <symbol id="svg-eye" viewBox="0 0 24 24">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
-      <path
-        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
-      <path d="M20 21l2 -2l-2 -2" />
-      <path d="M17 17l-2 2l2 2" />
-    </svg>
-  </symbol>
-</svg>
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
-<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
-<label class="overlay sidebar-overlay" for="__navigation">
-  <div class="visually-hidden">Hide navigation sidebar</div>
-</label>
-<label class="overlay toc-overlay" for="__toc">
-  <div class="visually-hidden">Hide table of contents sidebar</div>
-</label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
 
-<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
 
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
 
-
-<div class="page">
-  <header class="mobile-header">
-    <div class="header-left">
-      <label class="nav-overlay-icon" for="__navigation">
-        <div class="visually-hidden">Toggle site navigation sidebar</div>
-        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
-      </label>
-    </div>
-    <div class="header-center">
-      <a href="../../intro.html"><div class="brand">Ciência de Dados</div></a>
-    </div>
-    <div class="header-right">
-      <div class="theme-toggle-container theme-toggle-header">
-        <button class="theme-toggle">
-          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
-          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
-          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
-          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
-          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
-        </button>
-      </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
-        <div class="visually-hidden">Toggle table of contents sidebar</div>
-        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
-      </label>
-    </div>
-  </header>
-  <aside class="sidebar-drawer">
-    <div class="sidebar-container">
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../intro.html">
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
   
-  <div class="sidebar-logo-container">
-    <img class="sidebar-logo" src="../../_static/logo1.svg" alt="Logo"/>
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
   </div>
   
-  <span class="sidebar-brand-text">Ciência de Dados</span>
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
   
-</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
-  <input class="sidebar-search" placeholder="Buscar" name="q" aria-label="Buscar">
-  <input type="hidden" name="check_keywords" value="yes">
-  <input type="hidden" name="area" value="default">
-</form>
-<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <p class="caption" role="heading"><span class="caption-text">Parte I. Elementos de Estatística e Análise Exploratória de Dados</span></p>
-<ul>
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../_static/icon-data-science.png" class="logo__image only-light" alt="Ciência de Dados - Home"/>
+    <script>document.write(`<img src="../../_static/icon-data-science.png" class="logo__image only-dark" alt="Ciência de Dados - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Buscar" aria-label="Buscar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Buscar</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Prefácio
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte I. Elementos de Estatística e Análise Exploratória de Dados</span></p>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../notebooks_estatistica/introducao_parte_1.html">1. Sobre a Parte I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../notebooks_estatistica/Analise_Exploratoria.html">2. Análise Exploratória de Dados (EDA)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../notebooks_estatistica/Amostragem.html">3. Amostragem</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../notebooks_estatistica/Distribuicoes_de_Dados.html">4. Distribuições de Dados</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../notebooks_estatistica/Teste_Hipotese.html">5. Testes de Hipóteses e Inferência Estatística</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Parte II. Machine Learning</span></p>
-<ul class="current">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte II. Machine Learning</span></p>
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="introducao_parte_2.html">6. Sobre a Parte II</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">7. Fundamentos de Machine Learning</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">7. Fundamentos de Machine Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ML_models.html">8. Modelos de Machine Learning</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Parte Final</span></p>
-<ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte Final</span></p>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../bib.html">Referências</a></li>
 </ul>
 
-</div>
-</div>
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
 
       </div>
       
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
     </div>
-  </aside>
-  <div class="main">
-    <div class="content">
-      <div class="article-container">
-        <a href="#" class="back-to-top muted-link">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
-          </svg>
-          <span>Back to top</span>
-        </a>
-        <div class="content-icon-container">
-          <div class="view-this-page">
-  <a class="muted-link" href="../../_sources/notebooks/ML/ML_fundamentals.ipynb" title="View this page">
-    <svg><use href="#svg-eye"></use></svg>
-    <span class="visually-hidden">View this page</span>
-  </a>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Baixe esta página">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notebooks/ML/ML_fundamentals.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Baixar arquivo fonte"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir em PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
 </div>
-<div class="theme-toggle-container theme-toggle-content">
-            <button class="theme-toggle">
-              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
-              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
-              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
-              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
-              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
-            </button>
-          </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
-            <div class="visually-hidden">Toggle table of contents sidebar</div>
-            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
-          </label>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Modo tela cheia"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Buscar" aria-label="Buscar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Fundamentos de Machine Learning</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Conteúdo </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aprendizado-como-um-problema-de-otimizacao">7.1. Aprendizado como um problema de otimização</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes-de-perda">7.1.1. Funções de perda</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entropia-cruzada">7.1.2. Entropia cruzada</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#descida-do-gradiente">7.1.3. Descida do gradiente</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#treinamento-validacao-e-hiperparametros">7.1.4. Treinamento, validação e hiperparâmetros</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diferenciacao-automatica">7.1.5. Diferenciação automática</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#paisagem-de-perda-sgd-e-otimizadores">7.1.6. Paisagem de perda, SGD e otimizadores</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#curvatura-e-hessiana">7.1.7. Curvatura e Hessiana</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generalizacao-e-regularizacao">7.2. Generalização e Regularização</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vazamento-de-informacao">7.2.1. Vazamento de informação</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#capacidade-e-regularizacao">7.2.2. Capacidade e regularização</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trade-off-entre-vies-e-variancia">7.2.3. Trade-off entre viés e variância</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visao-probabilistica-em-machine-learning">7.3. Visão probabilística em Machine Learning</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variaveis-aleatorias-e-distribuicoes">7.3.1. Variáveis aleatórias e distribuições</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probabilidade-condicional-e-regra-da-cadeia">7.3.2. Probabilidade condicional e regra da cadeia</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#teorema-de-bayes">7.3.3. Teorema de Bayes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aprendizado-supervisionado-e-nao-supervisionado-em-linguagem-probabilistica">7.3.4. Aprendizado supervisionado e não supervisionado em linguagem probabilística</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verossimilhanca">7.3.5. Verossimilhança</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#divergencia-de-kullbackleibler-e-entropia-cruzada">7.3.6. Divergência de Kullback–Leibler e entropia cruzada</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fechando-o-ciclo-probabilidade-perda-e-otimizacao">7.3.7. Fechando o ciclo: probabilidade, perda e otimização</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
-        <article role="main" id="furo-main-content">
-          <section class="tex2jax_ignore mathjax_ignore" id="fundamentos-de-machine-learning">
-<h1><span class="section-number">7. </span>Fundamentos de Machine Learning<a class="headerlink" href="#fundamentos-de-machine-learning" title="Link para este cabeçalho">¶</a></h1>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="fundamentos-de-machine-learning">
+<h1><span class="section-number">7. </span>Fundamentos de Machine Learning<a class="headerlink" href="#fundamentos-de-machine-learning" title="Link para este cabeçalho">#</a></h1>
 <p>Este capítulo reúne os conceitos fundamentais de <em>Machine Learning (ML)</em> que serão usados ao longo das próximas notas, tomando como referência principal o Capítulo 2 de <em>Modern Applications of Machine Learning in Quantum Sciences</em> <span id="id1">[<a class="reference internal" href="../../bib.html#id6" title="Anna Dawid, Julian Arnold, Borja Requena, Alexander Gresch, Marcin Płodzień, Kaelan Donatella, Kim A. Nicoli, Paolo Stornati, Rouven Koch, Miriam Büttner, Robert Okuła, Gorka Muñoz-Gil, Rodrigo A. Vargas-Hernández, Alba Cervera-Lierta, Juan Carrasquilla, Vedran Dunjko, Marylou Gabrié, Patrick Huembeli, Evert van Nieuwenburg, Filippo Vicentini, Lei Wang, Sebastian J. Wetzel, Giuseppe Carleo, Eliška Greplová, Roman Krems, Florian Marquardt, Michał Tomza, Maciej Lewenstein, and Alexandre Dauphin. Modern applications of machine learning in quantum sciences. 2025. URL: https://arxiv.org/abs/2204.04198, arXiv:2204.04198.">Dawid <em>et al.</em>, 2025</a>]</span>.</p>
 <p>A ideia aqui não é apresentar ainda uma coleção de algoritmos, mas construir a linguagem comum por trás deles. Em particular, vamos responder a quatro perguntas:</p>
 <ol class="arabic simple">
@@ -282,50 +402,40 @@
 </ul>
 <p>Esses conceitos preparam o terreno para o próximo notebook, dedicado aos <strong>modelos de Machine Learning propriamente ditos</strong>: regressão linear e ridge, regressão logística, SVMs, redes neurais, CNNs, autoencoders e modelos autoregressivos.</p>
 <section id="aprendizado-como-um-problema-de-otimizacao">
-<h2><span class="section-number">7.1. </span>Aprendizado como um problema de otimização<a class="headerlink" href="#aprendizado-como-um-problema-de-otimizacao" title="Link para este cabeçalho">¶</a></h2>
+<h2><span class="section-number">7.1. </span>Aprendizado como um problema de otimização<a class="headerlink" href="#aprendizado-como-um-problema-de-otimizacao" title="Link para este cabeçalho">#</a></h2>
 <p>Um modelo de Machine Learning pode ser visto, em sua forma mais geral, como uma função parametrizada</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 f_\theta(\mathbf{x}),
 \]</div>
-</div>
 <p>que recebe uma entrada <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> e produz uma saída interpretada como uma previsão. A forma dessa saída depende da tarefa: em <strong>regressão</strong>, ela pode ser um valor contínuo; em <strong>classificação</strong>, pode ser um rótulo ou um vetor de probabilidades associado às classes.</p>
 <p>Por exemplo, um modelo linear pode ser escrito como</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 f_\theta(\mathbf{x}) = \mathbf{w}^\intercal \mathbf{x} + b,
 \]</div>
-</div>
 <p>com parâmetros</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \theta = \{\mathbf{w}, b\}.
 \]</div>
-</div>
 <p>Ao escolher a forma funcional do modelo, escolhemos também uma <strong>classe de hipóteses</strong>: o conjunto de funções que podem ser obtidas variando os parâmetros <span class="math notranslate nohighlight">\(\theta\)</span>.</p>
 <p>O aprendizado consiste então em procurar, dentro dessa classe, os parâmetros que tornam o modelo mais adequado aos dados. Se denotarmos o modelo treinado por</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \hat f \equiv f_{\theta^\ast},
 \]</div>
-</div>
 <p>o treinamento pode ser formulado como</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \theta^\ast = \arg\min_\theta \mathcal{L}(\theta),
 \]</div>
-</div>
 <p>onde <span class="math notranslate nohighlight">\(\mathcal{L}\)</span> é uma <strong>função de perda</strong> (<em>loss function</em>).</p>
 <blockquote>
 <div><p><strong>Ideia central:</strong> em grande parte do Machine Learning, “aprender” significa transformar o ajuste de um modelo em um problema de otimização.</p>
 </div></blockquote>
 <section id="funcoes-de-perda">
-<h3><span class="section-number">7.1.1. </span>Funções de perda<a class="headerlink" href="#funcoes-de-perda" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">7.1.1. </span>Funções de perda<a class="headerlink" href="#funcoes-de-perda" title="Link para este cabeçalho">#</a></h3>
 <p>A função de perda quantifica o quanto as previsões produzidas pelo modelo diferem do resultado desejado. Ela fornece o critério objetivo que o algoritmo de treinamento tentará minimizar.</p>
 <p>Duas funções de perda aparecem repetidamente em Machine Learning:</p>
 <ul class="simple">
@@ -333,7 +443,6 @@ f_\theta(\mathbf{x}) = \mathbf{w}^\intercal \mathbf{x} + b,
 <li><p><strong>Entropia Cruzada (CE — Cross-Entropy)</strong>, muito usada em classificação.</p></li>
 </ul>
 <p>Para um conjunto de <span class="math notranslate nohighlight">\(n\)</span> observações, o MSE é</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \mathcal{L}_{\mathrm{MSE}}
@@ -344,9 +453,7 @@ f_\theta(\mathbf{x}) = \mathbf{w}^\intercal \mathbf{x} + b,
 y_i - f_\theta(\mathbf{x}_i)
 \right]^2.
 \]</div>
-</div>
 <p>Já o <strong>Erro Absoluto Médio (MAE — Mean Absolute Error)</strong> é</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \mathcal{L}_{\mathrm{MAE}}
@@ -357,7 +464,6 @@ y_i - f_\theta(\mathbf{x}_i)
 y_i - f_\theta(\mathbf{x}_i)
 \right|.
 \]</div>
-</div>
 <p>As duas perdas medem o erro de regressão de maneiras diferentes. O MSE cresce quadraticamente com o resíduo e, portanto, penaliza fortemente erros grandes. O MAE cresce linearmente, sendo menos dominado por grandes desvios. Para erros de módulo menor que 1, porém, <span class="math notranslate nohighlight">\(|e| &gt; e^2\)</span>, de modo que o MAE pode atribuir uma penalização numericamente maior a pequenos resíduos.</p>
 <p>A escolha da função de perda não é apenas uma decisão computacional. Como veremos na seção probabilística, diferentes perdas podem ser associadas a diferentes hipóteses sobre a distribuição dos dados e do ruído.</p>
 <div class="cell docutils container">
@@ -409,16 +515,13 @@ y_i - f_\theta(\mathbf{x}_i)
 <p><strong>(c) MSE e MAE para um único ponto.</strong> O MSE cresce como o quadrado do erro, enquanto o MAE cresce linearmente. Essa diferença explica por que o MSE é mais sensível a grandes desvios e o MAE tende a ser mais robusto à presença de <em>outliers</em>.</p>
 </section>
 <section id="entropia-cruzada">
-<h3><span class="section-number">7.1.2. </span>Entropia cruzada<a class="headerlink" href="#entropia-cruzada" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">7.1.2. </span>Entropia cruzada<a class="headerlink" href="#entropia-cruzada" title="Link para este cabeçalho">#</a></h3>
 <p>Em classificação binária, é comum interpretar a saída do modelo como uma probabilidade</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 f_\theta(\mathbf{x}_i) \in [0,1].
 \]</div>
-</div>
 <p>A <strong>Entropia Cruzada Binária (BCE — Binary Cross-Entropy)</strong>, também conhecida como <em>log loss</em>, é</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \mathcal{L}_{\mathrm{BCE}}
@@ -431,9 +534,7 @@ y_i \log f_\theta(\mathbf{x}_i)
 (1-y_i)\log\left(1-f_\theta(\mathbf{x}_i)\right)
 \right].
 \]</div>
-</div>
 <p>Para classificação com <span class="math notranslate nohighlight">\(K\)</span> classes, utiliza-se frequentemente a <strong>Entropia Cruzada Categórica (CCE)</strong>,</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \mathcal{L}_{\mathrm{CCE}}
@@ -444,31 +545,25 @@ y_i \log f_\theta(\mathbf{x}_i)
 y_{i,c}
 \log p_{i,c},
 \]</div>
-</div>
 <p>onde <span class="math notranslate nohighlight">\(p_{i,c}\)</span> é a probabilidade prevista para a classe <span class="math notranslate nohighlight">\(c\)</span> e <span class="math notranslate nohighlight">\(y_{i,c}\)</span> é o rótulo em representação <strong>one-hot</strong>.</p>
 <p>Por exemplo, para três classes, um exemplo pertencente à segunda classe pode ser escrito como</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \mathbf{y}_i = (0,1,0).
 \]</div>
-</div>
 <p>Nesse caso, somente o termo associado à classe correta contribui diretamente para a perda.</p>
 <p>É útil distinguir <strong>funções de perda</strong> de <strong>métricas de avaliação</strong>. Acurácia, precisão e <em>recall</em>, por exemplo, são excelentes para interpretar o desempenho final de um classificador, mas não são, em geral, funções suaves e diferenciáveis dos parâmetros. Já perdas como MSE e entropia cruzada são adequadas à otimização por gradientes.</p>
 <p>A conexão entre <strong>entropia cruzada</strong>, <strong>divergência de Kullback–Leibler</strong> e <strong>máxima verossimilhança</strong> será retomada na seção de visão probabilística.</p>
 </section>
 <section id="descida-do-gradiente">
-<h3><span class="section-number">7.1.3. </span>Descida do gradiente<a class="headerlink" href="#descida-do-gradiente" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">7.1.3. </span>Descida do gradiente<a class="headerlink" href="#descida-do-gradiente" title="Link para este cabeçalho">#</a></h3>
 <p>Depois de escolher uma função de perda, precisamos encontrar os parâmetros que a minimizam. Um dos métodos mais importantes é a <strong>descida do gradiente</strong> (<em>gradient descent</em>).</p>
 <p>O gradiente</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \nabla_\theta \mathcal{L}
 \]</div>
-</div>
 <p>aponta para a direção de maior crescimento local da função de perda. Portanto, para reduzir a perda, atualizamos os parâmetros na direção oposta:</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \theta_j
@@ -478,7 +573,6 @@ y_{i,c}
 \eta
 \frac{\partial \mathcal{L}}{\partial \theta_j},
 \]</div>
-</div>
 <p>onde <span class="math notranslate nohighlight">\(\eta\)</span> é a <strong>taxa de aprendizado</strong> (<em>learning rate</em>).</p>
 <p>O processo pode ser resumido em quatro etapas:</p>
 <ol class="arabic simple">
@@ -492,7 +586,7 @@ y_{i,c}
 <p>A taxa de aprendizado é um exemplo de <strong>hiperparâmetro</strong>: um valor escolhido para controlar o processo de aprendizagem. Isso a diferencia dos <strong>parâmetros do modelo</strong>, como pesos e <em>biases</em>, que são ajustados durante o treinamento.</p>
 </section>
 <section id="treinamento-validacao-e-hiperparametros">
-<h3><span class="section-number">7.1.4. </span>Treinamento, validação e hiperparâmetros<a class="headerlink" href="#treinamento-validacao-e-hiperparametros" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">7.1.4. </span>Treinamento, validação e hiperparâmetros<a class="headerlink" href="#treinamento-validacao-e-hiperparametros" title="Link para este cabeçalho">#</a></h3>
 <p>Como hiperparâmetros não são aprendidos da mesma forma que os parâmetros internos do modelo, precisamos de dados separados para escolhê-los.</p>
 <p>Uma divisão conceitual importante é:</p>
 <ul class="simple">
@@ -504,7 +598,7 @@ y_{i,c}
 <p>Essa separação será retomada em mais detalhes quando discutirmos <strong>generalização</strong>. Por enquanto, o ponto principal é: otimizar os parâmetros e escolher hiperparâmetros são problemas diferentes, e idealmente não devem usar exatamente a mesma informação.</p>
 </section>
 <section id="diferenciacao-automatica">
-<h3><span class="section-number">7.1.5. </span>Diferenciação automática<a class="headerlink" href="#diferenciacao-automatica" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">7.1.5. </span>Diferenciação automática<a class="headerlink" href="#diferenciacao-automatica" title="Link para este cabeçalho">#</a></h3>
 <p>A descida do gradiente exige o cálculo de derivadas da função de perda em relação aos parâmetros. Existem diferentes maneiras de obtê-las:</p>
 <ul class="simple">
 <li><p>derivação analítica;</p></li>
@@ -512,24 +606,21 @@ y_{i,c}
 <li><p><strong>diferenciação automática (AD — Automatic Differentiation)</strong>.</p></li>
 </ul>
 <p>A AD explora o fato de que um programa pode ser decomposto em operações elementares cujas derivadas são conhecidas. Aplicando repetidamente a regra da cadeia,</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \frac{d f(g(x))}{dx}
 =
 f'(g(x))g'(x),
 \]</div>
-</div>
 <p>é possível calcular derivadas com precisão numérica sem aproximá-las por diferenças finitas.</p>
 <p>Nas redes neurais, a aplicação eficiente da diferenciação automática em modo reverso dá origem à <strong>retropropagação</strong> (<em>backpropagation</em>), que será estudada em detalhe no notebook de modelos.</p>
 </section>
 <section id="paisagem-de-perda-sgd-e-otimizadores">
-<h3><span class="section-number">7.1.6. </span>Paisagem de perda, SGD e otimizadores<a class="headerlink" href="#paisagem-de-perda-sgd-e-otimizadores" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">7.1.6. </span>Paisagem de perda, SGD e otimizadores<a class="headerlink" href="#paisagem-de-perda-sgd-e-otimizadores" title="Link para este cabeçalho">#</a></h3>
 <p>A representação de <span class="math notranslate nohighlight">\(\mathcal{L}(\theta)\)</span> no espaço de parâmetros é frequentemente chamada de <strong>paisagem de perda</strong> (<em>loss landscape</em>).</p>
 <p>Se a função for convexa, a otimização é relativamente simples. Entretanto, em modelos complexos — especialmente em Deep Learning — a paisagem costuma ser altamente não convexa e pode conter muitos mínimos locais, regiões planas e pontos de sela.</p>
 <p>Uma modificação fundamental da descida do gradiente é a <strong>Descida do Gradiente Estocástica (SGD — Stochastic Gradient Descent)</strong>. Em vez de calcular a perda e o gradiente usando todo o conjunto de treinamento em cada atualização, utiliza-se um <strong>mini-batch</strong>.</p>
 <p>Para um mini-batch <span class="math notranslate nohighlight">\(\mathcal{B}\)</span>,</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \mathcal{L}_{\mathcal{B}}
@@ -541,9 +632,7 @@ f'(g(x))g'(x),
 y_i,f_\theta(\mathbf{x}_i)
 \right).
 \]</div>
-</div>
 <p>Em seguida,</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \theta
@@ -554,7 +643,6 @@ y_i,f_\theta(\mathbf{x}_i)
 \nabla_\theta
 \mathcal{L}_{\mathcal{B}}.
 \]</div>
-</div>
 <p>A utilização de mini-batches tem dois efeitos importantes:</p>
 <ul class="simple">
 <li><p>reduz o custo de cada atualização para conjuntos de dados grandes;</p></li>
@@ -575,9 +663,8 @@ para cada época:
 <p>Vários otimizadores modernos partem dessa ideia. <strong>Momentum</strong> incorpora informação das atualizações anteriores; métodos adaptativos ajustam efetivamente a escala dos passos; o <strong>Adam</strong> combina essas duas ideias. O <strong>L-BFGS</strong>, por outro lado, utiliza informação aproximada de curvatura. Também existem métodos sem gradiente, como algoritmos genéticos, enxame de partículas, busca aleatória, recozimento simulado e otimização Bayesiana.</p>
 </section>
 <section id="curvatura-e-hessiana">
-<h3><span class="section-number">7.1.7. </span>Curvatura e Hessiana<a class="headerlink" href="#curvatura-e-hessiana" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">7.1.7. </span>Curvatura e Hessiana<a class="headerlink" href="#curvatura-e-hessiana" title="Link para este cabeçalho">#</a></h3>
 <p>A curvatura da função de perda em torno de um ponto <span class="math notranslate nohighlight">\(\theta^\ast\)</span> pode ser estudada pela <strong>matriz Hessiana</strong>,</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 H_{\theta^\ast}
@@ -587,14 +674,13 @@ H_{\theta^\ast}
 {\partial\theta_i\,\partial\theta_j}
 \right|_{\theta=\theta^\ast}.
 \]</div>
-</div>
 <p>Se um autovalor da Hessiana é grande e positivo, a função cresce rapidamente na direção do autovetor correspondente. Autovalores próximos de zero indicam direções aproximadamente planas; autovalores negativos indicam curvatura negativa.</p>
 <p>Em modelos de alta dimensão, é comum encontrar muitas direções quase planas. Isso ajuda a entender por que a imagem simplificada de “descer uma única bacia até o mínimo global” raramente representa adequadamente o treinamento de redes profundas.</p>
 <p>O objetivo prático não é necessariamente encontrar o mínimo global da perda de treinamento. Um modelo pode atingir perda de treino extremamente pequena e ainda assim apresentar desempenho ruim em dados novos. Esse ponto nos leva ao conceito mais importante da próxima seção: <strong>generalização</strong>.</p>
 </section>
 </section>
 <section id="generalizacao-e-regularizacao">
-<h2><span class="section-number">7.2. </span>Generalização e Regularização<a class="headerlink" href="#generalizacao-e-regularizacao" title="Link para este cabeçalho">¶</a></h2>
+<h2><span class="section-number">7.2. </span>Generalização e Regularização<a class="headerlink" href="#generalizacao-e-regularizacao" title="Link para este cabeçalho">#</a></h2>
 <p>Até aqui, Machine Learning poderia parecer apenas uma forma sofisticada de ajustar funções aos dados disponíveis. O aspecto que transforma esse ajuste em aprendizado útil é a <strong>generalização</strong>:</p>
 <blockquote>
 <div><p><strong>Generalização é a capacidade de produzir boas previsões para dados novos, que não participaram do treinamento.</strong></p>
@@ -609,7 +695,6 @@ H_{\theta^\ast}
 </ul>
 <p>Ele serve para estimar, ao final do desenvolvimento, o desempenho em dados não vistos.</p>
 <p>Por isso, a divisão conceitual é</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \mathcal{D}
@@ -620,10 +705,9 @@ H_{\theta^\ast}
 \cup
 \mathcal{D}_{\text{test}}.
 \]</div>
-</div>
 <p>O livro sugere a proporção 8:1:1 apenas como um possível ponto de partida; a divisão adequada depende da quantidade e da estrutura dos dados.</p>
 <section id="vazamento-de-informacao">
-<h3><span class="section-number">7.2.1. </span>Vazamento de informação<a class="headerlink" href="#vazamento-de-informacao" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">7.2.1. </span>Vazamento de informação<a class="headerlink" href="#vazamento-de-informacao" title="Link para este cabeçalho">#</a></h3>
 <p>Um cuidado fundamental é evitar <strong>data leakage</strong>: qualquer situação em que informação que deveria estar indisponível no momento da previsão acaba influenciando o treinamento.</p>
 <p>Um exemplo clássico é normalizar todo o conjunto de dados antes da separação em treino, validação e teste. Nesse caso, estatísticas calculadas usando o conjunto de teste — como média, desvio padrão, mínimo ou máximo — passam indiretamente para o processo de treinamento.</p>
 <p>A prática correta é ajustar transformações usando <strong>somente o conjunto de treino</strong> e depois aplicar os parâmetros aprendidos aos conjuntos de validação e teste.</p>
@@ -642,7 +726,7 @@ H_{\theta^\ast}
 <p>Portanto, <strong>menor erro de treinamento não implica necessariamente melhor modelo</strong>. O objetivo é encontrar uma função que capture regularidades que se mantenham fora da amostra de treino.</p>
 </section>
 <section id="capacidade-e-regularizacao">
-<h3><span class="section-number">7.2.2. </span>Capacidade e regularização<a class="headerlink" href="#capacidade-e-regularizacao" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">7.2.2. </span>Capacidade e regularização<a class="headerlink" href="#capacidade-e-regularizacao" title="Link para este cabeçalho">#</a></h3>
 <p>A <strong>capacidade</strong> de um modelo pode ser entendida, de forma aproximada, como sua habilidade de representar uma variedade de funções.</p>
 <ul class="simple">
 <li><p>capacidade muito baixa <span class="math notranslate nohighlight">\(\rightarrow\)</span> <strong>underfitting</strong>;</p></li>
@@ -651,7 +735,6 @@ H_{\theta^\ast}
 </ul>
 <p>Chamamos de <strong>regularização</strong> qualquer modificação destinada a melhorar a generalização, mesmo que isso possa aumentar o erro de treinamento.</p>
 <p>Uma maneira clássica de regularizar é penalizar parâmetros muito grandes. Se a perda original é <span class="math notranslate nohighlight">\(\mathcal{L}_{\text{train}}\)</span>, podemos escrever</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \mathcal{L}_{\text{reg}}
@@ -660,10 +743,8 @@ H_{\theta^\ast}
 +
 \lambda \,\Omega(\theta),
 \]</div>
-</div>
 <p>onde <span class="math notranslate nohighlight">\(\lambda\)</span> controla a intensidade da regularização.</p>
 <p>Duas escolhas importantes são:</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \Omega_{L_2}(\theta)
@@ -672,9 +753,7 @@ H_{\theta^\ast}
 =
 \sum_j \theta_j^2,
 \]</div>
-</div>
 <p>e</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \Omega_{L_1}(\theta)
@@ -683,23 +762,19 @@ H_{\theta^\ast}
 =
 \sum_j |\theta_j|.
 \]</div>
-</div>
 <p>A penalização <span class="math notranslate nohighlight">\(L_2\)</span> desencoraja coeficientes de grande magnitude. A penalização <span class="math notranslate nohighlight">\(L_1\)</span> pode favorecer soluções esparsas, em que vários coeficientes se tornam exatamente ou aproximadamente nulos.</p>
 <p>Essas ideias aparecerão novamente na <strong>regressão ridge</strong> e no <strong>LASSO</strong>.</p>
 <p>A motivação pode ser relacionada à <strong>navalha de Occam</strong>: entre explicações que descrevem adequadamente os dados observados, há boas razões para favorecer soluções mais simples. Ao mesmo tempo, o teorema <em>no free lunch</em> lembra que não existe um algoritmo universalmente superior em todos os problemas possíveis. A regularização introduz hipóteses sobre quais soluções esperamos que funcionem melhor para a tarefa específica.</p>
 </section>
 <section id="trade-off-entre-vies-e-variancia">
-<h3><span class="section-number">7.2.3. </span>Trade-off entre viés e variância<a class="headerlink" href="#trade-off-entre-vies-e-variancia" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">7.2.3. </span>Trade-off entre viés e variância<a class="headerlink" href="#trade-off-entre-vies-e-variancia" title="Link para este cabeçalho">#</a></h3>
 <p>A relação entre complexidade e generalização pode ser formalizada pelo <strong>trade-off viés–variância</strong>.</p>
 <p>Considere um problema de regressão em que</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 y = f(x) + \varepsilon,
 \]</div>
-</div>
 <p>com <span class="math notranslate nohighlight">\(\varepsilon\)</span> representando o ruído dos dados. Para um ponto <span class="math notranslate nohighlight">\(x_0\)</span>, usando MSE, o erro esperado de previsão pode ser decomposto como</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \operatorname{Err}(x_0)
@@ -710,9 +785,7 @@ y = f(x) + \varepsilon,
 +
 \mathbb{E}[\varepsilon^2].
 \]</div>
-</div>
 <p>O <strong>viés ao quadrado</strong> é</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \operatorname{Bias}^2[\hat f(x_0)]
@@ -721,10 +794,8 @@ y = f(x) + \varepsilon,
 \mathbb{E}[\hat f(x_0)] - f(x_0)
 \right)^2,
 \]</div>
-</div>
 <p>e mede o erro sistemático entre a previsão média do modelo e a função verdadeira.</p>
 <p>A <strong>variância</strong> é</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \operatorname{Var}[\hat f(x_0)]
@@ -738,15 +809,12 @@ y = f(x) + \varepsilon,
 \right)^2
 \right],
 \]</div>
-</div>
 <p>e mede o quanto o modelo mudaria se fosse treinado com diferentes amostras extraídas do mesmo processo gerador de dados.</p>
 <p>O último termo,</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \mathbb{E}[\varepsilon^2],
 \]</div>
-</div>
 <p>representa a variância do ruído inerente aos dados. Do ponto de vista do modelo, essa componente é <strong>irredutível</strong>.</p>
 <p>Em termos intuitivos:</p>
 <ul class="simple">
@@ -774,7 +842,7 @@ y = f(x) + \varepsilon,
 </section>
 </section>
 <section id="visao-probabilistica-em-machine-learning">
-<h2><span class="section-number">7.3. </span>Visão probabilística em Machine Learning<a class="headerlink" href="#visao-probabilistica-em-machine-learning" title="Link para este cabeçalho">¶</a></h2>
+<h2><span class="section-number">7.3. </span>Visão probabilística em Machine Learning<a class="headerlink" href="#visao-probabilistica-em-machine-learning" title="Link para este cabeçalho">#</a></h2>
 <p>A formulação por otimização nos diz <strong>como</strong> ajustar um modelo. A visão probabilística ajuda a entender <strong>o que está sendo estimado</strong> e como incorporar <strong>incerteza</strong>.</p>
 <p>O livro destaca três fontes gerais de incerteza:</p>
 <ol class="arabic simple">
@@ -784,47 +852,38 @@ y = f(x) + \varepsilon,
 </ol>
 <p>A linguagem de probabilidades fornece uma forma natural de representar essas limitações.</p>
 <section id="variaveis-aleatorias-e-distribuicoes">
-<h3><span class="section-number">7.3.1. </span>Variáveis aleatórias e distribuições<a class="headerlink" href="#variaveis-aleatorias-e-distribuicoes" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">7.3.1. </span>Variáveis aleatórias e distribuições<a class="headerlink" href="#variaveis-aleatorias-e-distribuicoes" title="Link para este cabeçalho">#</a></h3>
 <p>Uma variável aleatória <span class="math notranslate nohighlight">\(X\)</span> pode assumir diferentes valores <span class="math notranslate nohighlight">\(x\)</span> segundo uma distribuição de probabilidade.</p>
 <p>Para variáveis discretas usamos uma função de massa de probabilidade; para variáveis contínuas, uma densidade de probabilidade. Em notação compacta, escrevemos simplesmente</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 p(X=x) \equiv p(x).
 \]</div>
-</div>
 <p>Para duas variáveis,</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 p(x,y)
 \]</div>
-</div>
 <p>representa sua distribuição conjunta.</p>
 <p>Se <span class="math notranslate nohighlight">\(X\)</span> e <span class="math notranslate nohighlight">\(Y\)</span> forem independentes,</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 p(x,y)
 =
 p(x)p(y).
 \]</div>
-</div>
 <p>Essa hipótese aparece frequentemente em Machine Learning, especialmente quando assumimos observações <strong>independentes e identicamente distribuídas (i.i.d.)</strong>.</p>
 </section>
 <section id="probabilidade-condicional-e-regra-da-cadeia">
-<h3><span class="section-number">7.3.2. </span>Probabilidade condicional e regra da cadeia<a class="headerlink" href="#probabilidade-condicional-e-regra-da-cadeia" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">7.3.2. </span>Probabilidade condicional e regra da cadeia<a class="headerlink" href="#probabilidade-condicional-e-regra-da-cadeia" title="Link para este cabeçalho">#</a></h3>
 <p>A probabilidade de <span class="math notranslate nohighlight">\(Y=y\)</span> sabendo que <span class="math notranslate nohighlight">\(X=x\)</span> é</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 p(y|x)
 =
 \frac{p(x,y)}{p(x)}.
 \]</div>
-</div>
 <p>Para várias variáveis, uma distribuição conjunta pode ser fatorada usando a <strong>regra da cadeia da probabilidade</strong>:</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 p\left(x^{(1)},\ldots,x^{(n)}\right)
@@ -837,20 +896,17 @@ x^{(i)}
 x^{(1)},\ldots,x^{(i-1)}
 \right).
 \]</div>
-</div>
 <p>Essa decomposição é especialmente importante em modelos autoregressivos, nos quais uma distribuição complexa é construída como produto de distribuições condicionais.</p>
 </section>
 <section id="teorema-de-bayes">
-<h3><span class="section-number">7.3.3. </span>Teorema de Bayes<a class="headerlink" href="#teorema-de-bayes" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">7.3.3. </span>Teorema de Bayes<a class="headerlink" href="#teorema-de-bayes" title="Link para este cabeçalho">#</a></h3>
 <p>O teorema de Bayes permite inverter uma probabilidade condicional:</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 p(x|y)
 =
 \frac{p(y|x)\,p(x)}{p(y)}.
 \]</div>
-</div>
 <p>Na interpretação Bayesiana:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(p(x)\)</span> é o <strong>prior</strong>: conhecimento ou crença antes de observar a evidência;</p></li>
@@ -859,7 +915,6 @@ p(x|y)
 <li><p><span class="math notranslate nohighlight">\(p(x|y)\)</span> é o <strong>posterior</strong>: conhecimento atualizado depois de observar <span class="math notranslate nohighlight">\(y\)</span>.</p></li>
 </ul>
 <p>Esquematicamente,</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \text{posterior}
@@ -868,43 +923,33 @@ p(x|y)
 \times
 \text{prior}.
 \]</div>
-</div>
 <p>Essa ideia será importante mais adiante quando compararmos <strong>máxima verossimilhança (MLE)</strong> e <strong>máximo a posteriori (MAP)</strong>. Na regressão ridge, por exemplo, a regularização <span class="math notranslate nohighlight">\(L_2\)</span> poderá ser interpretada como consequência da introdução de um prior Gaussiano sobre os parâmetros.</p>
 </section>
 <section id="aprendizado-supervisionado-e-nao-supervisionado-em-linguagem-probabilistica">
-<h3><span class="section-number">7.3.4. </span>Aprendizado supervisionado e não supervisionado em linguagem probabilística<a class="headerlink" href="#aprendizado-supervisionado-e-nao-supervisionado-em-linguagem-probabilistica" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">7.3.4. </span>Aprendizado supervisionado e não supervisionado em linguagem probabilística<a class="headerlink" href="#aprendizado-supervisionado-e-nao-supervisionado-em-linguagem-probabilistica" title="Link para este cabeçalho">#</a></h3>
 <p>A visão probabilística permite reinterpretar os dois principais cenários de aprendizado.</p>
 <p>No <strong>aprendizado não supervisionado</strong>, observamos exemplos</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \mathbf{x}_1,\mathbf{x}_2,\ldots,\mathbf{x}_n
 \]</div>
-</div>
 <p>e buscamos aprender a distribuição</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 p(\mathbf{x})
 \]</div>
-</div>
 <p>ou alguma de suas propriedades.</p>
 <p>No <strong>aprendizado supervisionado</strong>, observamos pares</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 (\mathbf{x}_i,y_i)
 \]</div>
-</div>
 <p>e buscamos aprender como a variável de saída depende da entrada. Em classificação, isso pode ser entendido como a estimação de</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 p(y|\mathbf{x}).
 \]</div>
-</div>
 <p>Se conhecêssemos exatamente essa distribuição condicional, o classificador de Bayes escolheria</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 y_{\text{Bayes}}
@@ -912,20 +957,17 @@ y_{\text{Bayes}}
 \arg\max_y
 p(y|\mathbf{x}).
 \]</div>
-</div>
 <p>Esse classificador é ótimo no sentido de minimizar a probabilidade de erro de classificação sob a distribuição verdadeira. Ainda assim, seu erro pode ser diferente de zero.</p>
 <p>Esse limite fundamental é chamado de <strong>erro de Bayes</strong>. Ele representa a parcela de ambiguidade intrínseca ao problema que não pode ser eliminada simplesmente escolhendo um modelo mais sofisticado.</p>
 </section>
 <section id="verossimilhanca">
-<h3><span class="section-number">7.3.5. </span>Verossimilhança<a class="headerlink" href="#verossimilhanca" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">7.3.5. </span>Verossimilhança<a class="headerlink" href="#verossimilhanca" title="Link para este cabeçalho">#</a></h3>
 <p>Considere agora um modelo parametrizado por <span class="math notranslate nohighlight">\(\theta\)</span> e um conjunto observado de dados <span class="math notranslate nohighlight">\(\mathcal{D}\)</span>.</p>
 <p>A <strong>verossimilhança</strong></p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 p(\mathcal{D}|\theta)
 \]</div>
-</div>
 <p>mede quão compatíveis os dados observados são com diferentes valores dos parâmetros do modelo.</p>
 <p>É importante não confundir <strong>probabilidade</strong> e <strong>verossimilhança</strong>:</p>
 <ul class="simple">
@@ -933,7 +975,6 @@ p(\mathcal{D}|\theta)
 <li><p>na inferência de parâmetros, mantemos <span class="math notranslate nohighlight">\(\mathcal{D}\)</span> fixo e estudamos a mesma expressão como função de <span class="math notranslate nohighlight">\(\theta\)</span>.</p></li>
 </ul>
 <p>O princípio de <strong>máxima verossimilhança (MLE)</strong> escolhe</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \theta_{\text{MLE}}
@@ -941,9 +982,7 @@ p(\mathcal{D}|\theta)
 \arg\max_\theta
 p(\mathcal{D}|\theta).
 \]</div>
-</div>
 <p>Como o logaritmo é monotônico, isso é equivalente a</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \theta_{\text{MLE}}
@@ -951,13 +990,11 @@ p(\mathcal{D}|\theta).
 \arg\max_\theta
 \log p(\mathcal{D}|\theta).
 \]</div>
-</div>
 <p>Essa conexão é central porque muitas funções de perda usadas em ML correspondem, essencialmente, ao <strong>negativo do logaritmo de uma verossimilhança</strong>.</p>
 </section>
 <section id="divergencia-de-kullbackleibler-e-entropia-cruzada">
-<h3><span class="section-number">7.3.6. </span>Divergência de Kullback–Leibler e entropia cruzada<a class="headerlink" href="#divergencia-de-kullbackleibler-e-entropia-cruzada" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">7.3.6. </span>Divergência de Kullback–Leibler e entropia cruzada<a class="headerlink" href="#divergencia-de-kullbackleibler-e-entropia-cruzada" title="Link para este cabeçalho">#</a></h3>
 <p>Para comparar duas distribuições <span class="math notranslate nohighlight">\(p\)</span> e <span class="math notranslate nohighlight">\(q\)</span>, podemos utilizar a <strong>divergência de Kullback–Leibler (KL)</strong>:</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 D_{\mathrm{KL}}(p\|q)
@@ -967,19 +1004,15 @@ p(x)
 \log
 \frac{p(x)}{q(x)}.
 \]</div>
-</div>
 <p>No caso contínuo, a soma é substituída por uma integral.</p>
 <p>A KL é não negativa e vale zero quando as distribuições coincidem, mas não é uma distância propriamente dita, pois em geral</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 D_{\mathrm{KL}}(p\|q)
 \neq
 D_{\mathrm{KL}}(q\|p).
 \]</div>
-</div>
 <p>Separando o logaritmo,</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 D_{\mathrm{KL}}(p\|q)
@@ -988,9 +1021,7 @@ D_{\mathrm{KL}}(p\|q)
 -
 \sum_x p(x)\log q(x).
 \]</div>
-</div>
 <p>Definindo a entropia de Shannon</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 S(p)
@@ -999,9 +1030,7 @@ S(p)
 \sum_x
 p(x)\log p(x),
 \]</div>
-</div>
 <p>e a entropia cruzada</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 H(p,q)
@@ -1010,9 +1039,7 @@ H(p,q)
 \sum_x
 p(x)\log q(x),
 \]</div>
-</div>
 <p>temos</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 D_{\mathrm{KL}}(p\|q)
@@ -1021,19 +1048,16 @@ D_{\mathrm{KL}}(p\|q)
 =
 -S(p)+H(p,q).
 \]</div>
-</div>
 <p>Como <span class="math notranslate nohighlight">\(S(p)\)</span> não depende do modelo <span class="math notranslate nohighlight">\(q\)</span>, minimizar</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 D_{\mathrm{KL}}(p\|q)
 \]</div>
-</div>
 <p>em relação a <span class="math notranslate nohighlight">\(q\)</span> é equivalente a minimizar a <strong>entropia cruzada</strong>.</p>
 <p>Isso explica por que a entropia cruzada aparece tão naturalmente na classificação: o treinamento procura aproximar a distribuição-alvo pelas probabilidades produzidas pelo modelo.</p>
 </section>
 <section id="fechando-o-ciclo-probabilidade-perda-e-otimizacao">
-<h3><span class="section-number">7.3.7. </span>Fechando o ciclo: probabilidade, perda e otimização<a class="headerlink" href="#fechando-o-ciclo-probabilidade-perda-e-otimizacao" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">7.3.7. </span>Fechando o ciclo: probabilidade, perda e otimização<a class="headerlink" href="#fechando-o-ciclo-probabilidade-perda-e-otimizacao" title="Link para este cabeçalho">#</a></h3>
 <p>Agora podemos conectar as três perspectivas discutidas neste capítulo.</p>
 <p>Em Machine Learning supervisionado, dispomos de dados e escolhemos uma família parametrizada de modelos. O treinamento ajusta os parâmetros por otimização, mas as funções de perda frequentemente possuem uma interpretação probabilística:</p>
 <ul class="simple">
@@ -1042,7 +1066,6 @@ D_{\mathrm{KL}}(p\|q)
 <li><p><strong>regularização</strong> pode ser interpretada, em certos casos, como a introdução de informação <em>a priori</em> sobre os parâmetros.</p></li>
 </ul>
 <p>Portanto, as ideias não são independentes:</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \boxed{
@@ -1055,7 +1078,6 @@ D_{\mathrm{KL}}(p\|q)
 \text{modelo treinado}
 }
 \]</div>
-</div>
 <p>mas um modelo treinado só é realmente útil se a solução encontrada <strong>generalizar</strong> para dados novos.</p>
 <p>Com isso, temos a base conceitual necessária para estudar modelos específicos. No próximo notebook, começaremos pela <strong>regressão linear e ridge</strong> e seguiremos para classificação, SVMs e redes neurais.</p>
 </section>
@@ -1081,119 +1103,129 @@ D_{\mathrm{KL}}(p\|q)
     }
     </script>
     <script>kernelName = 'python3'</script>
-        </article>
-      </div>
-      <footer>
-        
-        <div class="related-pages">
-          <a class="next-page" href="ML_models.html">
-              <div class="page-info">
-                <div class="context">
-                  <span>Next</span>
-                </div>
-                <div class="title"><span class="section-number">8. </span>Modelos de Machine Learning</div>
-              </div>
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-            </a>
-          <a class="prev-page" href="introducao_parte_2.html">
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-              <div class="page-info">
-                <div class="context">
-                  <span>Previous</span>
-                </div>
-                
-                <div class="title"><span class="section-number">6. </span>Sobre a Parte II</div>
-                
-              </div>
-            </a>
-        </div>
-        <div class="bottom-of-page">
-          <div class="left-details">
-            <div class="copyright">
-                Copyright &#169; L. A. Souza, 2025
-            </div>
-            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
-            
-            <a href="https://github.com/pradyunsg/furo">Furo</a>
-            
-          </div>
-          <div class="right-details">
-            
-          </div>
-        </div>
-        
-      </footer>
-    </div>
-    <aside class="toc-drawer">
-      
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            On this page
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">7. Fundamentos de Machine Learning</a><ul>
-<li><a class="reference internal" href="#aprendizado-como-um-problema-de-otimizacao">7.1. Aprendizado como um problema de otimização</a><ul>
-<li><a class="reference internal" href="#funcoes-de-perda">7.1.1. Funções de perda</a></li>
-<li><a class="reference internal" href="#entropia-cruzada">7.1.2. Entropia cruzada</a></li>
-<li><a class="reference internal" href="#descida-do-gradiente">7.1.3. Descida do gradiente</a></li>
-<li><a class="reference internal" href="#treinamento-validacao-e-hiperparametros">7.1.4. Treinamento, validação e hiperparâmetros</a></li>
-<li><a class="reference internal" href="#diferenciacao-automatica">7.1.5. Diferenciação automática</a></li>
-<li><a class="reference internal" href="#paisagem-de-perda-sgd-e-otimizadores">7.1.6. Paisagem de perda, SGD e otimizadores</a></li>
-<li><a class="reference internal" href="#curvatura-e-hessiana">7.1.7. Curvatura e Hessiana</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#generalizacao-e-regularizacao">7.2. Generalização e Regularização</a><ul>
-<li><a class="reference internal" href="#vazamento-de-informacao">7.2.1. Vazamento de informação</a></li>
-<li><a class="reference internal" href="#capacidade-e-regularizacao">7.2.2. Capacidade e regularização</a></li>
-<li><a class="reference internal" href="#trade-off-entre-vies-e-variancia">7.2.3. Trade-off entre viés e variância</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#visao-probabilistica-em-machine-learning">7.3. Visão probabilística em Machine Learning</a><ul>
-<li><a class="reference internal" href="#variaveis-aleatorias-e-distribuicoes">7.3.1. Variáveis aleatórias e distribuições</a></li>
-<li><a class="reference internal" href="#probabilidade-condicional-e-regra-da-cadeia">7.3.2. Probabilidade condicional e regra da cadeia</a></li>
-<li><a class="reference internal" href="#teorema-de-bayes">7.3.3. Teorema de Bayes</a></li>
-<li><a class="reference internal" href="#aprendizado-supervisionado-e-nao-supervisionado-em-linguagem-probabilistica">7.3.4. Aprendizado supervisionado e não supervisionado em linguagem probabilística</a></li>
-<li><a class="reference internal" href="#verossimilhanca">7.3.5. Verossimilhança</a></li>
-<li><a class="reference internal" href="#divergencia-de-kullbackleibler-e-entropia-cruzada">7.3.6. Divergência de Kullback–Leibler e entropia cruzada</a></li>
-<li><a class="reference internal" href="#fechando-o-ciclo-probabilidade-perda-e-otimizacao">7.3.7. Fechando o ciclo: probabilidade, perda e otimização</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
 
-          </div>
-        </div>
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="introducao_parte_2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Sobre a Parte II</p>
       </div>
-      
-      
-    </aside>
+    </a>
+    <a class="right-next"
+       href="ML_models.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">próximo</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Modelos de Machine Learning</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Conteúdo
   </div>
-</div><script src="../../_static/documentation_options.js?v=2efa9f5e"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>
-    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
-    <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
-    <script src="../../_static/translations.js?v=daa5921a"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    </body>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aprendizado-como-um-problema-de-otimizacao">7.1. Aprendizado como um problema de otimização</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funcoes-de-perda">7.1.1. Funções de perda</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entropia-cruzada">7.1.2. Entropia cruzada</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#descida-do-gradiente">7.1.3. Descida do gradiente</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#treinamento-validacao-e-hiperparametros">7.1.4. Treinamento, validação e hiperparâmetros</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diferenciacao-automatica">7.1.5. Diferenciação automática</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#paisagem-de-perda-sgd-e-otimizadores">7.1.6. Paisagem de perda, SGD e otimizadores</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#curvatura-e-hessiana">7.1.7. Curvatura e Hessiana</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generalizacao-e-regularizacao">7.2. Generalização e Regularização</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vazamento-de-informacao">7.2.1. Vazamento de informação</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#capacidade-e-regularizacao">7.2.2. Capacidade e regularização</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trade-off-entre-vies-e-variancia">7.2.3. Trade-off entre viés e variância</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visao-probabilistica-em-machine-learning">7.3. Visão probabilística em Machine Learning</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variaveis-aleatorias-e-distribuicoes">7.3.1. Variáveis aleatórias e distribuições</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probabilidade-condicional-e-regra-da-cadeia">7.3.2. Probabilidade condicional e regra da cadeia</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#teorema-de-bayes">7.3.3. Teorema de Bayes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aprendizado-supervisionado-e-nao-supervisionado-em-linguagem-probabilistica">7.3.4. Aprendizado supervisionado e não supervisionado em linguagem probabilística</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verossimilhanca">7.3.5. Verossimilhança</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#divergencia-de-kullbackleibler-e-entropia-cruzada">7.3.6. Divergência de Kullback–Leibler e entropia cruzada</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fechando-o-ciclo-probabilidade-perda-e-otimizacao">7.3.7. Fechando o ciclo: probabilidade, perda e otimização</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+De Lucas A. Souza
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright L. A. Souza, 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
 </html>

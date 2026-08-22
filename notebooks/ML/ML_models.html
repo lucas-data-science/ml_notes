@@ -1,271 +1,401 @@
-<!doctype html>
-<html class="no-js" lang="pt-BR" data-content_root="../../">
-  <head><meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Índice" href="../../genindex.html" /><link rel="search" title="Buscar" href="../../search.html" /><link rel="next" title="Referências" href="../../bib.html" /><link rel="prev" title="7. Fundamentos de Machine Learning" href="ML_fundamentals.html" />
 
-    <link rel="shortcut icon" href="../../_static/flav4.png"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.08.06 -->
-        <title>8. Modelos de Machine Learning - Ciência de Dados</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
+<!DOCTYPE html>
+
+
+<html lang="pt-BR" data-content_root="../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>8. Modelos de Machine Learning &#8212; Ciência de Dados</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
-    <link rel="stylesheet" type="text/css" href="../../_static/estilo.css?v=6d8328f8" />
-    
-    
-
-
-<style>
-  body {
-    --color-code-background: #eeffcc;
-  --color-code-foreground: black;
   
-  }
-  @media not print {
-    body[data-theme="dark"] {
-      --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=2efa9f5e"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/translations.js?v=daa5921a"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/ML/ML_models';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="icon" href="../../_static/icon-data-science.png"/>
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Buscar" href="../../search.html" />
+    <link rel="next" title="Referências" href="../../bib.html" />
+    <link rel="prev" title="7. Fundamentos de Machine Learning" href="ML_fundamentals.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="pt-BR"/>
+  </head>
   
-    }
-    @media (prefers-color-scheme: dark) {
-      body:not([data-theme="light"]) {
-        --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
   
-      }
-    }
-  }
-</style></head>
-  <body>
-    
-    <script>
-      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
-    </script>
-    
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
 
-<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-  <symbol id="svg-toc" viewBox="0 0 24 24">
-    <title>Contents</title>
-    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
-      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
-    </svg>
-  </symbol>
-  <symbol id="svg-menu" viewBox="0 0 24 24">
-    <title>Menu</title>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
-      <line x1="3" y1="12" x2="21" y2="12"></line>
-      <line x1="3" y1="6" x2="21" y2="6"></line>
-      <line x1="3" y1="18" x2="21" y2="18"></line>
-    </svg>
-  </symbol>
-  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
-    <title>Expand</title>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
-      <polyline points="9 18 15 12 9 6"></polyline>
-    </svg>
-  </symbol>
-  <symbol id="svg-sun" viewBox="0 0 24 24">
-    <title>Light mode</title>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
-      <circle cx="12" cy="12" r="5"></circle>
-      <line x1="12" y1="1" x2="12" y2="3"></line>
-      <line x1="12" y1="21" x2="12" y2="23"></line>
-      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-      <line x1="1" y1="12" x2="3" y2="12"></line>
-      <line x1="21" y1="12" x2="23" y2="12"></line>
-      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-    </svg>
-  </symbol>
-  <symbol id="svg-moon" viewBox="0 0 24 24">
-    <title>Dark mode</title>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
-    </svg>
-  </symbol>
-  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
-    <title>Auto light/dark, in light mode</title>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
-      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
-      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
-      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
-      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
-      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
-      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
-      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
-      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
-      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
-      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
-      <circle cx="14.5" cy="9.55" r="3.6"/>
-    </svg>
-  </symbol>
-  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
-    <title>Auto light/dark, in dark mode</title>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
-      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
-      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
-      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
-      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
-      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
-      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
-      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
-      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
-      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
-      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
-      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
-    </svg>
-  </symbol>
-  <symbol id="svg-pencil" viewBox="0 0 24 24">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
-      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
-      <path d="M13.5 6.5l4 4" />
-      <path d="M20 21l2 -2l-2 -2" />
-      <path d="M17 17l-2 2l2 2" />
-    </svg>
-  </symbol>
-  <symbol id="svg-eye" viewBox="0 0 24 24">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
-      <path
-        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
-      <path d="M20 21l2 -2l-2 -2" />
-      <path d="M17 17l-2 2l2 2" />
-    </svg>
-  </symbol>
-</svg>
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
-<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
-<label class="overlay sidebar-overlay" for="__navigation">
-  <div class="visually-hidden">Hide navigation sidebar</div>
-</label>
-<label class="overlay toc-overlay" for="__toc">
-  <div class="visually-hidden">Hide table of contents sidebar</div>
-</label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
 
-<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
 
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
 
-
-<div class="page">
-  <header class="mobile-header">
-    <div class="header-left">
-      <label class="nav-overlay-icon" for="__navigation">
-        <div class="visually-hidden">Toggle site navigation sidebar</div>
-        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
-      </label>
-    </div>
-    <div class="header-center">
-      <a href="../../intro.html"><div class="brand">Ciência de Dados</div></a>
-    </div>
-    <div class="header-right">
-      <div class="theme-toggle-container theme-toggle-header">
-        <button class="theme-toggle">
-          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
-          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
-          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
-          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
-          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
-        </button>
-      </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
-        <div class="visually-hidden">Toggle table of contents sidebar</div>
-        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
-      </label>
-    </div>
-  </header>
-  <aside class="sidebar-drawer">
-    <div class="sidebar-container">
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../intro.html">
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
   
-  <div class="sidebar-logo-container">
-    <img class="sidebar-logo" src="../../_static/logo1.svg" alt="Logo"/>
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
   </div>
   
-  <span class="sidebar-brand-text">Ciência de Dados</span>
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
   
-</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
-  <input class="sidebar-search" placeholder="Buscar" name="q" aria-label="Buscar">
-  <input type="hidden" name="check_keywords" value="yes">
-  <input type="hidden" name="area" value="default">
-</form>
-<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <p class="caption" role="heading"><span class="caption-text">Parte I. Elementos de Estatística e Análise Exploratória de Dados</span></p>
-<ul>
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../_static/icon-data-science.png" class="logo__image only-light" alt="Ciência de Dados - Home"/>
+    <script>document.write(`<img src="../../_static/icon-data-science.png" class="logo__image only-dark" alt="Ciência de Dados - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Buscar" aria-label="Buscar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Buscar</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Prefácio
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte I. Elementos de Estatística e Análise Exploratória de Dados</span></p>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../notebooks_estatistica/introducao_parte_1.html">1. Sobre a Parte I</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../notebooks_estatistica/Analise_Exploratoria.html">2. Análise Exploratória de Dados (EDA)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../notebooks_estatistica/Amostragem.html">3. Amostragem</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../notebooks_estatistica/Distribuicoes_de_Dados.html">4. Distribuições de Dados</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../notebooks_estatistica/Teste_Hipotese.html">5. Testes de Hipóteses e Inferência Estatística</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Parte II. Machine Learning</span></p>
-<ul class="current">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte II. Machine Learning</span></p>
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="introducao_parte_2.html">6. Sobre a Parte II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ML_fundamentals.html">7. Fundamentos de Machine Learning</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">8. Modelos de Machine Learning</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">8. Modelos de Machine Learning</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Parte Final</span></p>
-<ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parte Final</span></p>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../bib.html">Referências</a></li>
 </ul>
 
-</div>
-</div>
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
 
       </div>
       
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
     </div>
-  </aside>
-  <div class="main">
-    <div class="content">
-      <div class="article-container">
-        <a href="#" class="back-to-top muted-link">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
-          </svg>
-          <span>Back to top</span>
-        </a>
-        <div class="content-icon-container">
-          <div class="view-this-page">
-  <a class="muted-link" href="../../_sources/notebooks/ML/ML_models.ipynb" title="View this page">
-    <svg><use href="#svg-eye"></use></svg>
-    <span class="visually-hidden">View this page</span>
-  </a>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Baixe esta página">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notebooks/ML/ML_models.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Baixar arquivo fonte"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir em PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
 </div>
-<div class="theme-toggle-container theme-toggle-content">
-            <button class="theme-toggle">
-              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
-              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
-              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
-              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
-              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
-            </button>
-          </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
-            <div class="visually-hidden">Toggle table of contents sidebar</div>
-            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
-          </label>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Modo tela cheia"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Buscar" aria-label="Buscar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Modelos de Machine Learning</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Conteúdo </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regressao-linear-e-regressao-ridge">8.1. Regressão linear e regressão ridge</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#o-problema-de-regressao">8.1.1. O problema de regressão</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ajuste-por-minimos-quadrados">8.1.2. Ajuste por mínimos quadrados</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#por-que-o-mse-aparece-naturalmente">8.1.3. Por que o MSE aparece naturalmente?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ridge-regularizando-o-modelo">8.1.4. Ridge: regularizando o modelo</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regressao-logistica">8.2. Regressão logística</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classificacao-binaria">8.2.1. Classificação binária</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extensao-para-multiplas-classes">8.2.2. Extensão para múltiplas classes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#support-vector-machines-svm">8.3. Support Vector Machines (SVM)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mais-de-duas-classes">8.3.1. Mais de duas classes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#redes-neurais">8.4. Redes neurais</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#como-ler-a-figura">8.4.1. Como ler a figura</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aproximacao-universal-e-profundidade">8.4.2. Aproximação universal e profundidade</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#redes-neurais-convolucionais-cnns">8.4.3. Redes neurais convolucionais (CNNs)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#autoencoders">8.5. Autoencoders</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#autoencoders-variacionais">8.5.1. Autoencoders variacionais</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#redes-neurais-autoregressivas">8.6. Redes neurais autoregressivas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backpropagation">8.7. Backpropagation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#forward-pass">8.7.1. Forward pass</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reverse-pass">8.7.2. Reverse pass</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-rede-e-parametros">8.7.3. (a) Rede e parâmetros</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-forward-pass">8.7.4. (b) Forward pass</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-backward-pass">8.7.5. (c) Backward pass</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#por-que-calcular-os-gradientes-de-tras-para-frente">8.7.6. Por que calcular os gradientes de trás para frente?</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
-        <article role="main" id="furo-main-content">
-          <section class="tex2jax_ignore mathjax_ignore" id="modelos-de-machine-learning">
-<h1><span class="section-number">8. </span>Modelos de Machine Learning<a class="headerlink" href="#modelos-de-machine-learning" title="Link para este cabeçalho">¶</a></h1>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="modelos-de-machine-learning">
+<h1><span class="section-number">8. </span>Modelos de Machine Learning<a class="headerlink" href="#modelos-de-machine-learning" title="Link para este cabeçalho">#</a></h1>
 <p>Depois de discutir <strong>otimização, generalização, regularização e a interpretação probabilística do aprendizado</strong>, chegamos ao terceiro ingrediente de um problema de <em>Machine Learning</em>: o <strong>modelo</strong>. Um modelo é a família de funções que estabelece como a entrada <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> pode ser transformada em uma previsão <span class="math notranslate nohighlight">\(\hat{y}\)</span> ou, de forma mais geral, em uma distribuição de probabilidade sobre possíveis saídas.</p>
 <p>Seguindo a organização do Capítulo 2 de <em>Modern Applications of Machine Learning in Quantum Sciences</em> <span id="id1">[<a class="reference internal" href="../../bib.html#id6" title="Anna Dawid, Julian Arnold, Borja Requena, Alexander Gresch, Marcin Płodzień, Kaelan Donatella, Kim A. Nicoli, Paolo Stornati, Rouven Koch, Miriam Büttner, Robert Okuła, Gorka Muñoz-Gil, Rodrigo A. Vargas-Hernández, Alba Cervera-Lierta, Juan Carrasquilla, Vedran Dunjko, Marylou Gabrié, Patrick Huembeli, Evert van Nieuwenburg, Filippo Vicentini, Lei Wang, Sebastian J. Wetzel, Giuseppe Carleo, Eliška Greplová, Roman Krems, Florian Marquardt, Michał Tomza, Maciej Lewenstein, and Alexandre Dauphin. Modern applications of machine learning in quantum sciences. 2025. URL: https://arxiv.org/abs/2204.04198, arXiv:2204.04198.">Dawid <em>et al.</em>, 2025</a>]</span>, começaremos por alguns modelos de <strong>Machine Learning tradicional</strong> — regressão linear, regressão logística e <em>Support Vector Machines</em> — e depois passaremos para modelos baseados em <strong>redes neurais</strong>, incluindo CNNs, autoencoders e redes autoregressivas.</p>
 <blockquote>
@@ -310,53 +440,42 @@
 </div>
 </div>
 <section id="regressao-linear-e-regressao-ridge">
-<h2><span class="section-number">8.1. </span>Regressão linear e regressão ridge<a class="headerlink" href="#regressao-linear-e-regressao-ridge" title="Link para este cabeçalho">¶</a></h2>
+<h2><span class="section-number">8.1. </span>Regressão linear e regressão ridge<a class="headerlink" href="#regressao-linear-e-regressao-ridge" title="Link para este cabeçalho">#</a></h2>
 <section id="o-problema-de-regressao">
-<h3><span class="section-number">8.1.1. </span>O problema de regressão<a class="headerlink" href="#o-problema-de-regressao" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">8.1.1. </span>O problema de regressão<a class="headerlink" href="#o-problema-de-regressao" title="Link para este cabeçalho">#</a></h3>
 <p>Em uma tarefa supervisionada de regressão, observamos um conjunto de dados rotulado</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \mathcal{D}=\{(\mathbf{x}_i,y_i)\}_{i=1}^{n},
 \]</div>
-</div>
 <p>no qual os valores observados podem ser entendidos como o resultado de uma função desconhecida <span class="math notranslate nohighlight">\(f\)</span> acrescida de ruído:</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 y_i=f(\mathbf{x}_i)+\varepsilon_i.
 \]</div>
-</div>
 <p>O objetivo é construir uma aproximação <span class="math notranslate nohighlight">\(\hat f\)</span> capaz de prever <span class="math notranslate nohighlight">\(y\)</span> para entradas ainda não observadas.</p>
 <p>A forma parametrizada mais simples é o <strong>modelo linear</strong>. Para uma entrada com <span class="math notranslate nohighlight">\(d-1\)</span> atributos,</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \hat y
 =
 \sum_{j=1}^{d-1}\theta_j x_j+b.
 \]</div>
-</div>
 <p>Podemos incorporar o intercepto <span class="math notranslate nohighlight">\(b\)</span> ao vetor de parâmetros definindo <span class="math notranslate nohighlight">\(x_0=1\)</span> e <span class="math notranslate nohighlight">\(\theta_0=b\)</span>. Assim,</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \hat y=\mathbf{x}^{\top}\boldsymbol{\theta}.
 \]</div>
-</div>
 <p>O termo <em>linear</em> refere-se à linearidade <strong>nos parâmetros</strong> <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span>. Por isso, ainda podemos aplicar uma transformação não linear às entradas e continuar utilizando regressão linear. Por exemplo,</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \phi_p(x)=(1,x,x^2,\ldots,x^p)
 \]</div>
-</div>
 <p>leva à regressão polinomial de grau <span class="math notranslate nohighlight">\(p\)</span>, mas o modelo continua linear em relação aos coeficientes que serão ajustados.</p>
 </section>
 <section id="ajuste-por-minimos-quadrados">
-<h3><span class="section-number">8.1.2. </span>Ajuste por mínimos quadrados<a class="headerlink" href="#ajuste-por-minimos-quadrados" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">8.1.2. </span>Ajuste por mínimos quadrados<a class="headerlink" href="#ajuste-por-minimos-quadrados" title="Link para este cabeçalho">#</a></h3>
 <p>Para medir a discrepância entre os valores observados e as previsões, uma escolha natural é o erro quadrático médio:</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \mathcal{L}_{\mathrm{MSE}}(\boldsymbol{\theta}\mid\mathcal D)
@@ -364,16 +483,12 @@ y_i=f(\mathbf{x}_i)+\varepsilon_i.
 \frac{1}{n}\sum_{i=1}^{n}
 \left(y_i-\mathbf{x}_i^\top\boldsymbol{\theta}\right)^2.
 \]</div>
-</div>
 <p>Em notação matricial, essa perda é proporcional a</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \|\mathbf{y}-X\boldsymbol{\theta}\|_2^2.
 \]</div>
-</div>
 <p>Como o problema é quadrático, o mínimo pode ser obtido analiticamente. O estimador de mínimos quadrados é</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \hat{\boldsymbol{\theta}}_{\mathrm{LSE}}
@@ -382,13 +497,11 @@ y_i=f(\mathbf{x}_i)+\varepsilon_i.
 =
 X^{+}\mathbf{y},
 \]</div>
-</div>
 <p>onde <span class="math notranslate nohighlight">\(X^{+}\)</span> é a pseudoinversa de Moore–Penrose.</p>
 </section>
 <section id="por-que-o-mse-aparece-naturalmente">
-<h3><span class="section-number">8.1.3. </span>Por que o MSE aparece naturalmente?<a class="headerlink" href="#por-que-o-mse-aparece-naturalmente" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">8.1.3. </span>Por que o MSE aparece naturalmente?<a class="headerlink" href="#por-que-o-mse-aparece-naturalmente" title="Link para este cabeçalho">#</a></h3>
 <p>A escolha do MSE também pode ser justificada probabilisticamente. Suponha que, para uma entrada <span class="math notranslate nohighlight">\(\mathbf{x}_i\)</span>, o alvo seja distribuído segundo uma Gaussiana cuja média é a previsão linear:</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 y_i\sim\mathcal N\!\left(
@@ -396,9 +509,7 @@ y_i\sim\mathcal N\!\left(
 \sigma^2
 \right).
 \]</div>
-</div>
 <p>Assumindo observações i.i.d., a verossimilhança do conjunto de dados é</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 p(\mathbf y\mid X,\boldsymbol{\theta})
@@ -408,9 +519,7 @@ p(\mathbf y\mid X,\boldsymbol{\theta})
 y_i\mid\mathbf{x}_i^\top\boldsymbol{\theta},\sigma^2
 \right).
 \]</div>
-</div>
 <p>Maximizar essa verossimilhança é equivalente a maximizar sua log-verossimilhança e, depois de eliminar termos que não dependem de <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span>, obtemos</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \hat{\boldsymbol{\theta}}_{\mathrm{MLE}}
@@ -419,32 +528,26 @@ y_i\mid\mathbf{x}_i^\top\boldsymbol{\theta},\sigma^2
 \sum_{i=1}^{n}
 \left(y_i-\mathbf{x}_i^\top\boldsymbol{\theta}\right)^2.
 \]</div>
-</div>
 <p>Portanto,</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \hat{\boldsymbol{\theta}}_{\mathrm{MLE}}
 =
 \hat{\boldsymbol{\theta}}_{\mathrm{LSE}}.
 \]</div>
-</div>
 <p>Isto conecta três ideias vistas anteriormente: <strong>regressão linear, minimização do MSE e máxima verossimilhança sob ruído Gaussiano</strong>.</p>
 </section>
 <section id="ridge-regularizando-o-modelo">
-<h3><span class="section-number">8.1.4. </span>Ridge: regularizando o modelo<a class="headerlink" href="#ridge-regularizando-o-modelo" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">8.1.4. </span>Ridge: regularizando o modelo<a class="headerlink" href="#ridge-regularizando-o-modelo" title="Link para este cabeçalho">#</a></h3>
 <p>O ajuste de mínimos quadrados tenta explicar o conjunto de treinamento tão bem quanto possível. Quando há ruído, multicolinearidade ou uma representação com muitos graus de liberdade, isso pode produzir coeficientes de grande magnitude e pior generalização.</p>
 <p>Uma maneira de restringir o espaço de soluções é introduzir um <em>prior</em> Gaussiano sobre os parâmetros,</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 p(\boldsymbol{\theta})
 =
 \mathcal N(\boldsymbol{\theta}\mid \mathbf{0},\tau^2 I).
 \]</div>
-</div>
 <p>Em vez de maximizar apenas a verossimilhança, maximizamos a posteriori:</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \hat{\boldsymbol{\theta}}_{\mathrm{MAP}}
@@ -452,9 +555,7 @@ p(\boldsymbol{\theta})
 \operatorname*{arg\,max}_{\boldsymbol{\theta}}
 p(\boldsymbol{\theta}\mid X,\mathbf y).
 \]</div>
-</div>
 <p>Com verossimilhança e <em>prior</em> Gaussianos, isso equivale a minimizar</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \mathcal L_{\mathrm{ridge}}
@@ -465,16 +566,13 @@ p(\boldsymbol{\theta}\mid X,\mathbf y).
 \qquad
 \lambda=\frac{\sigma^2}{\tau^2}.
 \]</div>
-</div>
 <p>O estimador resultante é</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \hat{\boldsymbol{\theta}}_{\mathrm{ridge}}
 =
 \left(X^\top X+\lambda I\right)^{-1}X^\top\mathbf y.
 \]</div>
-</div>
 <p>O hiperparâmetro <span class="math notranslate nohighlight">\(\lambda\)</span> controla a intensidade da regularização:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\lambda\rightarrow 0\)</span>: recuperamos aproximadamente o ajuste de mínimos quadrados;</p></li>
@@ -483,7 +581,6 @@ p(\boldsymbol{\theta}\mid X,\mathbf y).
 </ul>
 <p>A regressão ridge é, portanto, um exemplo concreto da conexão entre <strong>regularização <span class="math notranslate nohighlight">\(L_2\)</span></strong>, <strong>inferência Bayesiana</strong> e <strong>estimativa MAP</strong>.</p>
 <p>Uma alternativa importante é a regressão <strong>LASSO</strong>, que utiliza penalização <span class="math notranslate nohighlight">\(L_1\)</span>,</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \mathcal L_{\mathrm{LASSO}}
@@ -492,17 +589,15 @@ p(\boldsymbol{\theta}\mid X,\mathbf y).
 +
 \lambda\|\boldsymbol{\theta}\|_1.
 \]</div>
-</div>
 <p>Como a penalização <span class="math notranslate nohighlight">\(L_1\)</span> favorece coeficientes exatamente nulos, o LASSO pode produzir soluções esparsas e atuar também como mecanismo de seleção de atributos.</p>
 </section>
 </section>
 <section id="regressao-logistica">
-<h2><span class="section-number">8.2. </span>Regressão logística<a class="headerlink" href="#regressao-logistica" title="Link para este cabeçalho">¶</a></h2>
+<h2><span class="section-number">8.2. </span>Regressão logística<a class="headerlink" href="#regressao-logistica" title="Link para este cabeçalho">#</a></h2>
 <p>Apesar do nome, <strong>regressão logística é um modelo de classificação</strong>. A ideia é começar com um escore real — frequentemente uma combinação linear das entradas — e transformá-lo em uma probabilidade.</p>
 <section id="classificacao-binaria">
-<h3><span class="section-number">8.2.1. </span>Classificação binária<a class="headerlink" href="#classificacao-binaria" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">8.2.1. </span>Classificação binária<a class="headerlink" href="#classificacao-binaria" title="Link para este cabeçalho">#</a></h3>
 <p>Considere duas classes, <span class="math notranslate nohighlight">\(K_1\)</span> e <span class="math notranslate nohighlight">\(K_2\)</span>. A probabilidade posterior de uma observação pertencer à classe <span class="math notranslate nohighlight">\(K_1\)</span> pode ser escrita na forma</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 p(K_1\mid\mathbf{x})
@@ -511,32 +606,24 @@ p(K_1\mid\mathbf{x})
 =
 \sigma(z),
 \]</div>
-</div>
 <p>onde</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 z=\boldsymbol{\theta}^{\top}\mathbf{x}+\theta_0
 \]</div>
-</div>
 <p>é o escore produzido pelo modelo e</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \sigma(z)=\frac{1}{1+e^{-z}}
 \]</div>
-</div>
 <p>é a <strong>função sigmoide</strong>.</p>
 <p>A sigmoide transforma qualquer valor real em um número no intervalo <span class="math notranslate nohighlight">\((0,1)\)</span>, permitindo interpretar a saída como probabilidade. Uma regra de decisão simples é classificar como <span class="math notranslate nohighlight">\(K_1\)</span> quando <span class="math notranslate nohighlight">\(p(K_1\mid\mathbf{x})&gt;0.5\)</span>. Nesse caso, a fronteira de decisão satisfaz</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \boldsymbol{\theta}^{\top}\mathbf{x}+\theta_0=0.
 \]</div>
-</div>
 <p>Como o escore é linear, essa fronteira é um hiperplano.</p>
 <p>Os parâmetros são normalmente obtidos minimizando a <strong>entropia cruzada binária (BCE)</strong>, apresentada no capítulo anterior. Assim, a regressão logística fornece uma ponte direta entre:</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \text{modelo linear}
@@ -547,12 +634,10 @@ z=\boldsymbol{\theta}^{\top}\mathbf{x}+\theta_0
 \longrightarrow
 \text{BCE}.
 \]</div>
-</div>
 </section>
 <section id="extensao-para-multiplas-classes">
-<h3><span class="section-number">8.2.2. </span>Extensão para múltiplas classes<a class="headerlink" href="#extensao-para-multiplas-classes" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">8.2.2. </span>Extensão para múltiplas classes<a class="headerlink" href="#extensao-para-multiplas-classes" title="Link para este cabeçalho">#</a></h3>
 <p>Para <span class="math notranslate nohighlight">\(K\)</span> classes, usamos um vetor de escores <span class="math notranslate nohighlight">\(\mathbf z=(z_1,\ldots,z_K)\)</span> e a função <strong>softmax</strong>:</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 p(K_k\mid\mathbf{x})
@@ -560,30 +645,24 @@ p(K_k\mid\mathbf{x})
 \frac{e^{z_k}}
 {\sum_{j=1}^{K}e^{z_j}}.
 \]</div>
-</div>
 <p>A softmax normaliza todos os escores simultaneamente e produz uma distribuição de probabilidade sobre as classes:</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \sum_{k=1}^{K}p(K_k\mid\mathbf{x})=1.
 \]</div>
-</div>
 <p>Nesse caso, o treinamento é feito tipicamente com <strong>entropia cruzada categórica</strong>.</p>
 <p>A regressão logística é probabilística: ela procura parâmetros que produzam probabilidades compatíveis com os rótulos observados. Uma consequência é que pontos extremos podem influenciar fortemente a solução. A próxima família de modelos, as SVMs, parte de uma construção diferente: em vez de formular diretamente probabilidades, procura uma <strong>fronteira de decisão geometricamente ótima</strong>.</p>
 </section>
 </section>
 <section id="support-vector-machines-svm">
-<h2><span class="section-number">8.3. </span>Support Vector Machines (SVM)<a class="headerlink" href="#support-vector-machines-svm" title="Link para este cabeçalho">¶</a></h2>
+<h2><span class="section-number">8.3. </span>Support Vector Machines (SVM)<a class="headerlink" href="#support-vector-machines-svm" title="Link para este cabeçalho">#</a></h2>
 <p>As <strong>Support Vector Machines</strong> abordam a classificação por uma perspectiva geométrica. No caso binário e linearmente separável, buscamos um hiperplano</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \boldsymbol{\theta}^{\top}\mathbf{x}+\theta_0=0
 \]</div>
-</div>
 <p>que separe as duas classes.</p>
 <p>O vetor <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> é perpendicular ao hiperplano. A distância de um ponto <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> até essa fronteira é</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 d(\mathbf{x},\boldsymbol{\theta})
@@ -596,7 +675,6 @@ d(\mathbf{x},\boldsymbol{\theta})
 \|\boldsymbol{\theta}\|_2
 }.
 \]</div>
-</div>
 <p>Existem, em geral, muitos hiperplanos capazes de separar corretamente os dados de treinamento. A SVM introduz então um critério adicional: escolher a fronteira que <strong>maximize a margem</strong> entre as classes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -613,21 +691,17 @@ d(\mathbf{x},\boldsymbol{\theta})
 <p>No painel <strong>(a)</strong>, a linha representa um possível hiperplano separador. Em duas dimensões ele é simplesmente uma reta, mas a mesma construção vale em espaços de dimensão maior. O vetor <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> é normal à fronteira e determina sua orientação.</p>
 <p>O painel <strong>(b)</strong> mostra a ideia central da SVM. Em vez de aceitar qualquer separação correta, procuramos o hiperplano que deixa a maior distância possível até os pontos mais próximos de cada classe. Esses pontos são os <strong>vetores de suporte</strong> (<em>support vectors</em>). Eles determinam a posição da fronteira ótima; pontos muito afastados da margem não alteram diretamente a solução.</p>
 <p>Se codificarmos os rótulos como <span class="math notranslate nohighlight">\(y_i\in\{-1,+1\}\)</span>, podemos escolher uma escala para os parâmetros tal que</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 y_i\left(
 \boldsymbol{\theta}^{\top}\mathbf{x}_i+\theta_0
 \right)\ge 1.
 \]</div>
-</div>
 <p>Nessa forma canônica, maximizar a margem é equivalente a minimizar</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \frac{1}{2}\|\boldsymbol{\theta}\|_2^2
 \]</div>
-</div>
 <p>sujeito às restrições acima. O problema é quadrático e convexo, portanto possui um mínimo global.</p>
 <p>Introduzindo multiplicadores de Lagrange <span class="math notranslate nohighlight">\(\alpha_i\)</span>, a solução pode ser expressa em termos dos pontos de treinamento. Pela condição de complementaridade:</p>
 <ul class="simple">
@@ -635,7 +709,6 @@ y_i\left(
 <li><p>os pontos que tocam a margem podem ter <span class="math notranslate nohighlight">\(\alpha_i&gt;0\)</span>.</p></li>
 </ul>
 <p>Por isso, a função de decisão final depende apenas dos vetores de suporte:</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \hat f(\mathbf{x})
@@ -645,10 +718,9 @@ y_i\left(
 \mathbf{x}_i^\top\mathbf{x}
 +\theta_0,
 \]</div>
-</div>
 <p>e a classe é obtida pelo sinal de <span class="math notranslate nohighlight">\(\hat f(\mathbf{x})\)</span>.</p>
 <section id="mais-de-duas-classes">
-<h3><span class="section-number">8.3.1. </span>Mais de duas classes<a class="headerlink" href="#mais-de-duas-classes" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">8.3.1. </span>Mais de duas classes<a class="headerlink" href="#mais-de-duas-classes" title="Link para este cabeçalho">#</a></h3>
 <p>Uma SVM binária pode ser estendida para várias classes, por exemplo, por:</p>
 <ul class="simple">
 <li><p><strong>one-vs-one:</strong> treinar um classificador para cada par de classes;</p></li>
@@ -658,24 +730,20 @@ y_i\left(
 </section>
 </section>
 <section id="redes-neurais">
-<h2><span class="section-number">8.4. </span>Redes neurais<a class="headerlink" href="#redes-neurais" title="Link para este cabeçalho">¶</a></h2>
+<h2><span class="section-number">8.4. </span>Redes neurais<a class="headerlink" href="#redes-neurais" title="Link para este cabeçalho">#</a></h2>
 <p>Uma <strong>rede neural artificial</strong> é uma função parametrizada construída pela composição de várias funções mais simples. A unidade básica é o <strong>neurônio artificial</strong> ou <strong>perceptron</strong>.</p>
 <p>Para um vetor de entradas <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>, um neurônio calcula primeiro uma combinação afim</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 z_i
 =
 \sum_j w_{ij}x_j+b_i
 \]</div>
-</div>
 <p>e depois aplica uma função de ativação não linear:</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 a_i=\sigma(z_i).
 \]</div>
-</div>
 <p>Os parâmetros treináveis são os <strong>pesos</strong> <span class="math notranslate nohighlight">\(w_{ij}\)</span> e os <strong>biases</strong> <span class="math notranslate nohighlight">\(b_i\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -689,7 +757,7 @@ a_i=\sigma(z_i).
 </div>
 <p><em>Figura 2.6 da Ref. <span id="id3">[<a class="reference internal" href="../../bib.html#id6" title="Anna Dawid, Julian Arnold, Borja Requena, Alexander Gresch, Marcin Płodzień, Kaelan Donatella, Kim A. Nicoli, Paolo Stornati, Rouven Koch, Miriam Büttner, Robert Okuła, Gorka Muñoz-Gil, Rodrigo A. Vargas-Hernández, Alba Cervera-Lierta, Juan Carrasquilla, Vedran Dunjko, Marylou Gabrié, Patrick Huembeli, Evert van Nieuwenburg, Filippo Vicentini, Lei Wang, Sebastian J. Wetzel, Giuseppe Carleo, Eliška Greplová, Roman Krems, Florian Marquardt, Michał Tomza, Maciej Lewenstein, and Alexandre Dauphin. Modern applications of machine learning in quantum sciences. 2025. URL: https://arxiv.org/abs/2204.04198, arXiv:2204.04198.">Dawid <em>et al.</em>, 2025</a>]</span>: (a) rede neural totalmente conectada e (b) operação realizada por um neurônio.</em></p>
 <section id="como-ler-a-figura">
-<h3><span class="section-number">8.4.1. </span>Como ler a figura<a class="headerlink" href="#como-ler-a-figura" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">8.4.1. </span>Como ler a figura<a class="headerlink" href="#como-ler-a-figura" title="Link para este cabeçalho">#</a></h3>
 <p>No painel <strong>(a)</strong>, a informação percorre a rede da esquerda para a direita:</p>
 <ol class="arabic simple">
 <li><p>a <strong>camada de entrada</strong> recebe os atributos <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>;</p></li>
@@ -697,7 +765,6 @@ a_i=\sigma(z_i).
 <li><p>a <strong>camada de saída</strong> produz a previsão final.</p></li>
 </ol>
 <p>Para uma camada <span class="math notranslate nohighlight">\(l\)</span>, podemos escrever</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \mathbf{a}^{(l)}
@@ -709,40 +776,33 @@ W^{(l)}\mathbf{a}^{(l-1)}
 \mathbf{b}^{(l)}
 \right).
 \]</div>
-</div>
 <p>Em uma rede <strong>fully connected</strong>, cada neurônio de uma camada está conectado a todos os neurônios da camada seguinte. O número de camadas, o número de neurônios e o padrão de conexões constituem a <strong>arquitetura</strong> da rede.</p>
 <p>O painel <strong>(b)</strong> amplia um único neurônio. Cada entrada <span class="math notranslate nohighlight">\(x_j\)</span> chega multiplicada por um peso <span class="math notranslate nohighlight">\(w_j\)</span>. Esses termos são somados ao <em>bias</em> <span class="math notranslate nohighlight">\(b\)</span> e o resultado passa por uma função de ativação. É essa não linearidade que permite que redes neurais representem funções muito mais complexas do que uma simples transformação afim.</p>
 <p>Algumas ativações comuns são</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \operatorname{ReLU}(z)=\max(0,z),
 \]</div>
-</div>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \sigma(z)=\frac{1}{1+e^{-z}},
 \]</div>
-</div>
 <p>e</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \tanh(z)=
 \frac{e^z-e^{-z}}{e^z+e^{-z}}.
 \]</div>
-</div>
 <p>Sem funções de ativação não lineares, a composição de várias camadas lineares continuaria sendo apenas uma transformação linear. Portanto, <strong>profundidade sem não linearidade não aumenta a classe funcional do modelo</strong>.</p>
 </section>
 <section id="aproximacao-universal-e-profundidade">
-<h3><span class="section-number">8.4.2. </span>Aproximação universal e profundidade<a class="headerlink" href="#aproximacao-universal-e-profundidade" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">8.4.2. </span>Aproximação universal e profundidade<a class="headerlink" href="#aproximacao-universal-e-profundidade" title="Link para este cabeçalho">#</a></h3>
 <p>O teorema da aproximação universal estabelece, sob condições adequadas, que uma rede com uma camada oculta e número suficiente de neurônios pode aproximar arbitrariamente bem uma grande classe de funções contínuas. Isso é um resultado de existência: ele não diz que o treinamento encontrará facilmente os pesos necessários, nem que uma rede rasa será eficiente.</p>
 <p>Na prática, redes profundas podem representar certas funções com muito menos parâmetros do que redes rasas. Esse é um dos motivos pelos quais <strong>Deep Neural Networks (DNNs)</strong> se tornaram tão importantes.</p>
 <p>Durante a avaliação de uma rede, a informação flui da entrada para a saída — <strong>forward propagation</strong>. Durante o treinamento, os gradientes da função de perda são propagados no sentido inverso por <strong>backpropagation</strong>, que veremos ao final deste capítulo.</p>
 </section>
 <section id="redes-neurais-convolucionais-cnns">
-<h3><span class="section-number">8.4.3. </span>Redes neurais convolucionais (CNNs)<a class="headerlink" href="#redes-neurais-convolucionais-cnns" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">8.4.3. </span>Redes neurais convolucionais (CNNs)<a class="headerlink" href="#redes-neurais-convolucionais-cnns" title="Link para este cabeçalho">#</a></h3>
 <p>Em dados com estrutura espacial, como imagens, a conectividade total pode ser desnecessária e muito cara. As <strong>Convolutional Neural Networks (CNNs)</strong> substituem parte das multiplicações matriciais densas por <strong>convoluções locais</strong>.</p>
 <p>A hipótese incorporada pelo modelo é que padrões locais são importantes: pixels próximos tendem a carregar relações mais fortes do que pixels muito distantes. Um pequeno conjunto de pesos — o <strong>kernel</strong> ou <strong>filtro</strong> — é reutilizado em diferentes posições da entrada.</p>
 <div class="cell docutils container">
@@ -772,7 +832,7 @@ W^{(l)}\mathbf{a}^{(l-1)}
 </section>
 </section>
 <section id="autoencoders">
-<h2><span class="section-number">8.5. </span>Autoencoders<a class="headerlink" href="#autoencoders" title="Link para este cabeçalho">¶</a></h2>
+<h2><span class="section-number">8.5. </span>Autoencoders<a class="headerlink" href="#autoencoders" title="Link para este cabeçalho">#</a></h2>
 <p><strong>Autoencoders (AEs)</strong> são redes neurais muito utilizadas em aprendizado não supervisionado e redução de dimensionalidade. A ideia é aprender uma representação compacta dos dados sem precisar de rótulos.</p>
 <p>Um autoencoder possui duas partes:</p>
 <ul class="simple">
@@ -780,7 +840,6 @@ W^{(l)}\mathbf{a}^{(l-1)}
 <li><p><strong>decoder:</strong> utiliza <span class="math notranslate nohighlight">\(\mathbf{z}\)</span> para reconstruir uma aproximação <span class="math notranslate nohighlight">\(\hat{\mathbf{x}}\)</span> da entrada.</p></li>
 </ul>
 <p>Podemos representar o processo como</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \mathbf{z}=g_{\mathrm{enc}}(\mathbf{x}),
@@ -789,16 +848,13 @@ W^{(l)}\mathbf{a}^{(l-1)}
 =
 g_{\mathrm{dec}}(\mathbf{z}).
 \]</div>
-</div>
 <p>O treinamento minimiza uma <strong>perda de reconstrução</strong>, por exemplo</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \mathcal L_{\mathrm{rec}}
 =
 \|\mathbf{x}-\hat{\mathbf{x}}\|_2^2.
 \]</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_pdf_as_svg</span><span class="p">(</span><span class="s1">&#39;../../_static/fig_2_8.pdf&#39;</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="mf">2.4</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">850</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">550</span>  <span class="p">)</span>  
@@ -812,26 +868,23 @@ g_{\mathrm{dec}}(\mathbf{z}).
 <p><em>Figura 2.8 da Ref. <span id="id5">[<a class="reference internal" href="../../bib.html#id6" title="Anna Dawid, Julian Arnold, Borja Requena, Alexander Gresch, Marcin Płodzień, Kaelan Donatella, Kim A. Nicoli, Paolo Stornati, Rouven Koch, Miriam Büttner, Robert Okuła, Gorka Muñoz-Gil, Rodrigo A. Vargas-Hernández, Alba Cervera-Lierta, Juan Carrasquilla, Vedran Dunjko, Marylou Gabrié, Patrick Huembeli, Evert van Nieuwenburg, Filippo Vicentini, Lei Wang, Sebastian J. Wetzel, Giuseppe Carleo, Eliška Greplová, Roman Krems, Florian Marquardt, Michał Tomza, Maciej Lewenstein, and Alexandre Dauphin. Modern applications of machine learning in quantum sciences. 2025. URL: https://arxiv.org/abs/2204.04198, arXiv:2204.04198.">Dawid <em>et al.</em>, 2025</a>]</span>: arquitetura de gargalo de um autoencoder.</em></p>
 <p>A entrada possui seis componentes <span class="math notranslate nohighlight">\((x_1,\ldots,x_6)\)</span>, mas a camada central possui apenas três ativações <span class="math notranslate nohighlight">\((a_1,a_2,a_3)\)</span>. Essa camada estreita é o <strong>bottleneck</strong> ou gargalo.</p>
 <p>O encoder precisa, portanto, comprimir a informação necessária para reconstruir os dados em um espaço de dimensão menor. O decoder recebe apenas essa representação comprimida e tenta produzir</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 (\hat x_1,\ldots,\hat x_6)
 \approx
 (x_1,\ldots,x_6).
 \]</div>
-</div>
 <p>A restrição do gargalo é essencial. Sem ela — ou sem outra forma de regularização — uma rede suficientemente flexível poderia simplesmente aprender a copiar a entrada, sem descobrir uma representação útil.</p>
 <p>Ao minimizar o erro de reconstrução, encoder e decoder são otimizados conjuntamente. Idealmente, a variável latente retém as variações mais relevantes dos dados e descarta redundâncias. Isso aproxima conceitualmente os autoencoders de métodos como PCA, embora as redes neurais permitam transformações muito mais flexíveis e não lineares.</p>
 <section id="autoencoders-variacionais">
-<h3><span class="section-number">8.5.1. </span>Autoencoders variacionais<a class="headerlink" href="#autoencoders-variacionais" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">8.5.1. </span>Autoencoders variacionais<a class="headerlink" href="#autoencoders-variacionais" title="Link para este cabeçalho">#</a></h3>
 <p>Um desenvolvimento importante é o <strong>Variational Autoencoder (VAE)</strong>. Em vez de representar cada entrada por um único ponto latente, o VAE aprende parâmetros de uma distribuição no espaço latente. Depois do treinamento, podemos amostrar dessa distribuição e decodificar as amostras para gerar novos exemplos semelhantes aos dados de treinamento.</p>
 <p>Existem ainda variantes como <em>denoising autoencoders</em>, <em>sparse autoencoders</em> e outras arquiteturas que alteram a restrição imposta à representação latente.</p>
 </section>
 </section>
 <section id="redes-neurais-autoregressivas">
-<h2><span class="section-number">8.6. </span>Redes neurais autoregressivas<a class="headerlink" href="#redes-neurais-autoregressivas" title="Link para este cabeçalho">¶</a></h2>
+<h2><span class="section-number">8.6. </span>Redes neurais autoregressivas<a class="headerlink" href="#redes-neurais-autoregressivas" title="Link para este cabeçalho">#</a></h2>
 <p>Modelos <strong>autoregressivos</strong> representam uma distribuição conjunta de alta dimensão como um produto de distribuições condicionais. Pela regra da cadeia da probabilidade,</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 p(\mathbf{x})
@@ -839,10 +892,8 @@ p(\mathbf{x})
 \prod_{i=1}^{m}
 p(x_i\mid x_1,\ldots,x_{i-1}).
 \]</div>
-</div>
 <p>A grande vantagem é transformar a modelagem de uma distribuição conjunta complexa em uma sequência de previsões condicionais.</p>
 <p>Em séries temporais, por exemplo, o valor em um instante pode ser previsto a partir dos valores anteriores. Em linguagem natural, a mesma ideia permite escrever</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 p(w_1,\ldots,w_T)
@@ -850,7 +901,6 @@ p(w_1,\ldots,w_T)
 \prod_{t=1}^{T}
 p(w_t\mid w_1,\ldots,w_{t-1}),
 \]</div>
-</div>
 <p>isto é, a probabilidade de uma sequência é construída palavra por palavra.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -869,7 +919,6 @@ p(w_t\mid w_1,\ldots,w_{t-1}),
 <li><p>um estado oculto <span class="math notranslate nohighlight">\(\mathbf{h}^{(t-1)}\)</span> proveniente do passo anterior.</p></li>
 </ul>
 <p>Uma forma simples da atualização é</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \mathbf{h}^{(t)}
@@ -880,36 +929,30 @@ W_h\mathbf{h}^{(t-1)}
 W_x\mathbf{x}^{(t)}
 \right).
 \]</div>
-</div>
 <p>O vetor oculto funciona como uma <strong>memória interna</strong> da informação acumulada. A partir dele, uma camada de saída — por exemplo, uma softmax — calcula a distribuição de probabilidade para o próximo elemento.</p>
 <p>No exemplo da figura, depois de observar <em>“May”</em>, <em>“the”</em>, <em>“Force”</em> e <em>“be”</em>, a rede produz sucessivamente distribuições</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 p(W\mid\text{palavras anteriores}),
 \]</div>
-</div>
 <p>onde <span class="math notranslate nohighlight">\(W\)</span> representa a próxima palavra possível.</p>
 <p>A característica autoregressiva aparece explicitamente: cada previsão depende apenas dos elementos anteriores da sequência, preservando uma ordem causal.</p>
 <p>RNNs simples podem ter dificuldade para manter dependências por muitos passos. Arquiteturas como <strong>LSTM</strong> e <strong>GRU</strong> introduzem mecanismos de memória e <em>gates</em> que ajudam a controlar quais informações são preservadas ou esquecidas.</p>
 <p>Embora hoje Transformers dominem grande parte do processamento de linguagem, RNNs continuam sendo fundamentais para entender a evolução dos modelos sequenciais e o princípio autoregressivo que permanece central em muitos modelos generativos modernos.</p>
 </section>
 <section id="backpropagation">
-<h2><span class="section-number">8.7. </span>Backpropagation<a class="headerlink" href="#backpropagation" title="Link para este cabeçalho">¶</a></h2>
+<h2><span class="section-number">8.7. </span>Backpropagation<a class="headerlink" href="#backpropagation" title="Link para este cabeçalho">#</a></h2>
 <p>Redes neurais são normalmente treinadas por métodos baseados em gradiente. Para atualizar cada peso e <em>bias</em>, precisamos calcular</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \frac{\partial\mathcal L}{\partial W^{(l)}}
 \qquad\text{e}\qquad
 \frac{\partial\mathcal L}{\partial \mathbf b^{(l)}}.
 \]</div>
-</div>
 <p>Fazer isso manualmente para cada arquitetura seria inviável. A <strong>backpropagation</strong> é uma aplicação eficiente da diferenciação automática em modo reverso que explora a estrutura em camadas da rede e a regra da cadeia.</p>
 <section id="forward-pass">
-<h3><span class="section-number">8.7.1. </span>Forward pass<a class="headerlink" href="#forward-pass" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">8.7.1. </span>Forward pass<a class="headerlink" href="#forward-pass" title="Link para este cabeçalho">#</a></h3>
 <p>Para a camada <span class="math notranslate nohighlight">\(l\)</span>,</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \mathbf z^{(l)}
@@ -918,37 +961,29 @@ W^{(l)}\mathbf a^{(l-1)}
 +
 \mathbf b^{(l)},
 \]</div>
-</div>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \mathbf a^{(l)}
 =
 \sigma^{(l)}\!\left(\mathbf z^{(l)}\right),
 \]</div>
-</div>
 <p>com</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \mathbf a^{(0)}=\mathbf x.
 \]</div>
-</div>
 <p>No <em>forward pass</em>, calculamos sucessivamente todas as ativações até obter a saída</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \hat{\mathbf y}
 =
 \mathbf a^{(L)}.
 \]</div>
-</div>
 <p>Também armazenamos as ativações e os valores intermediários necessários para as derivadas. Esse armazenamento evita recalcular o mesmo caminho durante a etapa reversa.</p>
 </section>
 <section id="reverse-pass">
-<h3><span class="section-number">8.7.2. </span>Reverse pass<a class="headerlink" href="#reverse-pass" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">8.7.2. </span>Reverse pass<a class="headerlink" href="#reverse-pass" title="Link para este cabeçalho">#</a></h3>
 <p>Começamos na saída, calculando o erro local da última camada. Usando a convenção de vetores coluna, podemos definir</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \boldsymbol{\delta}^{(L)}
@@ -961,10 +996,8 @@ W^{(l)}\mathbf a^{(l-1)}
 \odot
 \sigma'^{(L)}(\mathbf z^{(L)}),
 \]</div>
-</div>
 <p>onde <span class="math notranslate nohighlight">\(\odot\)</span> é o produto elemento a elemento.</p>
 <p>Para as camadas anteriores,</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \boldsymbol{\delta}^{(l)}
@@ -974,9 +1007,7 @@ W^{(l)}\mathbf a^{(l-1)}
 \odot
 \sigma'^{(l)}(\mathbf z^{(l)}).
 \]</div>
-</div>
 <p>Depois que <span class="math notranslate nohighlight">\(\boldsymbol{\delta}^{(l)}\)</span> é conhecido, os gradientes seguem diretamente:</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \frac{\partial\ell}{\partial W^{(l)}}
@@ -984,15 +1015,12 @@ W^{(l)}\mathbf a^{(l-1)}
 \boldsymbol{\delta}^{(l)}
 \left(\mathbf a^{(l-1)}\right)^\top,
 \]</div>
-</div>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \frac{\partial\ell}{\partial\mathbf b^{(l)}}
 =
 \boldsymbol{\delta}^{(l)}.
 \]</div>
-</div>
 <p>A essência do algoritmo é reutilizar derivadas intermediárias. Em vez de recalcular toda a cadeia para cada parâmetro, o erro é propagado uma única vez da saída para a entrada.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1008,23 +1036,18 @@ W^{(l)}\mathbf a^{(l-1)}
 <p>A figura pode ser lida em três etapas.</p>
 </section>
 <section id="a-rede-e-parametros">
-<h3><span class="section-number">8.7.3. </span>(a) Rede e parâmetros<a class="headerlink" href="#a-rede-e-parametros" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">8.7.3. </span>(a) Rede e parâmetros<a class="headerlink" href="#a-rede-e-parametros" title="Link para este cabeçalho">#</a></h3>
 <p>A rede recebe</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \mathbf{x}=[1,1,0],
 \]</div>
-</div>
 <p>possui dois neurônios na camada oculta e um neurônio de saída. Todas as ativações utilizam</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \operatorname{ReLU}(z)=\max(0,z),
 \]</div>
-</div>
 <p>cuja derivada é</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \operatorname{ReLU}'(z)
@@ -1034,13 +1057,11 @@ W^{(l)}\mathbf a^{(l-1)}
 1, &amp; z&gt;0.
 \end{cases}
 \end{split}\]</div>
-</div>
 <p>O alvo do exemplo é <span class="math notranslate nohighlight">\(y=0\)</span>.</p>
 </section>
 <section id="b-forward-pass">
-<h3><span class="section-number">8.7.4. </span>(b) Forward pass<a class="headerlink" href="#b-forward-pass" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">8.7.4. </span>(b) Forward pass<a class="headerlink" href="#b-forward-pass" title="Link para este cabeçalho">#</a></h3>
 <p>Para o primeiro neurônio oculto,</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 z_1^{(1)}
@@ -1049,16 +1070,12 @@ z_1^{(1)}
 =
 1,
 \]</div>
-</div>
 <p>portanto</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 a_1^{(1)}=\operatorname{ReLU}(1)=1.
 \]</div>
-</div>
 <p>Para o segundo neurônio,</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 z_2^{(1)}
@@ -1067,16 +1084,12 @@ z_2^{(1)}
 =
 -0.1,
 \]</div>
-</div>
 <p>logo</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 a_2^{(1)}=\operatorname{ReLU}(-0.1)=0.
 \]</div>
-</div>
 <p>A saída é então</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 z^{(2)}
@@ -1087,16 +1100,12 @@ z^{(2)}
 =
 0.4,
 \]</div>
-</div>
 <p>e</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 a^{(2)}=\operatorname{ReLU}(0.4)=0.4.
 \]</div>
-</div>
 <p>Com MSE para esse único exemplo,</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \ell
@@ -1107,13 +1116,11 @@ a^{(2)}=\operatorname{ReLU}(0.4)=0.4.
 =
 0.16.
 \]</div>
-</div>
 <p>Observe que o <em>forward pass</em> não produz apenas a previsão: ele também fornece as ativações e informa em quais neurônios a derivada da ReLU será 0 ou 1. Esses valores são reutilizados na etapa reversa.</p>
 </section>
 <section id="c-backward-pass">
-<h3><span class="section-number">8.7.5. </span>(c) Backward pass<a class="headerlink" href="#c-backward-pass" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">8.7.5. </span>(c) Backward pass<a class="headerlink" href="#c-backward-pass" title="Link para este cabeçalho">#</a></h3>
 <p>Na saída,</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \delta^{(2)}
@@ -1125,9 +1132,7 @@ a^{(2)}=\operatorname{ReLU}(0.4)=0.4.
 =
 0.8.
 \]</div>
-</div>
 <p>Assim, para o peso que conecta <span class="math notranslate nohighlight">\(a_1^{(1)}\)</span> à saída,</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \frac{\partial\ell}{\partial w_1^{(2)}}
@@ -1138,9 +1143,7 @@ a^{(2)}=\operatorname{ReLU}(0.4)=0.4.
 =
 0.8.
 \]</div>
-</div>
 <p>Agora propagamos o erro para o primeiro neurônio oculto:</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \delta_1^{(1)}
@@ -1153,9 +1156,7 @@ w_1^{(2)}
 =
 0.32.
 \]</div>
-</div>
 <p>Portanto, para o peso que conecta <span class="math notranslate nohighlight">\(x_2\)</span> a esse neurônio,</p>
-<div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
 \[
 \frac{\partial\ell}
@@ -1167,11 +1168,10 @@ w_1^{(2)}
 =
 0.32.
 \]</div>
-</div>
 <p>O segundo neurônio oculto tem ativação nula e <span class="math notranslate nohighlight">\(z_2^{(1)}&lt;0\)</span>. Nesse exemplo, sua derivada da ReLU é zero, bloqueando a propagação de gradiente por esse caminho.</p>
 </section>
 <section id="por-que-calcular-os-gradientes-de-tras-para-frente">
-<h3><span class="section-number">8.7.6. </span>Por que calcular os gradientes de trás para frente?<a class="headerlink" href="#por-que-calcular-os-gradientes-de-tras-para-frente" title="Link para este cabeçalho">¶</a></h3>
+<h3><span class="section-number">8.7.6. </span>Por que calcular os gradientes de trás para frente?<a class="headerlink" href="#por-que-calcular-os-gradientes-de-tras-para-frente" title="Link para este cabeçalho">#</a></h3>
 <p>O custo de treinar redes grandes vem do fato de existirem muitos parâmetros. Se calculássemos separadamente a derivada da saída em relação a cada peso seguindo o fluxo para frente, repetiríamos uma enorme quantidade de operações.</p>
 <p>A backpropagation resolve isso reutilizando os mesmos termos intermediários da regra da cadeia. Um único <em>forward pass</em> calcula e armazena as ativações; um único <em>backward pass</em> produz os gradientes de todos os parâmetros. Essa eficiência computacional foi essencial para tornar viável o treinamento de redes neurais profundas.</p>
 <blockquote>
@@ -1200,129 +1200,139 @@ w_1^{(2)}
     }
     </script>
     <script>kernelName = 'python3'</script>
-        </article>
-      </div>
-      <footer>
-        
-        <div class="related-pages">
-          <a class="next-page" href="../../bib.html">
-              <div class="page-info">
-                <div class="context">
-                  <span>Next</span>
-                </div>
-                <div class="title">Referências</div>
-              </div>
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-            </a>
-          <a class="prev-page" href="ML_fundamentals.html">
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-              <div class="page-info">
-                <div class="context">
-                  <span>Previous</span>
-                </div>
-                
-                <div class="title"><span class="section-number">7. </span>Fundamentos de Machine Learning</div>
-                
-              </div>
-            </a>
-        </div>
-        <div class="bottom-of-page">
-          <div class="left-details">
-            <div class="copyright">
-                Copyright &#169; L. A. Souza, 2025
-            </div>
-            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
-            
-            <a href="https://github.com/pradyunsg/furo">Furo</a>
-            
-          </div>
-          <div class="right-details">
-            
-          </div>
-        </div>
-        
-      </footer>
-    </div>
-    <aside class="toc-drawer">
-      
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            On this page
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">8. Modelos de Machine Learning</a><ul>
-<li><a class="reference internal" href="#regressao-linear-e-regressao-ridge">8.1. Regressão linear e regressão ridge</a><ul>
-<li><a class="reference internal" href="#o-problema-de-regressao">8.1.1. O problema de regressão</a></li>
-<li><a class="reference internal" href="#ajuste-por-minimos-quadrados">8.1.2. Ajuste por mínimos quadrados</a></li>
-<li><a class="reference internal" href="#por-que-o-mse-aparece-naturalmente">8.1.3. Por que o MSE aparece naturalmente?</a></li>
-<li><a class="reference internal" href="#ridge-regularizando-o-modelo">8.1.4. Ridge: regularizando o modelo</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#regressao-logistica">8.2. Regressão logística</a><ul>
-<li><a class="reference internal" href="#classificacao-binaria">8.2.1. Classificação binária</a></li>
-<li><a class="reference internal" href="#extensao-para-multiplas-classes">8.2.2. Extensão para múltiplas classes</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#support-vector-machines-svm">8.3. Support Vector Machines (SVM)</a><ul>
-<li><a class="reference internal" href="#mais-de-duas-classes">8.3.1. Mais de duas classes</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#redes-neurais">8.4. Redes neurais</a><ul>
-<li><a class="reference internal" href="#como-ler-a-figura">8.4.1. Como ler a figura</a></li>
-<li><a class="reference internal" href="#aproximacao-universal-e-profundidade">8.4.2. Aproximação universal e profundidade</a></li>
-<li><a class="reference internal" href="#redes-neurais-convolucionais-cnns">8.4.3. Redes neurais convolucionais (CNNs)</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#autoencoders">8.5. Autoencoders</a><ul>
-<li><a class="reference internal" href="#autoencoders-variacionais">8.5.1. Autoencoders variacionais</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#redes-neurais-autoregressivas">8.6. Redes neurais autoregressivas</a></li>
-<li><a class="reference internal" href="#backpropagation">8.7. Backpropagation</a><ul>
-<li><a class="reference internal" href="#forward-pass">8.7.1. Forward pass</a></li>
-<li><a class="reference internal" href="#reverse-pass">8.7.2. Reverse pass</a></li>
-<li><a class="reference internal" href="#a-rede-e-parametros">8.7.3. (a) Rede e parâmetros</a></li>
-<li><a class="reference internal" href="#b-forward-pass">8.7.4. (b) Forward pass</a></li>
-<li><a class="reference internal" href="#c-backward-pass">8.7.5. (c) Backward pass</a></li>
-<li><a class="reference internal" href="#por-que-calcular-os-gradientes-de-tras-para-frente">8.7.6. Por que calcular os gradientes de trás para frente?</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
 
-          </div>
-        </div>
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="ML_fundamentals.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>Fundamentos de Machine Learning</p>
       </div>
-      
-      
-    </aside>
+    </a>
+    <a class="right-next"
+       href="../../bib.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">próximo</p>
+        <p class="prev-next-title">Referências</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Conteúdo
   </div>
-</div><script src="../../_static/documentation_options.js?v=2efa9f5e"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>
-    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
-    <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
-    <script src="../../_static/translations.js?v=daa5921a"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    </body>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regressao-linear-e-regressao-ridge">8.1. Regressão linear e regressão ridge</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#o-problema-de-regressao">8.1.1. O problema de regressão</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ajuste-por-minimos-quadrados">8.1.2. Ajuste por mínimos quadrados</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#por-que-o-mse-aparece-naturalmente">8.1.3. Por que o MSE aparece naturalmente?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ridge-regularizando-o-modelo">8.1.4. Ridge: regularizando o modelo</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regressao-logistica">8.2. Regressão logística</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classificacao-binaria">8.2.1. Classificação binária</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extensao-para-multiplas-classes">8.2.2. Extensão para múltiplas classes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#support-vector-machines-svm">8.3. Support Vector Machines (SVM)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mais-de-duas-classes">8.3.1. Mais de duas classes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#redes-neurais">8.4. Redes neurais</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#como-ler-a-figura">8.4.1. Como ler a figura</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aproximacao-universal-e-profundidade">8.4.2. Aproximação universal e profundidade</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#redes-neurais-convolucionais-cnns">8.4.3. Redes neurais convolucionais (CNNs)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#autoencoders">8.5. Autoencoders</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#autoencoders-variacionais">8.5.1. Autoencoders variacionais</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#redes-neurais-autoregressivas">8.6. Redes neurais autoregressivas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backpropagation">8.7. Backpropagation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#forward-pass">8.7.1. Forward pass</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reverse-pass">8.7.2. Reverse pass</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-rede-e-parametros">8.7.3. (a) Rede e parâmetros</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-forward-pass">8.7.4. (b) Forward pass</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-backward-pass">8.7.5. (c) Backward pass</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#por-que-calcular-os-gradientes-de-tras-para-frente">8.7.6. Por que calcular os gradientes de trás para frente?</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+De Lucas A. Souza
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright L. A. Souza, 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
 </html>
