@@ -22,6 +22,18 @@ parts:
   - file: notebooks/ML/introducao_parte_2
   - file: notebooks/ML/ML_fundamentals
   - file: notebooks/ML/ML_models
+
+
+- caption: Parte III. Aprendizado por Reforço para Finanças
+  numbered: true
+  chapters:
+  - file: notebooks/FDRNN/FDRNN_resumo
+  - file: notebooks/FDRNN/FDRNN_intro
+  - file: notebooks/FDRNN/FDRNN_iiiA_direct_reforcement_trading
+  - file: notebooks/FDRNN/FDRNN_iiiB_RNN_for_DPP
+  - file: notebooks/FDRNN/FDRNN_iiiC_fuzzy
+  - file: notebooks/FDRNN/FDRNN_ivA_system_initializations
+  - file: notebooks/FDRNN/FDRNN_ivB_task-aware_BPTT
  
 
 #- caption: Part 2 
